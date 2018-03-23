@@ -104,14 +104,14 @@ public class TriggerLocomotion : MonoBehaviour {
 
         //Make the bodyCollider follow the player around and make it 
         //bodyCollider.transform.position = new Vector3(4, 5, 1);
-        cameraRig.transform.position = new Vector3(cameraRig.transform.position.x, bodyCollider.transform.position.y, cameraRig.transform.position.z);
+        
 
         if (trackedObj.gameObject.activeInHierarchy)
         {
             if (triggerAxis > .15f) //If the trigger is pressed passed a certain threshold
             {
                 cameraRigRb.drag = 1;
-
+                cameraRig.transform.position = new Vector3(cameraRig.transform.position.x, bodyCollider.transform.position.y - bodyCollider.transform.localScale.y, cameraRig.transform.position.z);
                 //Assemble beginning variables
                 controllerForward = trackedObj.transform.forward;
                 moveSpeed = triggerAxis + (sprintSpeed * sprintInertia);
@@ -121,7 +121,7 @@ public class TriggerLocomotion : MonoBehaviour {
                 if(Vector3.Distance(playerPos, new Vector3(bodyCollider.transform.position.x, 0 , bodyCollider.transform.position.z)) > bodyCollider.transform.localScale.x / 2)
                 {
                     //bodyCollider.transform.position = new Vector3(playerEye.transform.position.x, bodyCollider.transform.position.y, playerEye.transform.position.z);
-                    bodyCollider.transform.position = Vector3.MoveTowards(bodyCollider.transform.position, new Vector3(playerEye.transform.position.x, bodyCollider.transform.position.y, playerEye.transform.position.z), Time.deltaTime);
+                    bodyCollider.transform.position = Vector3.MoveTowards(bodyCollider.transform.position, new Vector3(playerEye.transform.position.x, bodyCollider.transform.position.y, playerEye.transform.position.z), 2f * Time.deltaTime);
                 }
 
                 //bodyRb.MovePosition(bodyCollider.transform.position + direction * Time.deltaTime);
