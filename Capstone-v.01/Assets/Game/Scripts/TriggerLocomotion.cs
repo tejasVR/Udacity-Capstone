@@ -51,6 +51,12 @@ public class TriggerLocomotion : MonoBehaviour {
 
     #endregion
 
+    private void Awake()
+    {
+        trackedObj = hand.handTrackedRight;
+        device = hand.handDeviceRight;
+    }
+
     void Start()
     {
         staminaAmnt = staminaAmntMax;
