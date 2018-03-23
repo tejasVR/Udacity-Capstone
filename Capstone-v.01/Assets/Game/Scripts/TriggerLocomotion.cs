@@ -5,7 +5,6 @@ using UnityEngine;
 public class TriggerLocomotion : MonoBehaviour {
 
     public GameManager gameManager;
-    public SteamVR_Controller.Device device;
     public SteamVR_TrackedObject trackedObj;
     private Hand hand;
 
@@ -34,7 +33,9 @@ public class TriggerLocomotion : MonoBehaviour {
 
     [Header("Movement Variables")]
     #region MovementVariables
-    public float moveSpeed;
+    public float moveSpeed; // Overall movespeed
+
+    public float walkSpeed;
     public float sprintSpeed;
 
     public float staminaAmnt; //current stamina amount
@@ -51,25 +52,33 @@ public class TriggerLocomotion : MonoBehaviour {
 
     #endregion
 
+    
     private void Awake()
     {
-        trackedObj = hand.handTrackedRight;
-        device = hand.handDeviceRight;
+        //trackedObj = hand.handTrackedRight;
+        //device = hand.handDeviceRight;
+        hand = GetComponent<Hand>();
     }
 
+    
     void Start()
     {
+        //trackedObj = hand.handTrackedRight;
+        //device = hand.handDeviceRight;
+
         staminaAmnt = staminaAmntMax;
-        hand = GetComponent<Hand>();
+        
         bodyRb = bodyCollider.GetComponent<Rigidbody>();
         cameraRigRb = cameraRig.GetComponent<Rigidbody>();
     }
-
+    
     void Update()
     {
         // Initializes device variable every frame
-        trackedObj = hand.handTrackedRight;
-        device = hand.handDeviceRight;
+        //trackedObj = hand.handTrackedRight;
+        //device = hand.handDeviceRight;
+
+        SteamVR_Controller.Device device = SteamVR_Controller.Input((int)trackedObj.index);
 
         triggerAxis = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger).x; //Gets depth of trigger press    
 
@@ -91,7 +100,7 @@ public class TriggerLocomotion : MonoBehaviour {
         else
         {
             sprintSpeed = 0;
-            sprintInertia = Mathf.Lerp(sprintInertia, 0, Time.deltaTime / 3f);
+            sprintInertia = Mathf.Lerp(sprintInertia, 0, Time.deltaTime / 2f);
             sprintingAudio.volume = Mathf.Lerp(sprintingAudio.volume, 0f, Time.deltaTime);
             staminaAmnt += staminaRecovery * Time.deltaTime;
             if (staminaAmnt >= staminaAmntMax)
@@ -105,8 +114,6 @@ public class TriggerLocomotion : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        trackedObj = hand.handTrackedRight;
-        device = hand.handDeviceRight;
 
         //Make the bodyCollider follow the player around and make it 
         //bodyCollider.transform.position = new Vector3(4, 5, 1);
@@ -114,35 +121,33 @@ public class TriggerLocomotion : MonoBehaviour {
 
         if (trackedObj.gameObject.activeInHierarchy)
         {
-            if (triggerAxis > .15f) //If the trigger is pressed passed a certain threshold
+            Vector3 playerPos = new Vector3(playerEye.transform.position.x, 0, playerEye.transform.position.z);
+            if (Vector3.Distance(playerPos, new Vector3(bodyCollider.transform.position.x, 0, bodyCollider.transform.position.z)) > bodyCollider.transform.localScale.x / 2)
+            {
+                //bodyCollider.transform.position = new Vector3(playerEye.transform.position.x, bodyCollider.transform.position.y, playerEye.transform.position.z);
+                bodyCollider.transform.position = Vector3.MoveTowards(bodyCollider.transform.position, new Vector3(playerEye.transform.position.x, bodyCollider.transform.position.y, playerEye.transform.position.z), 2f * Time.deltaTime);
+            }
+
+            if (triggerAxis > .05f) //If the trigger is pressed passed a certain threshold
             {
                 cameraRigRb.drag = 1;
-                cameraRig.transform.position = new Vector3(cameraRig.transform.position.x, bodyCollider.transform.position.y - bodyCollider.transform.localScale.y, cameraRig.transform.position.z);
+                //cameraRig.transform.position = new Vector3(cameraRig.transform.position.x, bodyCollider.transform.position.y - bodyCollider.transform.localScale.y, cameraRig.transform.position.z);
                 //Assemble beginning variables
                 controllerForward = trackedObj.transform.forward;
-                moveSpeed = triggerAxis + (sprintSpeed * sprintInertia);
+                moveSpeed = Mathf.Lerp(moveSpeed, (triggerAxis * walkSpeed)  + sprintSpeed, Time.deltaTime * 5f);
                 Vector3 direction = new Vector3(controllerForward.x, 0, controllerForward.z);
-                Vector3 playerPos = new Vector3(playerEye.transform.position.x, 0, playerEye.transform.position.z);
 
-                if(Vector3.Distance(playerPos, new Vector3(bodyCollider.transform.position.x, 0 , bodyCollider.transform.position.z)) > bodyCollider.transform.localScale.x / 2)
-                {
-                    //bodyCollider.transform.position = new Vector3(playerEye.transform.position.x, bodyCollider.transform.position.y, playerEye.transform.position.z);
-                    bodyCollider.transform.position = Vector3.MoveTowards(bodyCollider.transform.position, new Vector3(playerEye.transform.position.x, bodyCollider.transform.position.y, playerEye.transform.position.z), 2f * Time.deltaTime);
-                }
+
+
 
                 //bodyRb.MovePosition(bodyCollider.transform.position + direction * Time.deltaTime);
 
                 //cameraRig.transform.position = Vector3.Lerp(new Vector3(cameraRig.transform.position.x, footCollider.transform.position.y, cameraRig.transform.position.z), new Vector3(bodyCollider.transform.position.x, footCollider.transform.position.y, bodyCollider.transform.position.z), Time.deltaTime * moveSpeed * 5);
 
-                cameraRig.GetComponent<Rigidbody>().AddForce(direction, ForceMode.Force);
-
-                //If the bodyCollider hits something within a .5 unit distance, stop, else, move the whole cameraRig
-                /*RaycastHit hit;
-                if (!Physics.SphereCast(new Vector3(bodyCollider.transform.position.x, bodyCollider.transform.position.y + .5f, bodyCollider.transform.position.z), .35f, direction, out hit, .35f, -1, QueryTriggerInteraction.Ignore))
-                {
-                    cameraRig.transform.position = Vector3.Lerp(new Vector3(cameraRig.transform.position.x, bodyCollider.transform.position.y, cameraRig.transform.position.z), cameraRig.transform.position + direction, Time.deltaTime * moveSpeed * 5);
-                }*/
-                //Debug.DrawRay(new Vector3(bodyCollider.transform.position.x, bodyCollider.transform.position.y + .5f, bodyCollider.transform.position.z), direction, Color.green);
+                //cameraRigRb.AddForce(direction / 10, ForceMode.Impulse);
+                cameraRigRb.MovePosition(cameraRig.transform.position + (direction * moveSpeed) * Time.deltaTime);
+                cameraRigRb.velocity = Vector3.ClampMagnitude(cameraRigRb.velocity, moveSpeed);
+                //print(cameraRigRb.velocity.magnitude);
             } else
             {
                 cameraRigRb.drag = 10;
@@ -159,4 +164,5 @@ public class TriggerLocomotion : MonoBehaviour {
             sprintSoundPlayed = true;
         }
     }
+    
 }

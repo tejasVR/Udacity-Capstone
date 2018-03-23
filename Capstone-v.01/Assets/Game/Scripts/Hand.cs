@@ -20,6 +20,11 @@ public class Hand : MonoBehaviour {
     public bool isHandRight;
     public bool isHandLeft;
 
+    private void Awake()
+    {
+        CheckHands();
+    }
+
     // Use this for initialization
     void Start () {
 		
@@ -28,7 +33,12 @@ public class Hand : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (trackedRight.gameObject.activeInHierarchy && trackedLeft.gameObject.activeInHierarchy)
+        CheckHands();
+    }
+
+    void CheckHands()
+    {
+        //if (trackedRight.gameObject.activeInHierarchy && trackedLeft.gameObject.activeInHierarchy)
         {
             // Sets device variable depending on which hand is the dominant hand
             if (gameManager.dominantLeft)
