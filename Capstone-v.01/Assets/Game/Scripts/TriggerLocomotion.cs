@@ -30,6 +30,7 @@ public class TriggerLocomotion : MonoBehaviour {
     public GameObject bodyCollider;
     public GameObject footCollider;
     private Rigidbody bodyRb; //rigid body of the body Collider;
+    private Rigidbody cameraRigRb; //rigid body of the body Collider;
 
     [Header("Movement Variables")]
     #region MovementVariables
@@ -55,6 +56,7 @@ public class TriggerLocomotion : MonoBehaviour {
         staminaAmnt = staminaAmntMax;
         hand = GetComponent<Hand>();
         bodyRb = bodyCollider.GetComponent<Rigidbody>();
+        cameraRigRb = cameraRig.GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -108,6 +110,8 @@ public class TriggerLocomotion : MonoBehaviour {
         {
             if (triggerAxis > .15f) //If the trigger is pressed passed a certain threshold
             {
+                cameraRigRb.drag = 1;
+
                 //Assemble beginning variables
                 controllerForward = trackedObj.transform.forward;
                 moveSpeed = triggerAxis + (sprintSpeed * sprintInertia);
@@ -133,6 +137,9 @@ public class TriggerLocomotion : MonoBehaviour {
                     cameraRig.transform.position = Vector3.Lerp(new Vector3(cameraRig.transform.position.x, bodyCollider.transform.position.y, cameraRig.transform.position.z), cameraRig.transform.position + direction, Time.deltaTime * moveSpeed * 5);
                 }*/
                 //Debug.DrawRay(new Vector3(bodyCollider.transform.position.x, bodyCollider.transform.position.y + .5f, bodyCollider.transform.position.z), direction, Color.green);
+            } else
+            {
+                cameraRigRb.drag = 10;
             }
         }
         
