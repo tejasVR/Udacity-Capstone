@@ -112,7 +112,13 @@ public class TriggerLocomotion : MonoBehaviour {
                 controllerForward = trackedObj.transform.forward;
                 moveSpeed = triggerAxis + (sprintSpeed * sprintInertia);
                 Vector3 direction = new Vector3(controllerForward.x, 0, controllerForward.z);
-                bodyCollider.transform.position = new Vector3(playerEye.transform.position.x, bodyCollider.transform.position.y, playerEye.transform.position.z);
+                Vector3 playerPos = new Vector3(playerEye.transform.position.x, 0, playerEye.transform.position.z);
+
+                if(Vector3.Distance(playerPos, new Vector3(bodyCollider.transform.position.x, 0 , bodyCollider.transform.position.z)) > bodyCollider.transform.localScale.x / 2)
+                {
+                    //bodyCollider.transform.position = new Vector3(playerEye.transform.position.x, bodyCollider.transform.position.y, playerEye.transform.position.z);
+                    bodyCollider.transform.position = Vector3.MoveTowards(bodyCollider.transform.position, new Vector3(playerEye.transform.position.x, bodyCollider.transform.position.y, playerEye.transform.position.z), Time.deltaTime);
+                }
 
                 //bodyRb.MovePosition(bodyCollider.transform.position + direction * Time.deltaTime);
 
