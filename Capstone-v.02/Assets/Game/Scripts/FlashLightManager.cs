@@ -9,11 +9,13 @@ public class FlashLightManager : MonoBehaviour {
     //public Hand hand;
 
     public float followSpeed;
+    private Rigidbody rb;
 
 	// Use this for initialization
 	void Awake () {
         //trackedObj = hand.handTrackedLeft;
         //device = hand.handDeviceLeft;
+        rb = GetComponent<Rigidbody>();
     }
 	
 	// Update is called once per frame
@@ -25,8 +27,13 @@ public class FlashLightManager : MonoBehaviour {
         {
             SteamVR_Controller.Device device = SteamVR_Controller.Input((int)trackedObj.index);
 
-            transform.position = Vector3.Lerp(transform.position, trackedObj.transform.position, followSpeed * Time.deltaTime);
-            transform.rotation = Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation, followSpeed * Time.deltaTime);
+            //rb.MovePosition(Vector3.Lerp(transform.position, trackedObj.transform.position, followSpeed * Time.deltaTime));
+            //rb.MoveRotation(Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation, followSpeed * Time.deltaTime));
+
+            rb.MovePosition(trackedObj.transform.position);
+
+            //transform.position = Vector3.Lerp(transform.position, trackedObj.transform.position, followSpeed * Time.deltaTime);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation, followSpeed * Time.deltaTime);
         }
 
         
