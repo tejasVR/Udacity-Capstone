@@ -23,19 +23,49 @@ public class FlashLightManager : MonoBehaviour {
         //trackedObj = hand.handTrackedLeft;
         //device = hand.handDeviceLeft;
 
-        if (trackedObj.gameObject.activeInHierarchy)
+        /*if (trackedObj.gameObject.activeInHierarchy)
         {
             SteamVR_Controller.Device device = SteamVR_Controller.Input((int)trackedObj.index);
 
-            //rb.MovePosition(Vector3.Lerp(transform.position, trackedObj.transform.position, followSpeed * Time.deltaTime));
-            //rb.MoveRotation(Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation, followSpeed * Time.deltaTime));
+            //Vector3 direction = 
+            
 
-            rb.MovePosition(trackedObj.transform.position);
+            //rb.MovePosition(trackedObj.transform.position);
+
+            rb.position = Vector3.Lerp(transform.position, trackedObj.transform.position, followSpeed * Time.deltaTime);
+            rb.rotation = Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation, followSpeed * Time.deltaTime);
+
+            //rb.AddForce()
 
             //transform.position = Vector3.Lerp(transform.position, trackedObj.transform.position, followSpeed * Time.deltaTime);
             //transform.rotation = Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation, followSpeed * Time.deltaTime);
-        }
+        }*/
 
         
+    }
+
+    private void FixedUpdate()
+    {
+        if (trackedObj.gameObject.activeInHierarchy)
+        {
+            Vector3 dir = (trackedObj.transform.position - transform.position);
+            rb.velocity = (dir) * followSpeed * Time.deltaTime;
+            rb.rotation = trackedObj.transform.rotation;
+
+
+            //rb.MovePosition(transform.position + dir * followSpeed * Time.deltaTime);
+
+            //
+            
+
+            //rb.MovePosition(trackedObj.transform.position * Time.deltaTime);
+            //rb.MoveRotation(trackedObj.transform.rotation);
+            //rb.MovePosition(Vector3.Lerp(transform.position, trackedObj.transform.position, followSpeed * Time.deltaTime));
+            //rb.MoveRotation(Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation, followSpeed * Time.deltaTime));
+
+            //rb.position = trackedObj.transform.position;
+            //rb.rotation = trackedObj.transform.rotation;
+
+        }
     }
 }
