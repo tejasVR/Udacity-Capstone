@@ -727,7 +727,7 @@ Transform:
   m_Father: {fileID: 940314781}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &437689023
+--- !u!43 &407547508
 Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1055,7 +1055,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 605547189}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.003, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 651965561}
@@ -1074,7 +1074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackedObj: {fileID: 1385484670}
-  followSpeed: 1000
+  followSpeed: 750
 --- !u!136 &605547192
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1095,13 +1095,13 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 605547189}
   serializedVersion: 2
-  m_Mass: 1000
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!1 &639160564
 GameObject:
@@ -1273,6 +1273,39 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 651965560}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!21 &653723553
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &809641412
 GameObject:
   m_ObjectHideFlags: 0
@@ -2433,7 +2466,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1622798926}
-  m_Mesh: {fileID: 437689023}
+  m_Mesh: {fileID: 407547508}
 --- !u!23 &1622798934
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2449,7 +2482,7 @@ MeshRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 1726914554}
+  - {fileID: 653723553}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2847,39 +2880,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!21 &1726914554
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1741880481
 GameObject:
   m_ObjectHideFlags: 0
@@ -3268,11 +3268,11 @@ HingeJoint:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2049237507}
   m_ConnectedBody: {fileID: 1115423781}
-  m_Anchor: {x: 0.6, y: 0.49999997, z: 0}
+  m_Anchor: {x: 0.52, y: 0.49999997, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.3294412, y: 0.52353543, z: -0.00000007686855}
-  m_UseSpring: 1
+  m_ConnectedAnchor: {x: -0.10930613, y: 0.52353543, z: 0.0000000048042845}
+  m_UseSpring: 0
   m_Spring:
     spring: 0.5
     damper: 0.1

@@ -38,10 +38,12 @@ public class FlashLightManager : MonoBehaviour {
             //rb.AddForce()
 
             //transform.position = Vector3.Lerp(transform.position, trackedObj.transform.position, followSpeed * Time.deltaTime);
-            //transform.rotation = Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation, followSpeed * Time.deltaTime);
-        }*/
-
+            */
+            
         
+            //transform.rotation = Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation, followSpeed / 2 * Time.deltaTime);
+
+
     }
 
     private void FixedUpdate()
@@ -50,13 +52,14 @@ public class FlashLightManager : MonoBehaviour {
         {
             Vector3 dir = (trackedObj.transform.position - transform.position);
             rb.velocity = (dir) * followSpeed * Time.deltaTime;
-            rb.rotation = trackedObj.transform.rotation;
+            
+            rb.MoveRotation(trackedObj.transform.rotation);
 
 
             //rb.MovePosition(transform.position + dir * followSpeed * Time.deltaTime);
 
             //
-            
+
 
             //rb.MovePosition(trackedObj.transform.position * Time.deltaTime);
             //rb.MoveRotation(trackedObj.transform.rotation);
