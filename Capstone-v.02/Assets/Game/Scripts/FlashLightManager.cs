@@ -21,9 +21,14 @@ public class FlashLightManager : MonoBehaviour {
         //trackedObj = hand.handTrackedLeft;
         //device = hand.handDeviceLeft;
 
-        SteamVR_Controller.Device device = SteamVR_Controller.Input((int)trackedObj.index);
+        if (trackedObj.gameObject.activeInHierarchy)
+        {
+            SteamVR_Controller.Device device = SteamVR_Controller.Input((int)trackedObj.index);
 
-        transform.position = Vector3.Lerp(transform.position, trackedObj.transform.position, followSpeed * Time.deltaTime);
-        transform.rotation = Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation, followSpeed * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, trackedObj.transform.position, followSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation, followSpeed * Time.deltaTime);
+        }
+
+        
     }
 }
