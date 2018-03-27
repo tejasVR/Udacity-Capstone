@@ -8,6 +8,7 @@ public class TriggerLocomotion : MonoBehaviour {
     public SteamVR_TrackedObject trackedObj;
     private Hand hand;
 
+    
 
     //[Header("Controller Objects")]
     //public SteamVR_TrackedObject trackedRight;
@@ -33,6 +34,7 @@ public class TriggerLocomotion : MonoBehaviour {
 
     [Header("Movement Variables")]
     #region MovementVariables
+    public bool enableSprint;
     public float moveSpeed; // Overall movespeed
 
     public float walkSpeed;
@@ -82,34 +84,37 @@ public class TriggerLocomotion : MonoBehaviour {
 
         triggerAxis = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger).x; //Gets depth of trigger press    
 
-
-        // Enable sprinting when the touchpad is pressed and stamina != 0
-        if (device.GetPress(SteamVR_Controller.ButtonMask.Touchpad) && staminaAmnt >= 0f)
+        if (enableSprint)
         {
-            staminaAmnt -= staminaDrain * Time.deltaTime;
-            sprintInertia = Mathf.Lerp(sprintInertia, 1, Time.deltaTime * sprintInertiaSpeed);
-            isSprinting = true;
-            sprintSpeed = (staminaAmnt / staminaAmntMax);
-
-            if (staminaAmnt >= .1f)
+            // Enable sprinting when the touchpad is pressed and stamina != 0
+            if (device.GetPress(SteamVR_Controller.ButtonMask.Touchpad) && staminaAmnt >= 0f)
             {
-                SprintSound();
-                sprintingAudio.volume = Mathf.Lerp(sprintingAudio.volume, .07f, Time.deltaTime / 2);
+                staminaAmnt -= staminaDrain * Time.deltaTime;
+                sprintInertia = Mathf.Lerp(sprintInertia, 1, Time.deltaTime * sprintInertiaSpeed);
+                isSprinting = true;
+                sprintSpeed = (staminaAmnt / staminaAmntMax);
+
+                if (staminaAmnt >= .1f)
+                {
+                    SprintSound();
+                    sprintingAudio.volume = Mathf.Lerp(sprintingAudio.volume, .07f, Time.deltaTime / 2);
+                }
+            }
+            else
+            {
+                sprintSpeed = 0;
+                sprintInertia = Mathf.Lerp(sprintInertia, 0, Time.deltaTime / 2f);
+                sprintingAudio.volume = Mathf.Lerp(sprintingAudio.volume, 0f, Time.deltaTime);
+                staminaAmnt += staminaRecovery * Time.deltaTime;
+                if (staminaAmnt >= staminaAmntMax)
+                {
+                    staminaAmnt = staminaAmntMax;
+                }
+                sprintSoundPlayed = false;
+
             }
         }
-        else
-        {
-            sprintSpeed = 0;
-            sprintInertia = Mathf.Lerp(sprintInertia, 0, Time.deltaTime / 2f);
-            sprintingAudio.volume = Mathf.Lerp(sprintingAudio.volume, 0f, Time.deltaTime);
-            staminaAmnt += staminaRecovery * Time.deltaTime;
-            if (staminaAmnt >= staminaAmntMax)
-            {
-                staminaAmnt = staminaAmntMax;
-            }
-            sprintSoundPlayed = false;
-
-        }
+        
     }
 
     private void FixedUpdate()
