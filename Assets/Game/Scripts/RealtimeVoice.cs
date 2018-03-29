@@ -11,7 +11,7 @@ public class RealtimeVoice : MonoBehaviour {
         audio.clip = Microphone.Start("Built-in Microphone", true, 1, 22050);
         audio.loop = true;
         while (!(Microphone.GetPosition(null) > 0)) { }
-        Debug.Log("start playing... position is " + Microphone.GetPosition(null));
+        //Debug.Log("start playing... position is " + Microphone.GetPosition(null));
         audio.Play();
 
     }
