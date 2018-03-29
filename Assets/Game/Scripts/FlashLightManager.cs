@@ -10,6 +10,7 @@ public class FlashLightManager : MonoBehaviour {
 
     public float followSpeed;
     private Rigidbody rb;
+    //public Light light;
 
 	// Use this for initialization
 	void Awake () {
@@ -20,6 +21,7 @@ public class FlashLightManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         //trackedObj = hand.handTrackedLeft;
         //device = hand.handDeviceLeft;
 
