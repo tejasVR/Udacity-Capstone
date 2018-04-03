@@ -102,12 +102,12 @@ public class HxVolumetricShadersUsed : ScriptableObject
         {
             if (instance == null)
             {
-                instance = AssetDatabase.LoadAssetAtPath("Assets/Plugins/HxVolumetricLighting/Resources/HxUsedShaders.prefab", typeof(HxVolumetricShadersUsed)) as HxVolumetricShadersUsed;
+                instance = AssetDatabase.LoadAssetAtPath("Assets/Unity Assets/HxVolumetricLighting/Resources/HxUsedShaders.prefab", typeof(HxVolumetricShadersUsed)) as HxVolumetricShadersUsed;
 
                 if (instance == null)
                 {
                     instance = ScriptableObject.CreateInstance<HxVolumetricShadersUsed>();
-                    AssetDatabase.CreateAsset(instance, "Assets/Plugins/HxVolumetricLighting/Resources/HxUsedShaders.prefab");
+                    AssetDatabase.CreateAsset(instance, "Assets/Unity Assets/HxVolumetricLighting/Resources/HxUsedShaders.prefab");
                     AssetDatabase.SaveAssets();
                     // instance = AssetDatabase.LoadAssetAtPath("Assets/Plugins/HxVolumetricLighting/HxUsedShaders.prefab", typeof(HxVolumetricShadersUsed)) as GameObject;
                 }
