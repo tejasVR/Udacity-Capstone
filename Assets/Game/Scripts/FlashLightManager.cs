@@ -21,6 +21,18 @@ public class FlashLightManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        RaycastHit hit;
+        if (Physics.SphereCast(transform.position, 1, transform.forward, out hit, 10))
+        {
+            //print(hit.transform.gameObject.tag);
+
+            if (hit.transform.gameObject.tag == "Collectable")
+            {
+                print("I spy a collectable");
+                hit.transform.gameObject.GetComponent<Collectible>().CollectableSighted();
+            }
+        }
+
 
         //trackedObj = hand.handTrackedLeft;
         //device = hand.handDeviceLeft;
@@ -41,9 +53,9 @@ public class FlashLightManager : MonoBehaviour {
 
             //transform.position = Vector3.Lerp(transform.position, trackedObj.transform.position, followSpeed * Time.deltaTime);
             */
-            
-        
-            //transform.rotation = Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation, followSpeed / 2 * Time.deltaTime);
+
+
+        //transform.rotation = Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation, followSpeed / 2 * Time.deltaTime);
 
 
     }
