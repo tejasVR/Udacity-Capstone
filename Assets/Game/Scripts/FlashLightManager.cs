@@ -11,6 +11,7 @@ public class FlashLightManager : MonoBehaviour {
     public float followSpeed;
     private Rigidbody rb;
     //public Light light;
+    private Ray ray;
 
 	// Use this for initialization
 	void Awake () {
@@ -21,10 +22,14 @@ public class FlashLightManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        ray = new Ray(transform.position, transform.forward);
+        Debug.DrawRay(transform.position, transform.forward);
         RaycastHit hit;
-        if (Physics.SphereCast(transform.position, 1, transform.forward, out hit, 10))
+
+        if (Physics.Raycast(ray, out hit))
+        //if (Physics.SphereCast(ray, .25f, out hit))
         {
-            //print(hit.transform.gameObject.tag);
+            print(hit.transform.gameObject.tag);
 
             if (hit.transform.gameObject.tag == "Collectable")
             {
