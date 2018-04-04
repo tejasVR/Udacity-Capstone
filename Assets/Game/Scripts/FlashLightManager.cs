@@ -9,13 +9,18 @@ public class FlashLightManager : MonoBehaviour {
     //public Hand hand;
 
     public Light[] lights;
-    public float[] lightAngle;
+    public float[] lightAngles;
+    public float[] lightRanges;
     //public Light spotlight30;
     //public Light spolight40;
     //public Light spotlight55;
 
     public float followSpeed;
     private Rigidbody rb;
+
+    public Transform stowPos;
+
+    public bool isStowed;
     //public Light light;
     private Ray ray;
 
@@ -24,14 +29,17 @@ public class FlashLightManager : MonoBehaviour {
         //trackedObj = hand.handTrackedLeft;
         //device = hand.handDeviceLeft;
         rb = GetComponent<Rigidbody>();
-        lightAngle = new float[lights.Length];
+        lightAngles = new float[lights.Length];
+        lightRanges = new float[lights.Length];
+
     }
 
     private void Start()
     {
         for (int i = 0; i < lights.Length; i++)
         {
-            lightAngle[i] = lights[i].spotAngle;
+            lightAngles[i] = lights[i].spotAngle;
+            lightRanges[i] = lights[i].range;
         }
         
     }
@@ -54,10 +62,35 @@ public class FlashLightManager : MonoBehaviour {
                 collectable.CollectableSighted();
                 for(int i = 0; i < lights.Length; i++)
                 {
-                    lights[i].spotAngle = Mathf.Lerp(lights[i].spotAngle, lightAngle[i] - (20 * collectable.foundPercentSmooth), Time.deltaTime * 3f);
+                    lights[i].spotAngle = Mathf.Lerp(lights[i].spotAngle, lightAngles[i] - (20 * collectable.foundPercentSmooth), Time.deltaTime * 3f);
                 }
+
+                /*if (collectable.isPickedUp)
+                {
+                    isStowed = true;
+                } else
+                {
+                    isStowed = false;
+                }*/
             }
         }
+
+        /*if (isStowed)
+        {
+            transform.position = Vector3.Lerp(transform.position, stowPos.position, Time.deltaTime * 3f);
+            transform.rotation = Quaternion.Euler(Vector3.zero);
+
+            foreach(Light light in lights)
+            {
+                light.range = Mathf.Lerp(light.range, 3, Time.deltaTime * 3f);
+                light.spotAngle = Mathf.Lerp(light.spotAngle, 150, Time.deltaTime * 3f);
+            }
+        }
+        else
+        {
+
+        }*/
+
 
 
         //trackedObj = hand.handTrackedLeft;
@@ -90,10 +123,14 @@ public class FlashLightManager : MonoBehaviour {
     {
         if (trackedObj.gameObject.activeInHierarchy)
         {
-            Vector3 dir = (trackedObj.transform.position - transform.position);
-            rb.velocity = (dir) * followSpeed * Time.deltaTime;
-            
-            rb.MoveRotation(trackedObj.transform.rotation);
+            //if (!isStowed)
+            {
+                Vector3 dir = (trackedObj.transform.position - transform.position);
+                rb.velocity = (dir) * followSpeed * Time.deltaTime;
+
+                rb.MoveRotation(trackedObj.transform.rotation);
+            }
+           
 
 
             //rb.MovePosition(transform.position + dir * followSpeed * Time.deltaTime);

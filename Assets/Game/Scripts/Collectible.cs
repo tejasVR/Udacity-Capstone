@@ -5,6 +5,7 @@ using UnityEngine;
 public class Collectible : MonoBehaviour {
 
     public SteamVR_TrackedObject trackedObj;
+    public RightControllerManager rightControllerManager;
 
     //public GameObject flashlightObj;
 
@@ -59,12 +60,16 @@ public class Collectible : MonoBehaviour {
         {
             transform.position = Vector3.Lerp(transform.position, readPoint.transform.position, Time.deltaTime * 3f);
             transform.rotation = Quaternion.Lerp(transform.rotation, readPoint.transform.rotation, Time.deltaTime * 3f);
+
+            rightControllerManager.currentInHand = this.gameObject;
+
             foundMeter = 0;
 
             if(device.GetPress(SteamVR_Controller.ButtonMask.Touchpad) && isNote)
             {
                 isPickedUp = false;
                 isSentBack = true;
+                rightControllerManager.currentInHand = null;
 
             }
             //transform.LookAt(playerEye.transform.position);
@@ -80,11 +85,6 @@ public class Collectible : MonoBehaviour {
                 isSentBack = false;
             }
         }
-
-    }
-
-    private void FixedUpdate()
-    {
 
     }
 
