@@ -21,7 +21,7 @@ public class Collectible : MonoBehaviour {
     public Renderer rend;
 
     public Transform readPoint;
-    public GameObject playerEye;
+    //public GameObject playerEye;
 
     private Vector3 lastPos; //Last position before collectable is picked up
     private Quaternion lastRot; //Last rotation before collectable is picked up
@@ -61,7 +61,7 @@ public class Collectible : MonoBehaviour {
             transform.rotation = Quaternion.Lerp(transform.rotation, readPoint.transform.rotation, Time.deltaTime * 3f);
             foundMeter = 0;
 
-            if(device.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
+            if(device.GetPress(SteamVR_Controller.ButtonMask.Touchpad) && isNote)
             {
                 isPickedUp = false;
                 isSentBack = true;
@@ -73,9 +73,9 @@ public class Collectible : MonoBehaviour {
         if (isSentBack && !isPickedUp)
         {
             transform.position = Vector3.Lerp(transform.position, lastPos, Time.deltaTime * 3f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, lastRot, Time.deltaTime * 3f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, lastRot, Time.deltaTime * 10f);
 
-            if (Vector3.Distance(transform.position, lastPos) < .1)
+            if (Vector3.Distance(transform.position, lastPos) < .01)
             {
                 isSentBack = false;
             }

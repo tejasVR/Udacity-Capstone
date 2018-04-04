@@ -8,6 +8,12 @@ public class FlashLightManager : MonoBehaviour {
     public SteamVR_TrackedObject trackedObj;
     //public Hand hand;
 
+    public Light[] lights;
+    public float[] lightAngle;
+    //public Light spotlight30;
+    //public Light spolight40;
+    //public Light spotlight55;
+
     public float followSpeed;
     private Rigidbody rb;
     //public Light light;
@@ -18,10 +24,20 @@ public class FlashLightManager : MonoBehaviour {
         //trackedObj = hand.handTrackedLeft;
         //device = hand.handDeviceLeft;
         rb = GetComponent<Rigidbody>();
+        lightAngle = new float[lights.Length];
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void Start()
+    {
+        for (int i = 0; i < lights.Length; i++)
+        {
+            lightAngle[i] = lights[i].spotAngle;
+        }
+        
+    }
+
+    // Update is called once per frame
+    void Update () {
         ray = new Ray(transform.position, transform.forward);
         Debug.DrawRay(transform.position, transform.forward);
         RaycastHit hit;
@@ -29,12 +45,17 @@ public class FlashLightManager : MonoBehaviour {
         if (Physics.Raycast(ray, out hit))
         //if (Physics.SphereCast(ray, .25f, out hit))
         {
-            print(hit.transform.gameObject.tag);
+            //print(hit.transform.gameObject.tag);
 
             if (hit.transform.gameObject.tag == "Collectable")
             {
                 print("I spy a collectable");
-                hit.transform.gameObject.GetComponent<Collectible>().CollectableSighted();
+                var collectable = hit.transform.gameObject.GetComponent<Collectible>();
+                collectable.CollectableSighted();
+                for(int i = 0; i < lights.Length; i++)
+                {
+                    lights[i].spotAngle = Mathf.Lerp(lights[i].spotAngle, lightAngle[i] - (20 * collectable.foundPercentSmooth), Time.deltaTime * 3f);
+                }
             }
         }
 
