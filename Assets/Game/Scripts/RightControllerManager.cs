@@ -7,19 +7,24 @@ public class RightControllerManager : MonoBehaviour {
     public SteamVR_TrackedObject trackedObj;
     SteamVR_Controller.Device device;
 
-    public GameObject flashLight;
+    public GameObject flashlight;
+    public GameObject inventory;
+
     public GameObject collectable;
     public GameObject currentInHand; //current GameObject in players hand
+
+
 
     public bool inventoryOpen;
     public bool firstPressUp;
 
 	// Use this for initialization
 	void Start () {
+        inventory.SetActive(false);
         if (currentInHand.gameObject == null)
         {
-            flashLight.gameObject.SetActive(true);
-            currentInHand = flashLight;
+            flashlight.gameObject.SetActive(true);
+            currentInHand = flashlight;
         }
     }
 	
@@ -32,6 +37,7 @@ public class RightControllerManager : MonoBehaviour {
             HideFlashlight();
             //OpenInventory();
             inventoryOpen = true;
+            inventory.SetActive(true);
 
             print("inventory show");
         }
@@ -67,12 +73,12 @@ public class RightControllerManager : MonoBehaviour {
 
     public void HideFlashlight()
     {
-        flashLight.gameObject.SetActive(false);
+        flashlight.gameObject.SetActive(false);
     }
 
     public void ShowFlashlight()
     {
-        flashLight.gameObject.SetActive(true);
+        flashlight.gameObject.SetActive(true);
     }
 
     public void OpenInventory()
