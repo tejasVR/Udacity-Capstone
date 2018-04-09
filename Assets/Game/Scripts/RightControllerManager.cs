@@ -5,10 +5,14 @@ using UnityEngine;
 public class RightControllerManager : MonoBehaviour {
 
     public SteamVR_TrackedObject trackedObj;
+    SteamVR_Controller.Device device;
 
     public GameObject flashLight;
     public GameObject collectable;
     public GameObject currentInHand; //current GameObject in players hand
+
+    public bool inventoryOpen;
+    public bool firstPressUp;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +25,27 @@ public class RightControllerManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        SteamVR_Controller.Device device = SteamVR_Controller.Input((int)trackedObj.index);
+         device = SteamVR_Controller.Input((int)trackedObj.index);
+
+        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && !inventoryOpen)
+        {
+            HideFlashlight();
+            //OpenInventory();
+            inventoryOpen = true;
+
+            print("inventory show");
+        }
+
+        
+
+        if (inventoryOpen)
+        {
+            OpenInventory();
+        }
+
+
+
+
 
         /*
         if (currentInHand.tag != "Flashlight" && currentInHand != null)
@@ -39,7 +63,7 @@ public class RightControllerManager : MonoBehaviour {
             currentInHand = flashLight;
         }
 		*/
-	}
+    }
 
     public void HideFlashlight()
     {
@@ -49,5 +73,29 @@ public class RightControllerManager : MonoBehaviour {
     public void ShowFlashlight()
     {
         flashLight.gameObject.SetActive(true);
+    }
+
+    public void OpenInventory()
+    {
+        //inventoryOpen = true;
+
+        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && firstPressUp)
+        {
+            ShowFlashlight();
+            //CloseInventory();
+            inventoryOpen = false;
+            firstPressUp = false;
+            print("inventory hide");
+        }
+
+        if (device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && !firstPressUp)
+        {
+            firstPressUp = true;
+        }
+    }
+
+    public void CloseInventory()
+    {
+        inventoryOpen = false;
     }
 }
