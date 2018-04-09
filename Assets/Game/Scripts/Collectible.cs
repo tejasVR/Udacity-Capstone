@@ -19,7 +19,7 @@ public class Collectible : MonoBehaviour {
     public bool isPickedUp; //when the player can interact with the object
     public bool isSentBack; //when the player wants to put the object back
 
-    public Renderer rend;
+    public Renderer[] rends;
 
     public Transform readPoint;
     //public GameObject playerEye;
@@ -53,7 +53,11 @@ public class Collectible : MonoBehaviour {
 
         foundColor = Color.Lerp(Color.black, Color.white, foundPercentSmooth);
 
-        rend.material.SetColor("_EmissionColor", new Vector4(foundColor.r, foundColor.g, foundColor.b, 0));
+        for(int i = 0; i < rends.Length; i++)
+        {
+            rends[i].material.SetColor("_EmissionColor", new Vector4(foundColor.r, foundColor.g, foundColor.b, 0));
+
+        }
         //rend.material.SetFloat("_EmissionScaleUI", (foundMeter/foundMeterMax));
 
         if (isPickedUp & !isSentBack)
