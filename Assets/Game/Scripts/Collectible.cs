@@ -21,65 +21,71 @@ public class Collectible : MonoBehaviour {
 
     public Renderer[] rends;
 
-    public Transform readPoint;
+    public Light pointLight;
+
+    public Transform attachPoint;
     //public GameObject playerEye;
 
     private Vector3 lastPos; //Last position before collectable is picked up
     private Quaternion lastRot; //Last rotation before collectable is picked up
 
     public bool isNote;
+    public bool isReel;
 
 	// Use this for initialization
 	void Start () {
         foundMeter = 0;
+        pointLight.enabled = false;
         //rend = GetComponent<Renderer>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        foundPercentSmooth = Mathf.Lerp(foundPercentSmooth, ((foundMeter / foundMeterMax)), Time.deltaTime * 10f);
-
         SteamVR_Controller.Device device = SteamVR_Controller.Input((int)trackedObj.index);
-        
-       
-        
-            //isSeen = false;
-            //foundMeter -= Time.deltaTime * 10f;
-            //if (foundMeter <= 0)
-            //{
-              //  foundMeter = 0;
-            //}
-        
+
+        foundPercentSmooth = Mathf.Lerp(foundPercentSmooth, ((foundMeter / foundMeterMax)), Time.deltaTime * 10f);       
 
         foundColor = Color.Lerp(Color.black, Color.white, foundPercentSmooth);
 
         for(int i = 0; i < rends.Length; i++)
         {
             rends[i].material.SetColor("_EmissionColor", new Vector4(foundColor.r, foundColor.g, foundColor.b, 0));
-
         }
-        //rend.material.SetFloat("_EmissionScaleUI", (foundMeter/foundMeterMax));
 
         if (isPickedUp & !isSentBack)
         {
-            transform.position = Vector3.Lerp(transform.position, readPoint.transform.position, Time.deltaTime * 3f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, readPoint.transform.rotation, Time.deltaTime * 3f);
+            transform.position = Vector3.Lerp(transform.position, attachPoint.transform.position, Time.deltaTime * 3f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, attachPoint.transform.rotation, Time.deltaTime * 3f);
 
-            rightControllerManager.currentInHand = this.gameObject;
+            //rightControllerManager.currentInHand = this.gameObject;
+
+            rightControllerManager.HideFlashlight();
+
+            pointLight.enabled = true;
 
             foundMeter = 0;
 
-            if(device.GetPress(SteamVR_Controller.ButtonMask.Touchpad) && isNote)
+            if(device.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
             {
-                isPickedUp = false;
-                isSentBack = true;
-                rightControllerManager.currentInHand = null;
+                if (isNote)
+                {
+                    isPickedUp = false;
+                    isSentBack = true;
+                }
+
+                if (isReel)
+                {
+                    isPickedUp = false;
+                    isSentBack = true;
+                    rightControllerManager.ShowFlashlight();
+                }
+               
 
             }
             //transform.LookAt(playerEye.transform.position);
         }
 
-        if (isSentBack && !isPickedUp)
+        if (isSentBack && !isPickedUp && isNote)
         {
             transform.position = Vector3.Lerp(transform.position, lastPos, Time.deltaTime * 3f);
             transform.rotation = Quaternion.Lerp(transform.rotation, lastRot, Time.deltaTime * 10f);

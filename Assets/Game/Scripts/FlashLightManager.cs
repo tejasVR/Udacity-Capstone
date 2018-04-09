@@ -50,7 +50,7 @@ public class FlashLightManager : MonoBehaviour {
         Debug.DrawRay(transform.position, transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, 2.0f))
         //if (Physics.SphereCast(ray, .25f, out hit))
         {
             //print(hit.transform.gameObject.tag);
