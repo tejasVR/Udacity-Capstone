@@ -66,7 +66,9 @@ public class Collectible : MonoBehaviour {
 
             if(device.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
             {
-                rightControllerManager.CollectItem(itemName);
+                rightControllerManager.CollectItem(itemName, this.gameObject);
+                this.gameObject.GetComponent<BoxCollider>().enabled = false;
+                //this.gameObject.SetActive(false);
                 /*if (isNote)
                 {
                     isPickedUp = false;

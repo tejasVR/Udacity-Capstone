@@ -52,7 +52,7 @@ public class RightControllerManager : MonoBehaviour {
             //OpenInventory();
             inventoryOpen = true;
             inventory.SetActive(true);
-
+            CheckItems();
             print("inventory show");
         }
 
@@ -188,7 +188,7 @@ public class RightControllerManager : MonoBehaviour {
         inventoryOpen = false;
     }
 
-    public void CollectItem(string itemName)
+    public void CollectItem(string itemName, GameObject itemObject)
     {
         foreach(CollectableItem item in itemList)
         {
@@ -197,7 +197,11 @@ public class RightControllerManager : MonoBehaviour {
                 if(item.name == itemName)
                 {
                     item.hasItem = true;
+                    item.itemObj = itemObject;
+                    item.itemObj.transform.parent = item.attachPoint.transform;
                 }
+
+                
             }
         }
     }
@@ -208,10 +212,10 @@ public class RightControllerManager : MonoBehaviour {
         {
             if (item.hasItem)
             {
-                item.itemObj.SetActive(true);
+                item.inventoryObj.SetActive(true);
             } else
             {
-                item.itemObj.SetActive(false);
+                item.inventoryObj.SetActive(false);
             }
         }
     }
@@ -220,7 +224,9 @@ public class RightControllerManager : MonoBehaviour {
     public class CollectableItem
     {
         public string name;
+        public GameObject inventoryObj;
         public GameObject itemObj;
+        public GameObject attachPoint;
         public bool hasItem;
     }
 
