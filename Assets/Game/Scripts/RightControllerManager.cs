@@ -13,13 +13,26 @@ public class RightControllerManager : MonoBehaviour {
     public GameObject collectable;
     public GameObject currentInHand; //current GameObject in players hand
 
+    public List<CollectableItem> itemList = new List<CollectableItem>(); //creates a list of items for the invebtory to manage
 
+    public Vector2 touchpad;
+    public float angleFromCenter; //gets the angle of the finger on the touchpad in relation to the center of the touchpad (0,0)
 
     public bool inventoryOpen;
     public bool firstPressUp;
 
-	// Use this for initialization
-	void Start () {
+    public int currentItem;
+    public int oldItem;
+
+    public bool hasReel1;
+    public bool hasReel2;
+    public bool hasReel3;
+    public bool hasBasementKey;
+    public bool hasAtticKey;
+
+
+    // Use this for initialization
+    void Start () {
         inventory.SetActive(false);
         if (currentInHand.gameObject == null)
         {
@@ -31,6 +44,7 @@ public class RightControllerManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
          device = SteamVR_Controller.Input((int)trackedObj.index);
+        
 
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && !inventoryOpen)
         {
@@ -83,25 +97,131 @@ public class RightControllerManager : MonoBehaviour {
 
     public void OpenInventory()
     {
-        //inventoryOpen = true;
+        touchpad.x = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
+        touchpad.y = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).y;
+
+        Vector2 fromVector2 = new Vector2(0, 1);
+        Vector2 toVector2 = touchpad;
+
+        angleFromCenter = Vector2.Angle(fromVector2, toVector2);
+        Vector3 cross = Vector3.Cross(fromVector2, toVector2);
+
+        if (cross.z > 0)
+        {
+            angleFromCenter = 360 - angleFromCenter;
+        }
 
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && firstPressUp)
         {
             ShowFlashlight();
             //CloseInventory();
             inventoryOpen = false;
+            inventory.SetActive(false);
+
             firstPressUp = false;
-            print("inventory hide");
+            //print("inventory hide");
+
+            // Check what items the player currently has
+            CheckItems();
         }
 
         if (device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && !firstPressUp)
         {
             firstPressUp = true;
         }
+
+        if (touchpad.magnitude > .25f)
+        {
+            // Reel #1
+            if (angleFromCenter > 270 && angleFromCenter < 306)
+            {
+                currentItem = 0;
+                print("Reel #1");
+
+            }
+
+            // Reel #2
+            if (angleFromCenter > 306 && angleFromCenter < 342)
+            {
+                currentItem = 1;
+                print("Reel #2");
+            }
+
+            // Reel #3
+            if (angleFromCenter > 342 || angleFromCenter < 18)
+            {
+                currentItem = 2;
+                print("Reel #3");
+            }
+
+            // Basement Key
+            if (angleFromCenter > 18 && angleFromCenter < 54)
+            {
+                currentItem = 3;
+                print("Basement Key");
+            }
+
+            // Attic Key
+            if (angleFromCenter > 54 && angleFromCenter < 90)
+            {
+                currentItem = 4;
+                print("Attic Key");
+            }
+        }
+
+        if (currentItem != oldItem)
+        {
+            oldItem = currentItem;
+        }
+
+        
+       
+        
+
+        
+
+        
     }
 
     public void CloseInventory()
     {
         inventoryOpen = false;
     }
+
+    public void CollectItem(string itemName)
+    {
+        foreach(CollectableItem item in itemList)
+        {
+            if (!item.hasItem)
+            {
+                if(item.name == itemName)
+                {
+                    item.hasItem = true;
+                }
+            }
+        }
+    }
+
+    void CheckItems() //check what items the player currently has
+    {
+        foreach(CollectableItem item in itemList)
+        {
+            if (item.hasItem)
+            {
+                item.itemObj.SetActive(true);
+            } else
+            {
+                item.itemObj.SetActive(false);
+            }
+        }
+    }
+
+    [System.Serializable]
+    public class CollectableItem
+    {
+        public string name;
+        public GameObject itemObj;
+        public bool hasItem;
+    }
+
 }

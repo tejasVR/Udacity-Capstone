@@ -17,7 +17,7 @@ public class Collectible : MonoBehaviour {
     private Color foundColor;
     public bool isSeen; //when the flashlight sees the object
     public bool isPickedUp; //when the player can interact with the object
-    public bool isSentBack; //when the player wants to put the object back
+    //public bool isSentBack; //when the player wants to put the object back
 
     public Renderer[] rends;
 
@@ -29,11 +29,10 @@ public class Collectible : MonoBehaviour {
     private Vector3 lastPos; //Last position before collectable is picked up
     private Quaternion lastRot; //Last rotation before collectable is picked up
 
-    public bool isNote;
-    public bool isReel;
+    public string itemName;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         foundMeter = 0;
         pointLight.enabled = false;
         //rend = GetComponent<Renderer>();
@@ -52,7 +51,7 @@ public class Collectible : MonoBehaviour {
             rends[i].material.SetColor("_EmissionColor", new Vector4(foundColor.r, foundColor.g, foundColor.b, 0));
         }
 
-        if (isPickedUp & !isSentBack)
+        if (isPickedUp)
         {
             transform.position = Vector3.Lerp(transform.position, attachPoint.transform.position, Time.deltaTime * 3f);
             transform.rotation = Quaternion.Lerp(transform.rotation, attachPoint.transform.rotation, Time.deltaTime * 3f);
@@ -67,16 +66,17 @@ public class Collectible : MonoBehaviour {
 
             if(device.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
             {
-                if (isNote)
+                rightControllerManager.CollectItem(itemName);
+                /*if (isNote)
                 {
                     isPickedUp = false;
                     isSentBack = true;
-                }
+                }*/
 
-                if (isReel)
+                //if (isReel)
                 {
                     isPickedUp = false;
-                    isSentBack = true;
+                    //isSentBack = true;
                     rightControllerManager.ShowFlashlight();
                 }
                
@@ -85,7 +85,7 @@ public class Collectible : MonoBehaviour {
             //transform.LookAt(playerEye.transform.position);
         }
 
-        if (isSentBack && !isPickedUp && isNote)
+        /*if (!isPickedUp && isNote)
         {
             transform.position = Vector3.Lerp(transform.position, lastPos, Time.deltaTime * 3f);
             transform.rotation = Quaternion.Lerp(transform.rotation, lastRot, Time.deltaTime * 10f);
@@ -94,13 +94,13 @@ public class Collectible : MonoBehaviour {
             {
                 isSentBack = false;
             }
-        }
+        }*/
 
     }
 
     public void CollectableSighted()
     {
-        if (!isPickedUp && !isSentBack)
+        if (!isPickedUp)
         {
             foundMeter += Time.deltaTime * 25f;
             if (foundMeter >= foundMeterMax)
