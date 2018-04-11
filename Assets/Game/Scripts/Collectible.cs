@@ -18,6 +18,7 @@ public class Collectible : MonoBehaviour {
     public bool isSeen; //when the flashlight sees the object
     public bool isPickedUp; //when the player can interact with the object
     //public bool isSentBack; //when the player wants to put the object back
+    public bool isSentFromHand;
 
     public Renderer[] rends;
 
@@ -51,10 +52,12 @@ public class Collectible : MonoBehaviour {
             rends[i].material.SetColor("_EmissionColor", new Vector4(foundColor.r, foundColor.g, foundColor.b, 0));
         }
 
+       transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1, 1, 1), Time.deltaTime * 3f);
+
         if (isPickedUp)
         {
-            transform.position = Vector3.Lerp(transform.position, attachPoint.transform.position, Time.deltaTime * 3f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, attachPoint.transform.rotation, Time.deltaTime * 3f);
+
+            HoldInHand();
 
             //rightControllerManager.currentInHand = this.gameObject;
 
@@ -66,7 +69,13 @@ public class Collectible : MonoBehaviour {
 
             if(device.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
             {
-                rightControllerManager.CollectItem(itemName, this.gameObject);
+
+                //if (!isSentFromHand)
+               // {
+                    rightControllerManager.CollectItem(itemName, this.gameObject);
+                    isPickedUp = false;
+                //}
+
                 this.gameObject.GetComponent<BoxCollider>().enabled = false;
                 //this.gameObject.SetActive(false);
                 /*if (isNote)
@@ -77,7 +86,7 @@ public class Collectible : MonoBehaviour {
 
                 //if (isReel)
                 {
-                    isPickedUp = false;
+                    
                     //isSentBack = true;
                     rightControllerManager.ShowFlashlight();
                 }
@@ -115,5 +124,12 @@ public class Collectible : MonoBehaviour {
                 isPickedUp = true;
             }
         }
+    }
+
+
+    public void HoldInHand()
+    {
+        transform.position = Vector3.Lerp(transform.position, attachPoint.transform.position, Time.deltaTime * 3f);
+        transform.rotation = Quaternion.Lerp(transform.rotation, attachPoint.transform.rotation, Time.deltaTime * 3f);
     }
 }

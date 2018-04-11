@@ -21,6 +21,8 @@ public class RightControllerManager : MonoBehaviour {
     public bool inventoryOpen;
     public bool firstPressUp;
 
+    public bool hasItemInHand;
+
     public int currentItem;
     public int oldItem;
 
@@ -97,6 +99,17 @@ public class RightControllerManager : MonoBehaviour {
 
     public void OpenInventory()
     {
+        foreach(CollectableItem item in itemList)
+        {
+            if (item.itemObj != null)
+            {
+                item.itemObj.transform.position = Vector3.Lerp(item.itemObj.transform.position, item.attachPoint.transform.position, Time.deltaTime * 3f);
+                item.itemObj.transform.rotation = Quaternion.Slerp(item.itemObj.transform.rotation, item.attachPoint.transform.rotation, Time.deltaTime * 3f);
+
+                item.itemObj.transform.localScale = Vector3.Lerp(item.itemObj.transform.localScale, new Vector3(1, 1, 1), Time.deltaTime * 3f);
+            }
+        }
+
         touchpad.x = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
         touchpad.y = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).y;
 
@@ -111,7 +124,7 @@ public class RightControllerManager : MonoBehaviour {
             angleFromCenter = 360 - angleFromCenter;
         }
 
-        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && firstPressUp)
+        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && firstPressUp & currentItem == -1)
         {
             ShowFlashlight();
             //CloseInventory();
@@ -136,7 +149,7 @@ public class RightControllerManager : MonoBehaviour {
             if (angleFromCenter > 270 && angleFromCenter < 306)
             {
                 currentItem = 0;
-                print("Reel #1");
+                //print("Reel #1");
 
             }
 
@@ -144,35 +157,54 @@ public class RightControllerManager : MonoBehaviour {
             if (angleFromCenter > 306 && angleFromCenter < 342)
             {
                 currentItem = 1;
-                print("Reel #2");
+                //print("Reel #2");
             }
 
             // Reel #3
             if (angleFromCenter > 342 || angleFromCenter < 18)
             {
                 currentItem = 2;
-                print("Reel #3");
+                //print("Reel #3");
             }
 
             // Basement Key
             if (angleFromCenter > 18 && angleFromCenter < 54)
             {
                 currentItem = 3;
-                print("Basement Key");
+                //print("Basement Key");
             }
 
             // Attic Key
             if (angleFromCenter > 54 && angleFromCenter < 90)
             {
                 currentItem = 4;
-                print("Attic Key");
+                //print("Attic Key");
             }
+        } else
+        {
+            currentItem = -1;
         }
 
         if (currentItem != oldItem)
         {
             oldItem = currentItem;
         }
+
+        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && currentItem > -1 && firstPressUp)
+        {
+            hasItemInHand = true;
+            //HoldInHand(itemList[currentItem].itemObj);
+            //print(currentItem);
+            itemList[currentItem].itemObj.GetComponent<Collectible>().isPickedUp = true;
+            itemList[currentItem].itemObj.GetComponent<Collectible>().isSentFromHand = true;
+            itemList[currentItem].hasItem = false;
+            itemList[currentItem].itemObj.transform.parent = null;
+            itemList[currentItem].itemObj.GetComponent<BoxCollider>().enabled = true;
+
+            itemList[currentItem].itemObj = null;
+
+        }
+
 
         
        
@@ -219,6 +251,12 @@ public class RightControllerManager : MonoBehaviour {
             }
         }
     }
+
+    /*public void HoldInHand(GameObject itemObj)
+    {
+        itemObj.transform.position = Vector3.Lerp(itemObj.transform.position, attachPoint.transform.position, Time.deltaTime * 3f);
+        itemObj.transform.rotation = Quaternion.Lerp(itemObj.transform.rotation, attachPoint.transform.rotation, Time.deltaTime * 3f);
+    }*/
 
     [System.Serializable]
     public class CollectableItem
