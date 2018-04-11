@@ -190,7 +190,7 @@ public class RightControllerManager : MonoBehaviour {
             oldItem = currentItem;
         }
 
-        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && currentItem > -1 && firstPressUp)
+        if (device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && currentItem > -1 && firstPressUp)
         {
             hasItemInHand = true;
             //HoldInHand(itemList[currentItem].itemObj);

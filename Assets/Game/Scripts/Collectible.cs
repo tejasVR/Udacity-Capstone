@@ -67,13 +67,15 @@ public class Collectible : MonoBehaviour {
 
             foundMeter = 0;
 
-            if(device.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
+            if(device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))// && !isSentFromHand)
             {
-
-                //if (!isSentFromHand)
-               // {
+                if (isSentFromHand)
+                {
                     rightControllerManager.CollectItem(itemName, this.gameObject);
                     isPickedUp = false;
+                }
+                //if (!isSentFromHand)
+                // {
                 //}
 
                 this.gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -91,6 +93,11 @@ public class Collectible : MonoBehaviour {
                     rightControllerManager.ShowFlashlight();
                 }
                
+
+            }
+
+            //if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && isSentFromHand)
+            {
 
             }
             //transform.LookAt(playerEye.transform.position);
