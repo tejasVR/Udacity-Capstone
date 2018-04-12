@@ -17,6 +17,7 @@ public class Collectible : MonoBehaviour {
     private Color foundColor;
     public bool isSeen; //when the flashlight sees the object
     public bool isPickedUp; //when the player can interact with the object
+    public bool firstCollected;
     //public bool isSentBack; //when the player wants to put the object back
     public bool isSentFromHand;
 
@@ -67,7 +68,7 @@ public class Collectible : MonoBehaviour {
 
             foundMeter = 0;
 
-            if(device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))// && !isSentFromHand)
+            if(device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && !firstCollected)
             {
                 if (isSentFromHand)
                 {
@@ -118,14 +119,14 @@ public class Collectible : MonoBehaviour {
 
     public void CollectableSighted()
     {
-        if (!isPickedUp)
+        if (!isPickedUp & !firstCollected)
         {
             foundMeter += Time.deltaTime * 25f;
             if (foundMeter >= foundMeterMax)
             {
                 // Get curent position/rotation values
-                lastPos = transform.position;
-                lastRot = transform.rotation;
+                //lastPos = transform.position;
+                //lastRot = transform.rotation;
 
 
                 isPickedUp = true;

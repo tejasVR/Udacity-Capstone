@@ -10,8 +10,10 @@ public class RightControllerManager : MonoBehaviour {
     public GameObject flashlight;
     public GameObject inventory;
 
-    public GameObject collectable;
-    public GameObject currentInHand; //current GameObject in players hand
+    public Transform handAttachPoint;
+
+    //public GameObject collectable;
+    //public GameObject currentInHand; //current GameObject in players hand
 
     public List<CollectableItem> itemList = new List<CollectableItem>(); //creates a list of items for the invebtory to manage
 
@@ -36,11 +38,11 @@ public class RightControllerManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         inventory.SetActive(false);
-        if (currentInHand.gameObject == null)
+        /*if (currentInHand.gameObject == null)
         {
             flashlight.gameObject.SetActive(true);
             currentInHand = flashlight;
-        }
+        }*/
     }
 	
 	// Update is called once per frame
@@ -55,7 +57,7 @@ public class RightControllerManager : MonoBehaviour {
             inventoryOpen = true;
             inventory.SetActive(true);
             CheckItems();
-            print("inventory show");
+            //print("inventory show");
         }
 
         
@@ -101,10 +103,11 @@ public class RightControllerManager : MonoBehaviour {
     {
         foreach(CollectableItem item in itemList)
         {
+            //If the item object is embedded within the item list
             if (item.itemObj != null)
             {
-                item.itemObj.transform.position = Vector3.Lerp(item.itemObj.transform.position, item.attachPoint.transform.position, Time.deltaTime * 3f);
-                item.itemObj.transform.rotation = Quaternion.Slerp(item.itemObj.transform.rotation, item.attachPoint.transform.rotation, Time.deltaTime * 3f);
+                item.itemObj.transform.position = Vector3.Lerp(item.itemObj.transform.position, item.inventoryAttachPoint.transform.position, Time.deltaTime * 3f);
+                item.itemObj.transform.rotation = Quaternion.Slerp(item.itemObj.transform.rotation, item.inventoryAttachPoint.transform.rotation, Time.deltaTime * 3f);
 
                 item.itemObj.transform.localScale = Vector3.Lerp(item.itemObj.transform.localScale, new Vector3(1, 1, 1), Time.deltaTime * 3f);
             }
@@ -197,7 +200,7 @@ public class RightControllerManager : MonoBehaviour {
             //print(currentItem);
             itemList[currentItem].itemObj.GetComponent<Collectible>().isPickedUp = true;
             itemList[currentItem].itemObj.GetComponent<Collectible>().isSentFromHand = true;
-            itemList[currentItem].hasItem = false;
+            itemList[currentItem].hasItemInInventory = false;
             itemList[currentItem].itemObj.transform.parent = null;
             itemList[currentItem].itemObj.GetComponent<BoxCollider>().enabled = true;
 
@@ -224,13 +227,13 @@ public class RightControllerManager : MonoBehaviour {
     {
         foreach(CollectableItem item in itemList)
         {
-            if (!item.hasItem)
+            if (!item.hasItemInInventory)
             {
                 if(item.name == itemName)
                 {
-                    item.hasItem = true;
+                    item.hasItemInInventory = true;
                     item.itemObj = itemObject;
-                    item.itemObj.transform.parent = item.attachPoint.transform;
+                    item.itemObj.transform.parent = item.inventoryAttachPoint.transform;
                 }
 
                 
@@ -242,7 +245,7 @@ public class RightControllerManager : MonoBehaviour {
     {
         foreach(CollectableItem item in itemList)
         {
-            if (item.hasItem)
+            if (item.hasItemInInventory)
             {
                 item.inventoryObj.SetActive(true);
             } else
@@ -262,10 +265,11 @@ public class RightControllerManager : MonoBehaviour {
     public class CollectableItem
     {
         public string name;
-        public GameObject inventoryObj;
-        public GameObject itemObj;
-        public GameObject attachPoint;
-        public bool hasItem;
+        public GameObject inventoryObj; // the whole of the inventory UI
+        public GameObject itemObj; // just the item object that is in the inventory
+        public GameObject inventoryAttachPoint;
+        public bool hasItemInInventory;
+        public bool hasItemInHand;
     }
 
 }

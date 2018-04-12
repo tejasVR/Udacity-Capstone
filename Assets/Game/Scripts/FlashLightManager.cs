@@ -57,7 +57,7 @@ public class FlashLightManager : MonoBehaviour {
 
             if (hit.transform.gameObject.tag == "Collectable")
             {
-                print("I spy a collectable");
+                //print("I spy a collectable");
                 var collectable = hit.transform.gameObject.GetComponent<Collectible>();
                 collectable.CollectableSighted();
                 for(int i = 0; i < lights.Length; i++)
