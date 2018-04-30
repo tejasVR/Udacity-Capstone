@@ -9,40 +9,51 @@ public class Collectible : MonoBehaviour {
 
     //public GameObject flashlightObj;
 
-    public float foundMeter;
-    public float foundMeterMax;
+    //public float foundMeter;
+    //public float foundMeterMax;
 
-    public float foundPercentSmooth;
+    //public float foundPercentSmooth;
 
-    private Color foundColor;
-    public bool isSeen; //when the flashlight sees the object
-    public bool isPickedUp; //when the player can interact with the object
-    public bool firstCollected;
+    //private Color foundColor;
+    //public bool isSeen; //when the flashlight sees the object
+    //public bool isPickedUp; //when the player can interact with the object
+    //public bool firstCollected;
     //public bool isSentBack; //when the player wants to put the object back
-    public bool isSentFromHand;
+    //public bool isSentFromHand;
 
-    public Renderer[] rends;
+    //public Renderer[] rends;
 
-    public Light pointLight;
+    //public Light pointLight;
 
-    public Transform attachPoint;
+    //public Transform attachPoint;
     //public GameObject playerEye;
 
-    private Vector3 lastPos; //Last position before collectable is picked up
-    private Quaternion lastRot; //Last rotation before collectable is picked up
+    //private Vector3 lastPos; //Last position before collectable is picked up
+    //private Quaternion lastRot; //Last rotation before collectable is picked up
+
+    // The material that the collectable takes when a controller hovers over the object
+    public Material normalMat;
+    public Material onHoverMat;
+
+    Renderer rend;
 
     public string itemName;
 
     // Use this for initialization
     void Start () {
-        foundMeter = 0;
-        pointLight.enabled = false;
+
+        rend = GetComponent<Renderer>();
+
+        //foundMeter = 0;
+        //pointLight.enabled = false;
         //rend = GetComponent<Renderer>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        SteamVR_Controller.Device device = SteamVR_Controller.Input((int)trackedObj.index);
+
+        #region OLD_CODE
+        /*SteamVR_Controller.Device device = SteamVR_Controller.Input((int)trackedObj.index);
 
         foundPercentSmooth = Mathf.Lerp(foundPercentSmooth, ((foundMeter / foundMeterMax)), Time.deltaTime * 10f);       
 
@@ -62,7 +73,7 @@ public class Collectible : MonoBehaviour {
 
             //rightControllerManager.currentInHand = this.gameObject;
 
-            rightControllerManager.HideFlashlight();
+            //rightControllerManager.HideFlashlight();
 
             pointLight.enabled = true;
 
@@ -87,22 +98,22 @@ public class Collectible : MonoBehaviour {
                     isSentBack = true;
                 }*/
 
-                //if (isReel)
-                {
-                    
-                    //isSentBack = true;
-                    rightControllerManager.ShowFlashlight();
-                }
-               
+        //if (isReel)
+        /*{
 
-            }
-
-            //if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && isSentFromHand)
-            {
-
-            }
-            //transform.LookAt(playerEye.transform.position);
+            //isSentBack = true;
+            //rightControllerManager.ShowFlashlight();
         }
+
+
+    }
+
+    //if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && isSentFromHand)
+    {
+
+    }
+    //transform.LookAt(playerEye.transform.position);
+}*/
 
         /*if (!isPickedUp && isNote)
         {
@@ -114,9 +125,27 @@ public class Collectible : MonoBehaviour {
                 isSentBack = false;
             }
         }*/
+        #endregion
+
+
+
 
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        // If we are triggering against the players' controller
+        if (other.gameObject.tag == "Controller")
+        {
+            rend.material = onHoverMat;
+        } else
+        {
+            rend.material = normalMat;
+        }
+    }
+
+    #region OLD_FUNCTIONS
+    /*
     public void CollectableSighted()
     {
         if (!isPickedUp & !firstCollected)
@@ -140,4 +169,7 @@ public class Collectible : MonoBehaviour {
         transform.position = Vector3.Lerp(transform.position, attachPoint.transform.position, Time.deltaTime * 3f);
         transform.rotation = Quaternion.Lerp(transform.rotation, attachPoint.transform.rotation, Time.deltaTime * 3f);
     }
+
+    */
+    #endregion
 }

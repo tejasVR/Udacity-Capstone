@@ -7,7 +7,7 @@ public class RightControllerManager : MonoBehaviour {
     public SteamVR_TrackedObject trackedObj;
     SteamVR_Controller.Device device;
 
-    public GameObject flashlight;
+    //public GameObject flashlight;
     public GameObject inventory;
 
     public Transform handAttachPoint;
@@ -52,7 +52,7 @@ public class RightControllerManager : MonoBehaviour {
 
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && !inventoryOpen)
         {
-            HideFlashlight();
+            //HideFlashlight();
             //OpenInventory();
             inventoryOpen = true;
             inventory.SetActive(true);
@@ -89,6 +89,7 @@ public class RightControllerManager : MonoBehaviour {
 		*/
     }
 
+    /*
     public void HideFlashlight()
     {
         flashlight.gameObject.SetActive(false);
@@ -97,39 +98,43 @@ public class RightControllerManager : MonoBehaviour {
     public void ShowFlashlight()
     {
         flashlight.gameObject.SetActive(true);
-    }
+    }*/
 
     public void OpenInventory()
     {
         foreach(CollectableItem item in itemList)
         {
             //If the item object is embedded within the item list
-            if (item.itemObj != null)
+            /*if (item.itemObj != null)
             {
                 item.itemObj.transform.position = Vector3.Lerp(item.itemObj.transform.position, item.inventoryAttachPoint.transform.position, Time.deltaTime * 3f);
                 item.itemObj.transform.rotation = Quaternion.Slerp(item.itemObj.transform.rotation, item.inventoryAttachPoint.transform.rotation, Time.deltaTime * 3f);
 
                 item.itemObj.transform.localScale = Vector3.Lerp(item.itemObj.transform.localScale, new Vector3(1, 1, 1), Time.deltaTime * 3f);
-            }
+            }*/
         }
 
+        // if the menu is open, get both the x and y values of the touchpad
         touchpad.x = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
         touchpad.y = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).y;
 
         Vector2 fromVector2 = new Vector2(0, 1);
         Vector2 toVector2 = touchpad;
 
+        // Measure the users' thumb angle in relation to the center of the touchpad.
         angleFromCenter = Vector2.Angle(fromVector2, toVector2);
         Vector3 cross = Vector3.Cross(fromVector2, toVector2);
 
+        // This will get the angle of the users' thumb so we know what inventory item they are trying to highlight
         if (cross.z > 0)
         {
             angleFromCenter = 360 - angleFromCenter;
         }
 
+
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && firstPressUp & currentItem == -1)
         {
-            ShowFlashlight();
+            //ShowFlashlight();
             //CloseInventory();
             inventoryOpen = false;
             inventory.SetActive(false);
@@ -198,8 +203,8 @@ public class RightControllerManager : MonoBehaviour {
             hasItemInHand = true;
             //HoldInHand(itemList[currentItem].itemObj);
             //print(currentItem);
-            itemList[currentItem].itemObj.GetComponent<Collectible>().isPickedUp = true;
-            itemList[currentItem].itemObj.GetComponent<Collectible>().isSentFromHand = true;
+           // itemList[currentItem].itemObj.GetComponent<Collectible>().isPickedUp = true;
+           // itemList[currentItem].itemObj.GetComponent<Collectible>().isSentFromHand = true;
             itemList[currentItem].hasItemInInventory = false;
             itemList[currentItem].itemObj.transform.parent = null;
             itemList[currentItem].itemObj.GetComponent<BoxCollider>().enabled = true;
@@ -265,7 +270,7 @@ public class RightControllerManager : MonoBehaviour {
     public class CollectableItem
     {
         public string name;
-        public GameObject inventoryObj; // the whole of the inventory UI
+        public GameObject inventoryObj; // the whole of the individual inventory UI
         public GameObject itemObj; // just the item object that is in the inventory
         public GameObject inventoryAttachPoint;
         public bool hasItemInInventory;

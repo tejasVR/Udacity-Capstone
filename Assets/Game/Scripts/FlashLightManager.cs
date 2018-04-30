@@ -46,6 +46,8 @@ public class FlashLightManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+
+        /*
         ray = new Ray(transform.position, transform.forward);
         Debug.DrawRay(transform.position, transform.forward);
         RaycastHit hit;
@@ -72,8 +74,8 @@ public class FlashLightManager : MonoBehaviour {
                 {
                     isStowed = false;
                 }*/
-            }
-        }
+          //  }
+        //}
 
         /*if (isStowed)
         {
