@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour {
 
-    public SteamVR_TrackedObject trackedObj;
-    public RightControllerManager rightControllerManager;
+    //public SteamVR_TrackedObject trackedObj;
+    //public RightControllerManager rightControllerManager;
 
     //public GameObject flashlightObj;
 
@@ -43,6 +43,7 @@ public class Collectible : MonoBehaviour {
     void Start () {
 
         rend = GetComponent<Renderer>();
+        normalMat = rend.material;
 
         //foundMeter = 0;
         //pointLight.enabled = false;
@@ -138,10 +139,15 @@ public class Collectible : MonoBehaviour {
         if (other.gameObject.tag == "Controller")
         {
             rend.material = onHoverMat;
-        } else
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Controller")
         {
             rend.material = normalMat;
-        }
+        }      
     }
 
     #region OLD_FUNCTIONS
