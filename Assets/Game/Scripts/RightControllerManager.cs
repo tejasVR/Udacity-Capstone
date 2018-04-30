@@ -10,7 +10,7 @@ public class RightControllerManager : MonoBehaviour {
     //public GameObject flashlight;
     public GameObject inventory;
 
-    public Transform handAttachPoint;
+    //public Transform handAttachPoint;
 
     //public GameObject collectable;
     //public GameObject currentInHand; //current GameObject in players hand
@@ -228,17 +228,21 @@ public class RightControllerManager : MonoBehaviour {
         inventoryOpen = false;
     }
 
+    // Function to collect an item and track it in the players inventory
     public void CollectItem(string itemName, GameObject itemObject)
     {
+        // For the items that have not yet been collected
         foreach(CollectableItem item in itemList)
         {
             if (!item.hasItemInInventory)
             {
+                // If the name of the collected item is the same as the one marked in the inventory, collect that specific item
                 if(item.name == itemName)
                 {
+                    // Check the item as being in the inventory
                     item.hasItemInInventory = true;
-                    item.itemObj = itemObject;
-                    item.itemObj.transform.parent = item.inventoryAttachPoint.transform;
+                    //item.itemObj = itemObject;
+                    //item.itemObj.transform.parent = item.inventoryAttachPoint.transform;
                 }
 
                 
@@ -272,9 +276,9 @@ public class RightControllerManager : MonoBehaviour {
         public string name;
         public GameObject inventoryObj; // the whole of the individual inventory UI
         public GameObject itemObj; // just the item object that is in the inventory
-        public GameObject inventoryAttachPoint;
+        //public GameObject inventoryAttachPoint;
         public bool hasItemInInventory;
-        public bool hasItemInHand;
+        //public bool hasItemInHand;
     }
 
 }
