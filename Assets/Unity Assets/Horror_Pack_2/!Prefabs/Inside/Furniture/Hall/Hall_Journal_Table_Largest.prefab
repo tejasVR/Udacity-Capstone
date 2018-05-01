@@ -95,15 +95,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1908923750452094}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.00000078976143}
+  m_LocalPosition: {x: 1.196, y: 0, z: 1.748}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4141456727556846}
   - {fileID: 4602110788582982}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 179.99998, z: 0}
 --- !u!23 &23012510442303962
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -226,11 +226,11 @@ LODGroup:
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LODs:
-  - screenRelativeHeight: 0.25
+  - screenRelativeHeight: 0.30245087
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 23012510442303962}
-  - screenRelativeHeight: 0.01
+  - screenRelativeHeight: 0.047721453
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 23323622399212550}
