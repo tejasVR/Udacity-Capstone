@@ -35,19 +35,22 @@ public class Collectable : MonoBehaviour {
     public Material normalMat;
     public Material onHoverMat;
 
-    public bool isInHand;
+    public bool isCollected;
 
     Renderer rend;
 
     public string itemName;
 
-    public Vector3 inHandPos;
-    public Quaternion inHandRot;
+    //public Vector3 inHandPos;
+    //public Quaternion inHandRot;
+
+    BoxCollider boxCollider;
 
     // Use this for initialization
     void Start () {
 
-        rend = GetComponent<Renderer>();
+        rend = GetComponentInChildren<Renderer>();
+        boxCollider = GetComponent<BoxCollider>();
         normalMat = rend.material;
 
         //foundMeter = 0;
@@ -133,23 +136,29 @@ public class Collectable : MonoBehaviour {
         }*/
         #endregion
 
-        if (isInHand)
+        //if (isCollected)
         {
             //Quaternion rot = trackedObj.transform.rotation * inHandRot;
-            transform.position = Vector3.Lerp(transform.position, trackedObj.transform.position + inHandPos, Time.deltaTime * 12f);
-            transform.rotation = Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation * inHandRot, Time.deltaTime * 12f);
+            //transform.position = Vector3.Lerp(transform.position, trackedObj.transform.position + inHandPos, Time.deltaTime * 12f);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation * inHandRot, Time.deltaTime * 12f);
             
         }
 
-
-
+        if (isCollected && !boxCollider.isTrigger)
+        {
+            boxCollider.isTrigger = true;
+        }
+        if (isCollected && rend.material != normalMat)
+        {
+            rend.material = normalMat;
+        }
 
     }
 
     private void OnCollisionStay(Collision collision)
     {
         // If we are triggering against the players' controller
-        if (collision.gameObject.tag == "Controller" && !isInHand)
+        if (collision.gameObject.tag == "Controller" && !isCollected)
         {
             rend.material = onHoverMat;
         }
@@ -157,7 +166,7 @@ public class Collectable : MonoBehaviour {
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Controller" && !isInHand)
+        if (collision.gameObject.tag == "Controller" && !isCollected)
         {
             rend.material = normalMat;
         }      

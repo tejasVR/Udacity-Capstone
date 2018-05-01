@@ -35,6 +35,8 @@ public class RightControllerManager : MonoBehaviour {
     public bool hasBasementKey;
     public bool hasAtticKey;
 
+    public GameObject objInHand;
+
 
     // Use this for initialization
     void Start () {
@@ -59,6 +61,14 @@ public class RightControllerManager : MonoBehaviour {
             inventory.SetActive(true);
             CheckItems();
             handModel.gameObject.SetActive(true);
+
+            if (objInHand != null)
+            {
+                objInHand.SetActive(false);
+                hasItemInHand = false;
+            }
+            
+
             //print("inventory show");
         }
 
@@ -67,6 +77,12 @@ public class RightControllerManager : MonoBehaviour {
         if (inventoryOpen)
         {
             OpenInventory();
+        }
+
+        if (hasItemInHand)
+        {
+            objInHand.transform.position = Vector3.Lerp(objInHand.transform.position, transform.position, Time.deltaTime * 12f);
+            objInHand.transform.rotation = Quaternion.Slerp(objInHand.transform.rotation, transform.rotation, Time.deltaTime * 12f);
         }
 
        
@@ -104,16 +120,28 @@ public class RightControllerManager : MonoBehaviour {
                 var collectable = collision.gameObject.GetComponent<Collectable>();
                 foreach (CollectableItem item in itemList)
                 {
+                    item.hasItemInHand = false;
+
                     if (!item.hasItemInInventory)
                     {
                         if(collectable.itemName == item.name)
                         {
+                            // We have the item in our inventory
                             item.hasItemInInventory = true;
+
+                            // The item that will be in the player's hand is the item the player has just collected
+                            item.itemInHandObj = collision.gameObject;
+                            objInHand = collision.gameObject;
+
+                            // a check to say that the item is in the hands of the player
+                            item.hasItemInHand = true;
+                            hasItemInHand = true;
+
                         }
                     }
                 }
 
-                collectable.isInHand = true;
+                collectable.isCollected = true;
 
                 handModel.gameObject.SetActive(false);
 
@@ -208,6 +236,17 @@ public class RightControllerManager : MonoBehaviour {
             if (angleFromCenter > 54 && angleFromCenter < 90)
             {
                 currentItem = 4;
+
+                /*if(device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && firstPressUp)
+                {
+                    
+                    objInHand = itemList[currentItem].itemInHandObj;
+                    objInHand.SetActive(true);
+                    hasItemInHand = true;
+                    CloseInventory();
+
+                }*/
+
                 //print("Attic Key");
             }
         } else
@@ -222,16 +261,26 @@ public class RightControllerManager : MonoBehaviour {
 
         if (device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && currentItem > -1 && firstPressUp)
         {
-            hasItemInHand = true;
+            if (itemList[currentItem].itemInHandObj != null)
+            {
+                objInHand = itemList[currentItem].itemInHandObj;
+                objInHand.SetActive(true);
+                hasItemInHand = true;
+            }
+            
+
+           
+            CloseInventory();
+
             //HoldInHand(itemList[currentItem].itemObj);
             //print(currentItem);
-           // itemList[currentItem].itemObj.GetComponent<Collectible>().isPickedUp = true;
-           // itemList[currentItem].itemObj.GetComponent<Collectible>().isSentFromHand = true;
-            itemList[currentItem].hasItemInInventory = false;
-            itemList[currentItem].itemObj.transform.parent = null;
-            itemList[currentItem].itemObj.GetComponent<BoxCollider>().enabled = true;
+            // itemList[currentItem].itemObj.GetComponent<Collectible>().isPickedUp = true;
+            // itemList[currentItem].itemObj.GetComponent<Collectible>().isSentFromHand = true;
+            //itemList[currentItem].hasItemInInventory = false;
+            //itemList[currentItem].inventoryTtemObj.transform.parent = null;
+            //itemList[currentItem].inventoryTtemObj.GetComponent<BoxCollider>().enabled = true;
 
-            itemList[currentItem].itemObj = null;
+            //itemList[currentItem].inventoryTtemObj = null;
 
         }
 
@@ -310,10 +359,12 @@ public class RightControllerManager : MonoBehaviour {
     {
         public string name;
         public GameObject inventoryObj; // the whole of the individual inventory UI
-        public GameObject itemObj; // just the item object that is in the inventory
+        public GameObject inventoryTtemObj; // just the item object that is in the inventory
+        public GameObject itemInHandObj; // the item that will be in the hands of the player
+        //public bool 
         //public GameObject inventoryAttachPoint;
         public bool hasItemInInventory;
-        //public bool hasItemInHand;
+        public bool hasItemInHand;
     }
 
 }
