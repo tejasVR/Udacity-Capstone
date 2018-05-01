@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour {
 
-    //public SteamVR_TrackedObject trackedObj;
+    public SteamVR_TrackedObject trackedObj;
     //public RightControllerManager rightControllerManager;
 
     //public GameObject flashlightObj;
@@ -35,9 +35,14 @@ public class Collectable : MonoBehaviour {
     public Material normalMat;
     public Material onHoverMat;
 
+    public bool isInHand;
+
     Renderer rend;
 
     public string itemName;
+
+    public Vector3 inHandPos;
+    public Quaternion inHandRot;
 
     // Use this for initialization
     void Start () {
@@ -128,23 +133,31 @@ public class Collectable : MonoBehaviour {
         }*/
         #endregion
 
+        if (isInHand)
+        {
+            //Quaternion rot = trackedObj.transform.rotation * inHandRot;
+            transform.position = Vector3.Lerp(transform.position, trackedObj.transform.position + inHandPos, Time.deltaTime * 12f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation * inHandRot, Time.deltaTime * 12f);
+            
+        }
+
 
 
 
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnCollisionStay(Collision collision)
     {
         // If we are triggering against the players' controller
-        if (other.gameObject.tag == "Controller")
+        if (collision.gameObject.tag == "Controller" && !isInHand)
         {
             rend.material = onHoverMat;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.gameObject.tag == "Controller")
+        if (collision.gameObject.tag == "Controller" && !isInHand)
         {
             rend.material = normalMat;
         }      

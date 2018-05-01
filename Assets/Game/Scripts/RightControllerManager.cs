@@ -9,6 +9,7 @@ public class RightControllerManager : MonoBehaviour {
 
     //public GameObject flashlight;
     public GameObject inventory;
+    public GameObject handModel;
 
     //public Transform handAttachPoint;
 
@@ -57,6 +58,7 @@ public class RightControllerManager : MonoBehaviour {
             inventoryOpen = true;
             inventory.SetActive(true);
             CheckItems();
+            handModel.gameObject.SetActive(true);
             //print("inventory show");
         }
 
@@ -66,6 +68,8 @@ public class RightControllerManager : MonoBehaviour {
         {
             OpenInventory();
         }
+
+       
 
 
 
@@ -87,6 +91,36 @@ public class RightControllerManager : MonoBehaviour {
             currentInHand = flashLight;
         }
 		*/
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if(collision.gameObject.tag == "Collectable")
+        {
+            //print("I'm colliding with something!");
+            if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
+            {
+                //print("trying to collect a collectable!");
+                var collectable = collision.gameObject.GetComponent<Collectable>();
+                foreach (CollectableItem item in itemList)
+                {
+                    if (!item.hasItemInInventory)
+                    {
+                        if(collectable.itemName == item.name)
+                        {
+                            item.hasItemInInventory = true;
+                        }
+                    }
+                }
+
+                collectable.isInHand = true;
+
+                handModel.gameObject.SetActive(false);
+
+
+            }
+        }
+       
     }
 
     /*
@@ -132,19 +166,7 @@ public class RightControllerManager : MonoBehaviour {
         }
 
 
-        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && firstPressUp & currentItem == -1)
-        {
-            //ShowFlashlight();
-            //CloseInventory();
-            inventoryOpen = false;
-            inventory.SetActive(false);
-
-            firstPressUp = false;
-            //print("inventory hide");
-
-            // Check what items the player currently has
-            CheckItems();
-        }
+       
 
         if (device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && !firstPressUp)
         {
@@ -213,19 +235,32 @@ public class RightControllerManager : MonoBehaviour {
 
         }
 
+        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && firstPressUp & currentItem == -1)
+        {
+            //ShowFlashlight();
+            CloseInventory();
+            //inventoryOpen = false;
+            
+            //print("inventory hide");
 
-        
-       
-        
+            // Check what items the player currently has
+            //CheckItems();
+        }
 
-        
 
-        
+
+
+
+
+
     }
 
     public void CloseInventory()
     {
         inventoryOpen = false;
+        inventory.SetActive(false);
+
+        firstPressUp = false;
     }
 
     // Function to collect an item and track it in the players inventory
