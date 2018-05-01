@@ -37,6 +37,8 @@ public class RightControllerManager : MonoBehaviour {
 
     public GameObject objInHand;
 
+    public GameObject cursor;
+
 
     // Use this for initialization
     void Start () {
@@ -164,6 +166,10 @@ public class RightControllerManager : MonoBehaviour {
 
     public void OpenInventory()
     {
+        cursor.SetActive(true);
+
+      
+
         foreach(CollectableItem item in itemList)
         {
             //If the item object is embedded within the item list
@@ -179,6 +185,8 @@ public class RightControllerManager : MonoBehaviour {
         // if the menu is open, get both the x and y values of the touchpad
         touchpad.x = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
         touchpad.y = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).y;
+
+        cursor.transform.localPosition = Vector3.Lerp(cursor.transform.localPosition, touchpad * .125f, Time.unscaledDeltaTime * 10f);
 
         Vector2 fromVector2 = new Vector2(0, 1);
         Vector2 toVector2 = touchpad;
@@ -263,6 +271,7 @@ public class RightControllerManager : MonoBehaviour {
         {
             if (itemList[currentItem].itemInHandObj != null)
             {
+                objInHand.transform.position = transform.position;
                 objInHand = itemList[currentItem].itemInHandObj;
                 objInHand.SetActive(true);
                 hasItemInHand = true;
