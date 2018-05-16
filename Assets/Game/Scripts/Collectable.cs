@@ -27,14 +27,26 @@ public class Collectable : MonoBehaviour {
 	
 	void Update () {
 
-        if (isCollected && !boxCollider.isTrigger)
+        if (isCollected)
         {
-            boxCollider.isTrigger = true;
+            if (!boxCollider.isTrigger)
+                boxCollider.isTrigger = true;
+
+            if (rend.material != normalMat)
+                rend.material = normalMat;
+
+            
         }
-        if (isCollected && rend.material != normalMat)
+    }
+
+    private void FixedUpdate()
+    {
+        if (isCollected)
         {
-            rend.material = normalMat;
+            transform.position = trackedObj.transform.position;
+            transform.rotation = trackedObj.transform.rotation;
         }
+        
     }
 
     private void OnCollisionStay(Collision collision)

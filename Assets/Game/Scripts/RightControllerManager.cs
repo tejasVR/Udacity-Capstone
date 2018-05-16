@@ -64,8 +64,8 @@ public class RightControllerManager : MonoBehaviour {
 
         if (hasItemInHand)
         {
-            objInHand.transform.position = Vector3.Lerp(objInHand.transform.position, transform.position, Time.deltaTime * 12f);
-            objInHand.transform.rotation = Quaternion.Slerp(objInHand.transform.rotation, transform.rotation, Time.deltaTime * 12f);
+            //objInHand.transform.position = Vector3.Lerp(objInHand.transform.position, transform.position, Time.deltaTime * 12f);
+            //objInHand.transform.rotation = Quaternion.Slerp(objInHand.transform.rotation, transform.rotation, Time.deltaTime * 12f);
         }
     }
 
@@ -192,7 +192,7 @@ public class RightControllerManager : MonoBehaviour {
         {
             if (itemList[currentItem].itemInHandObj != null)
             {
-                objInHand.transform.position = transform.position;
+                //objInHand.transform.position = transform.position;
                 objInHand = itemList[currentItem].itemInHandObj;
                 objInHand.SetActive(true);
                 hasItemInHand = true;
@@ -209,7 +209,6 @@ public class RightControllerManager : MonoBehaviour {
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && firstPressUp & currentItem == -1)
         {
             CloseInventory();
-          
         }
 
 
