@@ -76,6 +76,7 @@ public class RightControllerManager : MonoBehaviour {
             if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
             {
                 var collectable = collision.gameObject.GetComponent<Collectable>();
+
                 foreach (CollectableItem item in itemList)
                 {
                     item.hasItemInHand = false;
@@ -86,18 +87,24 @@ public class RightControllerManager : MonoBehaviour {
                         {
                             // We have the item in our inventory
                             item.hasItemInInventory = true;
-
-                            // The item that will be in the player's hand is the item the player has just collected
                             item.itemInHandObj = collision.gameObject;
-                            objInHand = collision.gameObject;
 
-                            // a check to say that the item is in the hands of the player
-                            //item.hasItemInHand = true;
-                            hasItemInHand = true;
 
                         }
                     }
                 }
+
+                // The item that will be in the player's hand is the item the player has just collected
+                //objInHand = collision.gameObject;
+                collision.gameObject.transform.parent = this.transform;
+                //collision.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                //collision.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+
+                // a check to say that the item is in the hands of the player
+                //item.hasItemInHand = true;
+                hasItemInHand = true;
+
 
                 collectable.isCollected = true;
 
