@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RightControllerManager : MonoBehaviour {
 
@@ -22,11 +23,6 @@ public class RightControllerManager : MonoBehaviour {
 
     public int currentItem;
     public int oldItem;
-
-   
-    public bool hasBasementKey;
-    public bool hasAtticKey;
-    public bool hasFrontDoorKey;
 
     public GameObject objInHand;
 
@@ -96,7 +92,7 @@ public class RightControllerManager : MonoBehaviour {
                             objInHand = collision.gameObject;
 
                             // a check to say that the item is in the hands of the player
-                            item.hasItemInHand = true;
+                            //item.hasItemInHand = true;
                             hasItemInHand = true;
 
                         }
@@ -120,7 +116,7 @@ public class RightControllerManager : MonoBehaviour {
         touchpad.x = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
         touchpad.y = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).y;
 
-        cursor.transform.localPosition = Vector3.Lerp(cursor.transform.localPosition, touchpad * .125f, Time.unscaledDeltaTime * 10f);
+        cursor.transform.localPosition = Vector3.Lerp(cursor.transform.localPosition, touchpad * .085f, Time.unscaledDeltaTime * 10f);
 
         Vector2 fromVector2 = new Vector2(0, 1);
         Vector2 toVector2 = touchpad;
@@ -143,48 +139,65 @@ public class RightControllerManager : MonoBehaviour {
         if (touchpad.magnitude > .25f)
         {
             // Reel #1
-            if (angleFromCenter > 270 && angleFromCenter < 306)
+            if (angleFromCenter > 255 && angleFromCenter < 295)
             {
                 currentItem = 0;
                 //print("Reel #1");
-
             }
 
             // Reel #2
-            if (angleFromCenter > 306 && angleFromCenter < 342)
+            /*if (angleFromCenter > 310 && angleFromCenter < 342)
             {
                 currentItem = 1;
                 //print("Reel #2");
-            }
+            }*/
 
             // Reel #3
-            if (angleFromCenter > 342 || angleFromCenter < 18)
+            if (angleFromCenter > 335 || angleFromCenter < 35)
             {
-                currentItem = 2;
+                currentItem = 1;
                 //print("Reel #3");
             }
 
             // Basement Key
-            if (angleFromCenter > 18 && angleFromCenter < 54)
+            if (angleFromCenter > 65 && angleFromCenter < 115)
             {
-                currentItem = 3;
+                currentItem = 2;
                 //print("Basement Key");
             }
 
             // Attic Key
-            if (angleFromCenter > 54 && angleFromCenter < 90)
+            /*if (angleFromCenter > 54 && angleFromCenter < 90)
             {
-                currentItem = 4;
-
-               
-            }
+                currentItem = 4;               
+            }*/
         } else
         {
             currentItem = -1;
         }
 
+       
+
+
         if (currentItem != oldItem)
         {
+            if (currentItem > -1)
+            {
+                foreach (var item in itemList)
+                {
+                    item.inventoryObj.GetComponent<Image>().color = Color.white;
+                }
+
+                itemList[currentItem].inventoryObj.GetComponent<Image>().color = Color.yellow;
+                //itemList[oldItem].inventoryObj.GetComponent<Image>().color = Color.white;
+            } else
+            {
+                foreach (var item in itemList)
+                {
+                    item.inventoryObj.GetComponent<Image>().color = Color.white;
+                }
+            }
+
             oldItem = currentItem;
         }
 
