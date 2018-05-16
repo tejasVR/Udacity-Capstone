@@ -139,44 +139,31 @@ public class RightControllerManager : MonoBehaviour {
         if (touchpad.magnitude > .25f)
         {
             // Reel #1
-            if (angleFromCenter > 255 && angleFromCenter < 295)
+            if (angleFromCenter > 250 && angleFromCenter < 290)
             {
                 currentItem = 0;
                 //print("Reel #1");
             }
-
-            // Reel #2
-            /*if (angleFromCenter > 310 && angleFromCenter < 342)
-            {
-                currentItem = 1;
-                //print("Reel #2");
-            }*/
-
-            // Reel #3
-            if (angleFromCenter > 335 || angleFromCenter < 35)
+            else if (angleFromCenter > 340 || angleFromCenter < 20)
             {
                 currentItem = 1;
                 //print("Reel #3");
-            }
-
-            // Basement Key
-            if (angleFromCenter > 65 && angleFromCenter < 115)
+            } else if (angleFromCenter > 70 && angleFromCenter < 110)
             {
                 currentItem = 2;
                 //print("Basement Key");
             }
-
-            // Attic Key
-            /*if (angleFromCenter > 54 && angleFromCenter < 90)
+            else
             {
-                currentItem = 4;               
-            }*/
-        } else
+                currentItem = -1;
+            }
+        }
+        else
         {
             currentItem = -1;
         }
 
-       
+
 
 
         if (currentItem != oldItem)
