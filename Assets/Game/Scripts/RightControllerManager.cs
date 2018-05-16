@@ -93,6 +93,7 @@ public class RightControllerManager : MonoBehaviour {
                         }
                     }
                 }
+                collectable.isCollected = true;
 
                 // The item that will be in the player's hand is the item the player has just collected
                 //objInHand = collision.gameObject;
@@ -106,7 +107,6 @@ public class RightControllerManager : MonoBehaviour {
                 hasItemInHand = true;
 
 
-                collectable.isCollected = true;
 
                 handModel.gameObject.SetActive(false);
 
@@ -200,8 +200,8 @@ public class RightControllerManager : MonoBehaviour {
             if (itemList[currentItem].itemInHandObj != null)
             {
                 //objInHand.transform.position = transform.position;
-                objInHand = itemList[currentItem].itemInHandObj;
-                objInHand.SetActive(true);
+                //objInHand = itemList[currentItem].itemInHandObj;
+                //objInHand.SetActive(true);
                 hasItemInHand = true;
             }
             

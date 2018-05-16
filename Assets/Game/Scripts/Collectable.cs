@@ -27,7 +27,7 @@ public class Collectable : MonoBehaviour {
 	
 	void Update () {
 
-        /*if (isCollected)
+        if (isCollected)
         {
             if (!boxCollider.isTrigger)
                 boxCollider.isTrigger = true;
@@ -36,7 +36,7 @@ public class Collectable : MonoBehaviour {
                 rend.material = normalMat;
 
             
-        }*/
+        }
     }
 
     private void FixedUpdate()
