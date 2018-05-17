@@ -6,12 +6,13 @@ public class Destructible : MonoBehaviour {
 
     public GameObject original;
     public GameObject destroyedVersion;
+    public BoxCollider boxCollider;
 
     public float explosionForce;
 
 	// Use this for initialization
 	void Start () {
-		
+        boxCollider = GetComponent<BoxCollider>();
 	}
 	
 	// Update is called once per frame
@@ -21,6 +22,7 @@ public class Destructible : MonoBehaviour {
 
     public void DestroyIntoPieces()
     {
+        boxCollider.enabled = false;
         destroyedVersion.SetActive(true);
 
         original.SetActive(false);

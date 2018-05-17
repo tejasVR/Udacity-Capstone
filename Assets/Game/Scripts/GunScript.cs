@@ -9,6 +9,8 @@ public class GunScript : MonoBehaviour {
 
     public GameObject shootPoint;
 
+    public ParticleSystem muzzleFlash;
+
     public float _damage = 10f;
     public float _range = 100f;
 
@@ -41,6 +43,8 @@ public class GunScript : MonoBehaviour {
 
     public void Fire()
     {
+        muzzleFlash.Play();
+
         RaycastHit hit;
         if (Physics.Raycast(shootPoint.transform.position, shootPoint.transform.forward, out hit))
         {
