@@ -11,6 +11,9 @@ public class GunScript : MonoBehaviour {
 
     public ParticleSystem muzzleFlash;
 
+    public float explosionForce;
+    public float explosionRadius;
+
     public float _damage = 10f;
     public float _range = 100f;
 
@@ -48,13 +51,28 @@ public class GunScript : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(shootPoint.transform.position, shootPoint.transform.forward, out hit))
         {
-            Debug.Log(hit.transform.name);
+            var hitPoint = hit.point;
 
             Destructible destructible = hit.transform.GetComponent<Destructible>();
             if (destructible != null)
             {
                 destructible.DestroyIntoPieces();
             }
+
+            Collider[] colliders = Physics.OverlapSphere(hitPoint, explosionRadius);
+            foreach (var col in colliders)
+            {
+                Rigidbody rb = col.GetComponent<Rigidbody>();
+
+                if(rb != null)
+                {
+                    rb.AddExplosionForce(explosionForce, hitPoint, explosionRadius);
+                }
+            }
+
+            Debug.Log(hit.transform.name);
+
+            
         }
     }
 }

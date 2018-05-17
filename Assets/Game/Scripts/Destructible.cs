@@ -6,9 +6,9 @@ public class Destructible : MonoBehaviour {
 
     public GameObject original;
     public GameObject destroyedVersion;
-    public BoxCollider boxCollider;
+    private BoxCollider boxCollider;
 
-    public float explosionForce;
+    //public float explosionForce;
 
 	// Use this for initialization
 	void Start () {
