@@ -25,11 +25,4 @@ public class Destructible : MonoBehaviour {
 
         original.SetActive(false);
     }
-
-    private void OnMouseDown()
-    {
-        DestroyIntoPieces();
-    }
-
-
 }
