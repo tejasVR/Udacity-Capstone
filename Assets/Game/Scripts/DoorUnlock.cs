@@ -6,8 +6,9 @@ public class DoorUnlock : MonoBehaviour {
 
     //public bool isUnlocked;
     public GameObject door;
-    public HingeJoint hinge;
+    private HingeJoint hinge;
     public string doorToUnlock;
+    private bool isUnlocked;
     //public string 
 
 	// Use this for initialization
@@ -27,7 +28,7 @@ public class DoorUnlock : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Collectable" && doorToUnlock == other.GetComponent<Collectable>().itemName)
+        if (other.tag == "Collectable" && doorToUnlock == other.GetComponent<Collectable>().itemName && !isUnlocked)
         {
             Unlock();
         }
@@ -37,6 +38,7 @@ public class DoorUnlock : MonoBehaviour {
 
     public void Unlock()
     {
+        isUnlocked = true;
         hinge.useLimits = false;
     }
 

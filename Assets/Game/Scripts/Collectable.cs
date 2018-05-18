@@ -17,6 +17,8 @@ public class Collectable : MonoBehaviour {
 
     BoxCollider boxCollider;
 
+    public Transform attachPoint;
+
     void Start () {
 
         rend = GetComponentInChildren<Renderer>();

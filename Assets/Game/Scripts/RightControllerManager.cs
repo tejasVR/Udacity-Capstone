@@ -28,6 +28,8 @@ public class RightControllerManager : MonoBehaviour {
 
     public GameObject cursor;
 
+    public Color idleUIColor;
+    public Color highlightedUIColor;
 
     void Start () {
         inventory.SetActive(false);
@@ -47,6 +49,7 @@ public class RightControllerManager : MonoBehaviour {
             inventoryOpen = true;
             inventory.SetActive(true);
             CheckItems();
+            
             handModel.gameObject.SetActive(true);
 
             if (objInHand != null)
@@ -94,10 +97,17 @@ public class RightControllerManager : MonoBehaviour {
                     }
                 }
                 collectable.isCollected = true;
+                handModel.gameObject.SetActive(false);
 
                 // The item that will be in the player's hand is the item the player has just collected
                 //objInHand = collision.gameObject;
                 collision.gameObject.transform.parent = this.transform;
+                print("parented to the controller");
+
+                collision.gameObject.transform.localPosition = collectable.attachPoint.localPosition;
+                collision.gameObject.transform.localRotation = collectable.attachPoint.localRotation;
+
+
                 //collision.gameObject.GetComponent<Rigidbody>().useGravity = false;
                 //collision.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
@@ -108,7 +118,6 @@ public class RightControllerManager : MonoBehaviour {
 
 
 
-                handModel.gameObject.SetActive(false);
 
 
             }
@@ -179,26 +188,28 @@ public class RightControllerManager : MonoBehaviour {
             {
                 foreach (var item in itemList)
                 {
-                    item.inventoryObj.GetComponent<Image>().color = Color.white;
+                    item.inventoryObj.GetComponent<Image>().color = idleUIColor;
                 }
 
-                itemList[currentItem].inventoryObj.GetComponent<Image>().color = Color.yellow;
+                itemList[currentItem].inventoryObj.GetComponent<Image>().color = highlightedUIColor;
                 //itemList[oldItem].inventoryObj.GetComponent<Image>().color = Color.white;
             } else
             {
                 foreach (var item in itemList)
                 {
-                    item.inventoryObj.GetComponent<Image>().color = Color.white;
+                    item.inventoryObj.GetComponent<Image>().color = idleUIColor;
                 }
             }
 
             oldItem = currentItem;
         }
 
-        if (device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && currentItem > -1 && firstPressUp)
+        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && currentItem > -1 && firstPressUp)
         {
             if (itemList[currentItem].itemInHandObj != null)
             {
+                itemList[currentItem].itemInHandObj.SetActive(true);
+                handModel.SetActive(false);
                 //objInHand.transform.position = transform.position;
                 //objInHand = itemList[currentItem].itemInHandObj;
                 //objInHand.SetActive(true);
@@ -230,7 +241,6 @@ public class RightControllerManager : MonoBehaviour {
     {
         inventoryOpen = false;
         inventory.SetActive(false);
-
         firstPressUp = false;
     }
 
@@ -261,11 +271,14 @@ public class RightControllerManager : MonoBehaviour {
         {
             if (item.hasItemInInventory)
             {
-                item.inventoryTtemObj.SetActive(true);
-            } else
-            {
-                item.inventoryTtemObj.SetActive(false);
+                item.inventoryItemObj.SetActive(true);
+                item.itemInHandObj.SetActive(false);
             }
+            else
+            {
+                item.inventoryItemObj.SetActive(false);
+            }
+
         }
     }
 
@@ -276,7 +289,7 @@ public class RightControllerManager : MonoBehaviour {
     {
         public string name;
         public GameObject inventoryObj; // the whole of the individual inventory UI
-        public GameObject inventoryTtemObj; // just the item object that is in the inventory
+        public GameObject inventoryItemObj; // just the item object that is in the inventory
         public GameObject itemInHandObj; // the item that will be in the hands of the player
        
         public bool hasItemInInventory;
