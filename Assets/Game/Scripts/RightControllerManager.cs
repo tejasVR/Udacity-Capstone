@@ -102,12 +102,9 @@ public class RightControllerManager : MonoBehaviour {
                 // The item that will be in the player's hand is the item the player has just collected
                 //objInHand = collision.gameObject;
                 collision.gameObject.transform.parent = this.transform;
-                print("parented to the controller");
 
                 collision.gameObject.transform.localPosition = collectable.attachPoint.localPosition;
                 collision.gameObject.transform.localRotation = collectable.attachPoint.localRotation;
-                print("attached to the transform");
-
 
                 //collision.gameObject.GetComponent<Rigidbody>().useGravity = false;
                 //collision.gameObject.GetComponent<Rigidbody>().isKinematic = true;
