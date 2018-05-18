@@ -28,7 +28,7 @@ public class GunScript : MonoBehaviour {
         {
             _device = SteamVR_Controller.Input((int)_trackedObj.index);
 
-            if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
+            if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) && this.GetComponent<Collectable>().isCollected)
             {
                 Fire();
             }
@@ -39,9 +39,13 @@ public class GunScript : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        // here just so we don't have to pick up the gun everytime
-        transform.position = _trackedObj.transform.position;
-        transform.rotation = _trackedObj.transform.rotation;
+        if (this.GetComponent<Collectable>().isCollected)
+        {
+            // here just so we don't have to pick up the gun everytime
+            transform.position = _trackedObj.transform.position;
+            transform.rotation = _trackedObj.transform.rotation;
+        }
+        
     }
 
     public void Fire()
