@@ -106,6 +106,7 @@ public class RightControllerManager : MonoBehaviour {
 
                 collision.gameObject.transform.localPosition = collectable.attachPoint.localPosition;
                 collision.gameObject.transform.localRotation = collectable.attachPoint.localRotation;
+                print("attached to the transform");
 
 
                 //collision.gameObject.GetComponent<Rigidbody>().useGravity = false;
@@ -154,20 +155,29 @@ public class RightControllerManager : MonoBehaviour {
 
         if (touchpad.magnitude > .25f)
         {
-            // Reel #1
-            if (angleFromCenter > 250 && angleFromCenter < 290)
+            // Basement Key
+            if (angleFromCenter > 220 && angleFromCenter < 280)
             {
                 currentItem = 0;
-                //print("Reel #1");
+                
             }
-            else if (angleFromCenter > 340 || angleFromCenter < 20)
+            // Front Door Key
+            else if (angleFromCenter > 290 && angleFromCenter < 350)
             {
                 currentItem = 1;
-                //print("Reel #3");
-            } else if (angleFromCenter > 70 && angleFromCenter < 110)
+                
+            }
+            // Pistol
+            else if (angleFromCenter > 10 && angleFromCenter < 70)
             {
                 currentItem = 2;
-                //print("Basement Key");
+                
+            }
+            // Attic Key
+            else if (angleFromCenter > 80 && angleFromCenter < 140)
+            {
+                currentItem = 3;
+
             }
             else
             {
@@ -291,7 +301,7 @@ public class RightControllerManager : MonoBehaviour {
         public GameObject inventoryObj; // the whole of the individual inventory UI
         public GameObject inventoryItemObj; // just the item object that is in the inventory
         public GameObject itemInHandObj; // the item that will be in the hands of the player
-       
+        public GameObject textTag;
         public bool hasItemInInventory;
         public bool hasItemInHand;
     }

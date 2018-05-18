@@ -17,6 +17,8 @@ public class GunScript : MonoBehaviour {
     public float _damage = 10f;
     public float _range = 100f;
 
+    public bool firstPickedUp;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -28,10 +30,15 @@ public class GunScript : MonoBehaviour {
         {
             _device = SteamVR_Controller.Input((int)_trackedObj.index);
 
-            if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) && this.GetComponent<Collectable>().isCollected)
+            if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) && firstPickedUp)
             {
                 Fire();
             }
+        }
+
+        if (this.GetComponent<Collectable>().isCollected && !firstPickedUp)
+        {
+            firstPickedUp = true;
         }
             
 		
@@ -42,14 +49,15 @@ public class GunScript : MonoBehaviour {
         if (this.GetComponent<Collectable>().isCollected)
         {
             // here just so we don't have to pick up the gun everytime
-            transform.position = _trackedObj.transform.position;
-            transform.rotation = _trackedObj.transform.rotation;
+            //transform.position = _trackedObj.transform.position;
+            //transform.rotation = _trackedObj.transform.rotation;
         }
         
     }
 
     public void Fire()
     {
+        print("Fired");
         muzzleFlash.Play();
 
         RaycastHit hit;
@@ -74,7 +82,7 @@ public class GunScript : MonoBehaviour {
                 }
             }
 
-            Debug.Log(hit.transform.name);
+            //Debug.Log(hit.transform.name);
 
             
         }
