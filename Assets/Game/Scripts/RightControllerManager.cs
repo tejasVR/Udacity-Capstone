@@ -289,6 +289,18 @@ public class RightControllerManager : MonoBehaviour {
         }
     }
 
+    public void GiveAwayItem(string itemName)
+    {
+        for(int i = 0; i < itemList.Count; i++)
+        {
+            if (itemList[i].name == itemName)
+            {
+                itemList[i].hasItemInInventory = false;
+                itemList[i].hasItemInHand = false;
+            }
+        }
+    }
+
    
 
     [System.Serializable]

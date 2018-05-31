@@ -9,12 +9,16 @@ public class DoorUnlock : MonoBehaviour {
     private HingeJoint hinge;
     public string doorToUnlock;
     private bool isUnlocked;
+
+    public Transform keyAttach;
+    RightControllerManager rightControllerManager;
+
     //public string 
 
 	// Use this for initialization
 	void Start () {
 
-    
+        
         hinge = door.GetComponent<HingeJoint>();
         
         
@@ -31,6 +35,7 @@ public class DoorUnlock : MonoBehaviour {
         if (other.tag == "Collectable" && doorToUnlock == other.GetComponent<Collectable>().itemName && !isUnlocked)
         {
             Unlock();
+            AttachToDoor(other.gameObject, other.GetComponent<Collectable>().itemName);
         }
     }
 
@@ -40,6 +45,14 @@ public class DoorUnlock : MonoBehaviour {
     {
         isUnlocked = true;
         hinge.useLimits = false;
+    }
+
+    public void AttachToDoor(GameObject key, string keyName)
+    {
+        key.transform.position = keyAttach.position;
+        key.transform.parent = keyAttach.transform;
+
+        rightControllerManager.GiveAwayItem(keyName);
     }
 
 }
