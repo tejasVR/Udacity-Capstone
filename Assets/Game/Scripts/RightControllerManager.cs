@@ -83,6 +83,10 @@ public class RightControllerManager : MonoBehaviour {
                 foreach (CollectableItem item in itemList)
                 {
                     item.hasItemInHand = false;
+                    if (item.itemInHandObj != null)
+                    {
+                        item.itemInHandObj.SetActive(false);
+                    }
 
                     if (!item.hasItemInInventory)
                     {
@@ -281,7 +285,7 @@ public class RightControllerManager : MonoBehaviour {
                 item.inventoryItemObj.SetActive(true);
                 item.itemInHandObj.SetActive(false);
             }
-            else
+            else if(!item.hasItemInInventory)
             {
                 item.inventoryItemObj.SetActive(false);
             }
@@ -299,6 +303,8 @@ public class RightControllerManager : MonoBehaviour {
                 itemList[i].hasItemInHand = false;
             }
         }
+
+        handModel.SetActive(true);
     }
 
    

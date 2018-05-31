@@ -23,6 +23,8 @@ public class Collectable : MonoBehaviour {
 
     void Start () {
 
+        matNormal = new Material[rend.Length];
+
         for(int i = 0; i < rend.Length; i++)
         {
             matNormal[i] = rend[i].material;
