@@ -11,7 +11,9 @@ public class Collectable : MonoBehaviour {
 
     public bool isCollected;
 
-    Renderer rend;
+    public Renderer[] rend;
+    Material[] matNormal;
+    
 
     public string itemName;
 
@@ -21,9 +23,13 @@ public class Collectable : MonoBehaviour {
 
     void Start () {
 
-        rend = GetComponentInChildren<Renderer>();
+        for(int i = 0; i < rend.Length; i++)
+        {
+            matNormal[i] = rend[i].material;
+        }
+        //rend = GetComponentInChildren<Renderer>();
         boxCollider = GetComponent<BoxCollider>();
-        normalMat = rend.material;
+        //normalMat = rend.material;
 
 	}
 	
@@ -34,8 +40,10 @@ public class Collectable : MonoBehaviour {
             if (!boxCollider.isTrigger)
                 boxCollider.isTrigger = true;
 
-            if (rend.material != normalMat)
-                rend.material = normalMat;
+            for(int i = 0; i < rend.Length; i++)
+            {
+                rend[i].material = matNormal[i];
+            }
 
             
         }
@@ -55,7 +63,11 @@ public class Collectable : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Controller" && !isCollected)
         {
-            rend.material = onHoverMat;
+            for(int i = 0; i < rend.Length; i++)
+            {
+                rend[i].material = onHoverMat;
+            }
+            
         }
     }
 
@@ -63,7 +75,10 @@ public class Collectable : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Controller" && !isCollected)
         {
-            rend.material = normalMat;
+            for (int i = 0; i < rend.Length; i++)
+            {
+                rend[i].material = matNormal[i];
+            }
         }      
     }
 }
