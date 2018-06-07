@@ -16,7 +16,9 @@ public class Enemy : MonoBehaviour {
 
     RagdollController rdController;
 
-    //public NavMeshAgent agent;
+    public float distanceToPlayer;
+
+    public NavMeshAgent agent;
 
     #region Attributes
 
@@ -41,35 +43,37 @@ public class Enemy : MonoBehaviour {
     void Start () {
         animator = GetComponent<Animator>();
 
-        //agent.updateRotation = false;
+        agent.updateRotation = false;
         //agent.updatePosition = false;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 
+        Debug.DrawRay(this.transform.position, player.position, Color.green);
+
         //RaycastHit hit;
-        var dir = player.position - transform.position;
+        var dir = transform.position - player.position;
         dir.y = 0;
 
         if (Physics.Raycast(transform.position, dir))
         {
-            var distance = Vector3.Distance(transform.position, player.position);
+            distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-            if (distance < distanceToMoveToPlayer && distance > distanceToAttackPlayer)
+            if (distanceToPlayer < distanceToMoveToPlayer && distanceToPlayer > distanceToAttackPlayer)
             {
                 
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
                 AnimateMove();
 
-                //agent.SetDestination(player.transform.position);
+                agent.SetDestination(player.transform.position);
 
             }
 
-            if (distance <= distanceToAttackPlayer)
+            if (distanceToPlayer <= distanceToAttackPlayer)
             {
                 //dir.y = 0;
-                //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
                 AnimateAttack();
             }
 
@@ -142,5 +146,10 @@ public class Enemy : MonoBehaviour {
         this.gameObject.layer = 11;
         this.enabled = false;
 
+    }
+
+    private void OnAnimatorMove()
+    {
+        agent.velocity = animator.deltaPosition / Time.deltaTime;
     }
 }
