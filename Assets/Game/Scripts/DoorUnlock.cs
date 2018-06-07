@@ -52,7 +52,6 @@ public class DoorUnlock : MonoBehaviour {
         key.transform.position = keyAttach.position;
         key.transform.parent = keyAttach.transform;
 
-        rightControllerManager.GiveAwayItem(keyName);
-    }
+        rightControllerManager.GiveAwayItem(keyName);   }
 
 }
