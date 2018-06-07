@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour {
     public float distanceToMoveToPlayer = 5;
     public float distanceToAttackPlayer = 1;
 
+    public float sightRange = 5;
+
     public float turnSpeed = .1f;
 
     public float enemyHealth = 2f;
@@ -20,9 +22,15 @@ public class Enemy : MonoBehaviour {
 
     public NavMeshAgent agent;
 
+    public bool firstSeePlayer;
+
+    LayerMask layerMask = ~0;
+
+    public Transform startCast;
+
     #region Attributes
 
-    private Animator animator;
+    private Animator anim;
 
     private const string IDLE_BOOL = "idle";
     private const string MOVE_BOOL = "move";
@@ -41,44 +49,73 @@ public class Enemy : MonoBehaviour {
     }
 
     void Start () {
-        animator = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
 
-        agent.updateRotation = false;
+        //agent.updateRotation = false;
         //agent.updatePosition = false;
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
 
-        Debug.DrawRay(this.transform.position, player.position, Color.green);
+    private void Update()
+    {
+        var dir = player.position - startCast.position;
+        distanceToPlayer = Vector3.Distance(startCast.position, player.transform.position);
+
+        Debug.DrawRay(startCast.position, dir, Color.green);
+
+        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
+
+        //anim.SetFloat("distanceToPlayer", distanceToPlayer);
+
+        
+
+        RaycastHit hit;
+        Ray ray = new Ray(startCast.position, dir);
+
+        //layerMask = ~layerMask;
+
+        if (!Physics.Raycast(ray, out hit, sightRange))
+        {
+            //anim.SetBool("firstSeePlayer", true);
+
+            print("I see the player!");
+            //distanceToPlayer = Vector3.Distance(startCast.position, player.transform.position);
+        }
+
+        //    if (distanceToPlayer < distanceToMoveToPlayer && distanceToPlayer > distanceToAttackPlayer)
+        //    {
+
+        //        AnimateMove();
+        //        agent.SetDestination(player.transform.position);
+
+        //    }
+        //    else if (distanceToPlayer <= distanceToAttackPlayer)
+        //    {
+        //        //dir.y = 0;
+        //        AnimateAttack();
+        //    }
+
+        //}
+        //else if (Physics.Raycast(ray, out hit, distanceToMoveToPlayer))
+        //{
+        //    print("Object hit:" + hit.collider.gameObject.name);
+        //}
+    }
+
+    // Update is called once per frame
+    void FixedUpdate () {
+        var dir = player.position - startCast.position;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
+        //Vector3 forward = transform.TransformDirection(Vector3.forward);
+        //Debug.DrawRay(transform.position, transform.TransformDirection(player.position), Color.green);
 
         //RaycastHit hit;
-        var dir = transform.position - player.position;
-        dir.y = 0;
 
-        if (Physics.Raycast(transform.position, dir))
-        {
-            distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-            if (distanceToPlayer < distanceToMoveToPlayer && distanceToPlayer > distanceToAttackPlayer)
-            {
-                
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
-                AnimateMove();
 
-                agent.SetDestination(player.transform.position);
+        //dir.y = 0;
 
-            }
 
-            if (distanceToPlayer <= distanceToAttackPlayer)
-            {
-                //dir.y = 0;
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
-                AnimateAttack();
-            }
-
-        }
-	}
+    }
 
     #region Animate Functions
 
@@ -124,9 +161,9 @@ public class Enemy : MonoBehaviour {
 
     private void Animate(string boolName)
     {
-        DisableOtherAnimations(animator, boolName);
+        DisableOtherAnimations(anim, boolName);
 
-        animator.SetBool(boolName, true);
+        anim.SetBool(boolName, true);
     }
 
     private void DisableOtherAnimations(Animator animator, string animation)
@@ -150,6 +187,6 @@ public class Enemy : MonoBehaviour {
 
     private void OnAnimatorMove()
     {
-        agent.velocity = animator.deltaPosition / Time.deltaTime;
+        agent.velocity = anim.deltaPosition / Time.deltaTime;
     }
 }
