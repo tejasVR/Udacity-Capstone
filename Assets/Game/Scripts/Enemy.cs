@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour {
 
@@ -10,6 +11,12 @@ public class Enemy : MonoBehaviour {
     public float distanceToAttackPlayer = 1;
 
     public float turnSpeed = .1f;
+
+    public float enemyHealth = 2f;
+
+    RagdollController rdController;
+
+    //public NavMeshAgent agent;
 
     #region Attributes
 
@@ -21,11 +28,21 @@ public class Enemy : MonoBehaviour {
     private const string HIT_BOOL = "hit";
 
 
+
+
     #endregion
 
     // Use this for initialization
+    private void Awake()
+    {
+        rdController = GetComponent<RagdollController>();
+    }
+
     void Start () {
         animator = GetComponent<Animator>();
+
+        //agent.updateRotation = false;
+        //agent.updatePosition = false;
 	}
 	
 	// Update is called once per frame
@@ -33,16 +50,29 @@ public class Enemy : MonoBehaviour {
 
         //RaycastHit hit;
         var dir = player.position - transform.position;
+        dir.y = 0;
 
-        if(Physics.Raycast(transform.position, dir))
+        if (Physics.Raycast(transform.position, dir))
         {
-            if (Vector3.Distance(transform.position, player.position) < distanceToMoveToPlayer)
+            var distance = Vector3.Distance(transform.position, player.position);
+
+            if (distance < distanceToMoveToPlayer && distance > distanceToAttackPlayer)
             {
-                dir.y = 0;
+                
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
                 AnimateMove();
 
+                //agent.SetDestination(player.transform.position);
+
             }
+
+            if (distance <= distanceToAttackPlayer)
+            {
+                //dir.y = 0;
+                //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
+                AnimateAttack();
+            }
+
         }
 	}
 
@@ -58,7 +88,35 @@ public class Enemy : MonoBehaviour {
         Animate(MOVE_BOOL);
     }
 
+    public void AnimateAttack()
+    {
+        Animate(ATTACK_BOOL);
+    }
+
+    public void AnimateHit()
+    {
+        Animate(HIT_BOOL);
+    }
+
     #endregion
+
+    public void EnemyTakeHit(float damage, Vector3 hitDirection, GameObject hitBodyPart)
+    {
+        enemyHealth -= damage;
+        if (enemyHealth <= 0)
+        {
+            Death(hitDirection, hitBodyPart);
+            
+        } else
+        {
+            AnimateHit();
+        }
+
+        //print(enemyHealth);
+        print("took damage");
+
+
+    }
 
     private void Animate(string boolName)
     {
@@ -76,5 +134,13 @@ public class Enemy : MonoBehaviour {
                 animator.SetBool(parameter.name, false);
             }
         }
+    }
+
+    private void Death(Vector3 hitDirection, GameObject hitBodyPart)
+    {
+        rdController.KillRagdoll(hitDirection, hitBodyPart);
+        this.gameObject.layer = 11;
+        this.enabled = false;
+
     }
 }
