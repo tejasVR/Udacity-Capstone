@@ -81,29 +81,30 @@ public class Enemy : MonoBehaviour {
             //distanceToPlayer = Vector3.Distance(startCast.position, player.transform.position);
         }
 
-        //    if (distanceToPlayer < distanceToMoveToPlayer && distanceToPlayer > distanceToAttackPlayer)
-        //    {
+        if (distanceToPlayer < distanceToMoveToPlayer)
+        {
 
-        //        AnimateMove();
-        //        agent.SetDestination(player.transform.position);
+            AnimateMove();
 
-        //    }
-        //    else if (distanceToPlayer <= distanceToAttackPlayer)
-        //    {
-        //        //dir.y = 0;
-        //        AnimateAttack();
-        //    }
+            if (distanceToPlayer < distanceToAttackPlayer)
+            {
+                //dir.y = 0;
+                AnimateAttack();
+                print("Attacking");
+            }
 
-        //}
-        //else if (Physics.Raycast(ray, out hit, distanceToMoveToPlayer))
-        //{
-        //    print("Object hit:" + hit.collider.gameObject.name);
-        //}
+            agent.SetDestination(player.transform.position);
+
+
+        } else
+        {
+            AnimateIdle();
+        }
     }
-
     // Update is called once per frame
     void FixedUpdate () {
         var dir = player.position - startCast.position;
+        dir.y = 0;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
         //Vector3 forward = transform.TransformDirection(Vector3.forward);
         //Debug.DrawRay(transform.position, transform.TransformDirection(player.position), Color.green);
