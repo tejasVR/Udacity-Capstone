@@ -22,9 +22,22 @@ public class GunScript : MonoBehaviour {
 
     public bool firstPickedUp;
 
+    private Rigidbody rb;
+
+    private int layerMask = ~0;
+
+    public float deviceAngularVelocity;
+
+    public float recoilZAngle = 37f;
+    public GameObject gunBody;
+    private Quaternion gunBodyBaseRotation;
+
+    public float gunRecoilAngleSpeed;
+
 	// Use this for initialization
 	void Start () {
-		
+        rb = GetComponent<Rigidbody>();
+        gunBodyBaseRotation = gunBody.transform.localRotation;
 	}
 	
 	// Update is called once per frame
@@ -32,6 +45,8 @@ public class GunScript : MonoBehaviour {
         if (_trackedObj.gameObject.activeInHierarchy)
         {
             _device = SteamVR_Controller.Input((int)_trackedObj.index);
+
+            deviceAngularVelocity = _device.angularVelocity.magnitude;
 
             if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) && firstPickedUp && fireRateTimer == fireRate)
             {
@@ -54,9 +69,28 @@ public class GunScript : MonoBehaviour {
         }
 
         Debug.DrawRay(shootPoint.transform.position, shootPoint.transform.forward, Color.green, .1f);
-            
-		
-	}
+
+        gunBody.transform.localRotation = Quaternion.Lerp(gunBody.transform.localRotation, gunBodyBaseRotation, Time.deltaTime * gunRecoilAngleSpeed);
+
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Destructible")
+        {
+            if(deviceAngularVelocity > 5f)
+            {
+                Destructible destructible = other.transform.GetComponent<Destructible>();
+                if (destructible != null)
+                {
+                    destructible.DestroyIntoPieces();
+                }
+
+                AddExplosionForce(transform.position, explosionRadius, -explosionForce);
+            }
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -66,7 +100,15 @@ public class GunScript : MonoBehaviour {
             //transform.position = _trackedObj.transform.position;
             //transform.rotation = _trackedObj.transform.rotation;
         }
-        
+
+        //print(rb.angularVelocity.normalized);
+
+        //if (transform.parent.gameObject.GetComponent<Rigidbody>() != null)
+        //    print(transform.parent.gameObject.GetComponent<Rigidbody>().angularVelocity.magnitude);
+
+
+
+
     }
 
     public void Fire()
@@ -74,10 +116,12 @@ public class GunScript : MonoBehaviour {
         //print("Fired");
         muzzleFlash.Play();
 
+
+
         RaycastHit hit;
         Ray ray = new Ray(shootPoint.transform.position, shootPoint.transform.forward);
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask, QueryTriggerInteraction.Collide))
         {
             var hitPoint = hit.point;
 
@@ -89,16 +133,7 @@ public class GunScript : MonoBehaviour {
                     destructible.DestroyIntoPieces();
                 }
 
-                Collider[] colliders = Physics.OverlapSphere(hitPoint, explosionRadius);
-                foreach (var col in colliders)
-                {
-                    Rigidbody rb = col.GetComponent<Rigidbody>();
-
-                    if (rb != null)
-                    {
-                        rb.AddExplosionForce(explosionForce, hitPoint, explosionRadius);
-                    }
-                }
+                AddExplosionForce(hit.point, explosionRadius, explosionForce);
             }
 
             print("Object Hit:" + hit.collider.gameObject.name);
@@ -130,11 +165,26 @@ public class GunScript : MonoBehaviour {
 
             }
 
-           
+
 
             //Debug.Log(hit.transform.name);
 
-            
+            gunBody.transform.localRotation = Quaternion.Euler(gunBody.transform.localRotation.x, gunBody.transform.localRotation.y, gunBody.transform.localRotation.z + recoilZAngle);
+
+        }
+    }
+
+    private void AddExplosionForce(Vector3 point, float explosionRadius, float explosionForce)
+    {
+        Collider[] colliders = Physics.OverlapSphere(point, explosionRadius);
+        foreach (var col in colliders)
+        {
+            Rigidbody rb = col.GetComponent<Rigidbody>();
+
+            if (rb != null)
+            {
+                rb.AddExplosionForce(explosionForce, point, explosionRadius);
+            }
         }
     }
 }

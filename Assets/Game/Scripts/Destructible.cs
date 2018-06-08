@@ -20,6 +20,22 @@ public class Destructible : MonoBehaviour {
 		
 	}
 
+    private void OnTriggerEnter(Collider col)
+    {
+        
+        var otherRb = col.gameObject.GetComponent<Rigidbody>();
+
+        //print(otherRb.angularVelocity.magnitude);
+
+        if (otherRb.angularVelocity.magnitude > .15f)
+        {
+            DestroyIntoPieces();
+        }
+
+    }
+
+    
+
     public void DestroyIntoPieces()
     {
         boxCollider.enabled = false;

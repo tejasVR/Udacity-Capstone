@@ -42,7 +42,6 @@ public class RightControllerManager : MonoBehaviour {
             device = SteamVR_Controller.Input((int)trackedObj.index);
         }
 
-
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && !inventoryOpen)
         {
             
