@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour {
 
         //layerMask = ~layerMask;
 
-        if (!Physics.Raycast(ray, out hit, sightRange))
+        //if (!Physics.Raycast(ray, out hit, sightRange))
         {
             //anim.SetBool("firstSeePlayer", true);
 
@@ -86,14 +86,8 @@ public class Enemy : MonoBehaviour {
         {
             if (distanceToPlayer < distanceToMoveToPlayer && distanceToPlayer > distanceToAttackPlayer)
             {
-
                 AnimateMove();
-
-
-
                 agent.SetDestination(player.transform.position);
-
-
             }
             else if (distanceToPlayer <= distanceToAttackPlayer)
             {
@@ -105,6 +99,11 @@ public class Enemy : MonoBehaviour {
             {
                 AnimateIdle();
             }
+        }
+
+        if (anim.GetBool("hit"))
+        {
+            print("hit is true");
         }
 
         
@@ -126,30 +125,7 @@ public class Enemy : MonoBehaviour {
 
     }
 
-    #region Animate Functions
-
-    public void AnimateIdle()
-    {
-        Animate(IDLE_BOOL);
-    }
-
-    public void AnimateMove()
-    {
-        Animate(MOVE_BOOL);
-    }
-
-    public void AnimateAttack()
-    {
-        Animate(ATTACK_BOOL);
-    }
-
-    public void AnimateHit()
-    {
-        Animate(HIT_BOOL);
-        //anim.SetInteger("randomHit", Mathf.FloorToInt(Random.Range(1, 4)));
-    }
-
-    #endregion
+    
 
     public void EnemyTakeHit(float damage, Vector3 hitDirection, GameObject hitBodyPart)
     {
@@ -161,7 +137,8 @@ public class Enemy : MonoBehaviour {
         } else
         {
             AnimateHit();
-            print("hit animation");
+            //print("hit animation");
+            //anim.SetBool("hit", false);
         }
 
         //print(enemyHealth);
@@ -201,4 +178,31 @@ public class Enemy : MonoBehaviour {
     {
         agent.velocity = anim.deltaPosition / Time.deltaTime;
     }
+
+    #region Animate Functions
+
+    public void AnimateIdle()
+    {
+        Animate(IDLE_BOOL);
+    }
+
+    public void AnimateMove()
+    {
+        Animate(MOVE_BOOL);
+    }
+
+    public void AnimateAttack()
+    {
+        Animate(ATTACK_BOOL);
+    }
+
+    public void AnimateHit()
+    {
+        Animate(HIT_BOOL);
+        if (anim.GetBool("hit"))
+            print("hit is true");
+        //anim.SetInteger("randomHit", Mathf.FloorToInt(Random.Range(1, 4)));
+    }
+
+    #endregion
 }

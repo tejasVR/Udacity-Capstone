@@ -68,7 +68,8 @@ public class GunScript : MonoBehaviour {
             fireRateTimer = fireRate;
         }
 
-        Debug.DrawRay(shootPoint.transform.position, shootPoint.transform.forward, Color.green, .1f);
+        //Debug.DrawRay(shootPoint.transform.position, shootPoint.transform.forward, Color.green, .1f);
+        Debug.DrawRay(shootPoint.transform.position, shootPoint.transform.forward, Color.green);
 
         gunBody.transform.localRotation = Quaternion.Lerp(gunBody.transform.localRotation, gunBodyBaseRotation, Time.deltaTime * gunRecoilAngleSpeed);
 
@@ -121,7 +122,7 @@ public class GunScript : MonoBehaviour {
         RaycastHit hit;
         Ray ray = new Ray(shootPoint.transform.position, shootPoint.transform.forward);
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask, QueryTriggerInteraction.Collide))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))//, layerMask, QueryTriggerInteraction.Collide))
         {
             var hitPoint = hit.point;
 
@@ -153,7 +154,7 @@ public class GunScript : MonoBehaviour {
                     //print("Going through while loop. Current Parent:" + parentObj.name);
                 }
 
-                print("Enemy Hit: " + parentObj.name);
+                //print("Enemy Hit: " + parentObj.name);
 
 
                 Enemy enemy = parentObj.GetComponent<Enemy>();
