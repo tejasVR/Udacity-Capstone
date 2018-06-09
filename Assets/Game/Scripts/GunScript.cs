@@ -136,15 +136,27 @@ public class GunScript : MonoBehaviour {
                 AddExplosionForce(hit.point, explosionRadius, explosionForce);
             }
 
-            print("Object Hit:" + hit.collider.gameObject.name);
+            //print("Object Hit:" + hit.collider.gameObject.name);
 
 
             if (hit.collider.gameObject.tag == "Enemy")
             {
-                print("Enemy Hit: " + hit.collider.gameObject.name);
+                //print("Enemy Hit: " + hit.collider.gameObject.name);
+
                 var hitDir = hit.point - shootPoint.transform.position;
 
-                Enemy enemy = hit.collider.gameObject.transform.root.GetComponent<Enemy>();
+                var parentObj = hit.collider.transform.parent;
+
+                while (parentObj.GetComponent<Enemy>() == null)
+                {
+                    parentObj = parentObj.transform.parent;
+                    //print("Going through while loop. Current Parent:" + parentObj.name);
+                }
+
+                print("Enemy Hit: " + parentObj.name);
+
+
+                Enemy enemy = parentObj.GetComponent<Enemy>();
                 enemy.EnemyTakeHit(_damage, hitDir, hit.collider.gameObject);
 
                 //Collider[] colliders = Physics.OverlapSphere(hitPoint, 5f);

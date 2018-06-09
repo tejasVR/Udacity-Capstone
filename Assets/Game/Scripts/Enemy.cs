@@ -51,18 +51,19 @@ public class Enemy : MonoBehaviour {
     void Start () {
         anim = GetComponent<Animator>();
 
-        //agent.updateRotation = false;
+        agent.updateRotation = false;
         //agent.updatePosition = false;
 	}
 
     private void Update()
     {
         var dir = player.position - startCast.position;
+        dir.y = 0;
         distanceToPlayer = Vector3.Distance(startCast.position, player.transform.position);
 
         Debug.DrawRay(startCast.position, dir, Color.green);
 
-        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
 
         //anim.SetFloat("distanceToPlayer", distanceToPlayer);
 
@@ -77,35 +78,42 @@ public class Enemy : MonoBehaviour {
         {
             //anim.SetBool("firstSeePlayer", true);
 
-            print("I see the player!");
+            //print("I see the player!");
             //distanceToPlayer = Vector3.Distance(startCast.position, player.transform.position);
         }
 
-        if (distanceToPlayer < distanceToMoveToPlayer)
+        if (!anim.GetBool("hit"))
         {
+            if (distanceToPlayer < distanceToMoveToPlayer && distanceToPlayer > distanceToAttackPlayer)
+            {
 
-            AnimateMove();
+                AnimateMove();
 
-            if (distanceToPlayer < distanceToAttackPlayer)
+
+
+                agent.SetDestination(player.transform.position);
+
+
+            }
+            else if (distanceToPlayer <= distanceToAttackPlayer)
             {
                 //dir.y = 0;
                 AnimateAttack();
-                print("Attacking");
+                //print("Attacking");
             }
-
-            agent.SetDestination(player.transform.position);
-
-
-        } else
-        {
-            AnimateIdle();
+            else
+            {
+                AnimateIdle();
+            }
         }
+
+        
     }
     // Update is called once per frame
     void FixedUpdate () {
         var dir = player.position - startCast.position;
         dir.y = 0;
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
         //Vector3 forward = transform.TransformDirection(Vector3.forward);
         //Debug.DrawRay(transform.position, transform.TransformDirection(player.position), Color.green);
 
@@ -138,6 +146,7 @@ public class Enemy : MonoBehaviour {
     public void AnimateHit()
     {
         Animate(HIT_BOOL);
+        //anim.SetInteger("randomHit", Mathf.FloorToInt(Random.Range(1, 4)));
     }
 
     #endregion
@@ -152,10 +161,11 @@ public class Enemy : MonoBehaviour {
         } else
         {
             AnimateHit();
+            print("hit animation");
         }
 
         //print(enemyHealth);
-        print("took damage");
+        //print("took damage");
 
 
     }
@@ -171,6 +181,7 @@ public class Enemy : MonoBehaviour {
     {
         foreach (AnimatorControllerParameter parameter in animator.parameters)
         {
+            
             if (parameter.name != animation)
             {
                 animator.SetBool(parameter.name, false);

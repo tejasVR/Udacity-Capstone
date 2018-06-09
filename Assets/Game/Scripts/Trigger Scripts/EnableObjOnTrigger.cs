@@ -55,6 +55,34 @@ public class EnableObjOnTrigger : MonoBehaviour {
                 }
             }
 
+            if (hasItem == HasItem.pistol)
+            {
+                foreach (RightControllerManager.CollectableItem item in rightControllerManager.itemList)
+                {
+                    if (item.name == "Pistol")
+                    {
+                        if (item.hasItemInInventory)
+                        {
+                            objToEnable.SetActive(true);
+                        }
+                    }
+                }
+            }
+
+            if (hasItem == HasItem.basementKey)
+            {
+                foreach (RightControllerManager.CollectableItem item in rightControllerManager.itemList)
+                {
+                    if (item.name == "Basement Key")
+                    {
+                        if (item.hasItemInInventory)
+                        {
+                            objToEnable.SetActive(true);
+                        }
+                    }
+                }
+            }
+
             //if (ifHasBasementKey)
             //{
             //    //if (rightControllerManager.itemList.)
