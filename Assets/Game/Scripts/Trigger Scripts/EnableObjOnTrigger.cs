@@ -49,7 +49,7 @@ public class EnableObjOnTrigger : MonoBehaviour {
                     {
                         if (item.hasItemInInventory)
                         {
-                            objToEnable.SetActive(true);
+                            EnableObject();
                         }
                     }
                 }
@@ -63,7 +63,7 @@ public class EnableObjOnTrigger : MonoBehaviour {
                     {
                         if (item.hasItemInInventory)
                         {
-                            objToEnable.SetActive(true);
+                            EnableObject();
                         }
                     }
                 }
@@ -77,7 +77,7 @@ public class EnableObjOnTrigger : MonoBehaviour {
                     {
                         if (item.hasItemInInventory)
                         {
-                            objToEnable.SetActive(true);
+                            EnableObject();
                         }
                     }
                 }
@@ -110,9 +110,16 @@ public class EnableObjOnTrigger : MonoBehaviour {
             //        }
             //    }
 
-            if (disableColliderOnTrigger)
-                this.GetComponent<BoxCollider>().enabled = false;
+            
 
         }
+    }
+
+    private void EnableObject()
+    {
+        objToEnable.SetActive(true);
+
+        if (disableColliderOnTrigger)
+            this.GetComponent<BoxCollider>().enabled = false;
     }
 }

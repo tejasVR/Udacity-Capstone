@@ -36,7 +36,7 @@ public class RagdollController : MonoBehaviour {
             //ragdoll.velocity = Vector3.zero;
         }
 
-        hitBodyPart.GetComponent<Rigidbody>().velocity = hitDirection * hitForce;
+        hitBodyPart.GetComponent<Rigidbody>().velocity = hitBodyPart.transform.position;//hitDirection * hitForce;
 
     }
 }
