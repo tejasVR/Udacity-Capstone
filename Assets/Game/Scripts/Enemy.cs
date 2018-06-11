@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour {
         dir.y = 0;
         distanceToPlayer = Vector3.Distance(startCast.position, player.transform.position);
 
-        Debug.DrawRay(startCast.position, dir, Color.green);
+        //Debug.DrawRay(startCast.position, dir, Color.green);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
 
@@ -101,10 +101,10 @@ public class Enemy : MonoBehaviour {
             }
         }
 
-        if (anim.GetBool("hit"))
+        /*if (anim.GetBool("hit"))
         {
             print("hit is true");
-        }
+        }*/
 
         
     }
