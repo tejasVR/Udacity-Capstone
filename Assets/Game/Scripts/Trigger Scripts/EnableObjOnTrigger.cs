@@ -6,7 +6,7 @@ public class EnableObjOnTrigger : MonoBehaviour {
 
     public RightControllerManager rightControllerManager;
 
-    public GameObject objToEnable;
+    public GameObject[] objsToEnable;
     //public GameObject objToEnableWithBasementKey;
     //public GameObject objToEnableWithGun;
 
@@ -27,19 +27,23 @@ public class EnableObjOnTrigger : MonoBehaviour {
 
     private void Start()
     {
-        objToEnable.SetActive(false);
+        foreach (var obj in objsToEnable)
+        {
+            obj.SetActive(false);
+        }
+        
         //objToEnableWithBasementKey.SetActive(false);
         //objToEnableWithGun.SetActive(false);
 
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             if (hasItem == HasItem.none)
-                objToEnable.SetActive(true);
+                EnableObjects();
 
             if (hasItem == HasItem.frontDoorKey)
             {
@@ -49,7 +53,7 @@ public class EnableObjOnTrigger : MonoBehaviour {
                     {
                         if (item.hasItemInInventory)
                         {
-                            EnableObject();
+                            EnableObjects();
                         }
                     }
                 }
@@ -63,7 +67,7 @@ public class EnableObjOnTrigger : MonoBehaviour {
                     {
                         if (item.hasItemInInventory)
                         {
-                            EnableObject();
+                            EnableObjects();
                         }
                     }
                 }
@@ -77,7 +81,7 @@ public class EnableObjOnTrigger : MonoBehaviour {
                     {
                         if (item.hasItemInInventory)
                         {
-                            EnableObject();
+                            EnableObjects();
                         }
                     }
                 }
@@ -115,9 +119,13 @@ public class EnableObjOnTrigger : MonoBehaviour {
         }
     }
 
-    private void EnableObject()
+    private void EnableObjects()
     {
-        objToEnable.SetActive(true);
+        foreach (var obj in objsToEnable)
+        {
+            obj.SetActive(true);
+            print("enabled object");
+        }
 
         if (disableColliderOnTrigger)
             this.GetComponent<BoxCollider>().enabled = false;

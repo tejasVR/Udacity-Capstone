@@ -122,7 +122,7 @@ public class GunScript : MonoBehaviour {
         RaycastHit hit;
         Ray ray = new Ray(shootPoint.transform.position, shootPoint.transform.forward);
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))//, layerMask, QueryTriggerInteraction.Collide))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask, QueryTriggerInteraction.Ignore))
         {
             var hitPoint = hit.point;
 
@@ -137,14 +137,15 @@ public class GunScript : MonoBehaviour {
                 AddExplosionForce(hit.point, explosionRadius, explosionForce);
             }
 
-            //print("Object Hit:" + hit.collider.gameObject.name);
+            print("Object Hit:" + hit.collider.gameObject.name);
 
 
             if (hit.collider.gameObject.tag == "Enemy")
             {
                 //print("Enemy Hit: " + hit.collider.gameObject.name);
 
-                var hitDir = hit.point - shootPoint.transform.position;
+                //var hitDir = shootPoint.transform.position - hit.point;
+                var hitDir = shootPoint.transform.forward;
 
                 var parentObj = hit.collider.transform.parent;
 
@@ -159,6 +160,9 @@ public class GunScript : MonoBehaviour {
 
                 Enemy enemy = parentObj.GetComponent<Enemy>();
                 enemy.EnemyTakeHit(_damage, hitDir, hit.collider.gameObject);
+
+                AddExplosionForce(hit.point, explosionRadius, explosionForce);
+
 
                 //Collider[] colliders = Physics.OverlapSphere(hitPoint, 5f);
                 //foreach (var col in colliders)

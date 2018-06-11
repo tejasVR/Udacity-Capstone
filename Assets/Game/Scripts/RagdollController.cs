@@ -29,14 +29,15 @@ public class RagdollController : MonoBehaviour {
         GetComponent<NavMeshAgent>().enabled = false;
 
         //rb.velocity = Vector3.zero;
+        rb.isKinematic = true;
 
         foreach (Rigidbody ragdoll in boneRig)
         {
-            ragdoll.isKinematic = false;
-            //ragdoll.velocity = Vector3.zero;
+            //ragdoll.isKinematic = false;
+            ragdoll.velocity = hitDirection * hitForce;// Vector3.zero;
         }
 
-        hitBodyPart.GetComponent<Rigidbody>().velocity = hitBodyPart.transform.position;//hitDirection * hitForce;
+        //hitBodyPart.GetComponent<Rigidbody>().velocity = hitDirection * hitForce;
 
     }
 }
