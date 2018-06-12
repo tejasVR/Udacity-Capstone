@@ -34,6 +34,12 @@ public class GunScript : MonoBehaviour {
 
     public float gunRecoilAngleSpeed;
 
+    public GlobalLowPassFilter globalLowPass;
+    public AudioSource[] _audioSource;
+    //public AudioClip[] clips;
+
+    private bool clickSoundPlayed = true;
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -66,6 +72,11 @@ public class GunScript : MonoBehaviour {
         } else
         {
             fireRateTimer = fireRate;
+            if (!clickSoundPlayed)
+            {
+                PlaySound.PlayAudio(_audioSource[2], true);
+                clickSoundPlayed = true;
+            }
         }
 
         //Debug.DrawRay(shootPoint.transform.position, shootPoint.transform.forward, Color.green, .1f);
@@ -164,6 +175,7 @@ public class GunScript : MonoBehaviour {
                 AddExplosionForce(hit.point, explosionRadius, explosionForce);
 
 
+
                 //Collider[] colliders = Physics.OverlapSphere(hitPoint, 5f);
                 //foreach (var col in colliders)
                 //{
@@ -182,7 +194,14 @@ public class GunScript : MonoBehaviour {
 
             }
 
+            //_audioSource[0].PlayOneShot(clips[0]);
+            //_audioSource[1].PlayOneShot(clips[1]);
 
+            PlaySound.PlayAudio(_audioSource[0], true);
+            PlaySound.PlayAudio(_audioSource[1], false);
+            clickSoundPlayed = false;
+
+            //globalLowPass.GunShotLowPass(3000);
 
             //Debug.Log(hit.transform.name);
 
@@ -204,4 +223,12 @@ public class GunScript : MonoBehaviour {
             }
         }
     }
+
+    //private void PlaySound(AudioSource source, bool randomPitch)
+    //{
+    //    if (randomPitch)
+    //        source.pitch = 1 + Random.Range(-.1f, .1f);
+
+    //    source.Play();
+    //}
 }

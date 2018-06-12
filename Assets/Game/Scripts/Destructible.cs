@@ -8,11 +8,15 @@ public class Destructible : MonoBehaviour {
     public GameObject destroyedVersion;
     private BoxCollider boxCollider;
 
+    private AudioSource _audioSource;
+    public AudioClip[] _clips;
+
     //public float explosionForce;
 
 	// Use this for initialization
 	void Start () {
         boxCollider = GetComponent<BoxCollider>();
+        _audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -42,5 +46,9 @@ public class Destructible : MonoBehaviour {
         destroyedVersion.SetActive(true);
 
         original.SetActive(false);
+
+        PlaySound.PlayAudioFromSelection(_audioSource, _clips, true);
     }
+
+    
 }

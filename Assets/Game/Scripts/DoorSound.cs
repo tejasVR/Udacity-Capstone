@@ -122,37 +122,37 @@ public class DoorSound : MonoBehaviour {
 
             
 
-            PlaySound(_audioSource[0], _doorHandClips, true);
+            PlaySound.PlayAudioFromSelection(_audioSource[0], _doorHandClips, true);
 
             if (!_audioSource[1].isPlaying)
             {
-                PlaySound(_audioSource[1], _doorOpenClips, false);
+                PlaySound.PlayAudioFromSelection(_audioSource[1], _doorOpenClips, false);
             }
 
         }
         else
-            PlaySound(_audioSource[0], _doorHitClips, true);
+            PlaySound.PlayAudioFromSelection(_audioSource[0], _doorHitClips, true);
 
         print("hit door");
     }
 
 
-    private void PlaySound(AudioSource source, AudioClip[] clips, bool randomPitch)
-    {
-        if (randomPitch)
-        {
-            //var pitchOriginal = source.pitch;
-            var randomFloat = Random.Range(-1f, .1f);
-            source.pitch = 1 + randomFloat;
-        }
+    //private void PlaySound(AudioSource source, AudioClip[] clips, bool randomPitch)
+    //{
+    //    if (randomPitch)
+    //    {
+    //        //var pitchOriginal = source.pitch;
+    //        var randomFloat = Random.Range(-1f, .1f);
+    //        source.pitch = 1 + randomFloat;
+    //    }
 
-        var randomInt = Random.Range(0, clips.Length);
+    //    var randomInt = Random.Range(0, clips.Length);
         
-        source.PlayOneShot(clips[randomInt]);
+    //    source.PlayOneShot(clips[randomInt]);
 
-        print("played sound:" + clips[randomInt].name);
+    //    //print("played sound:" + clips[randomInt].name);
 
-    }
+    //}
 
 
     //private void DoorOpen(AudioSource source, bool randomPitch)
