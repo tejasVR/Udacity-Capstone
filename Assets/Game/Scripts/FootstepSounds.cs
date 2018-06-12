@@ -96,11 +96,18 @@ public class FootstepSounds : MonoBehaviour {
     {
         var randomInt = Random.Range(0, clips.Length - 1);
 
-        _audioSource.clip = clips[randomInt];
+        var source = new AudioSource();
+
+        if (_audioSource.isPlaying)
+            source = _audioSourceBackup;
+        else
+            source = _audioSource;
+
+        source.clip = clips[randomInt];
 
         if (_alterPitch)
-            _audioSource.pitch = 1 + Random.Range(-.15f, .15f);
+            source.pitch += Random.Range(-.15f, .15f);
 
-        _audioSource.Play();
+        source.Play();
     }
 }
