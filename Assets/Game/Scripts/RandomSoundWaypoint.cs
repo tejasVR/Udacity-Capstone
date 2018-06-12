@@ -35,7 +35,7 @@ public class RandomSoundWaypoint : MonoBehaviour {
 
         var randomPos = _waypoints[_randomIntPos].transform.position;
         var randomClip = _clips[_randomIntClip];
-        var randomDelay = Random.Range(0.5f, 1.5f);
+        var randomDelay = Random.Range(0.25f, 0.75f);
 
         transform.position = randomPos;
         _clipLength = randomClip.length + randomDelay;

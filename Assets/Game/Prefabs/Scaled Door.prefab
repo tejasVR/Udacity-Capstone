@@ -11,6 +11,23 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1295587547640854}
   m_IsPrefabParent: 1
+--- !u!1 &1020631172430576
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4060960698963518}
+  - component: {fileID: 82478987924147112}
+  - component: {fileID: 114937144992187540}
+  m_Layer: 19
+  m_Name: AudioSource Hits
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1049450197984894
 GameObject:
   m_ObjectHideFlags: 1
@@ -21,7 +38,7 @@ GameObject:
   - component: {fileID: 4480770308456152}
   - component: {fileID: 33666549472862398}
   - component: {fileID: 23160940577805274}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Hall_Door_Hadle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +55,7 @@ GameObject:
   - component: {fileID: 4120423840338790}
   - component: {fileID: 33042735446528152}
   - component: {fileID: 23852229696161698}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Hall_Door_Hadle_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +73,10 @@ GameObject:
   - component: {fileID: 33810525469371470}
   - component: {fileID: 23253027207613644}
   - component: {fileID: 64998919949480562}
-  m_Layer: 0
+  - component: {fileID: 114090008799136914}
+  - component: {fileID: 114835057337879606}
+  - component: {fileID: 114684195971191862}
+  m_Layer: 19
   m_Name: Scaled Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +95,7 @@ GameObject:
   - component: {fileID: 23163618065935232}
   - component: {fileID: 95107253421534452}
   - component: {fileID: 65102433900990506}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Hall_Plinth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,8 +115,27 @@ GameObject:
   - component: {fileID: 65647348228008998}
   - component: {fileID: 54805083192879166}
   - component: {fileID: 59291126568403784}
-  m_Layer: 0
+  - component: {fileID: 114814773432745552}
+  - component: {fileID: 114229418973914760}
+  m_Layer: 19
   m_Name: Hall_Room_Door
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1624750930181654
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4915360500419574}
+  - component: {fileID: 82614453613611320}
+  - component: {fileID: 114551221599081444}
+  m_Layer: 19
+  m_Name: AudioSource Open
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,6 +156,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
+--- !u!4 &4060960698963518
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1020631172430576}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.71719384, y: 0.035169892, z: -0.08922188}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4957866422751226}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4120423840338790
 Transform:
   m_ObjectHideFlags: 1
@@ -126,7 +178,7 @@ Transform:
   m_LocalRotation: {x: 0.00000028212997, y: -0.00000065565115, z: 0.000000011925053,
     w: 1}
   m_LocalPosition: {x: -0.9930005, y: 1.261239, z: -0.05700384}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children:
   - {fileID: 4480770308456152}
   m_Father: {fileID: 4957866422751226}
@@ -158,6 +210,19 @@ Transform:
   m_Father: {fileID: 4120423840338790}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4915360500419574
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1624750930181654}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.71719384, y: 0.035169892, z: -0.08922188}
+  m_LocalScale: {x: 1, y: 1, z: 0.99999547}
+  m_Children: []
+  m_Father: {fileID: 4957866422751226}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4957866422751226
 Transform:
   m_ObjectHideFlags: 1
@@ -169,6 +234,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1.0350246}
   m_Children:
   - {fileID: 4120423840338790}
+  - {fileID: 4060960698963518}
+  - {fileID: 4915360500419574}
   m_Father: {fileID: 4044475379014478}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -405,8 +472,8 @@ HingeJoint:
   m_ConnectedAnchor: {x: 5.526001, y: 1, z: 0.76040006}
   m_UseSpring: 1
   m_Spring:
-    spring: 0.15
-    damper: 0.25
+    spring: 0.05
+    damper: 0.15
     targetPosition: 0
   m_UseMotor: 0
   m_Motor:
@@ -417,8 +484,8 @@ HingeJoint:
   m_Limits:
     min: 0
     max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
+    bounciness: 0.27
+    bounceMinVelocity: 0.05
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -464,6 +531,166 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.11, z: 0.123356625}
   m_Center: {x: -0.55, y: 1.18, z: -0.05085098}
+--- !u!82 &82478987924147112
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1020631172430576}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.4
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 2
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82614453613611320
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1624750930181654}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.4
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 2
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95107253421534452
 Animator:
   serializedVersion: 3
@@ -481,3 +708,778 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114090008799136914
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1295587547640854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79e99846fd75c4438917229c144155a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TerrainSimplificationLevel: 0
+  exportAllChildren: 1
+--- !u!114 &114229418973914760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1605017219441392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2895d347b4dd14e9a742044907083e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OuterPointSet: 1
+  OuterPoint: {x: 5.4336534, y: 0.035169892, z: 1.4058744}
+  OuterPointDistance: 1.0533923
+  IsHollow: 1
+  InnerPointSet: 0
+  InnerPoint: {x: 0, y: 0, z: 0}
+  InnerPointDistance: 0
+  InnerPointInside: 0
+  MeshCollider: {fileID: 0}
+  MeshFilter: {fileID: 33452434952810038}
+  Mesh: {fileID: 4300002, guid: 9261764dd3afc7b4ebaca8f58351534e, type: 3}
+  MeshUpdateInterval: -1
+  RaySeparation: 0.1
+  tree:
+    Nodes: []
+    Triangles: []
+--- !u!114 &114551221599081444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1624750930181654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8731920a0071d7c48a365d6c0e3cc242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Position: 1
+  PositionDampening: 0
+  Shapes:
+  - {fileID: 114229418973914760}
+  ExcludedShapes: []
+  Blend: 0
+  BlendMinDistance: 0
+  BlendMaxDistance: 5
+  BlendCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  Volume: 1
+  BaseVolume: 0.4
+  Zone: {fileID: 0}
+  Fade: 0
+  FadeMinDistance: 0
+  FadeMaxDistance: 5
+  FadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  Occlude: 0
+  OccludeMethod: 0
+  OccludeMaterial: 0
+  OccludeDampening: 5
+  OccludeGroups: []
+  OccludeAmount: 1
+--- !u!114 &114684195971191862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1295587547640854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2895d347b4dd14e9a742044907083e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OuterPointSet: 1
+  OuterPoint: {x: 5.400001, y: -0.00000012397757, z: 1.8792408}
+  OuterPointDistance: 1.1312296
+  IsHollow: 1
+  InnerPointSet: 0
+  InnerPoint: {x: 0, y: 0, z: 0}
+  InnerPointDistance: 0
+  InnerPointInside: 0
+  MeshCollider: {fileID: 64998919949480562}
+  MeshFilter: {fileID: 33810525469371470}
+  Mesh: {fileID: 4300000, guid: 39dad1f25d1c42f428538d6b1fc3574c, type: 3}
+  MeshUpdateInterval: -1
+  RaySeparation: 0.1
+  tree:
+    Nodes:
+    - Bound:
+        m_Center: {x: 0, y: 1.9999999, z: -0.0000013709068}
+        m_Extent: {x: 1, y: 2, z: 0.10000031}
+      PositiveIndex: 1
+      NegativeIndex: 8
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0, y: 1.9999999, z: -0.000001296401}
+        m_Extent: {x: 1, y: 2, z: 0.100000225}
+      PositiveIndex: 2
+      NegativeIndex: 5
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0, y: 3.2369552, z: -0.000001296401}
+        m_Extent: {x: 1, y: 0.7630447, z: 0.100000225}
+      PositiveIndex: 3
+      NegativeIndex: 4
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0, y: 3.2369552, z: -0.000001296401}
+        m_Extent: {x: 1, y: 0.7630447, z: 0.100000225}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 0
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0, y: 3.2369552, z: -0.0000012218952}
+        m_Extent: {x: 1, y: 0.7630447, z: 0.10000015}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 3
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0, y: 1.9999999, z: -0.000001296401}
+        m_Extent: {x: 1, y: 2, z: 0.100000225}
+      PositiveIndex: 6
+      NegativeIndex: 7
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0, y: 1.9999999, z: -0.000001296401}
+        m_Extent: {x: 1, y: 2, z: 0.100000225}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 6
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0, y: 1.9999999, z: -0.000001296401}
+        m_Extent: {x: 1, y: 2, z: 0.100000225}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 10
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0, y: 1.9999999, z: -0.0000013709068}
+        m_Extent: {x: 1, y: 2, z: 0.10000031}
+      PositiveIndex: 9
+      NegativeIndex: 12
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0, y: 1.9999999, z: -0.000001296401}
+        m_Extent: {x: 1, y: 2, z: 0.100000225}
+      PositiveIndex: 10
+      NegativeIndex: 11
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.00000029802322, y: 1.2369553, z: -0.0000014528632}
+        m_Extent: {x: 0.69915617, y: 1.2369554, z: 0.10000007}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 14
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: 0, y: 1.9999999, z: -0.000001296401}
+        m_Extent: {x: 1, y: 2, z: 0.100000225}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 16
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0, y: 1.2369553, z: -0.0000014454126}
+        m_Extent: {x: 1, y: 1.2369554, z: 0.10000023}
+      PositiveIndex: 13
+      NegativeIndex: 14
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0, y: 1.2369553, z: -0.0000014454126}
+        m_Extent: {x: 1, y: 1.2369554, z: 0.10000023}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 20
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0, y: -0.00000012397759, z: -0.0000014454126}
+        m_Extent: {x: 1, y: 0.0000000047683812, z: 0.10000023}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 24
+      TriangleCount: 4
+    Triangles:
+    - A: {x: 1, y: 4, z: 0.09999862}
+      B: {x: -0.69915587, y: 2.4739106, z: 0.09999862}
+      C: {x: 0.69915646, y: 2.4739106, z: 0.099998474}
+      PlaneABC:
+        Normal: {x: 0.00000010656534, y: -0.00000011865039, z: 1}
+        Distance: -0.09999826
+      PlaneAB:
+        Normal: {x: -0.66820216, y: 0.74397975, z: 0.000000079655905}
+        Distance: -2.3077168
+      PlaneBC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.4739106
+      PlaneCA:
+        Normal: {x: 0.9811178, y: -0.1934113, z: -0.000000116958354}
+        Distance: -0.20747256
+    - A: {x: 1, y: 4, z: -0.10000137}
+      B: {x: -1, y: 4, z: 0.09999893}
+      C: {x: 1, y: 4, z: 0.09999862}
+      PlaneABC:
+        Normal: {x: 0, y: 1, z: -0}
+        Distance: -4
+      PlaneAB:
+        Normal: {x: -0.09950387, y: 0, z: -0.99503714}
+        Distance: -0.0000012121039
+      PlaneBC:
+        Normal: {x: 0.0000001527369, y: -0, z: 1}
+        Distance: -0.09999877
+      PlaneCA:
+        Normal: {x: 1, y: -0, z: 0}
+        Distance: -1
+    - A: {x: -0.69915587, y: 2.4739106, z: -0.10000137}
+      B: {x: 1, y: 4, z: -0.10000137}
+      C: {x: 0.69915646, y: 2.4739106, z: -0.10000152}
+      PlaneABC:
+        Normal: {x: -0.000000106565324, y: 0.00000011865038, z: -1}
+        Distance: -0.10000174
+      PlaneAB:
+        Normal: {x: -0.66820216, y: 0.74397975, z: 0.00000007965591}
+        Distance: -2.3077168
+      PlaneBC:
+        Normal: {x: 0.9811178, y: -0.19341129, z: -0.00000011695836}
+        Distance: -0.20747264
+      PlaneCA:
+        Normal: {x: -0, y: -1, z: 0}
+        Distance: 2.4739106
+    - A: {x: -0.69915587, y: 2.4739106, z: 0.09999862}
+      B: {x: 1, y: 4, z: 0.09999862}
+      C: {x: -1, y: 4, z: 0.09999893}
+      PlaneABC:
+        Normal: {x: 0.0000001527369, y: -0.00000017005806, z: 1}
+        Distance: -0.099998094
+      PlaneAB:
+        Normal: {x: 0.66820216, y: -0.74397975, z: -0.00000029686245}
+        Distance: 2.3077168
+      PlaneBC:
+        Normal: {x: 3.6415315e-14, y: 1, z: 0.00000023841858}
+        Distance: -4
+      PlaneCA:
+        Normal: {x: -0.9811177, y: -0.19341166, z: 0.00000012932458}
+        Distance: -0.20747109
+    - A: {x: -1, y: 4, z: 0.09999893}
+      B: {x: 1, y: 4, z: -0.10000137}
+      C: {x: -1, y: 4, z: -0.10000107}
+      PlaneABC:
+        Normal: {x: 0, y: 1, z: 0}
+        Distance: -4
+      PlaneAB:
+        Normal: {x: 0.09950387, y: -0, z: 0.99503714}
+        Distance: 0.0000012195583
+      PlaneBC:
+        Normal: {x: -0.0000001527369, y: 0, z: -1}
+        Distance: -0.100001216
+      PlaneCA:
+        Normal: {x: -1, y: 0, z: 0}
+        Distance: -1
+    - A: {x: 1, y: 4, z: -0.10000137}
+      B: {x: -0.69915587, y: 2.4739106, z: -0.10000137}
+      C: {x: -1, y: 4, z: -0.10000107}
+      PlaneABC:
+        Normal: {x: -0.0000001527369, y: 0.00000017005806, z: -1}
+        Distance: -0.1000019
+      PlaneAB:
+        Normal: {x: 0.66820216, y: -0.74397975, z: -0.00000011948387}
+        Distance: 2.3077168
+      PlaneBC:
+        Normal: {x: -0.9811177, y: -0.19341166, z: 0.00000012932459}
+        Distance: -0.20747104
+      PlaneCA:
+        Normal: {x: 0, y: 1, z: 0}
+        Distance: -4
+    - A: {x: 1, y: -0.00000012874595, z: 0.099998474}
+      B: {x: 1, y: 4, z: -0.10000137}
+      C: {x: 1, y: 4, z: 0.09999862}
+      PlaneABC:
+        Normal: {x: 1, y: -0, z: 0}
+        Distance: -1
+      PlaneAB:
+        Normal: {x: 0, y: -0.04993758, z: -0.99875236}
+        Distance: 0.09987371
+      PlaneBC:
+        Normal: {x: 0, y: 1, z: 0}
+        Distance: -4
+      PlaneCA:
+        Normal: {x: 0, y: -0.000000037252903, z: 1}
+        Distance: -0.099998474
+    - A: {x: -1, y: -0.000000119209226, z: -0.100001216}
+      B: {x: -1, y: 4, z: 0.09999893}
+      C: {x: -1, y: 4, z: -0.10000107}
+      PlaneABC:
+        Normal: {x: -1, y: 0, z: 0}
+        Distance: -1
+      PlaneAB:
+        Normal: {x: 0, y: -0.049937654, z: 0.99875236}
+        Distance: 0.09987644
+      PlaneBC:
+        Normal: {x: 0, y: 1, z: 0}
+        Distance: -4
+      PlaneCA:
+        Normal: {x: 0, y: 0.000000037252903, z: -1}
+        Distance: -0.100001216
+    - A: {x: -0.69915587, y: 2.4739106, z: -0.10000137}
+      B: {x: 0.69915646, y: 2.4739106, z: 0.099998474}
+      C: {x: -0.69915587, y: 2.4739106, z: 0.09999862}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.4739106
+      PlaneAB:
+        Normal: {x: 0.14158851, y: 0, z: -0.9899256}
+        Distance: -0.0000014840258
+      PlaneBC:
+        Normal: {x: 0.00000010656533, y: 0, z: 1}
+        Distance: -0.09999855
+      PlaneCA:
+        Normal: {x: -1, y: -0, z: -0}
+        Distance: -0.69915587
+    - A: {x: 0.69915646, y: 2.4739106, z: 0.099998474}
+      B: {x: -0.69915587, y: 2.4739106, z: -0.10000137}
+      C: {x: 0.69915646, y: 2.4739106, z: -0.10000152}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: -0}
+        Distance: 2.4739106
+      PlaneAB:
+        Normal: {x: -0.14158851, y: 0, z: 0.9899256}
+        Distance: 0.0000014694451
+      PlaneBC:
+        Normal: {x: -0.00000010656533, y: -0, z: -1}
+        Distance: -0.10000145
+      PlaneCA:
+        Normal: {x: 1, y: 0, z: -0}
+        Distance: -0.69915646
+    - A: {x: 1, y: -0.000000119209204, z: -0.10000152}
+      B: {x: 0.69915646, y: 2.4739106, z: -0.10000152}
+      C: {x: 1, y: 4, z: -0.10000137}
+      PlaneABC:
+        Normal: {x: 0.00000030633979, y: 0.000000037252903, z: -1}
+        Distance: -0.10000183
+      PlaneAB:
+        Normal: {x: -0.9926869, y: -0.12071715, z: -0.00000035950956}
+        Distance: 0.99268687
+      PlaneBC:
+        Normal: {x: -0.9811178, y: 0.1934113, z: -0.0000002923959}
+        Distance: 0.20747253
+      PlaneCA:
+        Normal: {x: 1, y: -1.3322677e-14, z: 0.0000003576279}
+        Distance: -0.99999994
+    - A: {x: -1, y: -0.00000012874597, z: 0.09999878}
+      B: {x: -0.69915587, y: 2.4739106, z: 0.09999862}
+      C: {x: -1, y: 4, z: 0.09999893}
+      PlaneABC:
+        Normal: {x: 0.00000082641645, y: -0.000000037252903, z: 1}
+        Distance: -0.09999795
+      PlaneAB:
+        Normal: {x: 0.9926869, y: -0.120717384, z: -0.00000083285966}
+        Distance: 0.992687
+      PlaneBC:
+        Normal: {x: 0.9811177, y: 0.19341166, z: -0.0000008187084}
+        Distance: 0.20747113
+      PlaneCA:
+        Normal: {x: -1, y: -3.1086245e-14, z: 0.000000834465}
+        Distance: -1.0000001
+    - A: {x: -0.69915587, y: -0.00000012397759, z: -0.10000137}
+      B: {x: -1, y: 4, z: -0.10000107}
+      C: {x: -0.69915587, y: 2.4739106, z: -0.10000137}
+      PlaneABC:
+        Normal: {x: -0.0000010153889, y: 0, z: -1}
+        Distance: -0.10000208
+      PlaneAB:
+        Normal: {x: -0.99718356, y: -0.074999206, z: 0.0000010104252}
+        Distance: -0.69718665
+      PlaneBC:
+        Normal: {x: 0.9811177, y: 0.19341166, z: -0.0000010526251}
+        Distance: 0.20747097
+      PlaneCA:
+        Normal: {x: 1, y: 0, z: -0.0000010132791}
+        Distance: 0.69915575
+    - A: {x: 0.69915646, y: -0.00000012397757, z: 0.09999832}
+      B: {x: 1, y: 4, z: 0.09999862}
+      C: {x: 0.69915646, y: 2.4739106, z: 0.099998474}
+      PlaneABC:
+        Normal: {x: -0.00000017449032, y: -0.00000006324488, z: 1}
+        Distance: -0.0999982
+      PlaneAB:
+        Normal: {x: 0.9971835, y: -0.07499906, z: 0.000000173567}
+        Distance: -0.6971873
+      PlaneBC:
+        Normal: {x: -0.9811178, y: 0.1934113, z: -0.00000017543752}
+        Distance: 0.20747258
+      PlaneCA:
+        Normal: {x: -1, y: 1.13090655e-14, z: -0.00000017881393}
+        Distance: 0.69915646
+    - A: {x: -0.69915587, y: 2.4739106, z: 0.09999862}
+      B: {x: -0.69915587, y: -0.00000012397759, z: -0.10000137}
+      C: {x: -0.69915587, y: 2.4739106, z: -0.10000137}
+      PlaneABC:
+        Normal: {x: 1, y: 0, z: 0}
+        Distance: 0.69915587
+      PlaneAB:
+        Normal: {x: 0, y: -0.080580756, z: 0.9967481}
+        Distance: 0.09967615
+      PlaneBC:
+        Normal: {x: 0, y: 0, z: -1}
+        Distance: -0.10000137
+      PlaneCA:
+        Normal: {x: 0, y: 1, z: 0}
+        Distance: -2.4739106
+    - A: {x: 0.69915646, y: 2.4739106, z: -0.10000152}
+      B: {x: 0.69915646, y: -0.00000012397757, z: 0.09999832}
+      C: {x: 0.69915646, y: 2.4739106, z: 0.099998474}
+      PlaneABC:
+        Normal: {x: -1, y: 0, z: 0}
+        Distance: 0.69915646
+      PlaneAB:
+        Normal: {x: -0, y: -0.0805807, z: -0.9967481}
+        Distance: 0.099673115
+      PlaneBC:
+        Normal: {x: 0, y: -0.00000006324488, z: 1}
+        Distance: -0.09999832
+      PlaneCA:
+        Normal: {x: 0, y: 1, z: 0}
+        Distance: -2.4739106
+    - A: {x: 1, y: 4, z: -0.10000137}
+      B: {x: 1, y: -0.00000012874595, z: 0.099998474}
+      C: {x: 1, y: -0.000000119209204, z: -0.10000152}
+      PlaneABC:
+        Normal: {x: 1, y: 0, z: 0}
+        Distance: -1
+      PlaneAB:
+        Normal: {x: -0, y: 0.04993758, z: 0.99875236}
+        Distance: -0.099873714
+      PlaneBC:
+        Normal: {x: 0, y: -1, z: -0.000000047683745}
+        Distance: -0.00000012397766
+      PlaneCA:
+        Normal: {x: 0, y: 0.000000037252903, z: -1}
+        Distance: -0.10000152
+    - A: {x: -1, y: 4, z: 0.09999893}
+      B: {x: -1, y: -0.000000119209226, z: -0.100001216}
+      C: {x: -1, y: -0.00000012874597, z: 0.09999878}
+      PlaneABC:
+        Normal: {x: -1, y: 0, z: 0}
+        Distance: -1
+      PlaneAB:
+        Normal: {x: 0, y: 0.049937654, z: -0.99875236}
+        Distance: -0.09987645
+      PlaneBC:
+        Normal: {x: -0, y: -1, z: -0.00000004768371}
+        Distance: -0.00000012397766
+      PlaneCA:
+        Normal: {x: 0, y: -0.000000037252903, z: 1}
+        Distance: -0.09999878
+    - A: {x: -1, y: 4, z: -0.10000107}
+      B: {x: -0.69915587, y: -0.00000012397759, z: -0.10000137}
+      C: {x: -1, y: -0.000000119209226, z: -0.100001216}
+      PlaneABC:
+        Normal: {x: -0.00000052007726, y: 0.000000037252903, z: -1}
+        Distance: -0.10000174
+      PlaneAB:
+        Normal: {x: 0.9971835, y: 0.074999206, z: -0.00000047549415}
+        Distance: 0.69718665
+      PlaneBC:
+        Normal: {x: -0.000000015849954, y: -1, z: -0.0000000372529}
+        Distance: -0.00000013878451
+      PlaneCA:
+        Normal: {x: -1, y: -1.7763568e-14, z: 0.00000047683716}
+        Distance: -0.99999994
+    - A: {x: 1, y: 4, z: 0.09999862}
+      B: {x: 0.69915646, y: -0.00000012397757, z: 0.09999832}
+      C: {x: 1, y: -0.00000012874595, z: 0.099998474}
+      PlaneABC:
+        Normal: {x: -0.0000005200783, y: -0.000000037252903, z: 1}
+        Distance: -0.09999795
+      PlaneAB:
+        Normal: {x: -0.9971835, y: 0.07499906, z: -0.0000005349309}
+        Distance: 0.6971873
+      PlaneBC:
+        Normal: {x: -0.000000015850018, y: -1, z: -0.00000003725291}
+        Distance: -0.0000001091707
+      PlaneCA:
+        Normal: {x: 1, y: -1.9984014e-14, z: 0.0000005364418}
+        Distance: -1
+    - A: {x: 0.69915646, y: 2.4739106, z: -0.10000152}
+      B: {x: 1, y: -0.000000119209204, z: -0.10000152}
+      C: {x: 0.69915646, y: -0.00000012397757, z: -0.10000168}
+      PlaneABC:
+        Normal: {x: 0.00000052007823, y: 0.00000006324488, z: -1}
+        Distance: -0.10000204
+      PlaneAB:
+        Normal: {x: 0.9926869, y: 0.12071715, z: 0.00000053251875}
+        Distance: -0.99268687
+      PlaneBC:
+        Normal: {x: 0.000000015850022, y: -1, z: -0.000000063244876}
+        Distance: -0.00000014138381
+      PlaneCA:
+        Normal: {x: -1, y: 3.3927197e-14, z: -0.0000005364418}
+        Distance: 0.6991564
+    - A: {x: -0.69915587, y: 2.4739106, z: 0.09999862}
+      B: {x: -1, y: -0.00000012874597, z: 0.09999878}
+      C: {x: -0.69915587, y: -0.00000012397759, z: 0.09999862}
+      PlaneABC:
+        Normal: {x: 0.00000052007726, y: 0, z: 1}
+        Distance: -0.09999826
+      PlaneAB:
+        Normal: {x: -0.9926869, y: 0.120717384, z: 0.00000053251875}
+        Distance: -0.9926869
+      PlaneBC:
+        Normal: {x: 0.000000015850006, y: -1, z: -8.502606e-15}
+        Distance: -0.00000011289596
+      PlaneCA:
+        Normal: {x: 1, y: 0, z: -0.0000005364418}
+        Distance: 0.6991559
+    - A: {x: -0.69915587, y: -0.00000012397759, z: -0.10000137}
+      B: {x: -0.69915587, y: 2.4739106, z: 0.09999862}
+      C: {x: -0.69915587, y: -0.00000012397759, z: 0.09999862}
+      PlaneABC:
+        Normal: {x: 1, y: 0, z: 0}
+        Distance: 0.69915587
+      PlaneAB:
+        Normal: {x: 0, y: 0.080580756, z: -0.9967481}
+        Distance: -0.09967617
+      PlaneBC:
+        Normal: {x: -0, y: 0, z: 1}
+        Distance: -0.09999862
+      PlaneCA:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: -0.00000012397759
+    - A: {x: 0.69915646, y: -0.00000012397757, z: 0.09999832}
+      B: {x: 0.69915646, y: 2.4739106, z: -0.10000152}
+      C: {x: 0.69915646, y: -0.00000012397757, z: -0.10000168}
+      PlaneABC:
+        Normal: {x: -1, y: 0, z: 0}
+        Distance: 0.69915646
+      PlaneAB:
+        Normal: {x: 0, y: 0.0805807, z: 0.9967481}
+        Distance: -0.09967312
+      PlaneBC:
+        Normal: {x: 0, y: 0.00000006324488, z: -1}
+        Distance: -0.10000168
+      PlaneCA:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: -0.00000012397757
+    - A: {x: -0.69915587, y: -0.00000012397759, z: 0.09999862}
+      B: {x: -1, y: -0.000000119209226, z: -0.100001216}
+      C: {x: -0.69915587, y: -0.00000012397759, z: -0.10000137}
+      PlaneABC:
+        Normal: {x: -0.000000015849935, y: -1, z: -0}
+        Distance: -0.00000013505917
+      PlaneAB:
+        Normal: {x: -0.553621, y: 0, z: 0.8327688}
+        Distance: -0.4703431
+      PlaneBC:
+        Normal: {x: -0.00000052007726, y: -0, z: -1}
+        Distance: -0.10000174
+      PlaneCA:
+        Normal: {x: 1, y: 0, z: -0}
+        Distance: 0.69915587
+    - A: {x: -1, y: -0.000000119209226, z: -0.100001216}
+      B: {x: -0.69915587, y: -0.00000012397759, z: 0.09999862}
+      C: {x: -1, y: -0.00000012874597, z: 0.09999878}
+      PlaneABC:
+        Normal: {x: 0.000000015849983, y: -1, z: -0.00000004768371}
+        Distance: -0.00000010812767
+      PlaneAB:
+        Normal: {x: 0.553621, y: 0.000000037227665, z: -0.8327688}
+        Distance: 0.4703431
+      PlaneBC:
+        Normal: {x: 0.00000052007726, y: -0.000000044703484, z: 1}
+        Distance: -0.09999826
+      PlaneCA:
+        Normal: {x: -1, y: 0, z: -0}
+        Distance: -1
+    - A: {x: 1, y: -0.00000012874595, z: 0.099998474}
+      B: {x: 0.69915646, y: -0.00000012397757, z: -0.10000168}
+      C: {x: 1, y: -0.000000119209204, z: -0.10000152}
+      PlaneABC:
+        Normal: {x: 0.000000015850016, y: -1, z: -0.000000047683745}
+        Distance: -0.00000013982766
+      PlaneAB:
+        Normal: {x: -0.55362236, y: -0.000000037227625, z: 0.8327679}
+        Distance: 0.47034684
+      PlaneBC:
+        Normal: {x: 0.0000005200783, y: 0.000000044703484, z: -1}
+        Distance: -0.10000204
+      PlaneCA:
+        Normal: {x: 1, y: 0, z: 0}
+        Distance: -1
+    - A: {x: 0.69915646, y: -0.00000012397757, z: -0.10000168}
+      B: {x: 1, y: -0.00000012874595, z: 0.099998474}
+      C: {x: 0.69915646, y: -0.00000012397757, z: 0.09999832}
+      PlaneABC:
+        Normal: {x: -0.000000015850036, y: -1, z: 0}
+        Distance: -0.00000011289592
+      PlaneAB:
+        Normal: {x: 0.55362236, y: 0, z: -0.8327679}
+        Distance: -0.47034684
+      PlaneBC:
+        Normal: {x: -0.0000005200783, y: 0, z: 1}
+        Distance: -0.09999795
+      PlaneCA:
+        Normal: {x: -1, y: -0, z: -0}
+        Distance: 0.69915646
+--- !u!114 &114814773432745552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1605017219441392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e27f8ebd25d8224ca1a103f710e077e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource:
+  - {fileID: 82478987924147112}
+  - {fileID: 82614453613611320}
+  vaAudio:
+  - {fileID: 114937144992187540}
+  - {fileID: 114551221599081444}
+  _doorOpenClips:
+  - {fileID: 8300000, guid: 4232a14d65a9fb14fb1d056fe128a17b, type: 3}
+  - {fileID: 8300000, guid: c678fa9e60b338c479cb375e480c313c, type: 3}
+  - {fileID: 8300000, guid: a2ed08995cd2e6c4791353269466e2ed, type: 3}
+  - {fileID: 8300000, guid: 230ec3b001c94f04c8d82685fb13908c, type: 3}
+  _doorHitClips:
+  - {fileID: 8300000, guid: 65c5789d611ee3541b898c31807efac0, type: 3}
+  - {fileID: 8300000, guid: 4298c654e40497b4a98efeb69ae39c97, type: 3}
+  _doorHandClips:
+  - {fileID: 8300000, guid: 54a5736928f603a43991f68869d16261, type: 3}
+  - {fileID: 8300000, guid: 04ae3784ce9fd304cbfad13bf29f59b8, type: 3}
+  pitchModulationAmount: 0.05
+--- !u!114 &114835057337879606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1295587547640854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43300f764e354d642abf0f0dbb612011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Preset: 11
+  Value:
+    LowFreqAbsorption: 0.14
+    MidFreqAbsorption: 0.263
+    HighFreqAbsorption: 0.392
+    Scattering: 0.05
+    LowFreqTransmission: 0.1
+    MidFreqTransmission: 0.05
+    HighFreqTransmission: 0.03
+--- !u!114 &114937144992187540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1020631172430576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8731920a0071d7c48a365d6c0e3cc242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Position: 1
+  PositionDampening: 0
+  Shapes:
+  - {fileID: 114229418973914760}
+  ExcludedShapes: []
+  Blend: 0
+  BlendMinDistance: 0
+  BlendMaxDistance: 5
+  BlendCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  Volume: 1
+  BaseVolume: 0.4
+  Zone: {fileID: 0}
+  Fade: 0
+  FadeMinDistance: 0
+  FadeMaxDistance: 5
+  FadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  Occlude: 0
+  OccludeMethod: 0
+  OccludeMaterial: 0
+  OccludeDampening: 5
+  OccludeGroups: []
+  OccludeAmount: 1

@@ -65,7 +65,7 @@ public class FootstepSounds : MonoBehaviour {
         if (Physics.Raycast(ray, out hit, 5f, layerMask))
         {
             //print("hi there");
-            print(hit.transform.gameObject.tag);
+            //print(hit.transform.gameObject.tag);
             switch (hit.transform.gameObject.tag)
             {
                 case "Wood1":
