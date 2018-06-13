@@ -17,11 +17,6 @@ public class ExplosionForce : MonoBehaviour {
 	void Start () {
         audio = GetComponent<AudioSource>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void DoExplosionForce()
     {

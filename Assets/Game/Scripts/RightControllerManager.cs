@@ -52,7 +52,8 @@ public class RightControllerManager : MonoBehaviour {
             _inventoryObj.SetActive(true);
             //ShowInventoryItems(true);
             PlaceItemsInInventory(false, true);
-            _handModelObj.gameObject.SetActive(true);
+            CheckHandModelVisibility();
+            //_handModelObj.gameObject.SetActive(true);
 
             //if (_inHandObj != null)
             //{
@@ -238,11 +239,15 @@ public class RightControllerManager : MonoBehaviour {
     public void GiveAwayItem(InventorySlot inventorySlot)
     {
         ClearImventorySlot(inventorySlot);
-        _handModelObj.SetActive(true);
+        CheckHandModelVisibility();
+        //_handModelObj.SetActive(true);
     }
 
     private void PutInInventory(InventorySlot inventorySlot)
     {
+        //_handModelObj.SetActive(true);
+        
+
         inventorySlot.inventoryObj.tag = "Collectable";
 
         inventorySlot.inventoryObj.transform.parent = inventorySlot.attachPoint.transform;
@@ -257,11 +262,10 @@ public class RightControllerManager : MonoBehaviour {
 
 
         inventorySlot.hasItemInHand = false;
-
-        _handModelObj.SetActive(true);
+        CheckHandModelVisibility();
 
         //print(inventorySlot.name + " was put in the inventory");
-        
+
 
         //inventorySlot.inventoryObj.transform.position = Vector3.Lerp(inventorySlot.inventoryObj.transform.position, inventorySlot.attachPoint.position, Time.deltaTime * 12f);
         //inventorySlot.inventoryObj.transform.rotation = Quaternion.Slerp(inventorySlot.inventoryObj.transform.rotation, inventorySlot.attachPoint.rotation, Time.deltaTime * 12f);
@@ -269,6 +273,10 @@ public class RightControllerManager : MonoBehaviour {
 
     private void PutItemInHand(InventorySlot inventorySlot)
     {
+        //print("Putting in hand");
+        PlaySound.PlayAudioFromSelection(inventorySlot.inventoryObjAudioSource, inventorySlot.inventoryObjAudioClips, true, -.05f, .05f);
+        //_handModelObj.SetActive(false);
+
         inventorySlot.inventoryObj.tag = "Collected";
 
         //_inHandObj = inventorySlot.inventoryObj;
@@ -277,12 +285,13 @@ public class RightControllerManager : MonoBehaviour {
         //_hasItemInHand = true;
 
         //print("The status of the hand model should be true:" + _handModelObj.gameObject.activeInHierarchy);
-        _handModelObj.SetActive(false);
         //print("The status of the hand model should be false:" + _handModelObj.gameObject.activeInHierarchy);
 
         inventorySlot.inventoryObj.transform.localPosition = inventorySlot.collectable.attachPoint.localPosition;
         inventorySlot.inventoryObj.transform.localRotation = inventorySlot.collectable.attachPoint.localRotation;
         inventorySlot.inventoryObj.transform.localScale = inventorySlot.inventoryObjOriginalScale;
+
+        CheckHandModelVisibility();
 
         //print(inventorySlot.name + " was put in my hand");
 
@@ -345,7 +354,10 @@ public class RightControllerManager : MonoBehaviour {
         inventorySlot.inventoryObj = inventorySlot.collectable.gameObject;
         inventorySlot.textTag.text = inventorySlot.collectable.itemName;
         inventorySlot.inventoryObjOriginalScale = objCollectable.transform.localScale;
-        
+        inventorySlot.inventoryObjAudioSource = objCollectable.GetComponent<AudioSource>();
+        inventorySlot.inventoryObjAudioClips = objCollectable.GetComponent<Collectable>()._soundsWhenEnabled;
+
+
         inventorySlot.slotTaken = true;
         //inventorySlot.hasItemInHand = true;
 
@@ -465,6 +477,20 @@ public class RightControllerManager : MonoBehaviour {
         }
     }
 
+    private void CheckHandModelVisibility()
+    {
+        foreach (var slot in _inventorySlots)
+        {
+            if (slot.hasItemInHand)
+            {
+                _handModelObj.SetActive(false);
+                break;
+            }
+            else
+                _handModelObj.SetActive(true);
+        }
+    }
+
 
 
     [System.Serializable]
@@ -474,6 +500,8 @@ public class RightControllerManager : MonoBehaviour {
         public bool slotTaken;
         public GameObject inventoryObj; // the whole of the individual inventory UI
         public Collectable collectable;
+        public AudioSource inventoryObjAudioSource;
+        public AudioClip[] inventoryObjAudioClips;
         //public Rigidbody rb;
         public Transform attachPoint;
         public Image inventoryOutline;

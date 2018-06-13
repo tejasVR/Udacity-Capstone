@@ -199,8 +199,8 @@ public class Enemy : MonoBehaviour {
     public void AnimateHit()
     {
         Animate(HIT_BOOL);
-        if (anim.GetBool("hit"))
-            print("hit is true");
+        //if (anim.GetBool("hit"))
+            //print("hit is true");
         //anim.SetInteger("randomHit", Mathf.FloorToInt(Random.Range(1, 4)));
     }
 

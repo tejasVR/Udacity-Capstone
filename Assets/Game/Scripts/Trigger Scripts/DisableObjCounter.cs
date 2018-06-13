@@ -8,17 +8,13 @@ public class DisableObjCounter : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        StartCoroutine(DisableObjCount());
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-        counterToDisableObj -= Time.deltaTime;
-        if (counterToDisableObj <= 0)
-        {
-            this.gameObject.SetActive(false);
-        }
-		
-	}
+
+    IEnumerator DisableObjCount()
+    {
+        yield return new WaitForSeconds(counterToDisableObj);
+        this.gameObject.SetActive(false);
+    }
 }

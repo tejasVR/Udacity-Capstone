@@ -13,6 +13,7 @@ public class Collectable : MonoBehaviour {
 
     public Renderer[] rend;
     Material[] matNormal;
+    public AudioClip[] _soundsWhenEnabled;
     
 
     public string itemName;
@@ -50,17 +51,6 @@ public class Collectable : MonoBehaviour {
             
         }
     }
-
-    private void FixedUpdate()
-    {
-        //if (isCollected)
-        {
-            //transform.position = trackedObj.transform.position;
-            //transform.rotation = trackedObj.transform.rotation;
-        }
-        
-    }
-
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Controller") && !isCollected)

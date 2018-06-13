@@ -23,11 +23,7 @@ public class Destructible : MonoBehaviour {
         boxCollider = GetComponent<BoxCollider>();
         _audioSource = GetComponent<AudioSource>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 
     //private void OnTriggerEnter(Collider col)
     //{
@@ -93,11 +89,10 @@ public class Destructible : MonoBehaviour {
 
     public void DestroyIntoPieces()
     {
-        StackTrace stackTrace = new StackTrace();
-        UnityEngine.Debug.Log(stackTrace.GetFrame(1).GetMethod().Name);
+        //StackTrace stackTrace = new StackTrace();
+        //UnityEngine.Debug.Log(stackTrace.GetFrame(1).GetMethod().Name);
         boxCollider.enabled = false;
         destroyedVersion.SetActive(true);
-
         original.SetActive(false);
 
         PlaySound.PlayAudioFromSelection(_audioSource, _destroyClips, true, -.05f, .05f);

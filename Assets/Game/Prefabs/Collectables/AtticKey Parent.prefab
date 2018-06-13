@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4476049662935100}
   - component: {fileID: 65833625265971444}
   - component: {fileID: 114535157707394720}
+  - component: {fileID: 82690158237706544}
   m_Layer: 0
   m_Name: AtticKey Parent
   m_TagString: Collectable
@@ -154,6 +155,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.06, y: 0.14, z: 0.02}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &82690158237706544
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1154164246334680}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 2
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114535157707394720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,11 +246,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98fe82f967e61644b8f805b944016574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackedObj: {fileID: 0}
-  normalMat: {fileID: 2100000, guid: aae800eb9b85cbe4fa2c104262f41452, type: 2}
   onHoverMat: {fileID: 2100000, guid: 6c75af7787d770a4d9f764eacdb9d0ef, type: 2}
   isCollected: 0
   rend:
   - {fileID: 23256841756183434}
+  _soundsWhenEnabled:
+  - {fileID: 8300000, guid: 386619b454e850546a0fac1f760c5388, type: 3}
+  - {fileID: 8300000, guid: 3a37159f9d16bbc4a962ca352039a25e, type: 3}
+  - {fileID: 8300000, guid: 90f2a85e9a2ff2b4fb76e31de79e7ffa, type: 3}
   itemName: Attic Key
   attachPoint: {fileID: 4000725646298828}

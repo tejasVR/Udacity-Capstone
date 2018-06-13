@@ -55,7 +55,7 @@ public class GunScript : MonoBehaviour {
 
             deviceAngularVelocity = _device.angularVelocity.magnitude;
 
-            if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) && firstPickedUp && fireRateTimer == fireRate)
+            if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) && firstPickedUp && fireRateTimer == fireRate && this.gameObject.CompareTag("Collected"))
             {
                 Fire();
                 fireRateTimer = 0f;

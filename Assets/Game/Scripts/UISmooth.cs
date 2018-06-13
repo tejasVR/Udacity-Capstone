@@ -4,6 +4,25 @@ using UnityEngine;
 
 public class UISmooth : MonoBehaviour {
 
+    public Vector3 endPos;
+    private Vector3 startPos;
+    public float moveSpeed = 1.5f;
+
+    private void Start()
+    {
+        startPos = transform.localPosition;
+    }
+
+    private void OnEnable()
+    {
+        transform.localPosition = startPos;
+    }
+
+    private void Update()
+    {
+        transform.localPosition = Vector3.Lerp(transform.localPosition, transform.InverseTransformPoint(endPos), Time.deltaTime * moveSpeed);
+    }
+
     //public GameObject[] icons;
     //public Vector3[] iconOriginalPos;
 
