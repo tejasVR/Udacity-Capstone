@@ -27,7 +27,7 @@ public class PlayerHitBoxScript : MonoBehaviour {
     {
         if (_timeUntilNextHitCounter == _timeUntilNextHit)
         {
-            print(other.gameObject.name);
+            //print(other.gameObject.name);
             _timeUntilNextHitCounter = 0;
 
             PostProcessControl.PlayerDamageEffect();

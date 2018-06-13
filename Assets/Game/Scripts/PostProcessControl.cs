@@ -10,6 +10,8 @@ public class PostProcessControl : MonoBehaviour {
     public static Vignette _postVignette;
     public static ColorGrading _postColorGrading;
 
+    public PostProcessEffectSettings[] _postSettings;
+
     public float _vignetteFadeOutSpeed;
     public float _constrastFadeOutSpeed;
 
@@ -20,13 +22,16 @@ public class PostProcessControl : MonoBehaviour {
 
         _postVignette = ScriptableObject.CreateInstance<Vignette>();
         _postVignette.enabled.Override(true);
-
-        //_postColorGrading = ScriptableObject.CreateInstance<ColorGrading>();
-        //_postColorGrading.enabled.Override(true);
-
         _postVignette.intensity.Override(0f);
 
-        _postVolume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, _postVignette);//, _postColorGrading);
+        //_postSettings
+
+        _postColorGrading = ScriptableObject.CreateInstance<ColorGrading>();
+        _postColorGrading.enabled.Override(true);
+        _postColorGrading.contrast.Override(0f);
+
+
+        _postVolume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, _postVignette, _postColorGrading);
     }
 
     // Update is called once per frame
@@ -44,9 +49,9 @@ public class PostProcessControl : MonoBehaviour {
     public static void PlayerDamageEffect()
     {
         _postVignette.intensity.value = 1f;
-       // _postColorGrading.contrast.value = 30f;
+        //_postColorGrading.contrast.value = 30f;
 
-        print("damage effect enabled");
+        //print("damage effect enabled");
     }
 
 }

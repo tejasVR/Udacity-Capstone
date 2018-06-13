@@ -56,6 +56,10 @@ public class Enemy : MonoBehaviour {
 
         agent.updateRotation = false;
         //agent.updatePosition = false;
+
+        //AudioSource.PlayClipAtPoint(audio.clip, )
+        audio.time = Random.Range(0f, 15f);
+
 	}
 
     private void Update()
