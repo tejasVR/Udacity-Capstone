@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23352185110990540}
   - component: {fileID: 114647432814208374}
   - component: {fileID: 54102960516115446}
+  - component: {fileID: 82996007542159998}
   m_Layer: 0
   m_Name: DoorUnlock
   m_TagString: Untagged
@@ -206,8 +207,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1119577560708036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.228, z: 0}
-  m_LocalScale: {x: 1, y: 2.067763, z: 0.1847931}
+  m_LocalPosition: {x: -0.372, y: 1.133, z: 0}
+  m_LocalScale: {x: 0.43646815, y: 0.4883505, z: 0.1847931}
   m_Children: []
   m_Father: {fileID: 4238405787927668}
   m_RootOrder: 0
@@ -449,8 +450,8 @@ HingeJoint:
   m_ConnectedAnchor: {x: 8.619938, y: 5.18, z: 0.27521992}
   m_UseSpring: 1
   m_Spring:
-    spring: 0.15
-    damper: 0.25
+    spring: 0.05
+    damper: 0.15
     targetPosition: 0
   m_UseMotor: 0
   m_Motor:
@@ -696,6 +697,86 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!82 &82996007542159998
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1119577560708036}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.75
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 0.1
+  MaxDistance: 1.5
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114034549807516956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -854,12 +935,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OuterPointSet: 1
-  OuterPoint: {x: 8.182015, y: 4.3254385, z: 0.33014703}
-  OuterPointDistance: 13.349058
+  OuterPoint: {x: 7.6398077, y: 4.3254385, z: 0.3301464}
+  OuterPointDistance: 9.585742
   IsHollow: 0
   InnerPointSet: 1
-  InnerPoint: {x: 8.182015, y: 4.3254385, z: 0.33014703}
-  InnerPointDistance: 13.349058
+  InnerPoint: {x: 7.6398077, y: 4.3254385, z: 0.3301464}
+  InnerPointDistance: 9.585742
   InnerPointInside: 0
   BoxCollider: {fileID: 65673204035651460}
   Center: {x: -0.53903335, y: 1.2079988, z: -0.01623631}
@@ -876,9 +957,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _door: {fileID: 1380575448044502}
-  _keyToUnlock: Attic Key
+  _keyToUnlock: Basement Key
   _keyAttach: {fileID: 4260983013023324}
   _rightControllerManager: {fileID: 0}
+  _unlockSounds:
+  - {fileID: 8300000, guid: 8fc01f811ad2dae40bf2240f2970acbe, type: 3}
+  - {fileID: 8300000, guid: 85ee0c121d1a5e3478696f4cf7bf0597, type: 3}
+  - {fileID: 8300000, guid: 86c8802ea0b1e194ea4d36d8c0e000cd, type: 3}
 --- !u!114 &114672260562206646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -945,12 +1030,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OuterPointSet: 1
-  OuterPoint: {x: 8.182015, y: 4.3254385, z: 0.33014703}
-  OuterPointDistance: 13.349058
+  OuterPoint: {x: 7.6398077, y: 4.3254385, z: 0.3301464}
+  OuterPointDistance: 9.585742
   IsHollow: 0
   InnerPointSet: 1
-  InnerPoint: {x: 8.182015, y: 4.3254385, z: 0.33014703}
-  InnerPointDistance: 13.349058
+  InnerPoint: {x: 7.6398077, y: 4.3254385, z: 0.3301464}
+  InnerPointDistance: 9.585742
   InnerPointInside: 0
   BoxCollider: {fileID: 65673204035651460}
   Center: {x: -0.53903335, y: 1.2079988, z: -0.01623631}

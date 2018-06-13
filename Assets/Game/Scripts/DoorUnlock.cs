@@ -13,11 +13,14 @@ public class DoorUnlock : MonoBehaviour {
     public Transform _keyAttach;
     public RightControllerManager _rightControllerManager;
 
+    private AudioSource _audioSource;
+    public AudioClip[] _unlockSounds;
+
     //public string 
 
 	// Use this for initialization
 	void Start () {
-
+        _audioSource = GetComponent<AudioSource>();
         _hinge = _door.GetComponent<HingeJoint>();
         _hinge.useLimits = true;
 	}
@@ -35,6 +38,7 @@ public class DoorUnlock : MonoBehaviour {
 
     public void Unlock()
     {
+        PlaySound.PlayAudioFromSelection(_audioSource, _unlockSounds, true, -.05f, .05f);
         _isUnlocked = true;
         _hinge.useLimits = false;
     }

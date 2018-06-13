@@ -56,8 +56,8 @@ public class DoorSound : MonoBehaviour {
         //vaAudioOpen = GetComponent<VA_AudioSource>();
 
         pitchOriginal = _audioSource[1].pitch;
-        //volumeOriginal = _audioSource[1].volume;
-        volumeOriginal = vaAudio[1].BaseVolume;
+        volumeOriginal = _audioSource[1].volume;
+        //volumeOriginal = vaAudio[1].BaseVolume;
 
 	}
 	
@@ -83,7 +83,8 @@ public class DoorSound : MonoBehaviour {
 
 
         _audioSource[1].pitch = Mathf.Lerp(_audioSource[1].pitch, pitchMaster, Time.deltaTime);// * 5f);
-        vaAudio[1].BaseVolume = Mathf.Lerp(vaAudio[1].BaseVolume, volumeMaster, Time.deltaTime * 3f);
+        _audioSource[1].volume = Mathf.Lerp(_audioSource[1].volume, volumeMaster, Time.deltaTime * 3f);
+        //vaAudio[1].BaseVolume = Mathf.Lerp(vaAudio[1].BaseVolume, volumeMaster, Time.deltaTime * 3f);
 
 
         //print(pitchMaster);
