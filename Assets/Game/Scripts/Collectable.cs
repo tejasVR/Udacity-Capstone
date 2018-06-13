@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour {
 
-    public SteamVR_TrackedObject trackedObj;
+    //public SteamVR_TrackedObject trackedObj;
 
-    public Material normalMat;
+    //public Material normalMat;
     public Material onHoverMat;
 
     public bool isCollected;
@@ -63,7 +63,7 @@ public class Collectable : MonoBehaviour {
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Controller" && !isCollected)
+        if (collision.gameObject.CompareTag("Controller") && !isCollected)
         {
             for(int i = 0; i < rend.Length; i++)
             {
@@ -75,7 +75,7 @@ public class Collectable : MonoBehaviour {
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Controller" && !isCollected)
+        if (collision.gameObject.CompareTag("Controller") && !isCollected)
         {
             for (int i = 0; i < rend.Length; i++)
             {

@@ -40,7 +40,7 @@ public class EnableObjOnTrigger : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             if (hasItem == HasItem.none)
                 EnableObjects();

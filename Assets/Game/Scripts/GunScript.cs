@@ -10,6 +10,7 @@ public class GunScript : MonoBehaviour {
     public GameObject shootPoint;
 
     public ParticleSystem muzzleFlash;
+    public ParticleSystem shotTrail;
 
     public float explosionForce;
     public float explosionRadius;
@@ -74,7 +75,7 @@ public class GunScript : MonoBehaviour {
             fireRateTimer = fireRate;
             if (!clickSoundPlayed)
             {
-                PlaySound.PlayAudio(_audioSource[2], true);
+                PlaySound.PlayAudio(_audioSource[2], true, -.15f, .15f);
                 clickSoundPlayed = true;
             }
         }
@@ -91,41 +92,20 @@ public class GunScript : MonoBehaviour {
     {
         if (other.gameObject.tag == "Destructible")
         {
-            if(deviceAngularVelocity > 5f)
+            if (deviceAngularVelocity > 2f)
             {
                 Destructible destructible = other.transform.GetComponent<Destructible>();
-                if (destructible != null)
-                {
-                    destructible.DestroyIntoPieces();
-                }
 
-                AddExplosionForce(transform.position, explosionRadius, -explosionForce);
+                destructible.HitPiece();
             }
         }
-    }
-
-    private void FixedUpdate()
-    {
-        if (this.GetComponent<Collectable>().isCollected)
-        {
-            // here just so we don't have to pick up the gun everytime
-            //transform.position = _trackedObj.transform.position;
-            //transform.rotation = _trackedObj.transform.rotation;
-        }
-
-        //print(rb.angularVelocity.normalized);
-
-        //if (transform.parent.gameObject.GetComponent<Rigidbody>() != null)
-        //    print(transform.parent.gameObject.GetComponent<Rigidbody>().angularVelocity.magnitude);
-
-
-
-
     }
 
     public void Fire()
     {
         //print("Fired");
+        shotTrail.Play();
+
         muzzleFlash.Play();
 
 
@@ -137,7 +117,7 @@ public class GunScript : MonoBehaviour {
         {
             var hitPoint = hit.point;
 
-            if (hit.collider.gameObject.tag == "Destructible")
+            if (hit.collider.CompareTag("Destructible"))
             {
                 Destructible destructible = hit.transform.GetComponent<Destructible>();
                 if (destructible != null)
@@ -148,12 +128,12 @@ public class GunScript : MonoBehaviour {
                 AddExplosionForce(hit.point, explosionRadius, explosionForce);
             }
 
-            print("Object Hit:" + hit.collider.gameObject.name);
+            //print("Object Hit:" + hit.collider.gameObject.name);
 
 
-            if (hit.collider.gameObject.tag == "Enemy")
+            if (hit.collider.CompareTag("Enemy"))
             {
-                //print("Enemy Hit: " + hit.collider.gameObject.name);
+                print("Enemy Hit: " + hit.collider.gameObject.name);
 
                 //var hitDir = shootPoint.transform.position - hit.point;
                 var hitDir = shootPoint.transform.forward;
@@ -197,8 +177,8 @@ public class GunScript : MonoBehaviour {
             //_audioSource[0].PlayOneShot(clips[0]);
             //_audioSource[1].PlayOneShot(clips[1]);
 
-            PlaySound.PlayAudio(_audioSource[0], true);
-            PlaySound.PlayAudio(_audioSource[1], false);
+            PlaySound.PlayAudio(_audioSource[0], true, -.15f, .15f);
+            PlaySound.PlayAudio(_audioSource[1], false, 0, 0);
             clickSoundPlayed = false;
 
             //globalLowPass.GunShotLowPass(3000);

@@ -24,7 +24,8 @@ public class DoorUnlock : MonoBehaviour {
 	
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Collectable" && _keyToUnlock == other.GetComponent<Collectable>().itemName && !_isUnlocked)
+        //if ((other.CompareTag("Collectable") || other.CompareTag("Collected")) && _keyToUnlock == other.GetComponent<Collectable>().itemName && !_isUnlocked)
+        if (other.CompareTag("Collected") && _keyToUnlock == other.GetComponent<Collectable>().itemName && !_isUnlocked)
         {
             Unlock();
             _rightControllerManager.AttachToDoor(_keyToUnlock, _keyAttach);

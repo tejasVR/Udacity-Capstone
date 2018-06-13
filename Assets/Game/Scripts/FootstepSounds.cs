@@ -85,7 +85,7 @@ public class FootstepSounds : MonoBehaviour {
                     break;
             }
 
-            if (hit.transform.gameObject.tag == "Stairs")
+            if (hit.transform.CompareTag("Stairs"))
                 _distanceToStep = _distanceToStepStairs;
             else
                 _distanceToStep = _distanceToStepNormal;

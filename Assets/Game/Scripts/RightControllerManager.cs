@@ -85,12 +85,17 @@ public class RightControllerManager : MonoBehaviour {
 
     private void OnCollisionStay(Collision collision)
     {
-        if(collision.gameObject.tag == "Collectable")
+        if(collision.gameObject.CompareTag("Collectable"))
         {
             if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
             {
                 if (CheckInventoryItemExists(collision.gameObject.GetComponent<Collectable>().itemName))
+                {
+                    //print("The object we are trying to pick up does not yet exists in our inventory");
+                    PlaceItemsInInventory(false, true);
+                    //print("going to add an inventory item");
                     AddInventoryItem(collision.gameObject);
+                }
             }
         }
     }
@@ -106,11 +111,13 @@ public class RightControllerManager : MonoBehaviour {
         if (_touchpad.magnitude > .25f)
         {
             // Inventory Slot #1
-            if (_angleFromCenter > 220 && _angleFromCenter < 280)
-                 _currentItem = 0;
+            if (_angleFromCenter > 275 && _angleFromCenter < 335)
+                _currentItem = 0;
             // Inventiry Slot #2
-            else if (_angleFromCenter > 290 && _angleFromCenter < 350)
-                _currentItem = 1; 
+            else if (_angleFromCenter > 15 && _angleFromCenter < 75)
+                _currentItem = 1;
+            else
+                _currentItem = -1;
         }
         else
             _currentItem = -1;
@@ -176,7 +183,7 @@ public class RightControllerManager : MonoBehaviour {
 
     public void CloseInventory()
     {
-        print("closing inventory");
+        //print("closing inventory");
         _isInventoryOpen = false;
         _inventoryObj.SetActive(false);
         PlaceItemsInInventory(true, false);
@@ -186,6 +193,7 @@ public class RightControllerManager : MonoBehaviour {
 
     private bool CheckInventoryItemExists(string name)
     {
+        //print("Checking if exists:" + name);
         foreach (var slot in _inventorySlots)
         {
             if (slot.slotTaken && slot.name == name)
@@ -203,6 +211,7 @@ public class RightControllerManager : MonoBehaviour {
 
     private void PlaceItemsInInventory(bool itemsNotInHand, bool allItems) //check what items the player currently has
     {
+        //print("placing items in inventory");
         foreach (var slot in _inventorySlots)
         {
             if (itemsNotInHand)
@@ -222,7 +231,9 @@ public class RightControllerManager : MonoBehaviour {
             }
             
         }
+        //print("finished placing items in inventory");
     }
+
 
     public void GiveAwayItem(InventorySlot inventorySlot)
     {
@@ -232,16 +243,24 @@ public class RightControllerManager : MonoBehaviour {
 
     private void PutInInventory(InventorySlot inventorySlot)
     {
-        inventorySlot.inventoryObj.transform.parent = inventorySlot.inventoryOutline.gameObject.transform.parent;
+        inventorySlot.inventoryObj.tag = "Collectable";
 
-        inventorySlot.inventoryObj.transform.localPosition = inventorySlot.attachPoint.localPosition;
-        inventorySlot.inventoryObj.transform.localRotation = inventorySlot.attachPoint.localRotation;
+        inventorySlot.inventoryObj.transform.parent = inventorySlot.attachPoint.transform;
+
+        inventorySlot.inventoryObj.transform.localPosition = Vector3.zero; // inventorySlot.attachPoint.localPosition;
+        inventorySlot.inventoryObj.transform.localRotation = Quaternion.Euler(0, 0, 0);// inventorySlot.attachPoint.localRotation;
+
+        if (inventorySlot.name == "Pistol")
+            inventorySlot.inventoryObj.transform.localScale = new Vector3(.65f, .65f, .65f); // inventorySlot.attachPoint.localScale;
+        else
+            inventorySlot.inventoryObj.transform.localScale = new Vector3(1, 1, 1); // inventorySlot.attachPoint.localScale;
+
 
         inventorySlot.hasItemInHand = false;
 
         _handModelObj.SetActive(true);
 
-        print(inventorySlot.name + " was put in the inventory");
+        //print(inventorySlot.name + " was put in the inventory");
         
 
         //inventorySlot.inventoryObj.transform.position = Vector3.Lerp(inventorySlot.inventoryObj.transform.position, inventorySlot.attachPoint.position, Time.deltaTime * 12f);
@@ -250,17 +269,22 @@ public class RightControllerManager : MonoBehaviour {
 
     private void PutItemInHand(InventorySlot inventorySlot)
     {
+        inventorySlot.inventoryObj.tag = "Collected";
+
         //_inHandObj = inventorySlot.inventoryObj;
         inventorySlot.inventoryObj.transform.parent = this.transform;
         inventorySlot.hasItemInHand = true;
         //_hasItemInHand = true;
 
+        //print("The status of the hand model should be true:" + _handModelObj.gameObject.activeInHierarchy);
         _handModelObj.SetActive(false);
+        //print("The status of the hand model should be false:" + _handModelObj.gameObject.activeInHierarchy);
 
         inventorySlot.inventoryObj.transform.localPosition = inventorySlot.collectable.attachPoint.localPosition;
         inventorySlot.inventoryObj.transform.localRotation = inventorySlot.collectable.attachPoint.localRotation;
+        inventorySlot.inventoryObj.transform.localScale = inventorySlot.inventoryObjOriginalScale;
 
-        print(inventorySlot.name + " was put in my hand");
+        //print(inventorySlot.name + " was put in my hand");
 
         //inventorySlot.rb.useGravity = false;
         //inventorySlot.rb.isKinematic = true;
@@ -288,23 +312,29 @@ public class RightControllerManager : MonoBehaviour {
     private void AddInventoryItem(GameObject objCollectable)
     {
         // Get Collectable class properties from object
-        
 
+        //print("I am beginning to add something to the inventory");
         // Find an inventory slot that is not already in use
         var inventorySlot = new InventorySlot();
 
-        for (int i = 0; i < _inventorySlots.Capacity - 1; i++)
+        //print("I have assigned an empty inventory slot in memory for temporay use");
+
+
+        for (int i = 0; i <= _inventorySlots.Capacity - 1; i++)
         {
             //print("I am adding an inventory item. Here is the slot I am on:" + i);
 
             if (!_inventorySlots[i].slotTaken)
             {
                 inventorySlot = _inventorySlots[i];
+                
                 //print("The inventory slot I have decided to add the item in is:" + i);
+                break;
 
             }
         }
 
+        //objCollectable.CompareTag("Collected";
         inventorySlot.collectable = objCollectable.GetComponent<Collectable>();
         //inventorySlot.rb = objCollectable.GetComponent<Rigidbody>();
 
@@ -314,6 +344,7 @@ public class RightControllerManager : MonoBehaviour {
         inventorySlot.name = inventorySlot.collectable.itemName;
         inventorySlot.inventoryObj = inventorySlot.collectable.gameObject;
         inventorySlot.textTag.text = inventorySlot.collectable.itemName;
+        inventorySlot.inventoryObjOriginalScale = objCollectable.transform.localScale;
         
         inventorySlot.slotTaken = true;
         //inventorySlot.hasItemInHand = true;
@@ -446,6 +477,7 @@ public class RightControllerManager : MonoBehaviour {
         //public Rigidbody rb;
         public Transform attachPoint;
         public Image inventoryOutline;
+        public Vector3 inventoryObjOriginalScale;
         //public GameObject inventoryItemObj; // just the item object that is in the inventory
         //public GameObject itemInHandObj; // the item that will be in the hands of the player
         public TextMeshPro textTag;

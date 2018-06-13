@@ -117,23 +117,23 @@ public class DoorSound : MonoBehaviour {
         //        break;
         //}
 
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Controller")
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Controller"))
         {
 
             
 
-            PlaySound.PlayAudioFromSelection(_audioSource[0], _doorHandClips, true);
+            PlaySound.PlayAudioFromSelection(_audioSource[0], _doorHandClips, true, -.1f, .1f);
 
             if (!_audioSource[1].isPlaying)
             {
-                PlaySound.PlayAudioFromSelection(_audioSource[1], _doorOpenClips, false);
+                PlaySound.PlayAudioFromSelection(_audioSource[1], _doorOpenClips, false, -.1f, .1f);
             }
 
         }
         else
-            PlaySound.PlayAudioFromSelection(_audioSource[0], _doorHitClips, true);
+            PlaySound.PlayAudioFromSelection(_audioSource[0], _doorHitClips, true, -.1f, .1f);
 
-        print("hit door on object:" + collision.gameObject.name);
+        //print("hit door on object:" + collision.gameObject.name);
     }
 
 
