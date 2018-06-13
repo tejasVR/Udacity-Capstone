@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 4076408116966136}
   - component: {fileID: 82571354399096976}
   - component: {fileID: 114034549807516956}
+  - component: {fileID: 114995158283138510}
   m_Layer: 19
   m_Name: AudioSource Hits
   m_TagString: Untagged
@@ -77,6 +78,7 @@ GameObject:
   - component: {fileID: 4670243227364598}
   - component: {fileID: 33781940023362326}
   - component: {fileID: 23659812798001474}
+  - component: {fileID: 65673204035651460}
   - component: {fileID: 64532664292307618}
   - component: {fileID: 54293069412250408}
   - component: {fileID: 59629548173046708}
@@ -114,6 +116,7 @@ GameObject:
   - component: {fileID: 4006825232533550}
   - component: {fileID: 82083763422297264}
   - component: {fileID: 114282537041145912}
+  - component: {fileID: 114642570388412678}
   m_Layer: 19
   m_Name: AudioSource Open
   m_TagString: Untagged
@@ -147,8 +150,8 @@ Transform:
   m_GameObject: {fileID: 1650849992083876}
   m_LocalRotation: {x: -0.000000021855698, y: -0.00000041723246, z: 1.5695134e-14,
     w: 1}
-  m_LocalPosition: {x: -1.1296461, y: 0.046683818, z: -0.006539695}
-  m_LocalScale: {x: 1, y: 1.0204082, z: 1.03502}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4670243227364598}
   m_RootOrder: 2
@@ -161,8 +164,8 @@ Transform:
   m_GameObject: {fileID: 1304820433487182}
   m_LocalRotation: {x: -0.000000021855698, y: -0.00000041723246, z: 1.5695134e-14,
     w: 1}
-  m_LocalPosition: {x: -1.1296461, y: 0.046683818, z: -0.006539695}
-  m_LocalScale: {x: 1, y: 1.0204082, z: 1.03502}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4670243227364598}
   m_RootOrder: 1
@@ -489,7 +492,7 @@ MeshCollider:
   m_GameObject: {fileID: 1380575448044502}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
@@ -509,6 +512,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 60b3d32d5c10350459a47c5f20f118c5, type: 3}
+--- !u!65 &65673204035651460
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1380575448044502}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1, y: 2.16, z: 0.14232814}
+  m_Center: {x: -0.53903335, y: 1.2079988, z: -0.01623631}
 --- !u!65 &65676265972099000
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -687,7 +702,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1304820433487182}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8731920a0071d7c48a365d6c0e3cc242, type: 3}
   m_Name: 
@@ -754,7 +769,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1650849992083876}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8731920a0071d7c48a365d6c0e3cc242, type: 3}
   m_Name: 
@@ -827,6 +842,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorRb: {fileID: 54293069412250408}
+--- !u!114 &114642570388412678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650849992083876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a946634e8f9caec40b88b4623b30887a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OuterPointSet: 1
+  OuterPoint: {x: 8.182015, y: 4.3254385, z: 0.33014703}
+  OuterPointDistance: 13.349058
+  IsHollow: 0
+  InnerPointSet: 1
+  InnerPoint: {x: 8.182015, y: 4.3254385, z: 0.33014703}
+  InnerPointDistance: 13.349058
+  InnerPointInside: 0
+  BoxCollider: {fileID: 65673204035651460}
+  Center: {x: -0.53903335, y: 1.2079988, z: -0.01623631}
+  Size: {x: 1.1, y: 2.16, z: 0.14232814}
 --- !u!114 &114647432814208374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -838,9 +875,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5cb8736e3b083c4e9b530786cb851ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 1380575448044502}
-  doorToUnlock: Attic Key
-  keyAttach: {fileID: 4260983013023324}
+  _door: {fileID: 1380575448044502}
+  _keyToUnlock: Attic Key
+  _keyAttach: {fileID: 4260983013023324}
+  _rightControllerManager: {fileID: 0}
 --- !u!114 &114672260562206646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -874,14 +912,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1380575448044502}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e2895d347b4dd14e9a742044907083e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OuterPointSet: 1
-  OuterPoint: {x: 7.603256, y: 4.24575, z: 0.26867986}
-  OuterPointDistance: 5.446302
+  OuterPoint: {x: 7.996763, y: 4.24575, z: 0.2686801}
+  OuterPointDistance: 13.383008
   IsHollow: 1
   InnerPointSet: 0
   InnerPoint: {x: 0, y: 0, z: 0}
@@ -895,3 +933,25 @@ MonoBehaviour:
   tree:
     Nodes: []
     Triangles: []
+--- !u!114 &114995158283138510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1304820433487182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a946634e8f9caec40b88b4623b30887a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OuterPointSet: 1
+  OuterPoint: {x: 8.182015, y: 4.3254385, z: 0.33014703}
+  OuterPointDistance: 13.349058
+  IsHollow: 0
+  InnerPointSet: 1
+  InnerPoint: {x: 8.182015, y: 4.3254385, z: 0.33014703}
+  InnerPointDistance: 13.349058
+  InnerPointInside: 0
+  BoxCollider: {fileID: 65673204035651460}
+  Center: {x: -0.53903335, y: 1.2079988, z: -0.01623631}
+  Size: {x: 1.1, y: 2.16, z: 0.14232814}

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4777270117684096}
   - component: {fileID: 82726035654319336}
   - component: {fileID: 114778380638284482}
+  - component: {fileID: 114921280119690132}
   m_Layer: 19
   m_Name: AudioSource Open
   m_TagString: Untagged
@@ -60,6 +61,7 @@ GameObject:
   - component: {fileID: 4373855068092840}
   - component: {fileID: 82320197182436832}
   - component: {fileID: 114104378040196010}
+  - component: {fileID: 114203767613686070}
   m_Layer: 19
   m_Name: AudioSource Hits
   m_TagString: Untagged
@@ -204,8 +206,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1594475783045736}
   m_LocalRotation: {x: -3.1976188e-15, y: 0.0000005364418, z: 0.000000021855694, w: -1}
-  m_LocalPosition: {x: -1.1334897, y: 2.3449602, z: -0.04895578}
-  m_LocalScale: {x: 1, y: 1.0204082, z: 1.03502}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4066041352153332}
   m_RootOrder: 1
@@ -217,8 +219,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1592737106361380}
   m_LocalRotation: {x: -3.1976188e-15, y: 0.0000005364418, z: 0.000000021855694, w: -1}
-  m_LocalPosition: {x: -1.1334897, y: 2.3449602, z: -0.04895578}
-  m_LocalScale: {x: 1, y: 1.0204082, z: 1.03502}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4066041352153332}
   m_RootOrder: 2
@@ -722,7 +724,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1594475783045736}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8731920a0071d7c48a365d6c0e3cc242, type: 3}
   m_Name: 
@@ -783,20 +785,42 @@ MonoBehaviour:
   OccludeDampening: 5
   OccludeGroups: []
   OccludeAmount: 1
+--- !u!114 &114203767613686070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594475783045736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a946634e8f9caec40b88b4623b30887a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OuterPointSet: 1
+  OuterPoint: {x: 18.080042, y: -0.7769325, z: -2.8609157}
+  OuterPointDistance: 18.677382
+  IsHollow: 0
+  InnerPointSet: 1
+  InnerPoint: {x: 18.080042, y: -0.7769325, z: -2.8609157}
+  InnerPointDistance: 18.677382
+  InnerPointInside: 0
+  BoxCollider: {fileID: 65853281338108686}
+  Center: {x: -0.5616519, y: 1.1724801, z: -0.020066757}
+  Size: {x: 0.99, y: 2.16, z: 0.05778061}
 --- !u!114 &114547981394008252
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1333971234076404}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e2895d347b4dd14e9a742044907083e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OuterPointSet: 1
   OuterPoint: {x: 18.080044, y: -0.68630195, z: -2.7917595}
-  OuterPointDistance: 14.33894
+  OuterPointDistance: 18.61528
   IsHollow: 1
   InnerPointSet: 0
   InnerPoint: {x: 0, y: 0, z: 0}
@@ -816,7 +840,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1592737106361380}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8731920a0071d7c48a365d6c0e3cc242, type: 3}
   m_Name: 
@@ -877,6 +901,28 @@ MonoBehaviour:
   OccludeDampening: 5
   OccludeGroups: []
   OccludeAmount: 1
+--- !u!114 &114921280119690132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1592737106361380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a946634e8f9caec40b88b4623b30887a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OuterPointSet: 1
+  OuterPoint: {x: 18.080042, y: -0.7769325, z: -2.8609157}
+  OuterPointDistance: 18.677382
+  IsHollow: 0
+  InnerPointSet: 1
+  InnerPoint: {x: 18.080042, y: -0.7769325, z: -2.8609157}
+  InnerPointDistance: 18.677382
+  InnerPointInside: 0
+  BoxCollider: {fileID: 65853281338108686}
+  Center: {x: -0.5616519, y: 1.1724801, z: -0.020066757}
+  Size: {x: 0.99, y: 2.16, z: 0.05778061}
 --- !u!114 &114959181241698004
 MonoBehaviour:
   m_ObjectHideFlags: 1
