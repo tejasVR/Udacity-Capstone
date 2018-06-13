@@ -94,7 +94,7 @@ public class GunScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Destructible")
+        if (other.gameObject.tag == "Destructible" && this.gameObject.CompareTag("Collected"))
         {
             if (deviceAngularVelocity > 2f)
             {
@@ -133,8 +133,8 @@ public class GunScript : MonoBehaviour {
                 AddExplosionForce(hit.point, explosionRadius, explosionForce);
             }
 
-            print("Object Hit:" + hit.collider.gameObject.name);
-            print("Object Hit:" + hit.collider.gameObject.tag);
+            //print("Object Hit:" + hit.collider.gameObject.name);
+            //print("Object Hit:" + hit.collider.gameObject.tag);
 
 
             if (hit.collider.CompareTag("Enemy"))

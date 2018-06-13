@@ -27,7 +27,9 @@ public class Enemy : MonoBehaviour {
     LayerMask layerMask = ~0;
 
     public Transform startCast;
-    public AudioSource audio; 
+    public AudioSource audio;
+
+    private bool isDead;
 
     #region Attributes
 
@@ -110,23 +112,6 @@ public class Enemy : MonoBehaviour {
         
     }
     // Update is called once per frame
-    void FixedUpdate () {
-        var dir = player.position - startCast.position;
-        dir.y = 0;
-        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
-        //Vector3 forward = transform.TransformDirection(Vector3.forward);
-        //Debug.DrawRay(transform.position, transform.TransformDirection(player.position), Color.green);
-
-        //RaycastHit hit;
-
-
-
-        //dir.y = 0;
-
-
-    }
-
-    
 
     public void EnemyTakeHit(float damage, Vector3 hitDirection, GameObject hitBodyPart)
     {
@@ -172,13 +157,15 @@ public class Enemy : MonoBehaviour {
         rdController.KillRagdoll(hitDirection, hitBodyPart);
         audio.Stop();
         this.gameObject.layer = 11;
+        isDead = true;
         this.enabled = false;
 
     }
 
     private void OnAnimatorMove()
     {
-        agent.velocity = anim.deltaPosition / Time.deltaTime;
+        if(!isDead)
+            agent.velocity = anim.deltaPosition / Time.deltaTime;
     }
 
     #region Animate Functions
