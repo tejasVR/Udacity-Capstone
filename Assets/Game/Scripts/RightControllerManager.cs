@@ -1,322 +1,455 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RightControllerManager : MonoBehaviour {
 
-    public SteamVR_TrackedObject trackedObj;
-    SteamVR_Controller.Device device;
+    private SteamVR_TrackedObject _trackedObj;
+    SteamVR_Controller.Device _device;
 
-    public GameObject inventory;
-    public GameObject handModel;
+    public GameObject _inventoryObj;
+    public GameObject _handModelObj;
 
-    public List<CollectableItem> itemList = new List<CollectableItem>(); //creates a list of items for the invebtory to manage
+    //creates a list of items for the invebtory to manage
+    public List<InventorySlot> _inventorySlots = new List<InventorySlot>();
 
-    public Vector2 touchpad;
-    public float angleFromCenter; //gets the angle of the finger on the touchpad in relation to the center of the touchpad (0,0)
+    private Vector2 _touchpad;
+    private float _angleFromCenter; //gets the angle of the finger on the touchpad in relation to the center of the touchpad (0,0)
 
-    public bool inventoryOpen;
-    public bool firstPressUp;
+    public bool _isInventoryOpen;
+    public bool _firstPressUp;
 
-    public bool hasItemInHand;
+    public bool _hasItemInHand;
 
-    public int currentItem;
-    public int oldItem;
+    public int _currentItem;
+    public int _oldItem;
 
-    public GameObject objInHand;
+    public GameObject _inHandObj;
 
-    public GameObject cursor;
+    public GameObject _cursorObj;
 
-    public Color idleUIColor;
-    public Color highlightedUIColor;
+    public Color _idleUIColor;
+    public Color _highlightedUIColor;
 
     void Start () {
-        inventory.SetActive(false);
-        
+        _trackedObj = GetComponent<SteamVR_TrackedObject>();
+        _inventoryObj.SetActive(false);
     }
 	
 	void Update () {
-        if (trackedObj.gameObject.activeInHierarchy)
+        if (_trackedObj.gameObject.activeInHierarchy)
         {
-            device = SteamVR_Controller.Input((int)trackedObj.index);
+            _device = SteamVR_Controller.Input((int)_trackedObj.index);
         }
 
-        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && !inventoryOpen)
+        if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && !_isInventoryOpen)
         {
             
-            inventoryOpen = true;
-            inventory.SetActive(true);
-            CheckItems();
-            
-            handModel.gameObject.SetActive(true);
+            _isInventoryOpen = true;
+            //CheckInventoryItemPlacement();
+            _inventoryObj.SetActive(true);
+            //ShowInventoryItems(true);
+            PlaceItemsInInventory(false, true);
+            _handModelObj.gameObject.SetActive(true);
 
-            if (objInHand != null)
-            {
-                objInHand.SetActive(false);
-                hasItemInHand = false;
-            }
-            
+            //if (_inHandObj != null)
+            //{
+            //    _inHandObj.SetActive(false);
+            //    _hasItemInHand = false;
+            //}
+
         }
 
-        if (inventoryOpen)
+        if (_isInventoryOpen)
         {
             OpenInventory();
         }
 
-        if (hasItemInHand)
-        {
-            //objInHand.transform.position = Vector3.Lerp(objInHand.transform.position, transform.position, Time.deltaTime * 12f);
-            //objInHand.transform.rotation = Quaternion.Slerp(objInHand.transform.rotation, transform.rotation, Time.deltaTime * 12f);
-        }
+        //if (_hasItemInHand)
+        //{
+        //    _inHandObj.transform.position = Vector3.Lerp(_inHandObj.transform.position, transform.position, Time.deltaTime * 12f);
+        //    _inHandObj.transform.rotation = Quaternion.Slerp(_inHandObj.transform.rotation, transform.rotation, Time.deltaTime * 12f);
+        //} else
+        //{
+        //    foreach (var slot in _inventorySlots)
+        //    {
+        //        if (slot.hasItemInHand)
+        //        {
+        //            PutInInventory(slot);
+        //        }
+        //    }
+        //}
     }
 
     private void OnCollisionStay(Collision collision)
     {
         if(collision.gameObject.tag == "Collectable")
         {
-            if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
+            if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
             {
-                var collectable = collision.gameObject.GetComponent<Collectable>();
-
-                foreach (CollectableItem item in itemList)
-                {
-                    item.hasItemInHand = false;
-                    if (item.itemInHandObj != null)
-                    {
-                        item.itemInHandObj.SetActive(false);
-                    }
-
-                    if (!item.hasItemInInventory)
-                    {
-                        if(collectable.itemName == item.name)
-                        {
-                            // We have the item in our inventory
-                            item.hasItemInInventory = true;
-                            item.itemInHandObj = collision.gameObject;
-
-
-                        }
-                    }
-                }
-                collectable.isCollected = true;
-                handModel.gameObject.SetActive(false);
-
-                // The item that will be in the player's hand is the item the player has just collected
-                //objInHand = collision.gameObject;
-                collision.gameObject.transform.parent = this.transform;
-
-                collision.gameObject.transform.localPosition = collectable.attachPoint.localPosition;
-                collision.gameObject.transform.localRotation = collectable.attachPoint.localRotation;
-
-                //collision.gameObject.GetComponent<Rigidbody>().useGravity = false;
-                //collision.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-
-
-                // a check to say that the item is in the hands of the player
-                //item.hasItemInHand = true;
-                hasItemInHand = true;
-
-
-
-
-
+                if (CheckInventoryItemExists(collision.gameObject.GetComponent<Collectable>().itemName))
+                    AddInventoryItem(collision.gameObject);
             }
         }
-       
     }
+
     public void OpenInventory()
     {
-        cursor.SetActive(true);
+        TouchpadEnabled();
+        //ShowInventoryItems(false);
 
-        // if the menu is open, get both the x and y values of the touchpad
-        touchpad.x = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
-        touchpad.y = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).y;
-
-        cursor.transform.localPosition = Vector3.Lerp(cursor.transform.localPosition, touchpad * .085f, Time.unscaledDeltaTime * 10f);
-
-        Vector2 fromVector2 = new Vector2(0, 1);
-        Vector2 toVector2 = touchpad;
-
-        // Measure the users' thumb angle in relation to the center of the touchpad.
-        angleFromCenter = Vector2.Angle(fromVector2, toVector2);
-        Vector3 cross = Vector3.Cross(fromVector2, toVector2);
-
-        // This will get the angle of the users' thumb so we know what inventory item they are trying to highlight
-        if (cross.z > 0)
+        if (_device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && !_firstPressUp)
+            _firstPressUp = true;
+        
+        if (_touchpad.magnitude > .25f)
         {
-            angleFromCenter = 360 - angleFromCenter;
-        }
-
-        if (device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && !firstPressUp)
-        {
-            firstPressUp = true;
-        }
-
-        if (touchpad.magnitude > .25f)
-        {
-            // Basement Key
-            if (angleFromCenter > 220 && angleFromCenter < 280)
-            {
-                currentItem = 0;
-                
-            }
-            // Front Door Key
-            else if (angleFromCenter > 290 && angleFromCenter < 350)
-            {
-                currentItem = 1;
-                
-            }
-            // Pistol
-            else if (angleFromCenter > 10 && angleFromCenter < 70)
-            {
-                currentItem = 2;
-                
-            }
-            // Attic Key
-            else if (angleFromCenter > 80 && angleFromCenter < 140)
-            {
-                currentItem = 3;
-
-            }
-            else
-            {
-                currentItem = -1;
-            }
+            // Inventory Slot #1
+            if (_angleFromCenter > 220 && _angleFromCenter < 280)
+                 _currentItem = 0;
+            // Inventiry Slot #2
+            else if (_angleFromCenter > 290 && _angleFromCenter < 350)
+                _currentItem = 1; 
         }
         else
+            _currentItem = -1;
+
+
+        if (_currentItem != _oldItem)
         {
-            currentItem = -1;
-        }
-
-
-
-
-        if (currentItem != oldItem)
-        {
-            if (currentItem > -1)
+            if (_currentItem > -1)
             {
-                foreach (var item in itemList)
+                foreach (var slot in _inventorySlots)
                 {
-                    item.inventoryObj.GetComponent<Image>().color = idleUIColor;
+                    slot.inventoryOutline.color = _idleUIColor;
+                    slot.textTag.gameObject.SetActive(false);
                 }
 
-                itemList[currentItem].inventoryObj.GetComponent<Image>().color = highlightedUIColor;
-                //itemList[oldItem].inventoryObj.GetComponent<Image>().color = Color.white;
+                _inventorySlots[_currentItem].inventoryOutline.color = _highlightedUIColor;
+                _inventorySlots[_currentItem].textTag.gameObject.SetActive(true);
+
             } else
             {
-                foreach (var item in itemList)
+                foreach (var slot in _inventorySlots)
                 {
-                    item.inventoryObj.GetComponent<Image>().color = idleUIColor;
+                    slot.inventoryOutline.color = _idleUIColor;
+                    slot.textTag.gameObject.SetActive(false);
                 }
             }
 
-            oldItem = currentItem;
+            _oldItem = _currentItem;
         }
 
-        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && currentItem > -1 && firstPressUp)
+        if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && _currentItem > -1 && _firstPressUp)
         {
-            if (itemList[currentItem].itemInHandObj != null)
+            if (_inventorySlots[_currentItem].inventoryObj != null)
             {
-                itemList[currentItem].itemInHandObj.SetActive(true);
-                handModel.SetActive(false);
-                //objInHand.transform.position = transform.position;
-                //objInHand = itemList[currentItem].itemInHandObj;
-                //objInHand.SetActive(true);
-                hasItemInHand = true;
+                PutItemInHand(_inventorySlots[_currentItem]);
+                //_inventorySlots[_currentItem].hasItemInHand = true;
+                //_handModelObj.SetActive(false);
+                CloseInventory();
             }
-            
 
-           
-            CloseInventory();
 
-          
+
+            //if (_inventorySlots[_currentItem].itemInHandObj != null)
+            //{
+            //    _inventorySlots[_currentItem].itemInHandObj.SetActive(true);
+            //    //objInHand.transform.position = transform.position;
+            //    //objInHand = itemList[currentItem].itemInHandObj;
+            //    //objInHand.SetActive(true);
+            //    _hasItemInHand = true;
+            //}
+
+
+
+
+
 
         }
 
-        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && firstPressUp & currentItem == -1)
-        {
+        if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && _firstPressUp & _currentItem == -1)
             CloseInventory();
-        }
-
-
-
-
-
-
 
     }
 
     public void CloseInventory()
     {
-        inventoryOpen = false;
-        inventory.SetActive(false);
-        firstPressUp = false;
+        print("closing inventory");
+        _isInventoryOpen = false;
+        _inventoryObj.SetActive(false);
+        PlaceItemsInInventory(true, false);
+        //ShowInventoryItems(false);
+        _firstPressUp = false;
     }
 
-    // Function to collect an item and track it in the players inventory
-    public void CollectItem(string itemName, GameObject itemObject)
+    private bool CheckInventoryItemExists(string name)
     {
-        // For the items that have not yet been collected
-        foreach(CollectableItem item in itemList)
+        foreach (var slot in _inventorySlots)
         {
-            if (!item.hasItemInInventory)
+            if (slot.slotTaken && slot.name == name)
             {
-                // If the name of the collected item is the same as the one marked in the inventory, collect that specific item
-                if(item.name == itemName)
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        return true;
+    }
+
+    private void PlaceItemsInInventory(bool itemsNotInHand, bool allItems) //check what items the player currently has
+    {
+        foreach (var slot in _inventorySlots)
+        {
+            if (itemsNotInHand)
+            {
+                if (slot.slotTaken && !slot.hasItemInHand)
                 {
-                    // Check the item as being in the inventory
-                    item.hasItemInInventory = true;
-                 
+                    PutInInventory(slot);
+                    slot.hasItemInHand = false;
                 }
-
-                
+            } else if (allItems)
+            {
+                if (slot.slotTaken)
+                {
+                    PutInInventory(slot);
+                    slot.hasItemInHand = false;
+                }
             }
+            
         }
     }
 
-    void CheckItems() //check what items the player currently has
+    public void GiveAwayItem(InventorySlot inventorySlot)
     {
-        foreach(CollectableItem item in itemList)
-        {
-            if (item.hasItemInInventory)
-            {
-                item.inventoryItemObj.SetActive(true);
-                item.itemInHandObj.SetActive(false);
-            }
-            else if(!item.hasItemInInventory)
-            {
-                item.inventoryItemObj.SetActive(false);
-            }
-
-        }
+        ClearImventorySlot(inventorySlot);
+        _handModelObj.SetActive(true);
     }
 
-    public void GiveAwayItem(string itemName)
+    private void PutInInventory(InventorySlot inventorySlot)
     {
-        for(int i = 0; i < itemList.Count; i++)
+        inventorySlot.inventoryObj.transform.parent = inventorySlot.inventoryOutline.gameObject.transform.parent;
+
+        inventorySlot.inventoryObj.transform.localPosition = inventorySlot.attachPoint.localPosition;
+        inventorySlot.inventoryObj.transform.localRotation = inventorySlot.attachPoint.localRotation;
+
+        inventorySlot.hasItemInHand = false;
+
+        _handModelObj.SetActive(true);
+
+        print(inventorySlot.name + " was put in the inventory");
+        
+
+        //inventorySlot.inventoryObj.transform.position = Vector3.Lerp(inventorySlot.inventoryObj.transform.position, inventorySlot.attachPoint.position, Time.deltaTime * 12f);
+        //inventorySlot.inventoryObj.transform.rotation = Quaternion.Slerp(inventorySlot.inventoryObj.transform.rotation, inventorySlot.attachPoint.rotation, Time.deltaTime * 12f);
+    }
+
+    private void PutItemInHand(InventorySlot inventorySlot)
+    {
+        //_inHandObj = inventorySlot.inventoryObj;
+        inventorySlot.inventoryObj.transform.parent = this.transform;
+        inventorySlot.hasItemInHand = true;
+        //_hasItemInHand = true;
+
+        _handModelObj.SetActive(false);
+
+        inventorySlot.inventoryObj.transform.localPosition = inventorySlot.collectable.attachPoint.localPosition;
+        inventorySlot.inventoryObj.transform.localRotation = inventorySlot.collectable.attachPoint.localRotation;
+
+        print(inventorySlot.name + " was put in my hand");
+
+        //inventorySlot.rb.useGravity = false;
+        //inventorySlot.rb.isKinematic = true;
+
+        //objCollectable.transform.localPosition = collectable.attachPoint.localPosition;
+        //objCollectable.transform.localRotation = collectable.attachPoint.localRotation;
+
+        //inventorySlot.inventoryObj.transform.position = Vector3.Lerp(inventorySlot.inventoryObj.transform.position, transform.position, Time.deltaTime * 12f);
+        //inventorySlot.inventoryObj.transform.rotation = Quaternion.Slerp(inventorySlot.inventoryObj.transform.rotation, transform.rotation, Time.deltaTime * 12f);
+
+        //_handModelObj.gameObject.SetActive(false);
+
+        //// The item that will be in the player's hand is the item the player has just collected
+        ////objInHand = collision.gameObject;
+        //objCollectable.transform.parent = this.transform;
+
+        //objCollectable.transform.localPosition = collectable.attachPoint.localPosition;
+        //objCollectable.transform.localRotation = collectable.attachPoint.localRotation;
+
+        ////collision.gameObject.GetComponent<Rigidbody>().useGravity = false;
+        ////collision.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+    }
+
+    private void AddInventoryItem(GameObject objCollectable)
+    {
+        // Get Collectable class properties from object
+        
+
+        // Find an inventory slot that is not already in use
+        var inventorySlot = new InventorySlot();
+
+        for (int i = 0; i < _inventorySlots.Capacity - 1; i++)
         {
-            if (itemList[i].name == itemName)
+            //print("I am adding an inventory item. Here is the slot I am on:" + i);
+
+            if (!_inventorySlots[i].slotTaken)
             {
-                itemList[i].hasItemInInventory = false;
-                itemList[i].hasItemInHand = false;
+                inventorySlot = _inventorySlots[i];
+                //print("The inventory slot I have decided to add the item in is:" + i);
+
             }
         }
 
-        handModel.SetActive(true);
+        inventorySlot.collectable = objCollectable.GetComponent<Collectable>();
+        //inventorySlot.rb = objCollectable.GetComponent<Rigidbody>();
+
+        inventorySlot.collectable.isCollected = true;
+
+        // Assign object to empty inventory slot 
+        inventorySlot.name = inventorySlot.collectable.itemName;
+        inventorySlot.inventoryObj = inventorySlot.collectable.gameObject;
+        inventorySlot.textTag.text = inventorySlot.collectable.itemName;
+        
+        inventorySlot.slotTaken = true;
+        //inventorySlot.hasItemInHand = true;
+
+        PutItemInHand(inventorySlot);
+
+        //return inventorySlot;
+
+        //inventoryslot.textTag
+
+
+        //foreach (InventorySlot slot in _inventorySlots)
+        //{
+        //    if (!slot.slotTaken)
+        //    {
+        //        inventoryslot = 
+        //    }
+
+        //    item.hasItemInHand = false;
+        //    if (item.itemInHandObj != null)
+        //    {
+        //        item.itemInHandObj.SetActive(false);
+        //    }
+
+        //    if (!item.hasItemInInventory)
+        //    {
+        //        if (collectable.itemName == item.name)
+        //        {
+        //            // We have the item in our inventory
+        //            item.hasItemInInventory = true;
+        //            item.itemInHandObj = objCollectable.gameObject;
+
+
+        //        }
+        //    }
+        //}
+        //collectable.isCollected = true;
+        //_handModelObj.gameObject.SetActive(false);
+
+        //// The item that will be in the player's hand is the item the player has just collected
+        ////objInHand = collision.gameObject;
+        //objCollectable.transform.parent = this.transform;
+
+        //objCollectable.transform.localPosition = collectable.attachPoint.localPosition;
+        //objCollectable.transform.localRotation = collectable.attachPoint.localRotation;
+
+        ////collision.gameObject.GetComponent<Rigidbody>().useGravity = false;
+        ////collision.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+
+        //// a check to say that the item is in the hands of the player
+        ////item.hasItemInHand = true;
+        //_hasItemInHand = true;
     }
 
-   
+    private void TouchpadEnabled()
+    {
+        _cursorObj.SetActive(true);
+
+        // if the menu is open, get both the x and y values of the touchpad
+        _touchpad.x = _device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
+        _touchpad.y = _device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).y;
+
+        _cursorObj.transform.localPosition = Vector3.Lerp(_cursorObj.transform.localPosition, _touchpad * .085f, Time.unscaledDeltaTime * 10f);
+
+        Vector2 fromVector2 = new Vector2(0, 1);
+        Vector2 toVector2 = _touchpad;
+
+        // Measure the users' thumb angle in relation to the center of the touchpad.
+        _angleFromCenter = Vector2.Angle(fromVector2, toVector2);
+        Vector3 cross = Vector3.Cross(fromVector2, toVector2);
+
+        // This will get the angle of the users' thumb so we know what inventory item they are trying to highlight
+        if (cross.z > 0)
+        {
+            _angleFromCenter = 360 - _angleFromCenter;
+        }
+
+    }
+
+    private void ClearImventorySlot(InventorySlot inventorySlot)
+    {
+        inventorySlot.slotTaken = false;
+        inventorySlot.inventoryObj = null;
+        inventorySlot.name = "";
+        inventorySlot.hasItemInHand = false;
+    }
+
+    public void AttachToDoor(string keyToUnlock, Transform attachPoint)
+    {
+        foreach (var slot in _inventorySlots)
+        {
+            if (slot.name == keyToUnlock)
+            {
+                var key = slot.inventoryObj;
+                GiveAwayItem(slot);
+                key.transform.position = attachPoint.position;
+                key.transform.parent = attachPoint.transform;
+                //return true;
+            } else
+            {
+                //return false;
+            }
+        }
+    }
+
+    private void ShowInventoryItems(bool show)
+    {
+        foreach (var slot in _inventorySlots)
+        {
+            if (slot.inventoryObj != null && !slot.hasItemInHand)
+            {
+                if (show)
+                    slot.inventoryObj.SetActive(true);
+                else
+                    slot.inventoryObj.SetActive(false);
+            }
+        }
+    }
+
+
 
     [System.Serializable]
-    public class CollectableItem
+    public class InventorySlot
     {
         public string name;
+        public bool slotTaken;
         public GameObject inventoryObj; // the whole of the individual inventory UI
-        public GameObject inventoryItemObj; // just the item object that is in the inventory
-        public GameObject itemInHandObj; // the item that will be in the hands of the player
-        public GameObject textTag;
-        public bool hasItemInInventory;
+        public Collectable collectable;
+        //public Rigidbody rb;
+        public Transform attachPoint;
+        public Image inventoryOutline;
+        //public GameObject inventoryItemObj; // just the item object that is in the inventory
+        //public GameObject itemInHandObj; // the item that will be in the hands of the player
+        public TextMeshPro textTag;
+        //public bool hasItemInInventory;
         public bool hasItemInHand;
     }
 

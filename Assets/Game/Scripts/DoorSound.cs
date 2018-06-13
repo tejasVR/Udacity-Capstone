@@ -133,7 +133,7 @@ public class DoorSound : MonoBehaviour {
         else
             PlaySound.PlayAudioFromSelection(_audioSource[0], _doorHitClips, true);
 
-        print("hit door");
+        print("hit door on object:" + collision.gameObject.name);
     }
 
 

@@ -47,11 +47,11 @@ public class EnableObjOnTrigger : MonoBehaviour {
 
             if (hasItem == HasItem.frontDoorKey)
             {
-                foreach(RightControllerManager.CollectableItem item in rightControllerManager.itemList)
+                foreach(RightControllerManager.InventorySlot item in rightControllerManager._inventorySlots)
                 {
                     if (item.name == "Front Door Key")
                     {
-                        if (item.hasItemInInventory)
+                        //if (item.hasItemInInventory)
                         {
                             EnableObjects();
                         }
@@ -61,11 +61,11 @@ public class EnableObjOnTrigger : MonoBehaviour {
 
             if (hasItem == HasItem.pistol)
             {
-                foreach (RightControllerManager.CollectableItem item in rightControllerManager.itemList)
+                foreach (RightControllerManager.InventorySlot item in rightControllerManager._inventorySlots)
                 {
                     if (item.name == "Pistol")
                     {
-                        if (item.hasItemInInventory)
+                        //if (item.hasItemInInventory)
                         {
                             EnableObjects();
                         }
@@ -75,11 +75,11 @@ public class EnableObjOnTrigger : MonoBehaviour {
 
             if (hasItem == HasItem.basementKey)
             {
-                foreach (RightControllerManager.CollectableItem item in rightControllerManager.itemList)
+                foreach (RightControllerManager.InventorySlot item in rightControllerManager._inventorySlots)
                 {
                     if (item.name == "Basement Key")
                     {
-                        if (item.hasItemInInventory)
+                        //if (item.hasItemInInventory)
                         {
                             EnableObjects();
                         }
@@ -124,7 +124,7 @@ public class EnableObjOnTrigger : MonoBehaviour {
         foreach (var obj in objsToEnable)
         {
             obj.SetActive(true);
-            print("enabled object");
+            //print("enabled object");
         }
 
         if (disableColliderOnTrigger)

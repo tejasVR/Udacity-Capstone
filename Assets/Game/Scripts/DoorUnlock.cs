@@ -5,54 +5,45 @@ using UnityEngine;
 public class DoorUnlock : MonoBehaviour {
 
     //public bool isUnlocked;
-    public GameObject door;
-    private HingeJoint hinge;
-    public string doorToUnlock;
-    private bool isUnlocked;
+    public GameObject _door;
+    private HingeJoint _hinge;
+    public string _keyToUnlock;
+    private bool _isUnlocked;
 
-    public Transform keyAttach;
-    RightControllerManager rightControllerManager;
+    public Transform _keyAttach;
+    public RightControllerManager _rightControllerManager;
 
     //public string 
 
 	// Use this for initialization
 	void Start () {
 
-        
-        hinge = door.GetComponent<HingeJoint>();
-        
-        
-        hinge.useLimits = true;
+        _hinge = _door.GetComponent<HingeJoint>();
+        _hinge.useLimits = true;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Collectable" && doorToUnlock == other.GetComponent<Collectable>().itemName && !isUnlocked)
+        if (other.tag == "Collectable" && _keyToUnlock == other.GetComponent<Collectable>().itemName && !_isUnlocked)
         {
             Unlock();
-            AttachToDoor(other.gameObject, other.GetComponent<Collectable>().itemName);
+            _rightControllerManager.AttachToDoor(_keyToUnlock, _keyAttach);
+            //AttachToDoor(other.gameObject, other.GetComponent<Collectable>().itemName);
         }
     }
 
-    
-
     public void Unlock()
     {
-        isUnlocked = true;
-        hinge.useLimits = false;
+        _isUnlocked = true;
+        _hinge.useLimits = false;
     }
 
-    public void AttachToDoor(GameObject key, string keyName)
-    {
-        key.transform.position = keyAttach.position;
-        key.transform.parent = keyAttach.transform;
+    //public void AttachToDoor(GameObject key, string keyName)
+    //{
+    //    key.transform.position = _keyAttach.position;
+    //    key.transform.parent = _keyAttach.transform;
 
-        rightControllerManager.GiveAwayItem(keyName);
-    }
+    //    //rightControllerManager.GiveAwayItem(keyName);
+    //}
 
 }
