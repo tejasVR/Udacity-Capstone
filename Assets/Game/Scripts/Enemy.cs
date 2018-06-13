@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour {
     LayerMask layerMask = ~0;
 
     public Transform startCast;
+    public AudioSource audio; 
 
     #region Attributes
 
@@ -169,6 +170,7 @@ public class Enemy : MonoBehaviour {
     private void Death(Vector3 hitDirection, GameObject hitBodyPart)
     {
         rdController.KillRagdoll(hitDirection, hitBodyPart);
+        audio.Stop();
         this.gameObject.layer = 11;
         this.enabled = false;
 

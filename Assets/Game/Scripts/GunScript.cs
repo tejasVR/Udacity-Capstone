@@ -8,9 +8,10 @@ public class GunScript : MonoBehaviour {
     private SteamVR_Controller.Device _device;
 
     public GameObject shootPoint;
+    public GameObject _gunShotTrailPrefab;
 
     public ParticleSystem muzzleFlash;
-    public ParticleSystem shotTrail;
+    //public ParticleSystem shotTrail;
 
     public float explosionForce;
     public float explosionRadius;
@@ -57,7 +58,10 @@ public class GunScript : MonoBehaviour {
 
             if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) && firstPickedUp && fireRateTimer == fireRate && this.gameObject.CompareTag("Collected"))
             {
+                //Instantiate(_gunShotTrailPrefab, shootPoint.transform);
+
                 Fire();
+
                 fireRateTimer = 0f;
             }
         }
@@ -104,7 +108,7 @@ public class GunScript : MonoBehaviour {
     public void Fire()
     {
         //print("Fired");
-        shotTrail.Play();
+        //shotTrail.Play();
 
         muzzleFlash.Play();
 
@@ -113,6 +117,7 @@ public class GunScript : MonoBehaviour {
         RaycastHit hit;
         Ray ray = new Ray(shootPoint.transform.position, shootPoint.transform.forward);
 
+        // Cast a ray that ignores triggers so we don't hit player trigger objects
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask, QueryTriggerInteraction.Ignore))
         {
             var hitPoint = hit.point;
@@ -128,12 +133,13 @@ public class GunScript : MonoBehaviour {
                 AddExplosionForce(hit.point, explosionRadius, explosionForce);
             }
 
-            //print("Object Hit:" + hit.collider.gameObject.name);
+            print("Object Hit:" + hit.collider.gameObject.name);
+            print("Object Hit:" + hit.collider.gameObject.tag);
 
 
             if (hit.collider.CompareTag("Enemy"))
             {
-                print("Enemy Hit: " + hit.collider.gameObject.name);
+                //print("Enemy Hit: " + hit.collider.gameObject.name);
 
                 //var hitDir = shootPoint.transform.position - hit.point;
                 var hitDir = shootPoint.transform.forward;

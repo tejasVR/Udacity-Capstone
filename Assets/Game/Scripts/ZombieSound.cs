@@ -9,6 +9,12 @@ public class ZombieSound : MonoBehaviour {
    // public GameObject[] _bodyPart;
 
     public AudioClip[] _woodStep;
+    //public AudioClip[] _idleSound;
+    public AudioClip[] _walkingSound;
+    public AudioClip[] _attackSound;
+    public AudioClip[] _hitSound;
+
+    public float pitchModulation;
 
 
 	// Use this for initialization
@@ -27,6 +33,24 @@ public class ZombieSound : MonoBehaviour {
 
     public void TakeStepOnWood(int bodyPart)
     {
-        PlaySound.PlayAudioFromSelection(_audioBody[bodyPart], _woodStep, true, -.1f, .1f);
+        PlaySound.PlayAudioFromSelection(_audioBody[bodyPart], _woodStep, true, -.1f + pitchModulation, .1f + pitchModulation);
     }
+
+    public void WalkingSound()
+    {
+        PlaySound.PlayAudioFromSelection(_audioBody[2], _walkingSound, true, -.1f + pitchModulation, .1f + pitchModulation);
+
+    }
+
+    public void AttackingSound()
+    {
+        PlaySound.PlayAudioFromSelection(_audioBody[2], _attackSound, true, -.1f + pitchModulation, .1f + pitchModulation);
+    }
+
+    public void HitSound()
+    {
+        PlaySound.PlayAudioFromSelection(_audioBody[2], _hitSound, true, -.1f + pitchModulation, .1f + pitchModulation);
+    }
+
+    //public static void DeathSound
 }
