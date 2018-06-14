@@ -115,7 +115,6 @@ public class Enemy : MonoBehaviour {
 
         
     }
-    // Update is called once per frame
 
     public void EnemyTakeHit(float damage, Vector3 hitDirection, GameObject hitBodyPart)
     {
@@ -146,9 +145,13 @@ public class Enemy : MonoBehaviour {
 
     private void DisableOtherAnimations(Animator animator, string animation)
     {
+
+        //animator.SetBool(IDLE_BOOL, false);
+        //animator.SetBool(MOVE_BOOL, false);
+        //animator.SetBool(ATTACK_BOOL, false);
+
         foreach (AnimatorControllerParameter parameter in animator.parameters)
         {
-            
             if (parameter.name != animation)
             {
                 animator.SetBool(parameter.name, false);
