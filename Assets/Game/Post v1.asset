@@ -14,7 +14,7 @@ MonoBehaviour:
   settings:
   - {fileID: 114225388430914952}
   - {fileID: 114930368769042746}
-  - {fileID: 114355971310043796}
+  - {fileID: 114249564123391880}
   - {fileID: 114465643180148380}
   - {fileID: 114929992692289536}
   - {fileID: 114181613665244304}
@@ -105,7 +105,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 5
+    value: 3
   threshold:
     overrideState: 1
     value: 1
@@ -123,14 +123,14 @@ MonoBehaviour:
     value: {r: 1, g: 1, b: 1, a: 1}
   fastMode:
     overrideState: 1
-    value: 1
+    value: 0
   dirtTexture:
     overrideState: 0
     value: {fileID: 0}
   dirtIntensity:
     overrideState: 0
     value: 0
---- !u!114 &114355971310043796
+--- !u!114 &114249564123391880
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
@@ -147,16 +147,16 @@ MonoBehaviour:
     value: 1
   focusDistance:
     overrideState: 1
-    value: 0.46
+    value: 1.2
   aperture:
     overrideState: 1
-    value: 7.3
+    value: 7
   focalLength:
-    overrideState: 0
-    value: 50
+    overrideState: 1
+    value: 60
   kernelSize:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 0
 --- !u!114 &114431359830255044
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -386,17 +386,17 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   saturation:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 5
   brightness:
     overrideState: 0
     value: 0
   postExposure:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: -0.5
   contrast:
     overrideState: 1
-    value: 0
+    value: 15
   mixerRedOutRedIn:
     overrideState: 0
     value: 100

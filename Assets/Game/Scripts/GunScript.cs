@@ -187,6 +187,8 @@ public class GunScript : MonoBehaviour {
             PlaySound.PlayAudio(_audioSource[1], false, 0, 0);
             clickSoundPlayed = false;
 
+            HapticFeedback.HapticAmount(1000);
+
             //globalLowPass.GunShotLowPass(3000);
 
             //Debug.Log(hit.transform.name);

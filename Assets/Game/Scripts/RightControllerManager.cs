@@ -33,6 +33,10 @@ public class RightControllerManager : MonoBehaviour {
     public Color _idleUIColor;
     public Color _highlightedUIColor;
 
+    [Header("Inventory Post Effect Properties")]
+    public float _exposureAmnt;
+    public float _dofAmnt;
+
     void Start () {
         _trackedObj = GetComponent<SteamVR_TrackedObject>();
         _inventoryObj.SetActive(false);
@@ -51,6 +55,8 @@ public class RightControllerManager : MonoBehaviour {
             //CheckInventoryItemPlacement();
             _inventoryObj.SetActive(true);
             //ShowInventoryItems(true);
+            PostProcessControl.InventoryOpenPostEffect(_exposureAmnt);
+            HapticFeedback.HapticAmount(500);
             PlaceItemsInInventory(false, true);
             CheckHandModelVisibility();
             //_handModelObj.gameObject.SetActive(true);
@@ -137,6 +143,8 @@ public class RightControllerManager : MonoBehaviour {
                 _inventorySlots[_currentItem].inventoryOutline.color = _highlightedUIColor;
                 _inventorySlots[_currentItem].textTag.gameObject.SetActive(true);
 
+                HapticFeedback.HapticAmount(500);
+
             } else
             {
                 foreach (var slot in _inventorySlots)
@@ -154,6 +162,8 @@ public class RightControllerManager : MonoBehaviour {
             if (_inventorySlots[_currentItem].inventoryObj != null)
             {
                 PutItemInHand(_inventorySlots[_currentItem]);
+                HapticFeedback.HapticAmount(750);
+
                 //_inventorySlots[_currentItem].hasItemInHand = true;
                 //_handModelObj.SetActive(false);
                 CloseInventory();
@@ -184,6 +194,8 @@ public class RightControllerManager : MonoBehaviour {
 
     public void CloseInventory()
     {
+        PostProcessControl.InventoryClosePostEffect();
+
         //print("closing inventory");
         _isInventoryOpen = false;
         _inventoryObj.SetActive(false);
@@ -252,7 +264,11 @@ public class RightControllerManager : MonoBehaviour {
 
         inventorySlot.inventoryObj.transform.parent = inventorySlot.attachPoint.transform;
 
-        inventorySlot.inventoryObj.transform.localPosition = Vector3.zero; // inventorySlot.attachPoint.localPosition;
+        if (inventorySlot.name == "Pistol")
+            inventorySlot.inventoryObj.transform.localPosition = new Vector3(.2f, .225f, 0f); // inventorySlot.attachPoint.localScale;
+        else
+            inventorySlot.inventoryObj.transform.localPosition = Vector3.zero; // inventorySlot.attachPoint.localPosition;
+
         inventorySlot.inventoryObj.transform.localRotation = Quaternion.Euler(0, 0, 0);// inventorySlot.attachPoint.localRotation;
 
         if (inventorySlot.name == "Pistol")

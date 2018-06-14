@@ -10,6 +10,10 @@ public class PlayerHitBoxScript : MonoBehaviour {
     private AudioSource _audioSource;
     public AudioClip[] _hitClips;
 
+    [Header("Player Damage Effect Properties")]
+    public float _playerDamageVignetteAmnt;
+    public float _playerDamageContrastAmnt;
+
 	// Use this for initialization
 	void Start () {
         _timeUntilNextHitCounter = _timeUntilNextHit;
@@ -35,7 +39,7 @@ public class PlayerHitBoxScript : MonoBehaviour {
             //print(other.gameObject.name);
             _timeUntilNextHitCounter = 0;
             GlobalLowPassFilter.LowPassFilterAmount(500);
-            PostProcessControl.PlayerDamageEffect();
+            PostProcessControl.PlayerDamagePostEffect(_playerDamageVignetteAmnt, _playerDamageContrastAmnt);
         }
 
         

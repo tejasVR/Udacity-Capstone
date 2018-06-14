@@ -20,7 +20,8 @@ public class UISmooth : MonoBehaviour {
 
     private void Update()
     {
-        transform.localPosition = Vector3.Lerp(transform.localPosition, transform.InverseTransformPoint(endPos), Time.deltaTime * moveSpeed);
+        //transform.localPosition = Vector3.Lerp(transform.localPosition, transform.InverseTransformPoint(endPos), Time.deltaTime * moveSpeed);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, endPos, Time.deltaTime * moveSpeed);
     }
 
     //public GameObject[] icons;
