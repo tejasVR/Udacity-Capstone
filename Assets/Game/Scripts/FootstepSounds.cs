@@ -106,7 +106,7 @@ public class FootstepSounds : MonoBehaviour {
         source.clip = clips[randomInt];
 
         if (_alterPitch)
-            source.pitch += Random.Range(-.15f, .15f);
+            source.pitch = 1 + Random.Range(-.15f, .15f);
 
         source.Play();
     }

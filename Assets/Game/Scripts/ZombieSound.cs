@@ -16,21 +16,6 @@ public class ZombieSound : MonoBehaviour {
 
     public float pitchModulation;
 
-
-	// Use this for initialization
-	void Start () {
-        //foreach (var part in _bodyPart)
-        //{
-        //    part.
-        //}
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     public void TakeStepOnWood(int bodyPart)
     {
         PlaySound.PlayAudioFromSelection(_audioBody[bodyPart], _woodStep, true, -.1f + pitchModulation, .1f + pitchModulation);

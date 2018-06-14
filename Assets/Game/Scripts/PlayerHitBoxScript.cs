@@ -7,10 +7,13 @@ public class PlayerHitBoxScript : MonoBehaviour {
     public float _timeUntilNextHit;
     public float _timeUntilNextHitCounter;
 
+    private AudioSource _audioSource;
+    public AudioClip[] _hitClips;
+
 	// Use this for initialization
 	void Start () {
         _timeUntilNextHitCounter = _timeUntilNextHit;
-		
+        _audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -27,9 +30,11 @@ public class PlayerHitBoxScript : MonoBehaviour {
     {
         if (_timeUntilNextHitCounter == _timeUntilNextHit)
         {
+            PlaySound.PlayAudioFromSelection(_audioSource, _hitClips, true, -.15f, .15f);
+            HeartBeatControl.HeartBeatPitchAmount(1.2f);
             //print(other.gameObject.name);
             _timeUntilNextHitCounter = 0;
-
+            GlobalLowPassFilter.LowPassFilterAmount(500);
             PostProcessControl.PlayerDamageEffect();
         }
 

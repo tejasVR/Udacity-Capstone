@@ -6,7 +6,7 @@ public class GlobalLowPassFilter : MonoBehaviour {
 
     private AudioLowPassFilter lowPass;
     private float lowPassOriginal;
-    private float lowPassMaster;
+    private static float lowPassMaster;
 
 	// Use this for initialization
 	void Start () {
@@ -19,11 +19,15 @@ public class GlobalLowPassFilter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        lowPassMaster = Mathf.Lerp(lowPassMaster, lowPassOriginal, Time.deltaTime / 2);
-        lowPass.cutoffFrequency = Mathf.Lerp(lowPass.cutoffFrequency, lowPassMaster, Time.deltaTime / 2f);
+        if (Mathf.Abs(lowPassMaster - lowPass.cutoffFrequency) < 100)
+        {
+            lowPassMaster = Mathf.Lerp(lowPassMaster, lowPassOriginal, Time.deltaTime);
+            lowPass.cutoffFrequency = lowPassMaster;
+        }
+       
 	}
 
-    public void GunShotLowPass(float lowPassAmount)
+    public static void LowPassFilterAmount(float lowPassAmount)
     {
         lowPassMaster = lowPassAmount;
     }

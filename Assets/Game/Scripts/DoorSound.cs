@@ -120,9 +120,6 @@ public class DoorSound : MonoBehaviour {
 
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Controller"))
         {
-
-            
-
             PlaySound.PlayAudioFromSelection(_audioSource[0], _doorHandClips, true, -.1f, .1f);
 
             if (!_audioSource[1].isPlaying)

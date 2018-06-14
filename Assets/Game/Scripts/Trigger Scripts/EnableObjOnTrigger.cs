@@ -7,6 +7,10 @@ public class EnableObjOnTrigger : MonoBehaviour {
     public RightControllerManager rightControllerManager;
 
     public GameObject[] objsToEnable;
+
+    public bool _disableObjOnTrigger;
+
+    public GameObject[] objsToDisable;
     //public GameObject objToEnableWithBasementKey;
     //public GameObject objToEnableWithGun;
 
@@ -125,6 +129,15 @@ public class EnableObjOnTrigger : MonoBehaviour {
         {
             obj.SetActive(true);
             //print("enabled object");
+        }
+
+        if (_disableObjOnTrigger)
+        {
+            foreach (var obj in objsToDisable)
+            {
+                obj.SetActive(false);
+                //print("enabled object");
+            }
         }
 
         if (disableColliderOnTrigger)
