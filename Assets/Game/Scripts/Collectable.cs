@@ -14,7 +14,8 @@ public class Collectable : MonoBehaviour {
     public Renderer[] rend;
     Material[] matNormal;
     public AudioClip[] _soundsWhenEnabled;
-    
+
+    private Light _light;
 
     public string itemName;
 
@@ -23,7 +24,7 @@ public class Collectable : MonoBehaviour {
     public Transform attachPoint;
 
     void Start () {
-
+        _light = GetComponent<Light>();
         matNormal = new Material[rend.Length];
 
         for(int i = 0; i < rend.Length; i++)
@@ -41,12 +42,18 @@ public class Collectable : MonoBehaviour {
         if (isCollected)
         {
             if (!boxCollider.isTrigger)
+            {
                 boxCollider.isTrigger = true;
 
-            for(int i = 0; i < rend.Length; i++)
-            {
-                rend[i].material = matNormal[i];
+                for (int i = 0; i < rend.Length; i++)
+                {
+                    rend[i].material = matNormal[i];
+                }
+
+                if (itemName != "Pistol")
+                    _light.enabled = true;
             }
+                
 
             
         }

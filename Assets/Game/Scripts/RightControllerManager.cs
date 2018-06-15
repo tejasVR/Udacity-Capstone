@@ -265,7 +265,7 @@ public class RightControllerManager : MonoBehaviour {
         inventorySlot.inventoryObj.transform.parent = inventorySlot.attachPoint.transform;
 
         if (inventorySlot.name == "Pistol")
-            inventorySlot.inventoryObj.transform.localPosition = new Vector3(.2f, .225f, 0f); // inventorySlot.attachPoint.localScale;
+            inventorySlot.inventoryObj.transform.localPosition = new Vector3(-0.03f, .005f, 0f); // inventorySlot.attachPoint.localScale;
         else
             inventorySlot.inventoryObj.transform.localPosition = Vector3.zero; // inventorySlot.attachPoint.localPosition;
 
@@ -514,7 +514,7 @@ public class RightControllerManager : MonoBehaviour {
     {
         public string name;
         public bool slotTaken;
-        public GameObject inventoryObj; // the whole of the individual inventory UI
+        public GameObject inventoryObj; 
         public Collectable collectable;
         public AudioSource inventoryObjAudioSource;
         public AudioClip[] inventoryObjAudioClips;

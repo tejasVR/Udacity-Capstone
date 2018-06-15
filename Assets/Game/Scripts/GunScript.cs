@@ -40,16 +40,40 @@ public class GunScript : MonoBehaviour {
     public AudioSource[] _audioSource;
     //public AudioClip[] clips;
 
+    public Light[] _lights;
+
     private bool clickSoundPlayed = true;
+
+    public string _previousTag;
 
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
         gunBodyBaseRotation = gunBody.transform.localRotation;
+        _previousTag = "";
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void OnEnable()
+    {
+        //print("OnEnable Called");
+        //if (this.gameObject.tag == "Collected")
+        //{
+        //    foreach (var light in _lights)
+        //    {
+        //        light.enabled = true;
+        //    }
+        //} else
+        //{
+        //    foreach (var light in _lights)
+        //    {
+        //        light.enabled = false;
+        //    }
+        //}
+            
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (_trackedObj.gameObject.activeInHierarchy)
         {
             _device = SteamVR_Controller.Input((int)_trackedObj.index);
@@ -85,10 +109,15 @@ public class GunScript : MonoBehaviour {
         }
 
         //Debug.DrawRay(shootPoint.transform.position, shootPoint.transform.forward, Color.green, .1f);
-        Debug.DrawRay(shootPoint.transform.position, shootPoint.transform.forward, Color.green);
+        //Debug.DrawRay(shootPoint.transform.position, shootPoint.transform.forward, Color.green);
 
         gunBody.transform.localRotation = Quaternion.Lerp(gunBody.transform.localRotation, gunBodyBaseRotation, Time.deltaTime * gunRecoilAngleSpeed);
 
+        if (_previousTag != this.gameObject.tag)
+        {
+            CheckLights();
+            _previousTag = this.gameObject.tag;
+        }
 
     }
 
@@ -212,11 +241,21 @@ public class GunScript : MonoBehaviour {
         }
     }
 
-    //private void PlaySound(AudioSource source, bool randomPitch)
-    //{
-    //    if (randomPitch)
-    //        source.pitch = 1 + Random.Range(-.1f, .1f);
-
-    //    source.Play();
-    //}
+    private void CheckLights()
+    {
+        if (this.gameObject.CompareTag("Collected"))
+        {
+            foreach (var light in _lights)
+            {
+                light.enabled = true;
+            }
+        }
+        else
+        {
+            foreach (var light in _lights)
+            {
+                light.enabled = false;
+            }
+        }
+    }
 }

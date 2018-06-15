@@ -5,17 +5,20 @@ using UnityEngine;
 public class ExplosionForceTrigger : MonoBehaviour
 {
 
-    public ExplosionForce explosionForcePoint;
+    public ExplosionForce[] _explosionForcePoint;
 
-    public bool disableColliderOnTrigger;
+    public bool _disableColliderOnTrigger;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            explosionForcePoint.DoExplosionForce();
+            foreach (var point in _explosionForcePoint)
+            {
+                point.DoExplosionForce();
+            }
 
-            if (disableColliderOnTrigger)
+            if (_disableColliderOnTrigger)
                 this.GetComponent<BoxCollider>().enabled = false;
         }
     }

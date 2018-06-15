@@ -161,10 +161,10 @@ public class Enemy : MonoBehaviour {
 
     private void Death(Vector3 hitDirection, GameObject hitBodyPart)
     {
+        isDead = true;
         rdController.KillRagdoll(hitDirection, hitBodyPart);
         audio.Stop();
-        this.gameObject.layer = 11;
-        isDead = true;
+        //this.gameObject.layer = 11; <<-- moved to ragdoll die method
         this.enabled = false;
 
     }

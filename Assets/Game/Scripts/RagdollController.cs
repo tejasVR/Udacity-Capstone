@@ -17,11 +17,6 @@ public class RagdollController : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void KillRagdoll(Vector3 hitDirection, GameObject hitBodyPart)
     {
@@ -35,9 +30,18 @@ public class RagdollController : MonoBehaviour {
         {
             //ragdoll.isKinematic = false;
             ragdoll.velocity = hitDirection * hitForce;// Vector3.zero;
+            ragdoll.gameObject.layer = 15;
         }
 
         //hitBodyPart.GetComponent<Rigidbody>().velocity = hitDirection * hitForce;
+
+        //var children = new GameObject[transform.childCount];
+        //var children = GetComponentInChildren<Transform>();
+        //foreach (Transform child in children)
+        //{
+        //    print("I am cycling through the child objects. Current child:" + child.gameObject.name);
+        //    child.gameObject.layer = 15;
+        //}
 
     }
 }
