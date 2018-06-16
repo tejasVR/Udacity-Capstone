@@ -1,69 +1,114 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TextCameraFollow : MonoBehaviour {
 
-    public bool _shouldDelay;
-    public bool _shouldMoveWithCamera;
-
+    //public bool _shouldDelay;
     public float _visibilityDelay;
+
+    [Space(10)]
+
     public float _visibilityDuration;
-    public int _distanceFromCamera;
+
+    [Space(10)]
+
+    public bool _shouldMoveWithCamera;
     public float _moveSpeed;
+
+    [Space(10)]
+
+    public bool _shouldFadeOut;
+    public float _fadeOutSpeed;
+
+    [Space(10)]
+
+    public bool _shouldDisable;
     private float _disableObjCounter;
 
-    public GameObject _player;
-    public GameObject _textObj;
+    [Space(10)]
 
-    
+
+    public int _distanceFromCamera;
+
+    public GameObject _player;
+    public TextMeshPro _textObj;
+
+    private bool _fade;
 
 	// Use this for initialization
 	void Start () {
-        if (_shouldDelay)
-            _textObj.SetActive(false);
+        if (_shouldDisable)
+        StartCoroutine(Disable());
 
-        _disableObjCounter = _visibilityDelay + _visibilityDuration;
+        StartCoroutine(Enable());
+
+        //if (_shouldDelay)
+        //    StartCoroutine(Delay());
+        //else
+        //{
+        //    StartCoroutine(Enable());
+        //}
+        
+
+        //if (_disableObjCounter)
+        //{
+        //    _disableObjCounter = _visibilityDelay + _visibilityDuration;
+        //    StartCoroutine(Disable());
+        //}
         //if (_shouldMoveWithCamera)
         //    GetPos();
 	}
 
     private void OnEnable()
     {
-        GetPos();
+        //GetPos();
     }
 
     // Update is called once per frame
     void Update () {
 
-        _disableObjCounter -= Time.deltaTime;
-        if (_disableObjCounter <= 0)
+        //_disableObjCounter -= Time.deltaTime;
+        //if (_disableObjCounter <= 0)
+        //{
+        //    this.gameObject.SetActive(false);
+        //}
+
+        //if (_shouldDelay)
+        //{
+        //    if (_visibilityDelay > 0)
+        //    {
+        //        _visibilityDelay -= Time.deltaTime;
+        //        if (_visibilityDelay <= 0)
+        //        {
+        //            _textObj.gameObject.SetActive(true);
+        //        }
+        //    }
+        //}
+
+        //if (_textObj.gameObject.activeInHierarchy)
+        //{
+        //    if (_visibilityDuration > 0)
+        //    {
+        //        _visibilityDuration -= Time.deltaTime;
+        //        if (_visibilityDuration <= 0)
+        //        {
+                    
+        //            //_textObj.SetActive(false);
+        //            //this.gameObject.SetActive(false);
+        //        }
+        //    }
+            
+        //}
+
+        if (_fade)
         {
-            this.gameObject.SetActive(false);
+            ObjectFade.TextFadeOut(_textObj, _fadeOutSpeed, true);
+            //print("trying to fade");
         }
 
-        if (_shouldDelay)
-        {
-            if (_visibilityDelay > 0)
-            {
-                _visibilityDelay -= Time.deltaTime;
-                if (_visibilityDelay <= 0)
-                {
-                    _textObj.SetActive(true);
-                }
-            }
-        }
-
-        if (_textObj.activeInHierarchy)
-        {
-            _visibilityDuration -= Time.deltaTime;
-            if (_visibilityDuration <= 0)
-            {
-                _textObj.SetActive(false);
-            }
-        }
-
-        if (_shouldMoveWithCamera && _textObj.activeInHierarchy)
+        if (_shouldMoveWithCamera)// && _textObj.gameObject.activeInHierarchy)
         {
             GetPos();
         }
@@ -80,5 +125,47 @@ public class TextCameraFollow : MonoBehaviour {
         transform.LookAt(_player.transform.position);
     }
 
-   
+    IEnumerator Disable()
+    {
+        _disableObjCounter = _visibilityDelay + _visibilityDuration + (1/_fadeOutSpeed);
+        yield return new WaitForSeconds(_disableObjCounter);
+        this.gameObject.SetActive(false);
+    }
+
+    IEnumerator Delay()
+    {
+        print("delaying");
+        _textObj.gameObject.SetActive(false);
+        yield return new WaitForSeconds(_visibilityDelay);
+        //_textObj.gameObject.SetActive(true);
+        print("trying to enable");
+        Enable();
+
+
+    }
+
+    IEnumerator Enable()
+    {
+        //print("delaying");
+        _textObj.gameObject.SetActive(false);
+        yield return new WaitForSeconds(_visibilityDelay);
+
+        //print("starting Enable method");
+        _textObj.gameObject.SetActive(true);
+        yield return new WaitForSeconds(_visibilityDuration);
+        //print("done enabling, going to fade");
+
+        if (_shouldFadeOut)
+        {
+
+            _fade = true;
+            //print("fade: " + _fade);
+        }
+        else
+        {
+            _textObj.gameObject.SetActive(false);
+        }
+    }
+
+
 }

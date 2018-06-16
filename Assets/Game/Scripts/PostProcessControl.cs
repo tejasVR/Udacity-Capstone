@@ -75,18 +75,26 @@ public class PostProcessControl : MonoBehaviour {
 
         //}'
 
-        if (_inventoryEffectEnabled)
-        {
-            if (Mathf.Abs(_postColorGrading.postExposure.value - _exposureTargetValue) > .05f)
-                _postColorGrading.postExposure.value = Mathf.Lerp(_postColorGrading.postExposure.value, _exposureTargetValue, _exposureFadeSpeed);
+        //if (_inventoryEffectEnabled)
+        //{
+        //    if (Mathf.Abs(_postColorGrading.postExposure.value - _exposureTargetValue) > .05f)
+        //        _postColorGrading.postExposure.value = Mathf.Lerp(_postColorGrading.postExposure.value, _exposureTargetValue, _exposureFadeSpeed);
+        //} else
+        //{
+        //    if (Mathf.Abs(_postColorGrading.postExposure.value - _exposureStartValue) > .05f)
+        //        _postColorGrading.postExposure.value = Mathf.Lerp(_postColorGrading.postExposure.value, _exposureStartValue, _exposureFadeSpeed);
+        //}
+
+       
+            //if (Mathf.Abs(_postColorGrading.postExposure.value - _exposureTargetValue) > .05f)
+            //    _postColorGrading.postExposure.value = Mathf.Lerp(_postColorGrading.postExposure.value, _exposureTargetValue, _exposureFadeSpeed);
+            //else if (Mathf.Abs(_postColorGrading.postExposure.value - _exposureStartValue) > .05f)
+            //    _postColorGrading.postExposure.value = Mathf.Lerp(_postColorGrading.postExposure.value, _exposureStartValue, _exposureFadeSpeed);
 
 
+        if (Mathf.Abs(_postColorGrading.postExposure.value - _exposureStartValue) > .05f)
+            _postColorGrading.postExposure.value = Mathf.Lerp(_postColorGrading.postExposure.value, _exposureStartValue, _exposureFadeSpeed);
 
-        } else
-        {
-            if (Mathf.Abs(_postColorGrading.postExposure.value - _exposureStartValue) > .05f)
-                _postColorGrading.postExposure.value = Mathf.Lerp(_postColorGrading.postExposure.value, _exposureStartValue, _exposureFadeSpeed);
-        }
 
 
         //_postVignette.intensity.value = Mathf.Sin(Time.realtimeSinceStartup);
@@ -115,6 +123,14 @@ public class PostProcessControl : MonoBehaviour {
         _inventoryEffectEnabled = false;
 
         //_postDOF.focalLength.value = dofFocalLengthAmnt
+    }
+
+    public static void OpeningFadeEffect(float exposureAmt)
+    {
+        print("opening effect enabled");
+        //_exposureTargetValue = exposureAmt;
+
+        _postColorGrading.postExposure.value = exposureAmt;
     }
 
 }

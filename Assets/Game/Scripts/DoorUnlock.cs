@@ -18,7 +18,7 @@ public class DoorUnlock : MonoBehaviour {
     public AudioClip[] _unlockSounds;
 
     public Image _lockImage;
-    public GameObject _player;
+    //public GameObject _player;
     public float _distanceToShowLockImage;
 
     //public string 
@@ -34,14 +34,9 @@ public class DoorUnlock : MonoBehaviour {
     {
         if (!_isUnlocked)
         {
-            var distance = Vector3.Distance(_lockImage.gameObject.transform.position, _player.transform.transform.position);
-            if (distance < _distanceToShowLockImage)
-            {
-                var tempColor = _lockImage.color;
-                tempColor.a = ((_distanceToShowLockImage - distance) / _distanceToShowLockImage) * .5f;
-                _lockImage.color = tempColor;
-            }
-        }       
+            //print("calling update");
+            ObjectFade.ImageFadeWithDistance(_lockImage, _distanceToShowLockImage, false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
