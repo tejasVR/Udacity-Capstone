@@ -41,7 +41,7 @@ public class Hand : MonoBehaviour {
         //if (trackedRight.gameObject.activeInHierarchy && trackedLeft.gameObject.activeInHierarchy)
         {
             // Sets device variable depending on which hand is the dominant hand
-            if (gameManager.dominantLeft)
+            //if (gameManager.dominantLeft)
             {
                 // If the dominant hand is a left hand, set the right hand normals to the left controller
                 handTrackedRight = trackedLeft;
@@ -50,7 +50,7 @@ public class Hand : MonoBehaviour {
                 handDeviceRight = SteamVR_Controller.Input((int)trackedLeft.index);
                 handDeviceLeft = SteamVR_Controller.Input((int)trackedRight.index);
             }
-            else
+            //else
             {
                 handTrackedRight = trackedRight;
                 handTrackedLeft = trackedLeft;
