@@ -36,6 +36,9 @@ public class PlayerScript : MonoBehaviour {
 
         _trackedLeft = _trackedLeftObj;
         _trackedRight = _trackedRightObj;
+
+        _deviceRight = SteamVR_Controller.Input((int)_trackedRightObj.index);
+        _deviceLeft = SteamVR_Controller.Input((int)_trackedLeftObj.index);
     }
 	
 	// Update is called once per frame

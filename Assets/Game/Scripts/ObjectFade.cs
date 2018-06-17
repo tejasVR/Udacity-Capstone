@@ -188,5 +188,26 @@ public class ObjectFade : MonoBehaviour {
 
     }
 
+    public static void TextLookAtFadeIn(TextMeshPro textObj, float angleToFadeMin, float angleToFadeMax, float fadeSpeed)
+    {
+        Vector3 targetDir = PlayerScript._playerEye.transform.position - textObj.transform.position;
+        var angle = Vector3.Angle(targetDir, PlayerScript._playerEye.transform.forward);
+
+        //textObj.alpha = (180 - angle) / 180;
+
+        if (angle > angleToFadeMin && angle < angleToFadeMax)
+        {
+            if(textObj.alpha <= 1)
+                textObj.alpha += Time.deltaTime * fadeSpeed;
+        }
+        else
+        {
+            if (textObj.alpha >= 0)
+                textObj.alpha -= Time.deltaTime * fadeSpeed;
+        }
+
+        //print(angle);
+    }
+
 
 }

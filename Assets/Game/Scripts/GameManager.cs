@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.XR;
 
 public class GameManager : MonoBehaviour {
@@ -9,34 +10,66 @@ public class GameManager : MonoBehaviour {
     //public bool dominantLeft;
     //public bool dominantRight;
 
-    public bool _thisIsTheIntroScene;
-    public bool _thisIsTheMainScene;
+    //public Image _progressBarObj;
+    public static GameManager instance;
 
-    public float _introSceneTimer;
+    public GameObject _introEnvironmentObj;
+    public float _introSceneTimerCounter;
+
+    public bool _thisIsIntro;
+    public bool _thisIsMain;
+    public bool _thisIsEnd;
+
+    public static bool _thisIsTheIntroScene;
+    public static bool _thisIsTheMainScene;
+
+    public static float _introSceneTimer;
 
     //public GameObject _playerIntro;
     //public GameObject _playerMain;
 
-    public GameObject _mainSceneLoad;
+    public GameObject _mainSceneLoadObj;
+    public static GameObject _mainSceneLoad;
 
-    //public GameObject introEnvironment;
+    public static GameObject _introEnvironment;
+    //public GameObject _menuObj;
 
     //public GameObject _escapeHouseText;
 
 
     private void Awake()
     {
+        _introEnvironment = _introEnvironmentObj;
+        _introSceneTimer = _introSceneTimerCounter;
+        _mainSceneLoad = _mainSceneLoadObj;
+
+        _thisIsTheIntroScene = _thisIsIntro;
+        _thisIsTheMainScene = _thisIsMain;
         //XRSettings.eyeTextureResolutionScale = 1.8f;
+
+        if (_thisIsTheIntroScene)
+            _introEnvironment.SetActive(false);
+
+        instance = this;
+
     }
 
     // Use this for initialization
     void Start () {
-        if (_thisIsTheIntroScene)
-            StartCoroutine(IntroTimer());
+
+        //if (_thisIsTheIntroScene)
+        //    introEnvironment.SetActive(false);
 
         if(_thisIsTheMainScene)
             StartCoroutine(MainSceneStart());
         
+    }
+
+
+    private void Update()
+    {
+        //if (_thisIsTheIntroScene)
+        //    ProgressBar();
     }
 
     //// Update is called once per frame
@@ -60,7 +93,7 @@ public class GameManager : MonoBehaviour {
     //       }
     //   }
 
-    private void DeacivateIntro()
+    public static void DeacivateIntro()
     {
         //_playerMain.SetActive(true);
         //SteamVR_LoadLevel.Begin("Main Scene v.13", false, 2f, 0, 0, 0, 0);
@@ -77,8 +110,18 @@ public class GameManager : MonoBehaviour {
         //_playerMain.SetActive(false);
     }
 
-    private IEnumerator IntroTimer()
+    public static void NextScene()
     {
+        print("calling start intro method");
+        if(_thisIsTheIntroScene)
+        instance.StartCoroutine(StartIntroRoutine());
+
+    }
+
+    public static IEnumerator StartIntroRoutine()
+    {
+        print("calling start intro co routine");
+        _introEnvironment.SetActive(true);
         yield return new WaitForSeconds(_introSceneTimer);
         DeacivateIntro();
     }
@@ -90,4 +133,37 @@ public class GameManager : MonoBehaviour {
         PostProcessControl.OpeningFadeEffect(-10);
         //_escapeHouseText.SetActive(true);
     }
+
+    //private void ProgressBar()
+    //{
+    //    if (_progressBarObj.fillAmount < 1)
+    //    {
+    //        if (PlayerScript._deviceRight.GetPress(SteamVR_Controller.ButtonMask.Trigger) || PlayerScript._deviceRight.GetPress(SteamVR_Controller.ButtonMask.Grip) ||
+    //        PlayerScript._deviceRight.GetPress(SteamVR_Controller.ButtonMask.Touchpad) || PlayerScript._deviceRight.GetPress(SteamVR_Controller.ButtonMask.ApplicationMenu) ||
+    //        PlayerScript._deviceLeft.GetPress(SteamVR_Controller.ButtonMask.Trigger) || PlayerScript._deviceLeft.GetPress(SteamVR_Controller.ButtonMask.Grip) ||
+    //        PlayerScript._deviceLeft.GetPress(SteamVR_Controller.ButtonMask.Touchpad) || PlayerScript._deviceLeft.GetPress(SteamVR_Controller.ButtonMask.ApplicationMenu))
+    //        {
+    //            _progressBarObj.fillAmount += Time.deltaTime * .5f;
+    //        }
+    //        else
+    //        {
+    //            if (_progressBarObj.fillAmount > 0)
+    //                _progressBarObj.fillAmount -= Time.deltaTime * .25f;
+    //            if (_progressBarObj.fillAmount <= 0)
+    //                _progressBarObj.fillAmount = 0;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        if (!_isProgressBarFilled)
+    //        {
+    //            ProgressBarFilled();
+    //            _isProgressBarFilled = true;
+
+    //        }
+            
+    //    }
+    //}
+
+   
 }
