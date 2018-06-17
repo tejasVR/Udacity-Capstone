@@ -75,7 +75,7 @@ public class ObjectFade : MonoBehaviour {
         var distance = Vector3.Distance(textObj.gameObject.transform.position, PlayerScript._playerEye.transform.transform.position);
         if (distance < distanceToFade)
         {
-            textObj.alpha = ((distance) / distanceToFade);   
+            textObj.alpha = ((distanceToFade- distance) / distanceToFade);   
         } else
         {
             if (deactivateAfterZeroAlpha)
@@ -92,9 +92,15 @@ public class ObjectFade : MonoBehaviour {
         //    GetPlayer();
         //}
 
+        
         var tempColor = imageObj.color;
-        tempColor.a -= Time.deltaTime * fadeSpeed;
-        imageObj.color = tempColor;
+
+        if(tempColor.a > 0)
+        {
+            tempColor.a -= Time.deltaTime * fadeSpeed;
+            imageObj.color = tempColor;
+        }
+     
 
         if (tempColor.a <= 0 && deactivateImageAfterZeroAlpha)
         {
@@ -112,12 +118,17 @@ public class ObjectFade : MonoBehaviour {
 
         //print("text is fading");
 
-        textObj.alpha -= Time.deltaTime * fadeSpeed;
-
-        if (textObj.alpha <= 0 && deactivateTextAfterZeroAlpha)
+   
+        if (textObj.alpha > 0)
         {
-            textObj.gameObject.SetActive(false);
+            textObj.alpha -= Time.deltaTime * fadeSpeed;
         }
+        else
+        {
+            if (deactivateTextAfterZeroAlpha)
+                textObj.gameObject.SetActive(false);
+        }
+           
     }
 
 
@@ -145,5 +156,37 @@ public class ObjectFade : MonoBehaviour {
     //    _player = GameObject.Find("Camera (eye)");
     //    print("Getting player: " + _player.gameObject.name);
     //}
+
+    public static void LineRendererFadeIn(LineRenderer lineRendererObj, float alphaTarget, float fadeSpeed)
+    {
+        var tempColor = lineRendererObj.material.color;
+       
+        if (tempColor.a < alphaTarget)
+        {
+            tempColor.a += Time.deltaTime * fadeSpeed;
+            lineRendererObj.material.color = tempColor;
+
+        }
+
+    }
+
+    public static void LineRendererFadeOut(LineRenderer lineRendererObj, float fadeSpeed, bool deactivationAfterZeroAlpha)
+    {
+        var tempColor = lineRendererObj.material.color;
+
+        if (tempColor.a >  0)
+        {
+            tempColor.a -= Time.deltaTime * fadeSpeed;
+            lineRendererObj.material.color = tempColor;
+
+        } else if (deactivationAfterZeroAlpha)
+        {
+            lineRendererObj.gameObject.SetActive(false);
+        }
+
+        print("fading out lineRenderer");
+
+    }
+
 
 }

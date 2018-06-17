@@ -21,6 +21,7 @@ public class EnableObjOnTrigger : MonoBehaviour {
     public enum HasItem
     {
         none,
+        atticKey,
         basementKey,
         pistol,
         frontDoorKey
@@ -91,6 +92,20 @@ public class EnableObjOnTrigger : MonoBehaviour {
                 }
             }
 
+            if (hasItem == HasItem.atticKey)
+            {
+                foreach (RightControllerManager.InventorySlot item in rightControllerManager._inventorySlots)
+                {
+                    if (item.name == "Attic Key")
+                    {
+                        //if (item.hasItemInInventory)
+                        {
+                            EnableObjects();
+                        }
+                    }
+                }
+            }
+
             //if (ifHasBasementKey)
             //{
             //    //if (rightControllerManager.itemList.)
@@ -118,7 +133,7 @@ public class EnableObjOnTrigger : MonoBehaviour {
             //        }
             //    }
 
-            
+
 
         }
     }

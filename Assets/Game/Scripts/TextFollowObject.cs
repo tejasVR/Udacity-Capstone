@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class TextFollowObject : MonoBehaviour {
 
+    public bool _followIndefinitely;
+    [Space(10)]
+
     //public bool _shouldDelay;
     public float _visibilityDelay;
 
@@ -14,8 +17,11 @@ public class TextFollowObject : MonoBehaviour {
 
     [Space(10)]
 
-    public bool _shouldMoveWithCamera;
+    public bool _shouldMoveWithObj;
     public float _moveSpeed;
+
+    public bool _shouldFadeIn;
+    public float _fadeInSpeed;
 
     [Space(10)]
 
@@ -30,19 +36,27 @@ public class TextFollowObject : MonoBehaviour {
     [Space(10)]
 
 
-    public int _distanceFromCamera;
+    public int _distanceFromObject;
+
+    public bool _faceCamera;
 
     public GameObject _followObject;
     public TextMeshPro _textObj;
 
     private bool _fadeIn;
+    private bool _fadeOut;
 
 	// Use this for initialization
 	void Start () {
-        if (_shouldDisable)
-        StartCoroutine(Disable());
+
+        if (!_followIndefinitely)
+        {
+            if (_shouldDisable)
+                StartCoroutine(Disable());
+        }
 
         StartCoroutine(Enable());
+
 
         //if (_shouldDelay)
         //    StartCoroutine(Delay());
@@ -50,7 +64,7 @@ public class TextFollowObject : MonoBehaviour {
         //{
         //    StartCoroutine(Enable());
         //}
-        
+
 
         //if (_disableObjCounter)
         //{
@@ -59,7 +73,7 @@ public class TextFollowObject : MonoBehaviour {
         //}
         //if (_shouldMoveWithCamera)
         //    GetPos();
-	}
+    }
 
     private void OnEnable()
     {
@@ -68,6 +82,11 @@ public class TextFollowObject : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+
+        if (_fadeIn)
+        {
+            ObjectFade.TextFadeIn(_textObj, 1f, _fadeInSpeed);
+        }
 
         //_disableObjCounter -= Time.deltaTime;
         //if (_disableObjCounter <= 0)
@@ -102,13 +121,14 @@ public class TextFollowObject : MonoBehaviour {
             
         //}
 
-        if (_fadeIn)
+        if (_fadeOut)
         {
+
             ObjectFade.TextFadeOut(_textObj, _fadeOutSpeed, true);
             //print("trying to fade");
         }
 
-        if (_shouldMoveWithCamera)// && _textObj.gameObject.activeInHierarchy)
+        if (_shouldMoveWithObj)// && _textObj.gameObject.activeInHierarchy)
         {
             GetPos();
         }
@@ -119,10 +139,14 @@ public class TextFollowObject : MonoBehaviour {
     private void GetPos()
     {
         Ray ray = new Ray(_followObject.transform.position, _followObject.transform.forward);
-        var point = ray.GetPoint(_distanceFromCamera);
+        var point = ray.GetPoint(_distanceFromObject);
 
         transform.position = Vector3.Lerp(transform.position, point, Time.deltaTime * _moveSpeed);
-        transform.LookAt(_followObject.transform.position);
+        
+        if (_faceCamera)
+            transform.LookAt(PlayerScript._playerEye.transform);
+        else
+            transform.LookAt(_followObject.transform);
     }
 
     IEnumerator Disable()
@@ -151,20 +175,28 @@ public class TextFollowObject : MonoBehaviour {
         yield return new WaitForSeconds(_visibilityDelay);
 
         //print("starting Enable method");
+        if (_shouldFadeIn)
+            _fadeIn = true;
+
         _textObj.gameObject.SetActive(true);
         yield return new WaitForSeconds(_visibilityDuration);
+        //_fadeIn = false;
         //print("done enabling, going to fade");
 
-        if (_shouldFadeOut)
+        if (!_followIndefinitely)
         {
-
-            _fadeIn = true;
-            //print("fade: " + _fade);
+            if (_shouldFadeOut)
+            {
+                _fadeIn = false;
+                _fadeOut = true;
+                //print("fade: " + _fade);
+            }
+            else
+            {
+                _textObj.gameObject.SetActive(false);
+            }
         }
-        else
-        {
-            _textObj.gameObject.SetActive(false);
-        }
+        
     }
 
 
