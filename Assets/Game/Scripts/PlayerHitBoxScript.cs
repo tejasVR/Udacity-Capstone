@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerHitBoxScript : MonoBehaviour {
 
+    public float health;
+
     public float _timeUntilNextHit;
     public float _timeUntilNextHitCounter;
 
@@ -32,17 +34,22 @@ public class PlayerHitBoxScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_timeUntilNextHitCounter == _timeUntilNextHit)
+        if(health > 0)
         {
-            PlaySound.PlayAudioFromSelection(_audioSource, _hitClips, true, -.15f, .15f);
-            HeartBeatControl.HeartBeatPitchAmount(1.2f);
-            //print(other.gameObject.name);
-            _timeUntilNextHitCounter = 0;
-            GlobalLowPassFilter.LowPassFilterAmount(500);
-            PostProcessControl.PlayerDamagePostEffect(_playerDamageVignetteAmnt, _playerDamageContrastAmnt);
+            if (_timeUntilNextHitCounter == _timeUntilNextHit)
+            {
+                PlaySound.PlayAudioFromSelection(_audioSource, _hitClips, true, -.15f, .15f);
+                HeartBeatControl.HeartBeatPitchAmount(1.2f);
+                //print(other.gameObject.name);
+                _timeUntilNextHitCounter = 0;
+                GlobalLowPassFilter.LowPassFilterAmount(500);
+                PostProcessControl.PlayerDamagePostEffect(_playerDamageVignetteAmnt, _playerDamageContrastAmnt);
+                health--;
+            }
         }
-
-        
-
+        else
+        {
+            GameManager.NextScene();
+        }
     }
 }

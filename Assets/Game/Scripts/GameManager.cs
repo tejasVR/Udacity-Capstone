@@ -14,7 +14,11 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
 
     public GameObject _introEnvironmentObj;
+    public static GameObject _introEnvironment;
+
     public float _introSceneTimerCounter;
+    public static float _introSceneTimer;
+
 
     public bool _thisIsIntro;
     public bool _thisIsMain;
@@ -22,16 +26,19 @@ public class GameManager : MonoBehaviour {
 
     public static bool _thisIsTheIntroScene;
     public static bool _thisIsTheMainScene;
+    public static bool _thisIsTheEndScene;
 
-    public static float _introSceneTimer;
 
     //public GameObject _playerIntro;
     //public GameObject _playerMain;
-
+    public GameObject _introSceneLoadObj;
     public GameObject _mainSceneLoadObj;
-    public static GameObject _mainSceneLoad;
+    public GameObject _endSceneLoadObj;
 
-    public static GameObject _introEnvironment;
+    public static GameObject _introSceneLoad;
+    public static GameObject _mainSceneLoad;
+    public static GameObject _endSceneLoad;
+
     //public GameObject _menuObj;
 
     //public GameObject _escapeHouseText;
@@ -41,10 +48,14 @@ public class GameManager : MonoBehaviour {
     {
         _introEnvironment = _introEnvironmentObj;
         _introSceneTimer = _introSceneTimerCounter;
+
+        _introSceneLoad = _introSceneLoadObj;
         _mainSceneLoad = _mainSceneLoadObj;
+        _endSceneLoad = _endSceneLoadObj;
 
         _thisIsTheIntroScene = _thisIsIntro;
         _thisIsTheMainScene = _thisIsMain;
+        _thisIsTheEndScene = _thisIsEnd;
         //XRSettings.eyeTextureResolutionScale = 1.8f;
 
         if (_thisIsTheIntroScene)
@@ -60,7 +71,7 @@ public class GameManager : MonoBehaviour {
         //if (_thisIsTheIntroScene)
         //    introEnvironment.SetActive(false);
 
-        if(_thisIsTheMainScene)
+        if(_thisIsTheMainScene || _thisIsTheEndScene)
             StartCoroutine(MainSceneStart());
         
     }
@@ -116,6 +127,11 @@ public class GameManager : MonoBehaviour {
         if(_thisIsTheIntroScene)
         instance.StartCoroutine(StartIntroRoutine());
 
+        if (_thisIsTheMainScene)
+            _endSceneLoad.SetActive(true);
+
+        if (_thisIsTheEndScene)
+            _introSceneLoad.SetActive(true);
     }
 
     public static IEnumerator StartIntroRoutine()
@@ -133,6 +149,8 @@ public class GameManager : MonoBehaviour {
         PostProcessControl.OpeningFadeEffect(-10);
         //_escapeHouseText.SetActive(true);
     }
+
+
 
     //private void ProgressBar()
     //{
