@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlashLightManager : MonoBehaviour {
 
     //public SteamVR_Controller.Device device;
-    public SteamVR_TrackedObject trackedObj;
+    //public SteamVR_TrackedObject trackedObj;
     //public Hand hand;
 
     public Light[] lights;
@@ -123,14 +123,14 @@ public class FlashLightManager : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (trackedObj.gameObject.activeInHierarchy)
+        //if (trackedObj.gameObject.activeInHierarchy)
         {
             //if (!isStowed)
             {
-                Vector3 dir = (trackedObj.transform.position - transform.position);
+                Vector3 dir = (PlayerScript._trackedRight.transform.position - transform.position);
                 rb.velocity = (dir) * followSpeed * Time.deltaTime;
 
-                rb.MoveRotation(trackedObj.transform.rotation);
+                rb.MoveRotation(PlayerScript._trackedRight.transform.rotation);
             }
            
 

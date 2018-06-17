@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour {
 
-    public Transform player;
+    //public Transform player;
 
     public float distanceToMoveToPlayer = 5;
     public float distanceToAttackPlayer = 1;
@@ -64,9 +64,9 @@ public class Enemy : MonoBehaviour {
 
     private void Update()
     {
-        var dir = player.position - startCast.position;
+        var dir = PlayerScript._playerEye.transform.position - startCast.position;
         dir.y = 0;
-        distanceToPlayer = Vector3.Distance(startCast.position, player.transform.position);
+        distanceToPlayer = Vector3.Distance(startCast.position, PlayerScript._playerEye.transform.position);
 
         //Debug.DrawRay(startCast.position, dir, Color.green);
 
@@ -94,7 +94,7 @@ public class Enemy : MonoBehaviour {
             if (distanceToPlayer < distanceToMoveToPlayer && distanceToPlayer > distanceToAttackPlayer)
             {
                 AnimateMove();
-                agent.SetDestination(player.transform.position);
+                agent.SetDestination(PlayerScript._playerEye.transform.position);
             }
             else if (distanceToPlayer <= distanceToAttackPlayer)
             {

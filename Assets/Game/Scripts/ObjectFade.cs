@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ObjectFade : MonoBehaviour {
 
-    private static GameObject _player;
+    //private static GameObject _player;
     //public static TextMeshPro _textObj;
     //public static Image _imageObj;
     //public static GameObject _player;
@@ -34,12 +34,12 @@ public class ObjectFade : MonoBehaviour {
     {
         //print("calling image fade distance method");
 
-        if (_player == null)
-        {
-            GetPlayer();
-        }
+        //if (_player == null)
+        //{
+        //    GetPlayer();
+        //}
 
-        var distance = Vector3.Distance(imageObj.gameObject.transform.position, _player.transform.transform.position);
+        var distance = Vector3.Distance(imageObj.gameObject.transform.position, PlayerScript._playerEye.transform.transform.position);
 
         //print(distance);
 
@@ -48,7 +48,7 @@ public class ObjectFade : MonoBehaviour {
             //print("trying to fade image");
             
             var tempColor = imageObj.color;
-            print(tempColor.a);
+            //print(tempColor.a);
             //tempColor.a = ((distanceToFade - distance) / distanceToFade) * .5f;
             tempColor.a = ((distanceToFade - distance) / distanceToFade);
             imageObj.color = tempColor;
@@ -67,12 +67,12 @@ public class ObjectFade : MonoBehaviour {
 
     public static void TextFadeWithDistance(TextMeshPro textObj, float distanceToFade, bool deactivateAfterZeroAlpha)
     {
-        if (_player == null)
-        {
-            GetPlayer();
-        }
+        //if (_player == null)
+        //{
+        //    GetPlayer();
+        //}
 
-        var distance = Vector3.Distance(textObj.gameObject.transform.position, _player.transform.transform.position);
+        var distance = Vector3.Distance(textObj.gameObject.transform.position, PlayerScript._playerEye.transform.transform.position);
         if (distance < distanceToFade)
         {
             textObj.alpha = ((distance) / distanceToFade);   
@@ -87,10 +87,10 @@ public class ObjectFade : MonoBehaviour {
 
     public static void ImageFadeOut(Image imageObj, float fadeSpeed, bool deactivateImageAfterZeroAlpha)
     {
-        if (_player == null)
-        {
-            GetPlayer();
-        }
+        //if (_player == null)
+        //{
+        //    GetPlayer();
+        //}
 
         var tempColor = imageObj.color;
         tempColor.a -= Time.deltaTime * fadeSpeed;
@@ -105,10 +105,10 @@ public class ObjectFade : MonoBehaviour {
 
     public static void TextFadeOut(TextMeshPro textObj, float fadeSpeed, bool deactivateTextAfterZeroAlpha)
     {
-        if (_player == null)
-        {
-            GetPlayer();
-        }
+        //if (_player == null)
+        //{
+        //    GetPlayer();
+        //}
 
         //print("text is fading");
 
@@ -120,10 +120,30 @@ public class ObjectFade : MonoBehaviour {
         }
     }
 
-    public static void GetPlayer()
+
+    public static void TextFadeIn(TextMeshPro textObj, float alphaTarget, float fadeSpeed)//, bool deactivateTextAfterTargetAlpha)
     {
-        _player = GameObject.Find("Camera (eye)");
-        print("Getting player: " + _player.gameObject.name);
+        //if (_player == null)
+        //{
+        //    GetPlayer();
+        //}
+
+        //print("text is fading");
+
+        if (textObj.alpha < alphaTarget)
+            textObj.alpha += Time.deltaTime * fadeSpeed;
+
+        //if (textObj.alpha >= alphaTarget && deactivateTextAfterTargetAlpha)
+        //{
+        //    textObj.gameObject.SetActive(false);
+        //}
     }
+
+
+    //public static void GetPlayer()
+    //{
+    //    _player = GameObject.Find("Camera (eye)");
+    //    print("Getting player: " + _player.gameObject.name);
+    //}
 
 }

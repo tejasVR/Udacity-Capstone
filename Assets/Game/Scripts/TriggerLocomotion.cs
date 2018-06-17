@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TriggerLocomotion : MonoBehaviour {
 
     public GameManager gameManager;
-    public SteamVR_TrackedObject trackedObj;
+    private SteamVR_TrackedObject trackedObj;
     private Hand hand;
 
     
@@ -54,6 +55,10 @@ public class TriggerLocomotion : MonoBehaviour {
 
     #endregion
 
+    [Header("Image Properties")]
+    public Image _triangleOutlineObj;
+    public Image _triangleFillObj;
+
     
     private void Awake()
     {
@@ -67,7 +72,7 @@ public class TriggerLocomotion : MonoBehaviour {
     {
         //trackedObj = hand.handTrackedRight;
         //device = hand.handDeviceRight;
-
+        trackedObj = GetComponent<SteamVR_TrackedObject>();
         staminaAmnt = staminaAmntMax;
         
         bodyRb = bodyCollider.GetComponent<Rigidbody>();
@@ -76,18 +81,20 @@ public class TriggerLocomotion : MonoBehaviour {
     
     void Update()
     {
+        
+        FillTriangle();
         // Initializes device variable every frame
         //trackedObj = hand.handTrackedRight;
         //device = hand.handDeviceRight;
 
-        SteamVR_Controller.Device device = SteamVR_Controller.Input((int)trackedObj.index);
+        ///SteamVR_Controller.Device device = SteamVR_Controller.Input((int)trackedObj.index);
 
-        triggerAxis = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger).x; //Gets depth of trigger press    
+        //triggerAxis = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger).x; //Gets depth of trigger press
 
         if (enableSprint)
         {
             // Enable sprinting when the touchpad is pressed and stamina != 0
-            if (device.GetPress(SteamVR_Controller.ButtonMask.Touchpad) && staminaAmnt >= 0f)
+            if (PlayerScript._deviceRight.GetPress(SteamVR_Controller.ButtonMask.Touchpad) && staminaAmnt >= 0f)
             {
                 staminaAmnt -= staminaDrain * Time.deltaTime;
                 sprintInertia = Mathf.Lerp(sprintInertia, 1, Time.deltaTime * sprintInertiaSpeed);
@@ -124,22 +131,24 @@ public class TriggerLocomotion : MonoBehaviour {
         //bodyCollider.transform.position = new Vector3(4, 5, 1);
         
 
-        if (trackedObj.gameObject.activeInHierarchy)
+        if (PlayerScript._trackedLeft.gameObject.activeInHierarchy)
         {
-            Vector3 playerPos = new Vector3(playerEye.transform.position.x, 0, playerEye.transform.position.z);
-            if (Vector3.Distance(playerPos, new Vector3(bodyCollider.transform.position.x, 0, bodyCollider.transform.position.z)) > bodyCollider.transform.localScale.x / 2)
+            Vector3 playerPos = new Vector3(PlayerScript._playerEye.transform.position.x, 0, PlayerScript._playerEye.transform.position.z);
+            if (Vector3.Distance(playerPos, new Vector3(PlayerScript._bodyCollider.transform.position.x, 0, PlayerScript._bodyCollider.transform.position.z)) > PlayerScript._bodyCollider.transform.localScale.x / 2)
             {
                 //bodyCollider.transform.position = new Vector3(playerEye.transform.position.x, bodyCollider.transform.position.y, playerEye.transform.position.z);
-                bodyCollider.transform.position = Vector3.MoveTowards(bodyCollider.transform.position, new Vector3(playerEye.transform.position.x, bodyCollider.transform.position.y, playerEye.transform.position.z), 2f * Time.deltaTime);
+                //bodyCollider.transform.position = Vector3.MoveTowards(bodyCollider.transform.position, new Vector3(playerEye.transform.position.x, bodyCollider.transform.position.y, playerEye.transform.position.z), 2f * Time.deltaTime);
+                PlayerScript._bodyCollider.transform.position = Vector3.MoveTowards(PlayerScript._bodyCollider.transform.position, 
+                    new Vector3(PlayerScript._playerEye.transform.position.x, PlayerScript._bodyCollider.transform.position.y, PlayerScript._playerEye.transform.position.z), 2f * Time.deltaTime);
             }
 
-            if (triggerAxis > .05f) //If the trigger is pressed passed a certain threshold
+            if (PlayerScript._triggerAxisLeft > .05f) //If the trigger is pressed passed a certain threshold
             {
-                cameraRigRb.drag = 1;
+                PlayerScript._cameraRigRb.drag = 1;
                 //cameraRig.transform.position = new Vector3(cameraRig.transform.position.x, bodyCollider.transform.position.y - bodyCollider.transform.localScale.y, cameraRig.transform.position.z);
                 //Assemble beginning variables
-                controllerForward = trackedObj.transform.forward;
-                moveSpeed = Mathf.Lerp(moveSpeed, (triggerAxis * walkSpeed)  + sprintSpeed, Time.deltaTime * 5f);
+                controllerForward = PlayerScript._trackedLeft.transform.forward;
+                moveSpeed = Mathf.Lerp(moveSpeed, (PlayerScript._triggerAxisLeft * walkSpeed)  + sprintSpeed, Time.deltaTime * 5f);
                 Vector3 direction = new Vector3(controllerForward.x, 0, controllerForward.z);
 
 
@@ -150,12 +159,12 @@ public class TriggerLocomotion : MonoBehaviour {
                 //cameraRig.transform.position = Vector3.Lerp(new Vector3(cameraRig.transform.position.x, footCollider.transform.position.y, cameraRig.transform.position.z), new Vector3(bodyCollider.transform.position.x, footCollider.transform.position.y, bodyCollider.transform.position.z), Time.deltaTime * moveSpeed * 5);
 
                 //cameraRigRb.AddForce(direction / 10, ForceMode.Impulse);
-                cameraRigRb.MovePosition(cameraRig.transform.position + (direction * moveSpeed) * Time.deltaTime);
-                cameraRigRb.velocity = Vector3.ClampMagnitude(cameraRigRb.velocity, moveSpeed);
+                PlayerScript._cameraRigRb.MovePosition(PlayerScript._cameraRigRb.transform.position + (direction * moveSpeed) * Time.deltaTime);
+                PlayerScript._cameraRigRb.velocity = Vector3.ClampMagnitude(cameraRigRb.velocity, moveSpeed);
                 //print(cameraRigRb.velocity.magnitude);
             } else
             {
-                cameraRigRb.drag = 10;
+                PlayerScript._cameraRigRb.drag = 10;
             }
         }
         
@@ -168,6 +177,13 @@ public class TriggerLocomotion : MonoBehaviour {
             sprintingAudio.Play();
             sprintSoundPlayed = true;
         }
+    }
+
+    private void FillTriangle()
+    {
+        _triangleFillObj.fillAmount = Mathf.Lerp(_triangleFillObj.fillAmount, PlayerScript._triggerAxisLeft, Time.deltaTime * .75f);
+        ObjectFade.ImageFadeWithDistance(_triangleFillObj, .75f, false);
+        ObjectFade.ImageFadeWithDistance(_triangleOutlineObj, .75f, false);
     }
     
 }

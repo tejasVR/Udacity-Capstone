@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GunScript : MonoBehaviour {
 
-    public SteamVR_TrackedObject _trackedObj;
-    private SteamVR_Controller.Device _device;
+    //public SteamVR_TrackedObject _trackedObj;
+    //private SteamVR_Controller.Device _device;
 
     public GameObject shootPoint;
     public GameObject _gunShotTrailPrefab;
@@ -74,13 +74,13 @@ public class GunScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (_trackedObj.gameObject.activeInHierarchy)
+        //if (PlayerScript._tracked.gameObject.activeInHierarchy)
         {
-            _device = SteamVR_Controller.Input((int)_trackedObj.index);
+            //_device = SteamVR_Controller.Input((int)_trackedObj.index);
 
-            deviceAngularVelocity = _device.angularVelocity.magnitude;
+            deviceAngularVelocity = PlayerScript._deviceRight.angularVelocity.magnitude;
 
-            if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) && firstPickedUp && fireRateTimer == fireRate && this.gameObject.CompareTag("Collected"))
+            if (PlayerScript._deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) && firstPickedUp && fireRateTimer == fireRate && this.gameObject.CompareTag("Collected"))
             {
                 //Instantiate(_gunShotTrailPrefab, shootPoint.transform);
 

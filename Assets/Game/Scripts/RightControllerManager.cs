@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class RightControllerManager : MonoBehaviour {
 
-    private SteamVR_TrackedObject _trackedObj;
-    SteamVR_Controller.Device _device;
+    //private SteamVR_TrackedObject _trackedObj;
+    //SteamVR_Controller.Device _device;
 
     public GameObject _inventoryObj;
     public GameObject _handModelObj;
@@ -15,7 +15,7 @@ public class RightControllerManager : MonoBehaviour {
     //creates a list of items for the invebtory to manage
     public List<InventorySlot> _inventorySlots = new List<InventorySlot>();
 
-    private Vector2 _touchpad;
+    //private Vector2 _touchpad;
     private float _angleFromCenter; //gets the angle of the finger on the touchpad in relation to the center of the touchpad (0,0)
 
     public bool _isInventoryOpen;
@@ -38,17 +38,17 @@ public class RightControllerManager : MonoBehaviour {
     public float _dofAmnt;
 
     void Start () {
-        _trackedObj = GetComponent<SteamVR_TrackedObject>();
+        //_trackedObj = GetComponent<SteamVR_TrackedObject>();
         _inventoryObj.SetActive(false);
     }
 	
 	void Update () {
-        if (_trackedObj.gameObject.activeInHierarchy)
-        {
-            _device = SteamVR_Controller.Input((int)_trackedObj.index);
-        }
+        //if (_trackedObj.gameObject.activeInHierarchy)
+        //{
+        //    _device = SteamVR_Controller.Input((int)_trackedObj.index);
+        //}
 
-        if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && !_isInventoryOpen)
+        if (PlayerScript._deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && !_isInventoryOpen)
         {
             
             _isInventoryOpen = true;
@@ -94,7 +94,7 @@ public class RightControllerManager : MonoBehaviour {
     {
         if(collision.gameObject.CompareTag("Collectable"))
         {
-            if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
+            if (PlayerScript._deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
             {
                 if (CheckInventoryItemExists(collision.gameObject.GetComponent<Collectable>().itemName))
                 {
@@ -112,10 +112,10 @@ public class RightControllerManager : MonoBehaviour {
         TouchpadEnabled();
         //ShowInventoryItems(false);
 
-        if (_device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && !_firstPressUp)
+        if (PlayerScript._deviceRight.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && !_firstPressUp)
             _firstPressUp = true;
         
-        if (_touchpad.magnitude > .25f)
+        if (PlayerScript._touchpadRight.magnitude > .25f)
         {
             // Inventory Slot #1
             if (_angleFromCenter > 275 && _angleFromCenter < 335)
@@ -157,7 +157,7 @@ public class RightControllerManager : MonoBehaviour {
             _oldItem = _currentItem;
         }
 
-        if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && _currentItem > -1 && _firstPressUp)
+        if (PlayerScript._deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && _currentItem > -1 && _firstPressUp)
         {
             if (_inventorySlots[_currentItem].inventoryObj != null)
             {
@@ -187,7 +187,7 @@ public class RightControllerManager : MonoBehaviour {
 
         }
 
-        if (_device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && _firstPressUp & _currentItem == -1)
+        if (PlayerScript._deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && _firstPressUp & _currentItem == -1)
             CloseInventory();
 
     }
@@ -433,13 +433,13 @@ public class RightControllerManager : MonoBehaviour {
         _cursorObj.SetActive(true);
 
         // if the menu is open, get both the x and y values of the touchpad
-        _touchpad.x = _device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
-        _touchpad.y = _device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).y;
+        //_touchpad.x = PlayerScript._deviceRight.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
+        //_touchpad.y = PlayerScript._deviceRight.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).y;
 
-        _cursorObj.transform.localPosition = Vector3.Lerp(_cursorObj.transform.localPosition, _touchpad * .085f, Time.unscaledDeltaTime * 10f);
+        _cursorObj.transform.localPosition = Vector3.Lerp(_cursorObj.transform.localPosition, PlayerScript._touchpadRight * .085f, Time.unscaledDeltaTime * 10f);
 
         Vector2 fromVector2 = new Vector2(0, 1);
-        Vector2 toVector2 = _touchpad;
+        Vector2 toVector2 = PlayerScript._touchpadRight;
 
         // Measure the users' thumb angle in relation to the center of the touchpad.
         _angleFromCenter = Vector2.Angle(fromVector2, toVector2);
