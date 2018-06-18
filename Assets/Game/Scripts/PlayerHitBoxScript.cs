@@ -49,7 +49,7 @@ public class PlayerHitBoxScript : MonoBehaviour {
 
             if (health <= 1)
             {
-                PostProcessControl.PostExposureFade(0, -10, .2f);
+                PostProcessControl.PostExposureFade(-10, .2f);
             }
         }
         else

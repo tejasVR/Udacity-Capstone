@@ -4,48 +4,62 @@ using UnityEngine;
 
 public class FlashLightManager : MonoBehaviour {
 
+    public float _rotateSpeed;
+
+    public Vector3 _startPosition;
+    public Quaternion _startRotation;
+
     //public SteamVR_Controller.Device device;
     //public SteamVR_TrackedObject trackedObj;
     //public Hand hand;
 
-    public Light[] lights;
-    public float[] lightAngles;
-    public float[] lightRanges;
+    //public Light[] lights;
+    //public float[] lightAngles;
+    //public float[] lightRanges;
     //public Light spotlight30;
     //public Light spolight40;
     //public Light spotlight55;
 
-    public float followSpeed;
-    private Rigidbody rb;
+    //public float followSpeed;
+    //private Rigidbody rb;
 
-    public Transform stowPos;
+    //public Transform stowPos;
 
-    public bool isStowed;
-    //public Light light;
-    private Ray ray;
+    //public bool isStowed;
+    ////public Light light;
+    //private Ray ray;
 
 	// Use this for initialization
 	void Awake () {
         //trackedObj = hand.handTrackedLeft;
         //device = hand.handDeviceLeft;
-        rb = GetComponent<Rigidbody>();
-        lightAngles = new float[lights.Length];
-        lightRanges = new float[lights.Length];
+        //rb = GetComponent<Rigidbody>();
+        //lightAngles = new float[lights.Length];
+        //lightRanges = new float[lights.Length];
 
     }
 
     private void Start()
     {
-        for (int i = 0; i < lights.Length; i++)
-        {
-            lightAngles[i] = lights[i].spotAngle;
-            lightRanges[i] = lights[i].range;
-        }
+        //_startPosition = transform.localPosition;
+        _startRotation = transform.localRotation;
+
+        //print("Start position:" + _startPosition);
+        //print("Start rotation:" + _startRotation.eulerAngles);
+        //for (int i = 0; i < lights.Length; i++)
+        //{
+        //    lightAngles[i] = lights[i].spotAngle;
+        //    lightRanges[i] = lights[i].range;
+        //}
         
     }
 
     // Update is called once per frame
     void Update () {
+
+        transform.position = PlayerScript._trackedRight.transform.position;
+        //transform.rotation = Quaternion.Slerp(transform.rotation, PlayerScript._trackedRight.transform.rotation * _startRotation, Time.deltaTime * _rotateSpeed);
+        transform.rotation = Quaternion.Slerp(transform.rotation, PlayerScript._trackedRight.transform.rotation * _startRotation, Time.deltaTime * _rotateSpeed);
 
         /*
         ray = new Ray(transform.position, transform.forward);
@@ -121,33 +135,33 @@ public class FlashLightManager : MonoBehaviour {
 
     }
 
-    private void FixedUpdate()
-    {
-        //if (trackedObj.gameObject.activeInHierarchy)
-        {
-            //if (!isStowed)
-            {
-                Vector3 dir = (PlayerScript._trackedRight.transform.position - transform.position);
-                rb.velocity = (dir) * followSpeed * Time.deltaTime;
+    //private void FixedUpdate()
+    //{
+    //    //if (trackedObj.gameObject.activeInHierarchy)
+    //    {
+    //        //if (!isStowed)
+    //        {
+    //            //Vector3 dir = (PlayerScript._trackedRight.transform.position - transform.position);
+    //            //rb.velocity = (dir) * followSpeed * Time.deltaTime;
 
-                rb.MoveRotation(PlayerScript._trackedRight.transform.rotation);
-            }
+    //            //rb.MoveRotation(PlayerScript._trackedRight.transform.rotation);
+    //        }
            
 
 
-            //rb.MovePosition(transform.position + dir * followSpeed * Time.deltaTime);
+    //        //rb.MovePosition(transform.position + dir * followSpeed * Time.deltaTime);
 
-            //
+    //        //
 
 
-            //rb.MovePosition(trackedObj.transform.position * Time.deltaTime);
-            //rb.MoveRotation(trackedObj.transform.rotation);
-            //rb.MovePosition(Vector3.Lerp(transform.position, trackedObj.transform.position, followSpeed * Time.deltaTime));
-            //rb.MoveRotation(Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation, followSpeed * Time.deltaTime));
+    //        //rb.MovePosition(trackedObj.transform.position * Time.deltaTime);
+    //        //rb.MoveRotation(trackedObj.transform.rotation);
+    //        //rb.MovePosition(Vector3.Lerp(transform.position, trackedObj.transform.position, followSpeed * Time.deltaTime));
+    //        //rb.MoveRotation(Quaternion.Slerp(transform.rotation, trackedObj.transform.rotation, followSpeed * Time.deltaTime));
 
-            //rb.position = trackedObj.transform.position;
-            //rb.rotation = trackedObj.transform.rotation;
+    //        //rb.position = trackedObj.transform.position;
+    //        //rb.rotation = trackedObj.transform.rotation;
 
-        }
-    }
+    //    }
+    //}
 }

@@ -28,6 +28,20 @@ public class PlayerScript : MonoBehaviour {
     public static Vector2 _touchpadRight;
 
     // Use this for initialization
+    private void Awake()
+    {
+        //_playerEye = _playerEyeObj;
+        //_cameraRig = _cameraRigObj;
+        //_bodyCollider = _bodyColliderObj;
+        //_cameraRigRb = _cameraRig.GetComponent<Rigidbody>();
+
+        //_trackedLeft = _trackedLeftObj;
+        //_trackedRight = _trackedRightObj;
+
+        //_deviceRight = SteamVR_Controller.Input((int)_trackedRightObj.index);
+        //_deviceLeft = SteamVR_Controller.Input((int)_trackedLeftObj.index);
+    }
+
     void Start () {
         _playerEye = _playerEyeObj;
         _cameraRig = _cameraRigObj;

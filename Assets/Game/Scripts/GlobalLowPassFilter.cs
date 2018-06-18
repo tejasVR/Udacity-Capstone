@@ -4,32 +4,32 @@ using UnityEngine;
 
 public class GlobalLowPassFilter : MonoBehaviour {
 
-    private AudioLowPassFilter lowPass;
-    private float lowPassOriginal;
-    private static float lowPassMaster;
+    private AudioLowPassFilter _lowPass;
+    private float _lowPassOriginal;
+    private static float _lowPassMaster;
 
 	// Use this for initialization
 	void Start () {
 
-        lowPass = GetComponent<AudioLowPassFilter>();
-        lowPassOriginal = lowPass.cutoffFrequency;
+        _lowPass = GetComponent<AudioLowPassFilter>();
+        _lowPassOriginal = _lowPass.cutoffFrequency;
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        if (Mathf.Abs(lowPassMaster - lowPass.cutoffFrequency) < 100)
+        if (Mathf.Abs(_lowPassMaster - _lowPass.cutoffFrequency) < 100)
         {
-            lowPassMaster = Mathf.Lerp(lowPassMaster, lowPassOriginal, Time.deltaTime);
-            lowPass.cutoffFrequency = lowPassMaster;
+            _lowPassMaster = Mathf.Lerp(_lowPassMaster, _lowPassOriginal, Time.deltaTime);
+            _lowPass.cutoffFrequency = _lowPassMaster;
         }
        
 	}
 
     public static void LowPassFilterAmount(float lowPassAmount)
     {
-        lowPassMaster = lowPassAmount;
+        _lowPassMaster = lowPassAmount;
     }
 
 

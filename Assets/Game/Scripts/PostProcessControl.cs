@@ -14,14 +14,18 @@ public class PostProcessControl : MonoBehaviour {
     public float _vignetteStartValue;
     public float _contrastStartValue;
     public float _exposureStartValue;
-    public float _dofFocalStartValue;
+    public float _focalLengthStartValue;
+    public float _focusDisatnceStartValue;
 
     public static float _exposureTargetValue;
+    public static float _focalLengthTargetValue;
+    public static float _focusDistanceTargetValue;
 
     public float _vignetteFadeSpeed;
     public float _constrastFadeSpeed;
     public static float _exposureFadeSpeed;
-    public float _dofFocalFadeSpeed;
+    public static float _focalLengthFadeSpeed;
+    public static float _focusDistanceFadeSpeed;
 
     private static bool _inventoryEffectEnabled;
 
@@ -34,7 +38,7 @@ public class PostProcessControl : MonoBehaviour {
 	void Start () {
 
         //_postVignette = _postVolume.
-        _exposureFadeSpeed = .025f;
+        //_exposureFadeSpeed = .025f;
 
         _postVignette = ScriptableObject.CreateInstance<Vignette>();
         _postVignette.enabled.Override(true);
@@ -49,9 +53,9 @@ public class PostProcessControl : MonoBehaviour {
 
         _postDOF = ScriptableObject.CreateInstance<DepthOfField>();
         _postDOF.enabled.Override(true);
-        _postDOF.focalLength.Override(_dofFocalStartValue);
-
-
+        _postDOF.focalLength.Override(_focalLengthStartValue);
+        _postDOF.focusDistance.Override(_focusDisatnceStartValue);
+        
         _postVolume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, _postVignette, _postColorGrading, _postDOF);
     }
 
@@ -98,6 +102,12 @@ public class PostProcessControl : MonoBehaviour {
         if (Mathf.Abs(_postColorGrading.postExposure.value - _exposureTargetValue) > .05f)
             _postColorGrading.postExposure.value = Mathf.Lerp(_postColorGrading.postExposure.value, _exposureTargetValue, _exposureFadeSpeed);
 
+        if (Mathf.Abs(_postDOF.focalLength.value - _focalLengthTargetValue) > .01f)
+            _postDOF.focalLength.value = Mathf.Lerp(_postDOF.focalLength.value, _focalLengthTargetValue, _focalLengthFadeSpeed);
+
+        if (Mathf.Abs(_postDOF.focusDistance.value - _focusDistanceTargetValue) > .01f)
+            _postDOF.focusDistance.value = Mathf.Lerp(_postDOF.focusDistance.value, _focusDistanceTargetValue, _focusDistanceFadeSpeed);
+        //print(_postDOF.focusDistance.value)
 
         //_postVignette.intensity.value = Mathf.Sin(Time.realtimeSinceStartup);
         //_postColorGrading.contrast.value = Mathf.Sin(Time.realtimeSinceStartup) * 30f;
@@ -111,7 +121,46 @@ public class PostProcessControl : MonoBehaviour {
         //print("damage effect enabled");
     }
 
-    public static void PostExposureFade(float exposureAmtBegin, float exposureAmtEnd, float exposureFadeSpeed)
+    public static void PostExposureFade(float exposureTarget, float exposureFadeSpeed)
+    {
+        //print("fade effect anabled");
+        //_postDOF.focalLength.value = dofFocalLengthAmnt;
+        //_postColorGrading.postExposure.value = exposureAmtBegin;
+        _exposureTargetValue = exposureTarget;
+        _exposureFadeSpeed = exposureFadeSpeed;
+        //_inventoryEffectEnabled = true;
+
+    }
+
+    public static void InventoryClosePostEffect()
+    {
+        //_inventoryEffectEnabled = false;
+
+        //_postDOF.focalLength.value = dofFocalLengthAmnt
+    }
+
+    public static void InventoryOpenPostEffect()
+    {
+        //_inventoryEffectEnabled = true;
+
+        //_postDOF.focalLength.value = dofFocalLengthAmnt
+    }
+
+    public static void DOFFade(float focalLengthTarget, float focusDistanceTarget, float focalLengthFadeSpeed, float focusDistanceFadeSpeed)
+    {
+        //_postDOF.focalLength.value = focalLengthAmtBegin;
+
+        _focalLengthTargetValue = focalLengthTarget;
+        _focalLengthFadeSpeed = focusDistanceFadeSpeed;
+
+        _focusDistanceTargetValue = focusDistanceTarget;
+        _focusDistanceFadeSpeed = focusDistanceFadeSpeed;
+
+        
+
+    }
+
+    public static void OpeningFadeEffect(float exposureAmtBegin, float exposureAmtEnd, float exposureFadeSpeed)
     {
         //print("fade effect anabled");
         //_postDOF.focalLength.value = dofFocalLengthAmnt;
@@ -122,22 +171,6 @@ public class PostProcessControl : MonoBehaviour {
 
     }
 
-    public static void InventoryClosePostEffect()
-    {
-        _inventoryEffectEnabled = false;
 
-        //_postDOF.focalLength.value = dofFocalLengthAmnt
-    }
-
-    public static void OpeningFadeEffect(float exposureAmt)
-    {
-        print("opening effect enabled");
-        //_exposureTargetValue = exposureAmt;
-
-        _postColorGrading.postExposure.value = exposureAmt;
-        //_exposureTargetValue
-    }
-
-  
 
 }

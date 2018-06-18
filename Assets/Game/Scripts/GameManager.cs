@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour {
         _introEnvironment.SetActive(true);
         yield return new WaitForSeconds(_introSceneTimer);
         _mainSceneLoad.SetActive(true);
-        PostProcessControl.PostExposureFade(-10, 0, .025f);
+        PostProcessControl.OpeningFadeEffect(-10, 0, .025f);
         //DeacivateIntro();
     }
 
@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(.05f);
         //DeacivateIntro();
-        PostProcessControl.PostExposureFade(-10, 0, .02f);
+        PostProcessControl.OpeningFadeEffect(-10, 0, .02f);
     }
 
 

@@ -76,16 +76,21 @@ public class TutorialObject : MonoBehaviour {
             {
                 ObjectFade.TextFadeWithDistance(_textObj, 1.4f, false);
 
-                if (PlayerScript._deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) && PlayerScript._trackedRight.gameObject.activeInHierarchy)
+                if (PlayerScript._trackedRight.gameObject.activeInHierarchy)
                 {
-                    foreach (var item in _rightControllerManager._inventorySlots)
+                    if (PlayerScript._deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
                     {
-                        if (item.name == "Attic Key")
+                        foreach (var item in _rightControllerManager._inventorySlots)
                         {
-                            _endTutorialObject = true;
+                            if (item.name == "Attic Key")
+                            {
+                                _endTutorialObject = true;
+                            }
                         }
                     }
                 }
+
+                
             }
             else if (_tutorialText == TutorialTextObj.PressTouchPadToBringUpInventory)
             {

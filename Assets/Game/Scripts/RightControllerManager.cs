@@ -34,14 +34,34 @@ public class RightControllerManager : MonoBehaviour {
     public Color _highlightedUIColor;
 
     [Header("Inventory Post Effect Properties")]
-    public float _exposureAmtBeginInventoryOn;
-    public float _exposureAmtEndInventoryOn;
+    //public float _exposureAmtBeginInventoryOn;
+    //public float _exposureAmtEndInventoryOn;
 
-    public float _exposureAmtBeginInventoryOff;
-    public float _exposureAmtEndInventoryOff;
+    //public float _exposureAmtBeginInventoryOff;
+    //public float _exposureAmtEndInventoryOff;
+
+    public float _exposureInventoryOn;
+    public float _exposureInventoryOff;
 
     public float _exposureFadeSpeed;
-    public float _dofAmnt;
+
+    //public float _dofAmtBeginInventoryOn;
+    //public float _dofAmtEndInventoryOn;
+
+    public float _focalLengthInventoryOn;
+    public float _focalLengthInventoryOff;
+
+    public float _focusDistanceInventoryOn;
+    public float _focusDistanceInventoryOff;
+
+    //public float _dofAmtBeginInventoryOff;
+    //public float _dofAmtEndInventoryOff;
+
+    public float _focalLengthFadeSpeed;
+    public float _focusDistanceFadeSpeed;
+
+
+
 
     void Start () {
         //_trackedObj = GetComponent<SteamVR_TrackedObject>();
@@ -61,7 +81,8 @@ public class RightControllerManager : MonoBehaviour {
             //CheckInventoryItemPlacement();
             _inventoryObj.SetActive(true);
             //ShowInventoryItems(true);
-            PostProcessControl.PostExposureFade(_exposureAmtBeginInventoryOn, _exposureAmtEndInventoryOn, _exposureFadeSpeed);
+            PostProcessControl.PostExposureFade(_exposureInventoryOn, _exposureFadeSpeed);
+            PostProcessControl.DOFFade(_focalLengthInventoryOn, _focusDistanceInventoryOn, _focalLengthFadeSpeed, _focusDistanceFadeSpeed);
             HapticFeedback.HapticAmount(500);
             PlaceItemsInInventory(false, true);
             CheckHandModelVisibility();
@@ -200,7 +221,8 @@ public class RightControllerManager : MonoBehaviour {
 
     public void CloseInventory()
     {
-        PostProcessControl.PostExposureFade(_exposureAmtBeginInventoryOff, _exposureAmtEndInventoryOff, _exposureFadeSpeed);
+        PostProcessControl.PostExposureFade(_exposureInventoryOff, _exposureFadeSpeed);
+        PostProcessControl.DOFFade(_focalLengthInventoryOff, _focusDistanceInventoryOff, _focalLengthFadeSpeed, _focusDistanceFadeSpeed);
 
         //print("closing inventory");
         _isInventoryOpen = false;
