@@ -34,7 +34,13 @@ public class RightControllerManager : MonoBehaviour {
     public Color _highlightedUIColor;
 
     [Header("Inventory Post Effect Properties")]
-    public float _exposureAmnt;
+    public float _exposureAmtBeginInventoryOn;
+    public float _exposureAmtEndInventoryOn;
+
+    public float _exposureAmtBeginInventoryOff;
+    public float _exposureAmtEndInventoryOff;
+
+    public float _exposureFadeSpeed;
     public float _dofAmnt;
 
     void Start () {
@@ -55,7 +61,7 @@ public class RightControllerManager : MonoBehaviour {
             //CheckInventoryItemPlacement();
             _inventoryObj.SetActive(true);
             //ShowInventoryItems(true);
-            PostProcessControl.InventoryOpenPostEffect(_exposureAmnt);
+            PostProcessControl.PostExposureFade(_exposureAmtBeginInventoryOn, _exposureAmtEndInventoryOn, _exposureFadeSpeed);
             HapticFeedback.HapticAmount(500);
             PlaceItemsInInventory(false, true);
             CheckHandModelVisibility();
@@ -194,7 +200,7 @@ public class RightControllerManager : MonoBehaviour {
 
     public void CloseInventory()
     {
-        PostProcessControl.InventoryClosePostEffect();
+        PostProcessControl.PostExposureFade(_exposureAmtBeginInventoryOff, _exposureAmtEndInventoryOff, _exposureFadeSpeed);
 
         //print("closing inventory");
         _isInventoryOpen = false;

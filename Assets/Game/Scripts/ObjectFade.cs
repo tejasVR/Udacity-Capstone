@@ -184,7 +184,7 @@ public class ObjectFade : MonoBehaviour {
             lineRendererObj.gameObject.SetActive(false);
         }
 
-        print("fading out lineRenderer");
+        //print("fading out lineRenderer");
 
     }
 

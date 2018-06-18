@@ -66,19 +66,21 @@ public class GameManager : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start() {
 
         //if (_thisIsTheIntroScene)
         //    introEnvironment.SetActive(false);
 
-        if(_thisIsTheMainScene || _thisIsTheEndScene)
-            StartCoroutine(MainSceneStart());
+        //if (_thisIsTheMainScene || _thisIsTheEndScene)
+            StartCoroutine(GameFade());
         
     }
 
 
     private void Update()
     {
+
+       
         //if (_thisIsTheIntroScene)
         //    ProgressBar();
     }
@@ -125,29 +127,48 @@ public class GameManager : MonoBehaviour {
     {
         print("calling start intro method");
         if(_thisIsTheIntroScene)
-        instance.StartCoroutine(StartIntroRoutine());
+            instance.StartCoroutine(StartIntro());
 
         if (_thisIsTheMainScene)
-            _endSceneLoad.SetActive(true);
+            instance.StartCoroutine(MoveToEndScene());
 
         if (_thisIsTheEndScene)
-            _introSceneLoad.SetActive(true);
+            instance.StartCoroutine(MoveToIntroScene());
     }
 
-    public static IEnumerator StartIntroRoutine()
+    public static IEnumerator StartIntro()
     {
         print("calling start intro co routine");
         _introEnvironment.SetActive(true);
         yield return new WaitForSeconds(_introSceneTimer);
-        DeacivateIntro();
+        _mainSceneLoad.SetActive(true);
+        PostProcessControl.PostExposureFade(-10, 0, .025f);
+        //DeacivateIntro();
     }
 
-    private IEnumerator MainSceneStart()
+    public static IEnumerator MoveToEndScene()
     {
         yield return new WaitForSeconds(.05f);
         //DeacivateIntro();
-        PostProcessControl.OpeningFadeEffect(-10);
+        //PostProcessControl.PostExposureFade(-10, 0, .025f);
         //_escapeHouseText.SetActive(true);
+        _endSceneLoad.SetActive(true);
+    }
+
+    public static IEnumerator MoveToIntroScene()
+    {
+        yield return new WaitForSeconds(.05f);
+        //DeacivateIntro();
+        //PostProcessControl.PostExposureFade(-10, 0, .025f);
+        //_escapeHouseText.SetActive(true);
+        _introSceneLoad.SetActive(true);
+    }
+
+    public static IEnumerator GameFade()
+    {
+        yield return new WaitForSeconds(.05f);
+        //DeacivateIntro();
+        PostProcessControl.PostExposureFade(-10, 0, .02f);
     }
 
 
@@ -179,9 +200,9 @@ public class GameManager : MonoBehaviour {
     //            _isProgressBarFilled = true;
 
     //        }
-            
+
     //    }
     //}
 
-   
+
 }

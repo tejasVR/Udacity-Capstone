@@ -46,6 +46,11 @@ public class PlayerHitBoxScript : MonoBehaviour {
                 PostProcessControl.PlayerDamagePostEffect(_playerDamageVignetteAmnt, _playerDamageContrastAmnt);
                 health--;
             }
+
+            if (health <= 1)
+            {
+                PostProcessControl.PostExposureFade(0, -10, .2f);
+            }
         }
         else
         {

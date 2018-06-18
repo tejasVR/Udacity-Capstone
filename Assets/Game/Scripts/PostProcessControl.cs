@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 public class PostProcessControl : MonoBehaviour {
@@ -22,7 +20,7 @@ public class PostProcessControl : MonoBehaviour {
 
     public float _vignetteFadeSpeed;
     public float _constrastFadeSpeed;
-    public float _exposureFadeSpeed;
+    public static float _exposureFadeSpeed;
     public float _dofFocalFadeSpeed;
 
     private static bool _inventoryEffectEnabled;
@@ -36,6 +34,7 @@ public class PostProcessControl : MonoBehaviour {
 	void Start () {
 
         //_postVignette = _postVolume.
+        _exposureFadeSpeed = .025f;
 
         _postVignette = ScriptableObject.CreateInstance<Vignette>();
         _postVignette.enabled.Override(true);
@@ -85,16 +84,19 @@ public class PostProcessControl : MonoBehaviour {
         //        _postColorGrading.postExposure.value = Mathf.Lerp(_postColorGrading.postExposure.value, _exposureStartValue, _exposureFadeSpeed);
         //}
 
-       
-            //if (Mathf.Abs(_postColorGrading.postExposure.value - _exposureTargetValue) > .05f)
-            //    _postColorGrading.postExposure.value = Mathf.Lerp(_postColorGrading.postExposure.value, _exposureTargetValue, _exposureFadeSpeed);
-            //else if (Mathf.Abs(_postColorGrading.postExposure.value - _exposureStartValue) > .05f)
-            //    _postColorGrading.postExposure.value = Mathf.Lerp(_postColorGrading.postExposure.value, _exposureStartValue, _exposureFadeSpeed);
+
+        //if (Mathf.Abs(_postColorGrading.postExposure.value - _exposureTargetValue) > .05f)
+        //    _postColorGrading.postExposure.value = Mathf.Lerp(_postColorGrading.postExposure.value, _exposureTargetValue, _exposureFadeSpeed);
+        //else if (Mathf.Abs(_postColorGrading.postExposure.value - _exposureStartValue) > .05f)
+        //    _postColorGrading.postExposure.value = Mathf.Lerp(_postColorGrading.postExposure.value, _exposureStartValue, _exposureFadeSpeed);
 
 
-        if (Mathf.Abs(_postColorGrading.postExposure.value - _exposureStartValue) > .05f)
-            _postColorGrading.postExposure.value = Mathf.Lerp(_postColorGrading.postExposure.value, _exposureStartValue, _exposureFadeSpeed);
+        //if (Mathf.Abs(_postColorGrading.postExposure.value - _exposureStartValue) > .05f)
+        //    _postColorGrading.postExposure.value = Mathf.Lerp(_postColorGrading.postExposure.value, _exposureStartValue, _exposureFadeSpeed);
 
+
+        if (Mathf.Abs(_postColorGrading.postExposure.value - _exposureTargetValue) > .05f)
+            _postColorGrading.postExposure.value = Mathf.Lerp(_postColorGrading.postExposure.value, _exposureTargetValue, _exposureFadeSpeed);
 
 
         //_postVignette.intensity.value = Mathf.Sin(Time.realtimeSinceStartup);
@@ -109,12 +111,14 @@ public class PostProcessControl : MonoBehaviour {
         //print("damage effect enabled");
     }
 
-    public static void InventoryOpenPostEffect(float exposureAmnt)
+    public static void PostExposureFade(float exposureAmtBegin, float exposureAmtEnd, float exposureFadeSpeed)
     {
-        print("Invenory effect anabled");
+        //print("fade effect anabled");
         //_postDOF.focalLength.value = dofFocalLengthAmnt;
-        _exposureTargetValue = exposureAmnt;
-        _inventoryEffectEnabled = true;
+        _postColorGrading.postExposure.value = exposureAmtBegin;
+        _exposureTargetValue = exposureAmtEnd;
+        _exposureFadeSpeed = exposureFadeSpeed;
+        //_inventoryEffectEnabled = true;
 
     }
 
@@ -131,6 +135,9 @@ public class PostProcessControl : MonoBehaviour {
         //_exposureTargetValue = exposureAmt;
 
         _postColorGrading.postExposure.value = exposureAmt;
+        //_exposureTargetValue
     }
+
+  
 
 }
