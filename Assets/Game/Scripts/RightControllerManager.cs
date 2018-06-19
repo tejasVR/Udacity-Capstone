@@ -82,7 +82,7 @@ public class RightControllerManager : MonoBehaviour {
             _inventoryObj.SetActive(true);
             //ShowInventoryItems(true);
             PostProcessControl.PostExposureFade(_exposureInventoryOn, _exposureFadeSpeed);
-            PostProcessControl.DOFFade(_focalLengthInventoryOn, _focusDistanceInventoryOn, _focalLengthFadeSpeed, _focusDistanceFadeSpeed);
+            //PostProcessControl.DOFFade(_focalLengthInventoryOn, _focusDistanceInventoryOn, _focalLengthFadeSpeed, _focusDistanceFadeSpeed);
             HapticFeedback.HapticAmount(500);
             PlaceItemsInInventory(false, true);
             CheckHandModelVisibility();
@@ -222,7 +222,7 @@ public class RightControllerManager : MonoBehaviour {
     public void CloseInventory()
     {
         PostProcessControl.PostExposureFade(_exposureInventoryOff, _exposureFadeSpeed);
-        PostProcessControl.DOFFade(_focalLengthInventoryOff, _focusDistanceInventoryOff, _focalLengthFadeSpeed, _focusDistanceFadeSpeed);
+        //PostProcessControl.DOFFade(_focalLengthInventoryOff, _focusDistanceInventoryOff, _focalLengthFadeSpeed, _focusDistanceFadeSpeed);
 
         //print("closing inventory");
         _isInventoryOpen = false;
@@ -486,6 +486,7 @@ public class RightControllerManager : MonoBehaviour {
         inventorySlot.slotTaken = false;
         inventorySlot.inventoryObj = null;
         inventorySlot.name = "";
+        inventorySlot.textTag.text = "";
         inventorySlot.hasItemInHand = false;
     }
 

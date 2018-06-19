@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class ObjectSounds : MonoBehaviour {
 
-    public static ObjectSounds instance;
+    public static ObjectSounds _instance;
 
     private void Awake()
     {
-        instance = this;
+        if (_instance == null)
+        {
+            _instance = this;
+            //DontDestroyOnLoad(this.gameObject);
+        }
     }
 
     //private AudioSource _audioSource;

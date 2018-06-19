@@ -16,16 +16,19 @@ public class PostProcessControl : MonoBehaviour {
     public float _exposureStartValue;
     public float _focalLengthStartValue;
     public float _focusDisatnceStartValue;
+    public float _redStartValue;
 
     public static float _exposureTargetValue;
     public static float _focalLengthTargetValue;
     public static float _focusDistanceTargetValue;
+    public static float _redTargetValue;
 
     public float _vignetteFadeSpeed;
     public float _constrastFadeSpeed;
     public static float _exposureFadeSpeed;
     public static float _focalLengthFadeSpeed;
     public static float _focusDistanceFadeSpeed;
+    public static float _redFadeSpeed;
 
     private static bool _inventoryEffectEnabled;
 
@@ -50,6 +53,7 @@ public class PostProcessControl : MonoBehaviour {
         _postColorGrading.enabled.Override(true);
         _postColorGrading.contrast.Override(_contrastStartValue);
         _postColorGrading.postExposure.Override(_exposureStartValue);
+        //_postColorGrading.mixerGreenOutRedIn.Override(_redStartValue);
 
         _postDOF = ScriptableObject.CreateInstance<DepthOfField>();
         _postDOF.enabled.Override(true);

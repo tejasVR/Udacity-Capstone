@@ -50,12 +50,17 @@ public class Collectable : MonoBehaviour {
                     rend[i].material = matNormal[i];
                 }
 
-                if (itemName != "Pistol")
-                    _light.enabled = true;
+                //if (itemName != "Pistol")
+                //    _light.enabled = true;
             }
-                
+        }
 
-            
+        if (gameObject.CompareTag("Collected"))
+        {
+            if (itemName != "Pistol")
+            {
+                _light.enabled = true;
+            }
         }
     }
     private void OnCollisionStay(Collision collision)

@@ -12,6 +12,8 @@ public class PlayerHitBoxScript : MonoBehaviour {
     private AudioSource _audioSource;
     public AudioClip[] _hitClips;
 
+    private float _heartBeatPitch = 1;
+
     [Header("Player Damage Effect Properties")]
     public float _playerDamageVignetteAmnt;
     public float _playerDamageContrastAmnt;
@@ -44,6 +46,9 @@ public class PlayerHitBoxScript : MonoBehaviour {
                 _timeUntilNextHitCounter = 0;
                 GlobalLowPassFilter.LowPassFilterAmount(500);
                 PostProcessControl.PlayerDamagePostEffect(_playerDamageVignetteAmnt, _playerDamageContrastAmnt);
+                _heartBeatPitch += .05f;
+                HeartBeatControl.HeartBeatPitchAmount(_heartBeatPitch);
+
                 health--;
             }
 
