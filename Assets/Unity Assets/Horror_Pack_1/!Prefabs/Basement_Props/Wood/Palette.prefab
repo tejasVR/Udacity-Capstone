@@ -24,7 +24,8 @@ GameObject:
   - component: {fileID: 64000013029179078}
   - component: {fileID: 114865459364885628}
   - component: {fileID: 82979602323749068}
-  - component: {fileID: 54683500501629690}
+  - component: {fileID: 54473293430386504}
+  - component: {fileID: 169113604251771084}
   m_Layer: 0
   m_Name: Palette
   m_TagString: Untagged
@@ -38,13 +39,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012541681580}
-  m_LocalRotation: {x: 0.00000005374374, y: -0.000000072332746, z: -0.38391444, w: 0.92336875}
-  m_LocalPosition: {x: 9.043, y: 0.998, z: 8.419}
-  m_LocalScale: {x: 0.7500003, y: 0.7500003, z: 0.75}
+  m_LocalRotation: {x: 0.01940971, y: -0.08399346, z: -0.0016363794, w: 0.9962759}
+  m_LocalPosition: {x: 6.442, y: 7.536, z: -6.917}
+  m_LocalScale: {x: 0.7500003, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 2.2010002, y: -9.645, z: -0.374}
 --- !u!23 &23000014015811438
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -86,7 +87,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012541681580}
   m_Mesh: {fileID: 4300000, guid: 9ed4188702929af4ba302b433c8e94c4, type: 3}
---- !u!54 &54683500501629690
+--- !u!54 &54473293430386504
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -98,9 +99,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!64 &64000013029179078
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -126,7 +127,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -207,3 +208,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectType: 3
+--- !u!169 &169113604251771084
+AudioLowPassFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012541681580}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.22727273
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0

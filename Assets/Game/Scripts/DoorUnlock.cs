@@ -11,6 +11,8 @@ public class DoorUnlock : MonoBehaviour {
     public string _keyToUnlock;
     private bool _isUnlocked;
 
+    private Rigidbody _doorRb;
+
     public Transform _keyAttach;
     public RightControllerManager _rightControllerManager;
 
@@ -25,9 +27,12 @@ public class DoorUnlock : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        _doorRb = _door.GetComponent<Rigidbody>();
         _audioSource = GetComponent<AudioSource>();
         _hinge = _door.GetComponent<HingeJoint>();
         _hinge.useLimits = true;
+        _doorRb.useGravity = false;
+        _doorRb.isKinematic = true;
 	}
 
     private void Update()
@@ -56,6 +61,8 @@ public class DoorUnlock : MonoBehaviour {
         PlaySound.PlayAudioFromSelection(_audioSource, _unlockSounds, true, -.05f, .05f);
         _isUnlocked = true;
         _hinge.useLimits = false;
+        _doorRb.useGravity = true;
+        _doorRb.isKinematic = false;
         _lockImage.gameObject.SetActive(false);
     }
 

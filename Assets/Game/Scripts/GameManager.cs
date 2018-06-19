@@ -125,7 +125,8 @@ public class GameManager : MonoBehaviour {
 
     public static void NextScene()
     {
-        print("calling start intro method");
+        print("calling start next scene method");
+
         if(_thisIsTheIntroScene)
             instance.StartCoroutine(StartIntro());
 

@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54909197254861648}
   - component: {fileID: 114753162595127076}
   - component: {fileID: 82127699136950018}
+  - component: {fileID: 169002299112059204}
   m_Layer: 0
   m_Name: Fire_Extinguisher
   m_TagString: Untagged
@@ -39,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012545821400}
   m_LocalRotation: {x: 0.000000018934095, y: -0.49948394, z: -0.000000010916566, w: 0.86632323}
-  m_LocalPosition: {x: 7.9858522, y: 7.198, z: -8.465402}
+  m_LocalPosition: {x: 8.095, y: 7.198, z: -8.438}
   m_LocalScale: {x: 0.9000006, y: 0.9, z: 0.9000006}
   m_Children: []
   m_Father: {fileID: 0}
@@ -124,7 +125,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -205,3 +206,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectType: 4
+--- !u!169 &169002299112059204
+AudioLowPassFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012545821400}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.22727273
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0

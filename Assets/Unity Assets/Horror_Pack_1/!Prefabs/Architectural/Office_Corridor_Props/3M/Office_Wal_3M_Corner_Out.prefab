@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33000012439412378}
   - component: {fileID: 23000014014305892}
   - component: {fileID: 64000013956206220}
+  - component: {fileID: 65783518969756908}
   m_Layer: 0
   m_Name: Office_Wal_3M_Corner_Out
   m_TagString: Untagged
@@ -35,9 +36,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011265967644}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 6.32, y: 7.198, z: -6.135}
-  m_LocalScale: {x: 1, y: 0.97999996, z: 1}
+  m_LocalRotation: {x: -0, y: 0.70710695, z: -0, w: 0.70710665}
+  m_LocalPosition: {x: 32.7, y: -3, z: -24.6}
+  m_LocalScale: {x: 1, y: 0.98, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -91,9 +92,21 @@ MeshCollider:
   m_GameObject: {fileID: 1000011265967644}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: bff93e70ad29836418b34475781d51aa, type: 3}
+--- !u!65 &65783518969756908
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011265967644}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.03, y: 2.8999999, z: 1.03}
+  m_Center: {x: -0.4146493, y: 1.4499999, z: -0.41464904}

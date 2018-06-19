@@ -20,9 +20,13 @@ public class HapticFeedback : MonoBehaviour {
         }
     }
 
-    public static void HapticAmount(int hapticAmount)
+    public static void HapticAmount(int hapticAmount, bool rightController, bool leftController)
     {
-        PlayerScript._deviceRight.TriggerHapticPulse((ushort)hapticAmount);
+        if (rightController)
+            PlayerScript._deviceRight.TriggerHapticPulse((ushort)hapticAmount);
+
+        if (leftController)
+            PlayerScript._deviceLeft.TriggerHapticPulse((ushort)hapticAmount);
     }
 
 

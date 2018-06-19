@@ -11,16 +11,18 @@ public class MenuScript : MonoBehaviour {
 
     private bool _isProgressBarFilled;
 
+    private float _hapticClick = .5f;
+    private float _hapticClickTimer;
+
     //public GameManager _gameManager;
 
     // Use this for initialization
     void Start () {
-		
+        _hapticClickTimer = _hapticClick;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
 
         ProgressBar();
 		
@@ -38,6 +40,13 @@ public class MenuScript : MonoBehaviour {
                 PlayerScript._deviceLeft.GetPress(SteamVR_Controller.ButtonMask.Touchpad) || PlayerScript._deviceLeft.GetPress(SteamVR_Controller.ButtonMask.ApplicationMenu))
                 {
                     _progressBarObj.fillAmount += Time.deltaTime * .5f;
+
+                    if (_hapticClickTimer > 0)
+                        _hapticClickTimer -= Time.deltaTime;
+                    else
+                    {
+                        HapticFeedback.HapticAmount(500, true, true);
+                    }
                 }
                 else
                 {

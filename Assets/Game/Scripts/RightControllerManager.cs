@@ -83,7 +83,7 @@ public class RightControllerManager : MonoBehaviour {
             //ShowInventoryItems(true);
             PostProcessControl.PostExposureFade(_exposureInventoryOn, _exposureFadeSpeed);
             //PostProcessControl.DOFFade(_focalLengthInventoryOn, _focusDistanceInventoryOn, _focalLengthFadeSpeed, _focusDistanceFadeSpeed);
-            HapticFeedback.HapticAmount(500);
+            HapticFeedback.HapticAmount(500, true, false);
             PlaceItemsInInventory(false, true);
             CheckHandModelVisibility();
             //_handModelObj.gameObject.SetActive(true);
@@ -170,7 +170,7 @@ public class RightControllerManager : MonoBehaviour {
                 _inventorySlots[_currentItem].inventoryOutline.color = _highlightedUIColor;
                 _inventorySlots[_currentItem].textTag.gameObject.SetActive(true);
 
-                HapticFeedback.HapticAmount(500);
+                HapticFeedback.HapticAmount(500, true, false);
 
             } else
             {
@@ -189,7 +189,7 @@ public class RightControllerManager : MonoBehaviour {
             if (_inventorySlots[_currentItem].inventoryObj != null)
             {
                 PutItemInHand(_inventorySlots[_currentItem]);
-                HapticFeedback.HapticAmount(750);
+                HapticFeedback.HapticAmount(750, true, false);
 
                 //_inventorySlots[_currentItem].hasItemInHand = true;
                 //_handModelObj.SetActive(false);

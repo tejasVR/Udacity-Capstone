@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54203244712973874}
   - component: {fileID: 114504260073759392}
   - component: {fileID: 82370450285932156}
+  - component: {fileID: 169217617604872312}
   m_Layer: 0
   m_Name: Fire_Extinguisher_Old
   m_TagString: Untagged
@@ -205,3 +206,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectType: 4
+--- !u!169 &169217617604872312
+AudioLowPassFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012335605728}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.22727273
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0

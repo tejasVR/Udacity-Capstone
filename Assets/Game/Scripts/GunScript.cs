@@ -150,6 +150,12 @@ public class GunScript : MonoBehaviour {
         // Cast a ray that ignores triggers so we don't hit player trigger objects
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask, QueryTriggerInteraction.Ignore))
         {
+            AddExplosionForce(hit.point, explosionRadius, explosionForce);
+
+
+            if (!hit.collider.CompareTag("Enemy"))
+                SpawnDecal(hit);
+
             var hitPoint = hit.point;
 
             if (hit.collider.CompareTag("Destructible"))
@@ -160,7 +166,7 @@ public class GunScript : MonoBehaviour {
                     destructible.DestroyIntoPieces();
                 }
 
-                AddExplosionForce(hit.point, explosionRadius, explosionForce);
+                //AddExplosionForce(hit.point, explosionRadius, explosionForce);
             }
 
             //print("Object Hit:" + hit.collider.gameObject.name);
@@ -184,12 +190,11 @@ public class GunScript : MonoBehaviour {
 
                 //print("Enemy Hit: " + parentObj.name);
 
-                SpawnDecal(hit);
 
                 Enemy enemy = parentObj.GetComponent<Enemy>();
                 enemy.EnemyTakeHit(_damage, hitDir, hit.collider.gameObject);
 
-                AddExplosionForce(hit.point, explosionRadius, explosionForce);
+                //AddExplosionForce(hit.point, explosionRadius, explosionForce);
 
 
 
@@ -218,7 +223,7 @@ public class GunScript : MonoBehaviour {
             PlaySound.PlayAudio(_audioSource[1], false, 0, 0);
             clickSoundPlayed = false;
 
-            HapticFeedback.HapticAmount(1000);
+            HapticFeedback.HapticAmount(1000, true, false);
 
             //globalLowPass.GunShotLowPass(3000);
 
@@ -264,6 +269,7 @@ public class GunScript : MonoBehaviour {
     private void SpawnDecal(RaycastHit hitInfo)
     {
         var decal = DecalPool._instance.GetFromPool();
+        decal.transform.parent = null;
         decal.transform.position = hitInfo.point;
         decal.transform.forward = hitInfo.normal * -1f;
     }

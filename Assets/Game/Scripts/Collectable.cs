@@ -15,7 +15,7 @@ public class Collectable : MonoBehaviour {
     Material[] matNormal;
     public AudioClip[] _soundsWhenEnabled;
 
-    private Light _light;
+    public Light[] _lights;
 
     public string itemName;
 
@@ -24,7 +24,7 @@ public class Collectable : MonoBehaviour {
     public Transform attachPoint;
 
     void Start () {
-        _light = GetComponent<Light>();
+        //_light = GetComponent<Light>();
         matNormal = new Material[rend.Length];
 
         for(int i = 0; i < rend.Length; i++)
@@ -59,7 +59,10 @@ public class Collectable : MonoBehaviour {
         {
             if (itemName != "Pistol")
             {
-                _light.enabled = true;
+                foreach (var light in _lights)
+                {
+                    light.enabled = true;
+                }
             }
         }
     }

@@ -118,7 +118,8 @@ public class IntroSceneSounds : MonoBehaviour {
         if (_moveDelay > 0)
             _moveDelay -= Time.deltaTime;
         else
-            transform.position = Vector3.MoveTowards(transform.position, endPos, Time.deltaTime * _moveSpeed);
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, endPos, Time.deltaTime * _moveSpeed);
+            //transform.position = Vector3.MoveTowards(transform.position, endPos, Time.deltaTime * _moveSpeed);
     }
 
 }

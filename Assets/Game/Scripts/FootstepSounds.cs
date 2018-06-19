@@ -51,6 +51,7 @@ public class FootstepSounds : MonoBehaviour {
         if (_distanceFromStartPos > _distanceToStep)
         {
             TakeStep();
+            HapticFeedback.HapticAmount(500, false, true);
             //print("Taking step");
         }
     }

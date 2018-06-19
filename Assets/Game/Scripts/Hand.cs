@@ -4,60 +4,60 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour {
 
-    public GameManager gameManager;
+ //   public GameManager gameManager;
 
-    [Header("Controller Objects")]
-    public SteamVR_TrackedObject trackedRight;
-    public SteamVR_TrackedObject trackedLeft;
+ //   [Header("Controller Objects")]
+ //   public SteamVR_TrackedObject trackedRight;
+ //   public SteamVR_TrackedObject trackedLeft;
 
     
-    public SteamVR_TrackedObject handTrackedRight;
-    public SteamVR_TrackedObject handTrackedLeft;
+ //   public SteamVR_TrackedObject handTrackedRight;
+ //   public SteamVR_TrackedObject handTrackedLeft;
 
-    public SteamVR_Controller.Device handDeviceRight;
-    public SteamVR_Controller.Device handDeviceLeft;
+ //   public SteamVR_Controller.Device handDeviceRight;
+ //   public SteamVR_Controller.Device handDeviceLeft;
 
-    public bool isHandRight;
-    public bool isHandLeft;
+ //   public bool isHandRight;
+ //   public bool isHandLeft;
 
-    private void Awake()
-    {
-        CheckHands();
-    }
+ //   private void Awake()
+ //   {
+ //       CheckHands();
+ //   }
 
-    // Use this for initialization
-    void Start () {
+ //   // Use this for initialization
+ //   void Start () {
 		
-	}
+	//}
 	
-	// Update is called once per frame
-	void Update () {
+	//// Update is called once per frame
+	//void Update () {
 
-        CheckHands();
-    }
+ //       CheckHands();
+ //   }
 
-    void CheckHands()
-    {
-        //if (trackedRight.gameObject.activeInHierarchy && trackedLeft.gameObject.activeInHierarchy)
-        {
-            // Sets device variable depending on which hand is the dominant hand
-            //if (gameManager.dominantLeft)
-            {
-                // If the dominant hand is a left hand, set the right hand normals to the left controller
-                handTrackedRight = trackedLeft;
-                handTrackedLeft = trackedRight;
+ //   void CheckHands()
+ //   {
+ //       //if (trackedRight.gameObject.activeInHierarchy && trackedLeft.gameObject.activeInHierarchy)
+ //       {
+ //           // Sets device variable depending on which hand is the dominant hand
+ //           //if (gameManager.dominantLeft)
+ //           {
+ //               // If the dominant hand is a left hand, set the right hand normals to the left controller
+ //               handTrackedRight = trackedLeft;
+ //               handTrackedLeft = trackedRight;
 
-                handDeviceRight = SteamVR_Controller.Input((int)trackedLeft.index);
-                handDeviceLeft = SteamVR_Controller.Input((int)trackedRight.index);
-            }
-            //else
-            {
-                handTrackedRight = trackedRight;
-                handTrackedLeft = trackedLeft;
+ //               handDeviceRight = SteamVR_Controller.Input((int)trackedLeft.index);
+ //               handDeviceLeft = SteamVR_Controller.Input((int)trackedRight.index);
+ //           }
+ //           //else
+ //           {
+ //               handTrackedRight = trackedRight;
+ //               handTrackedLeft = trackedLeft;
 
-                handDeviceRight = SteamVR_Controller.Input((int)trackedRight.index);
-                handDeviceLeft = SteamVR_Controller.Input((int)trackedLeft.index);
-            }
-        }
-    }
+ //               handDeviceRight = SteamVR_Controller.Input((int)trackedRight.index);
+ //               handDeviceLeft = SteamVR_Controller.Input((int)trackedLeft.index);
+ //           }
+ //       }
+ //   }
 }
