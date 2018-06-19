@@ -6,6 +6,7 @@ public class GunScript : MonoBehaviour {
 
     //public SteamVR_TrackedObject _trackedObj;
     //private SteamVR_Controller.Device _device;
+    
 
     public GameObject shootPoint;
     public GameObject _gunShotTrailPrefab;
@@ -183,6 +184,7 @@ public class GunScript : MonoBehaviour {
 
                 //print("Enemy Hit: " + parentObj.name);
 
+                SpawnDecal(hit);
 
                 Enemy enemy = parentObj.GetComponent<Enemy>();
                 enemy.EnemyTakeHit(_damage, hitDir, hit.collider.gameObject);
@@ -257,5 +259,12 @@ public class GunScript : MonoBehaviour {
                 light.enabled = false;
             }
         }
+    }
+
+    private void SpawnDecal(RaycastHit hitInfo)
+    {
+        var decal = DecalPool._instance.GetFromPool();
+        decal.transform.position = hitInfo.point;
+        decal.transform.forward = hitInfo.normal * -1f;
     }
 }
