@@ -36,30 +36,33 @@ public class PlayerHitBoxScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(health > 0)
+        if (other.gameObject.layer == 21)
         {
-            if (_timeUntilNextHitCounter == _timeUntilNextHit)
+            if (health > 0)
             {
-                PlaySound.PlayAudioFromSelection(_audioSource, _hitClips, true, -.15f, .15f);
-                HeartBeatControl.HeartBeatPitchAmount(1.2f);
-                //print(other.gameObject.name);
-                _timeUntilNextHitCounter = 0;
-                GlobalLowPassFilter.LowPassFilterAmount(500);
-                PostProcessControl.PlayerDamagePostEffect(_playerDamageVignetteAmnt, _playerDamageContrastAmnt);
-                _heartBeatPitch += .05f;
-                HeartBeatControl.HeartBeatPitchAmount(_heartBeatPitch);
+                if (_timeUntilNextHitCounter == _timeUntilNextHit)
+                {
+                    PlaySound.PlayAudioFromSelection(_audioSource, _hitClips, true, -.15f, .15f);
+                    //HeartBeatControl.HeartBeatPitchAmount(1.2f);
+                    //print(other.gameObject.name);
+                    _timeUntilNextHitCounter = 0;
+                    //GlobalLowPassFilter.LowPassFilterAmount(500);
+                    PostProcessControl.PlayerDamagePostEffect(_playerDamageVignetteAmnt, _playerDamageContrastAmnt);
+                    _heartBeatPitch += .1f;
+                    HeartBeatControl.HeartBeatPitchAmount(_heartBeatPitch);
+                    HapticFeedback.HapticAmount(1500, true, true);
+                    health--;
+                }
 
-                health--;
+                if (health <= 1)
+                {
+                    PostProcessControl.PostExposureFade(-10, .2f);
+                }
             }
-
-            if (health <= 1)
+            else
             {
-                PostProcessControl.PostExposureFade(-10, .2f);
+                GameManager.NextScene();
             }
-        }
-        else
-        {
-            GameManager.NextScene();
         }
     }
 }

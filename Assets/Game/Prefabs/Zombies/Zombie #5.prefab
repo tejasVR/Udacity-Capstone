@@ -2566,7 +2566,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.88, y: 0.21989289, z: 0.29963392}
+  m_Size: {x: 0.32, y: 0.12, z: 0.22}
   m_Center: {x: -0.01, y: -0.03995432, z: 0}
 --- !u!65 &65697319158711400
 BoxCollider:
@@ -2993,7 +2993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToMoveToPlayer: 5
-  distanceToAttackPlayer: 0.95
+  distanceToAttackPlayer: 1.1
   sightRange: 5
   turnSpeed: 5
   enemyHealth: 2
@@ -3076,7 +3076,7 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.1
-  m_Height: 0.56
+  m_Height: 0.42
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136545790985656568
@@ -3128,7 +3128,7 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.1
-  m_Height: 0.56
+  m_Height: 0.42
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136791851679547034

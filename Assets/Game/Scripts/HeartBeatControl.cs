@@ -19,7 +19,7 @@ public class HeartBeatControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Mathf.Abs(_pitchMaster - _audioSource.pitch) < .1f)
+        if (Mathf.Abs(_pitchMaster - _audioSource.pitch) < .01f)
         {
             _pitchMaster = Mathf.Lerp(_pitchMaster, _pitchOriginal, Time.deltaTime / 10);
             _audioSource.pitch = _pitchMaster;

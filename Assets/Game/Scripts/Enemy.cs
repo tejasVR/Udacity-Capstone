@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour {
     {
         var dir = PlayerScript._playerEye.transform.position - startCast.position;
         dir.y = 0;
-        distanceToPlayer = Vector3.Distance(startCast.position, PlayerScript._playerEye.transform.position);
+        distanceToPlayer = Vector3.Distance(startCast.position, new Vector3(PlayerScript._playerEye.transform.position.x, startCast.position.y, PlayerScript._playerEye.transform.position.z));
 
         //Debug.DrawRay(startCast.position, dir, Color.green);
 

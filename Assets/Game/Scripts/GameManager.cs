@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour {
 
     public static void NextScene()
     {
-        print("calling start next scene method");
+        //print("calling start next scene method");
 
         if(_thisIsTheIntroScene)
             instance.StartCoroutine(StartIntro());
@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour {
 
     public static IEnumerator StartIntro()
     {
-        print("calling start intro co routine");
+        //print("calling start intro co routine");
         _introEnvironment.SetActive(true);
         yield return new WaitForSeconds(_introSceneTimer);
         _mainSceneLoad.SetActive(true);

@@ -37,6 +37,6 @@ public class ExplosionForce : MonoBehaviour {
 
         //print("Did explosion");
 
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
     }
 }

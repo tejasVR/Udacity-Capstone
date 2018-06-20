@@ -6,8 +6,8 @@ public class GunScript : MonoBehaviour {
 
     //public SteamVR_TrackedObject _trackedObj;
     //private SteamVR_Controller.Device _device;
-    
 
+    private Collectable _collectable;
     public GameObject shootPoint;
     public GameObject _gunShotTrailPrefab;
 
@@ -51,7 +51,8 @@ public class GunScript : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody>();
         gunBodyBaseRotation = gunBody.transform.localRotation;
-        _previousTag = "";
+        _previousTag = this.gameObject.tag;
+        _collectable = GetComponent<Collectable>();
 	}
 
     private void OnEnable()
@@ -91,7 +92,7 @@ public class GunScript : MonoBehaviour {
             }
         }
 
-        if (this.GetComponent<Collectable>().isCollected && !firstPickedUp)
+        if (_collectable.isCollected && !firstPickedUp)
         {
             firstPickedUp = true;
         }
@@ -119,6 +120,7 @@ public class GunScript : MonoBehaviour {
             CheckLights();
             _previousTag = this.gameObject.tag;
         }
+
 
     }
 
