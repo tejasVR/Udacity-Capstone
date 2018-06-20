@@ -45,13 +45,14 @@ public class FootstepSounds : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        //print("updating");
         _currentPos.transform.position = new Vector3(_player.transform.position.x, heightOffGround + _playerArea.transform.position.y, _player.transform.position.z);
         _distanceFromStartPos = Vector3.Distance(_currentPos.transform.position, _startPos.transform.position);
 
         if (_distanceFromStartPos > _distanceToStep)
         {
             TakeStep();
-            HapticFeedback.HapticAmount(500, false, true);
+            //HapticFeedback.HapticAmount(500, false, true);
             //print("Taking step");
         }
     }

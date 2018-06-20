@@ -12,7 +12,8 @@ public class TutorialObject : MonoBehaviour {
     {
         PressTriggerToMove,
         PressTriggerToPickUpItem,
-        PressTouchPadToBringUpInventory
+        PressTouchPadToBringUpInventory,
+        UseGunToAccessBlockedAreas
     }
 
     public TutorialTextObj _tutorialText;
@@ -88,15 +89,34 @@ public class TutorialObject : MonoBehaviour {
                             }
                         }
                     }
-                }
-
-                
+                }                
             }
             else if (_tutorialText == TutorialTextObj.PressTouchPadToBringUpInventory)
             {
-                if (PlayerScript._deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
+                if (PlayerScript._trackedRight.gameObject.activeInHierarchy)
                 {
-                    _endTutorialObject = true;
+                    if (PlayerScript._deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
+                    {
+                        _endTutorialObject = true;
+                    }
+                }
+
+            } else if (_tutorialText == TutorialTextObj.UseGunToAccessBlockedAreas)
+            {
+                ObjectFade.TextFadeWithDistance(_textObj, 1.3f, false);
+
+                if (PlayerScript._trackedRight.gameObject.activeInHierarchy)
+                {
+                    if (PlayerScript._deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
+                    {
+                        foreach (var item in _rightControllerManager._inventorySlots)
+                        {
+                            if (item.name == "Pistol")
+                            {
+                                _endTutorialObject = true;
+                            }
+                        }
+                    }
                 }
             }
         }

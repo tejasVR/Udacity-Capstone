@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54450427768946950}
   - component: {fileID: 114735525394746960}
   - component: {fileID: 82540906193662116}
+  - component: {fileID: 169197775872314504}
   m_Layer: 0
   m_Name: Office_Chair_Wheels_Simple
   m_TagString: Untagged
@@ -206,4 +207,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6be7cb641f4514aa02b5e67bf1b059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectType: 3
+  _objectType: 2
+--- !u!169 &169197775872314504
+AudioLowPassFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013888193100}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.22727273
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0

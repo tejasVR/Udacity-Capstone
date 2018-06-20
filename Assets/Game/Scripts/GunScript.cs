@@ -153,8 +153,8 @@ public class GunScript : MonoBehaviour {
             AddExplosionForce(hit.point, explosionRadius, explosionForce);
 
 
-            if (!hit.collider.CompareTag("Enemy"))
-                SpawnDecal(hit);
+            //if (!hit.collider.CompareTag("Enemy"))
+            //    SpawnDecal(hit);
 
             var hitPoint = hit.point;
 

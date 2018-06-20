@@ -140,10 +140,13 @@ public class EnableObjOnTrigger : MonoBehaviour {
 
     private void EnableObjects()
     {
-        foreach (var obj in objsToEnable)
+        if (objsToEnable.Length >= 1)
         {
-            obj.SetActive(true);
-            //print("enabled object");
+            foreach (var obj in objsToEnable)
+            {
+                obj.SetActive(true);
+                //print("enabled object");
+            }
         }
 
         if (_disableObjOnTrigger)

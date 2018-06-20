@@ -31,6 +31,7 @@ public class RagdollController : MonoBehaviour {
             //ragdoll.isKinematic = false;
             ragdoll.velocity = hitDirection * hitForce;// Vector3.zero;
             ragdoll.gameObject.layer = 15;
+            //ragdoll.isKinematic = true;
         }
 
         //hitBodyPart.GetComponent<Rigidbody>().velocity = hitDirection * hitForce;

@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54375909680318804}
   - component: {fileID: 114528897797162610}
   - component: {fileID: 82263322525031466}
+  - component: {fileID: 169812140494219538}
   m_Layer: 0
   m_Name: Hanger_Stand
   m_TagString: Untagged
@@ -206,3 +207,24 @@ CapsuleCollider:
   m_Height: 1.817024
   m_Direction: 1
   m_Center: {x: -0.0000015869737, y: 0.9080899, z: 0}
+--- !u!169 &169812140494219538
+AudioLowPassFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014021986488}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.045454547
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0

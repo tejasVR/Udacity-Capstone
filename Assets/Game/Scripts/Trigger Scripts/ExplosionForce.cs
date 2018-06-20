@@ -9,13 +9,13 @@ public class ExplosionForce : MonoBehaviour {
     public float explosionPower = 100f;
     public float explosionPowerUp = 100f;
 
-    private AudioSource audio;
+    public AudioSource _audioSource;
 
     public bool playAudio;
 
 	// Use this for initialization
 	void Start () {
-        audio = GetComponent<AudioSource>();
+        //_audioSource = GetComponent<AudioSource>();
 	}
 
     public void DoExplosionForce()
@@ -33,7 +33,7 @@ public class ExplosionForce : MonoBehaviour {
         }
 
         if (playAudio)
-            audio.Play();
+            PlaySound.PlayAudio(_audioSource);
 
         //print("Did explosion");
 

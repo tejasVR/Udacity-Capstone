@@ -63,6 +63,7 @@ public class DoorUnlock : MonoBehaviour {
         _hinge.useLimits = false;
         _doorRb.useGravity = true;
         _doorRb.isKinematic = false;
+        _doorRb.angularVelocity = Vector3.zero;
         _lockImage.gameObject.SetActive(false);
     }
 
