@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33659898009158700}
   - component: {fileID: 23846337900578094}
   - component: {fileID: 64578089492001166}
+  - component: {fileID: 65419008332254064}
   m_Layer: 0
   m_Name: Diver_Helmet_LOD1
   m_TagString: Untagged
@@ -91,6 +92,7 @@ GameObject:
   - component: {fileID: 33549502779865156}
   - component: {fileID: 23825995454135856}
   - component: {fileID: 64752579735690806}
+  - component: {fileID: 65466192956263368}
   m_Layer: 0
   m_Name: Diver_Helmet_LOD0
   m_TagString: Untagged
@@ -339,7 +341,7 @@ MeshCollider:
   m_GameObject: {fileID: 1103488061338100}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
@@ -353,7 +355,7 @@ MeshCollider:
   m_GameObject: {fileID: 1637282808461818}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
@@ -371,6 +373,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1.4161974, z: 0.58}
   m_Center: {x: 0, y: 0.7080986, z: -0.000000029802322}
+--- !u!65 &65419008332254064
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1103488061338100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4985051, y: 0.77322525, z: 0.4977859}
+  m_Center: {x: -0.001953587, y: 0.3832424, z: 0.0000009537325}
+--- !u!65 &65466192956263368
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1637282808461818}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.50240844, y: 0.776049, z: 0.49778593}
+  m_Center: {x: -0.0000019073486, y: 0.38465428, z: 0.0000009536743}
 --- !u!205 &205043212543507468
 LODGroup:
   m_ObjectHideFlags: 1
