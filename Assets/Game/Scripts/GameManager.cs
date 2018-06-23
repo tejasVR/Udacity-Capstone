@@ -7,6 +7,15 @@ using UnityEngine.XR;
 
 public class GameManager : MonoBehaviour {
 
+    public enum SceneToLoad
+    {
+        introScene,
+        mainScene,
+        endScene
+    }
+
+    public SceneToLoad _sceneToLoad;
+
     //public bool dominantLeft;
     //public bool dominantRight;
 

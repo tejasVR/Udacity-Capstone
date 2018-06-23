@@ -55,12 +55,12 @@ public class PostProcessControl : MonoBehaviour {
         _postColorGrading.postExposure.Override(_exposureStartValue);
         //_postColorGrading.mixerGreenOutRedIn.Override(_redStartValue);
 
-        _postDOF = ScriptableObject.CreateInstance<DepthOfField>();
-        _postDOF.enabled.Override(true);
-        _postDOF.focalLength.Override(_focalLengthStartValue);
-        _postDOF.focusDistance.Override(_focusDisatnceStartValue);
-        
-        _postVolume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, _postVignette, _postColorGrading, _postDOF);
+        //_postDOF = ScriptableObject.CreateInstance<DepthOfField>();
+        //_postDOF.enabled.Override(true);
+        //_postDOF.focalLength.Override(_focalLengthStartValue);
+        //_postDOF.focusDistance.Override(_focusDisatnceStartValue);
+
+        _postVolume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, _postVignette, _postColorGrading);//, _postDOF);
     }
 
     // Update is called once per frame
@@ -69,8 +69,8 @@ public class PostProcessControl : MonoBehaviour {
         if (_postVignette.intensity.value > _vignetteStartValue)
             _postVignette.intensity.value -= Time.deltaTime * _vignetteFadeSpeed;
 
-        if (_postColorGrading.contrast.value > _contrastStartValue)
-            _postColorGrading.contrast.value -= Time.deltaTime * _constrastFadeSpeed;
+        //if (_postColorGrading.contrast.value > _contrastStartValue)
+        //    _postColorGrading.contrast.value -= Time.deltaTime * _constrastFadeSpeed;
 
         //if (!_inventoryEffectEnabled)
         //{
@@ -106,11 +106,11 @@ public class PostProcessControl : MonoBehaviour {
         if (Mathf.Abs(_postColorGrading.postExposure.value - _exposureTargetValue) > .05f)
             _postColorGrading.postExposure.value = Mathf.Lerp(_postColorGrading.postExposure.value, _exposureTargetValue, _exposureFadeSpeed);
 
-        if (Mathf.Abs(_postDOF.focalLength.value - _focalLengthTargetValue) > .01f)
-            _postDOF.focalLength.value = Mathf.Lerp(_postDOF.focalLength.value, _focalLengthTargetValue, _focalLengthFadeSpeed);
+        //if (Mathf.Abs(_postDOF.focalLength.value - _focalLengthTargetValue) > .01f)
+        //    _postDOF.focalLength.value = Mathf.Lerp(_postDOF.focalLength.value, _focalLengthTargetValue, _focalLengthFadeSpeed);
 
-        if (Mathf.Abs(_postDOF.focusDistance.value - _focusDistanceTargetValue) > .01f)
-            _postDOF.focusDistance.value = Mathf.Lerp(_postDOF.focusDistance.value, _focusDistanceTargetValue, _focusDistanceFadeSpeed);
+        //if (Mathf.Abs(_postDOF.focusDistance.value - _focusDistanceTargetValue) > .01f)
+        //    _postDOF.focusDistance.value = Mathf.Lerp(_postDOF.focusDistance.value, _focusDistanceTargetValue, _focusDistanceFadeSpeed);
         //print(_postDOF.focusDistance.value)
 
         //_postVignette.intensity.value = Mathf.Sin(Time.realtimeSinceStartup);

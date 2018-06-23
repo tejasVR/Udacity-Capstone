@@ -22,12 +22,14 @@ GameObject:
   - component: {fileID: 33937922389262486}
   - component: {fileID: 23221782482586204}
   - component: {fileID: 64633294256590552}
+  - component: {fileID: 114167608876278874}
+  - component: {fileID: 65706124178377008}
   m_Layer: 0
   m_Name: Hall_Clock_Large_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967293
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1960858785390492
 GameObject:
@@ -43,7 +45,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1991341868549412
 GameObject:
@@ -56,12 +58,14 @@ GameObject:
   - component: {fileID: 33040475505129830}
   - component: {fileID: 23669130916966470}
   - component: {fileID: 64414392730468194}
+  - component: {fileID: 114178432681193150}
+  - component: {fileID: 65562984780069746}
   m_Layer: 0
   m_Name: Hall_Clock_Large_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967293
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4118258270991288
 Transform:
@@ -69,15 +73,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1960858785390492}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0.9238795, z: -0, w: 0.38268358}
+  m_LocalPosition: {x: 5.134, y: 0, z: 2.878}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4929952224638034}
   - {fileID: 4341940460687202}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -135, z: 0}
 --- !u!4 &4341940460687202
 Transform:
   m_ObjectHideFlags: 1
@@ -194,7 +198,7 @@ MeshCollider:
   m_GameObject: {fileID: 1991341868549412}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -208,12 +212,3704 @@ MeshCollider:
   m_GameObject: {fileID: 1756300154405528}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 2882f3816ad865a46b3d618724469236, type: 3}
+--- !u!65 &65562984780069746
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1991341868549412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.53917336, y: 2.2903273, z: 0.38643318}
+  m_Center: {x: 0.00000007450582, y: 1.1451637, z: 1.2205316e-14}
+--- !u!65 &65706124178377008
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756300154405528}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.549743, y: 2.2903273, z: 0.38643318}
+  m_Center: {x: 0, y: 1.1451637, z: 1.2205316e-14}
+--- !u!114 &114167608876278874
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756300154405528}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2895d347b4dd14e9a742044907083e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OuterPointSet: 1
+  OuterPoint: {x: 4.8067484, y: 0.0000000128096875, z: 2.932002}
+  OuterPointDistance: 5.990675
+  IsHollow: 1
+  InnerPointSet: 0
+  InnerPoint: {x: 0, y: 0, z: 0}
+  InnerPointDistance: 0
+  InnerPointInside: 0
+  MeshCollider: {fileID: 64633294256590552}
+  MeshFilter: {fileID: 33937922389262486}
+  Mesh: {fileID: 4300000, guid: 2882f3816ad865a46b3d618724469236, type: 3}
+  MeshUpdateInterval: -1
+  RaySeparation: 0.1
+  tree:
+    Nodes:
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 1.1451637, z: 0}
+        m_Extent: {x: 0.26958662, y: 1.1451637, z: 0.19321655}
+      PositiveIndex: 1
+      NegativeIndex: 46
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 1.907897, z: 0.0028415024}
+        m_Extent: {x: 0.2691936, y: 0.38243032, z: 0.17935662}
+      PositiveIndex: 2
+      NegativeIndex: 31
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 3
+      NegativeIndex: 16
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 4
+      NegativeIndex: 11
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.17004259, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.09915106, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 5
+      NegativeIndex: 8
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.17004259, y: 2.145731, z: 0.15377748}
+        m_Extent: {x: 0.09915106, y: 0.14459598, z: 0.028420642}
+      PositiveIndex: 6
+      NegativeIndex: 7
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.17004259, y: 2.145731, z: 0.18219808}
+        m_Extent: {x: 0.09915106, y: 0.14459598, z: 0.000000037252903}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 0
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.20416301, y: 2.0364442, z: 0.15377748}
+        m_Extent: {x: 0.065030634, y: 0.035309076, z: 0.028420642}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 3
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.24877673, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.020416908, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 9
+      NegativeIndex: 10
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.24877678, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.02041687, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 6
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: 0.24877673, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.020416908, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 8
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 12
+      NegativeIndex: 15
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 13
+      NegativeIndex: 14
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.13459685, y: 2.145731, z: 0.14641228}
+        m_Extent: {x: 0.13459678, y: 0.14459598, z: 0.03578583}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 11
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 14
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.2151604, z: 0.1464123}
+        m_Extent: {x: 0.2691936, y: 0.07516658, z: 0.035785828}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 17
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 17
+      NegativeIndex: 24
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 18
+      NegativeIndex: 21
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 19
+      NegativeIndex: 20
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: -0.03412039, y: 2.1153564, z: 0.14641228}
+        m_Extent: {x: 0.10501192, y: 0.0436033, z: 0.03578583}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 21
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011756986}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044097}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 24
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: -0.13459674, y: 2.145731, z: 0.14641228}
+        m_Extent: {x: 0.13459682, y: 0.14459598, z: 0.03578583}
+      PositiveIndex: 22
+      NegativeIndex: 23
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: -0.13459674, y: 2.1810403, z: 0.14641228}
+        m_Extent: {x: 0.13459682, y: 0.109286904, z: 0.03578583}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 26
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: -0.11449486, y: 2.0705645, z: 0.14641228}
+        m_Extent: {x: 0.04360344, y: 0.0694294, z: 0.03578583}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 28
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: -0.17004248, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.099151075, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 25
+      NegativeIndex: 28
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: -0.17004248, y: 2.145731, z: 0.15377748}
+        m_Extent: {x: 0.099151075, y: 0.14459598, z: 0.028420642}
+      PositiveIndex: 26
+      NegativeIndex: 27
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: -0.17004248, y: 2.145731, z: 0.18219805}
+        m_Extent: {x: 0.099151075, y: 0.14459598, z: 0.000000074505806}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 31
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: -0.20416293, y: 2.0364442, z: 0.15377748}
+        m_Extent: {x: 0.06503063, y: 0.035309076, z: 0.028420642}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 33
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: -0.24877661, y: 2.1457312, z: 0.011756986}
+        m_Extent: {x: 0.020416945, y: 0.1445961, z: 0.17044097}
+      PositiveIndex: 29
+      NegativeIndex: 30
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: -0.24877664, y: 2.1457312, z: 0.011756986}
+        m_Extent: {x: 0.020416908, y: 0.1445961, z: 0.17044097}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 36
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: -0.24877661, y: 2.1457312, z: 0.011756986}
+        m_Extent: {x: 0.020416945, y: 0.1445961, z: 0.17044097}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 38
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.00000008940697, y: 1.8327303, z: 0.00000014901161}
+        m_Extent: {x: 0.26124954, y: 0.3072636, z: 0.17651527}
+      PositiveIndex: 32
+      NegativeIndex: 39
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000074505806, y: 1.9064479, z: -0.016663656}
+        m_Extent: {x: 0.22835982, y: 0.23354596, z: 0.1420205}
+      PositiveIndex: 33
+      NegativeIndex: 38
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000074505806, y: 1.9064479, z: -0.016663656}
+        m_Extent: {x: 0.22835982, y: 0.23354596, z: 0.1420205}
+      PositiveIndex: 34
+      NegativeIndex: 35
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.035130844, y: 1.9064481, z: 0.11799165}
+        m_Extent: {x: 0.19322906, y: 0.23354584, z: 0.0073651895}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 41
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0.000000074505806, y: 1.8370185, z: -0.016663656}
+        m_Extent: {x: 0.22835982, y: 0.16411656, z: 0.1420205}
+      PositiveIndex: 36
+      NegativeIndex: 37
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.19322914, y: 1.8370185, z: -0.016663581}
+        m_Extent: {x: 0.03513077, y: 0.16411656, z: 0.14202042}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 45
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: 0.000000044703484, y: 1.8370185, z: -0.016663656}
+        m_Extent: {x: 0.22835979, y: 0.16411656, z: 0.1420205}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 47
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.000000074505806, y: 1.8370185, z: -0.016663656}
+        m_Extent: {x: 0.22835982, y: 0.16411656, z: 0.1420205}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 50
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0.00000008940697, y: 1.5994366, z: 0.00000014901161}
+        m_Extent: {x: 0.26124954, y: 0.07396996, z: 0.17651527}
+      PositiveIndex: 40
+      NegativeIndex: 43
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.00000008940697, y: 1.5994366, z: 0.00000014901161}
+        m_Extent: {x: 0.26124954, y: 0.07396996, z: 0.17651527}
+      PositiveIndex: 41
+      NegativeIndex: 42
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.22634107, y: 1.5994366, z: 0.00000014901161}
+        m_Extent: {x: 0.034908533, y: 0.07396996, z: 0.17651527}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 54
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: 0.00000008940697, y: 1.5994366, z: 0.00000014901161}
+        m_Extent: {x: 0.26124954, y: 0.07396996, z: 0.17651527}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 56
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0.00000008940697, y: 1.5994366, z: 0.00000014901161}
+        m_Extent: {x: 0.26124954, y: 0.07396996, z: 0.17651527}
+      PositiveIndex: 44
+      NegativeIndex: 45
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.00000008940697, y: 1.5994366, z: 0.00000014901161}
+        m_Extent: {x: 0.26124954, y: 0.07396996, z: 0.17651527}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 60
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: -0.2263361, y: 1.5994366, z: 0.00000014901161}
+        m_Extent: {x: 0.034913346, y: 0.07396996, z: 0.17651527}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 64
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.76273334, z: 0}
+        m_Extent: {x: 0.26958662, y: 0.76273334, z: 0.19321655}
+      PositiveIndex: 47
+      NegativeIndex: 50
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000004887581, y: 0.9113536, z: 0.00000027567148}
+        m_Extent: {x: 0.19142765, y: 0.61411315, z: 0.10921306}
+      PositiveIndex: 48
+      NegativeIndex: 49
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000004887581, y: 0.9113536, z: 0.00000027567148}
+        m_Extent: {x: 0.19142765, y: 0.61411315, z: 0.10921306}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 66
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0.000004887581, y: 0.9113536, z: 0.00000027567148}
+        m_Extent: {x: 0.19142765, y: 0.61411315, z: 0.10921306}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 70
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.1486202, z: 0}
+        m_Extent: {x: 0.26958662, y: 0.14862019, z: 0.19321655}
+      PositiveIndex: 51
+      NegativeIndex: 56
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.1486202, z: 0}
+        m_Extent: {x: 0.26958662, y: 0.14862019, z: 0.19321655}
+      PositiveIndex: 52
+      NegativeIndex: 53
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.22816604, y: 0.1486202, z: 0}
+        m_Extent: {x: 0.04142067, y: 0.14862019, z: 0.19321655}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 74
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.1486202, z: 0}
+        m_Extent: {x: 0.26958662, y: 0.14862019, z: 0.19321655}
+      PositiveIndex: 54
+      NegativeIndex: 55
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.09688776, z: 0}
+        m_Extent: {x: 0.26958662, y: 0.09688774, z: 0.19321655}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 78
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.1486202, z: 0.015193328}
+        m_Extent: {x: 0.26958662, y: 0.14862019, z: 0.17802322}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 80
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.1486202, z: 0}
+        m_Extent: {x: 0.26958662, y: 0.14862019, z: 0.19321655}
+      PositiveIndex: 57
+      NegativeIndex: 60
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.1486202, z: 0}
+        m_Extent: {x: 0.26958662, y: 0.14862019, z: 0.19321655}
+      PositiveIndex: 58
+      NegativeIndex: 59
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000074505806, y: 0.24550796, z: 0}
+        m_Extent: {x: 0.23696733, y: 0.05173246, z: 0.16282989}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 83
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.09688776, z: 0}
+        m_Extent: {x: 0.26958662, y: 0.09688774, z: 0.19321655}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 85
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: -0.22816108, y: 0.1486202, z: 0}
+        m_Extent: {x: 0.04142548, y: 0.14862019, z: 0.19321655}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 88
+      TriangleCount: 4
+    Triangles:
+    - A: {x: 0.26919365, y: 2.290327, z: 0.18219812}
+      B: {x: 0.07089153, y: 2.139994, z: 0.18219805}
+      C: {x: 0.13913238, y: 2.0717533, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: -0.00000068449964, y: 0.00000040730814, z: 1}
+        Distance: -0.18219887
+      PlaneAB:
+        Normal: {x: -0.60412395, y: 0.79689044, z: -0.0000007940858}
+        Distance: -1.6625133
+      PlaneBC:
+        Normal: {x: -0.7071057, y: -0.70710784, z: -0.00000014751271}
+        Distance: 1.5633343
+      PlaneCA:
+        Normal: {x: 0.8593658, y: -0.5113614, z: 0.0000008328914}
+        Distance: 0.9398489
+    - A: {x: 0.15809837, y: 2.001135, z: 0.18219812}
+      B: {x: 0.26919365, y: 2.290327, z: 0.18219812}
+      C: {x: 0.13913238, y: 2.0717533, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: 0, y: -0, z: 1}
+        Distance: -0.18219812
+      PlaneAB:
+        Normal: {x: 0.9334887, y: -0.35860676, z: 0}
+        Distance: 0.57003754
+      PlaneBC:
+        Normal: {x: -0.8593658, y: 0.5113614, z: 0}
+        Distance: -0.9398491
+      PlaneCA:
+        Normal: {x: -0.96577555, y: -0.25937933, z: 0}
+        Distance: 0.6717406
+    - A: {x: 0.26919365, y: 2.290327, z: 0.18219812}
+      B: {x: 0.15809837, y: 2.001135, z: 0.18219812}
+      C: {x: 0.26919365, y: 2.001135, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: 0, y: 0, z: 1}
+        Distance: -0.18219812
+      PlaneAB:
+        Normal: {x: -0.9334887, y: 0.35860676, z: 0}
+        Distance: -0.57003754
+      PlaneBC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.001135
+      PlaneCA:
+        Normal: {x: 1, y: 0, z: 0}
+        Distance: -0.26919365
+    - A: {x: 0.13913238, y: 2.0717533, z: 0.18219812}
+      B: {x: 0.15809837, y: 2.001135, z: 0.12535684}
+      C: {x: 0.15809837, y: 2.001135, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: -0.9657755, y: -0.2593793, z: 0}
+        Distance: 0.67174053
+      PlaneAB:
+        Normal: {x: -0.15919052, y: 0.5927316, z: -0.789511}
+        Distance: -1.0619977
+      PlaneBC:
+        Normal: {x: 0.2593793, y: -0.96577555, z: 0}
+        Distance: 1.89164
+      PlaneCA:
+        Normal: {x: 0, y: 0, z: 1}
+        Distance: -0.18219812
+    - A: {x: 0.22835991, y: 2.001135, z: 0.12535684}
+      B: {x: 0.15809837, y: 2.001135, z: 0.18219812}
+      C: {x: 0.15809837, y: 2.001135, z: 0.12535684}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.001135
+      PlaneAB:
+        Normal: {x: 0.6289502, y: 0, z: 0.7774456}
+        Distance: -0.24108513
+      PlaneBC:
+        Normal: {x: -1, y: -0, z: -0}
+        Distance: 0.15809837
+      PlaneCA:
+        Normal: {x: 0, y: 0, z: -1}
+        Distance: 0.12535684
+    - A: {x: 0.15809837, y: 2.001135, z: 0.18219812}
+      B: {x: 0.22835991, y: 2.001135, z: 0.12535684}
+      C: {x: 0.26919365, y: 2.001135, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.001135
+      PlaneAB:
+        Normal: {x: -0.6289502, y: -0, z: -0.7774456}
+        Distance: 0.24108513
+      PlaneBC:
+        Normal: {x: 0.8121571, y: 0, z: -0.5834388}
+        Distance: -0.11232607
+      PlaneCA:
+        Normal: {x: 0, y: 0, z: 1}
+        Distance: -0.18219812
+    - A: {x: 0.26919365, y: 2.001135, z: 0.18219812}
+      B: {x: 0.26919365, y: 2.2903273, z: -0.15868384}
+      C: {x: 0.26919365, y: 2.290327, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: 1, y: -0, z: 0}
+        Distance: -0.26919365
+      PlaneAB:
+        Normal: {x: 0, y: -0.76255435, z: -0.64692414}
+        Distance: 1.6438427
+      PlaneBC:
+        Normal: {x: -0, y: 1, z: 0.0000006994169}
+        Distance: -2.2903273
+      PlaneCA:
+        Normal: {x: -0, y: 0, z: 1}
+        Distance: -0.18219812
+    - A: {x: 0.22835991, y: 2.001135, z: 0.12535684}
+      B: {x: 0.26919365, y: 2.001135, z: -0.15868399}
+      C: {x: 0.26919365, y: 2.001135, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.001135
+      PlaneAB:
+        Normal: {x: -0.989824, y: -0, z: -0.14229722}
+        Distance: 0.24387404
+      PlaneBC:
+        Normal: {x: 1, y: 0, z: -0}
+        Distance: -0.26919365
+      PlaneCA:
+        Normal: {x: -0.8121571, y: 0, z: 0.5834388}
+        Distance: 0.11232608
+    - A: {x: 0.26919365, y: 2.2903273, z: -0.15868384}
+      B: {x: 0.26919365, y: 2.001135, z: 0.18219812}
+      C: {x: 0.26919365, y: 2.001135, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: 1, y: 0, z: 0}
+        Distance: -0.26919365
+      PlaneAB:
+        Normal: {x: -0, y: 0.76255435, z: 0.64692414}
+        Distance: -1.6438427
+      PlaneBC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.001135
+      PlaneCA:
+        Normal: {x: 0, y: 0.0000005152684, z: -1}
+        Distance: -0.15868501
+    - A: {x: 0.22835983, y: 2.001135, z: -0.15868384}
+      B: {x: 0.26919365, y: 2.2903273, z: -0.15868384}
+      C: {x: 0.26919365, y: 2.001135, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: -0.0000036492208, y: 0.0000005152684, z: -1}
+        Distance: -0.15868403
+      PlaneAB:
+        Normal: {x: -0.990178, y: 0.13981271, z: 0.0000036815945}
+        Distance: -0.053666655
+      PlaneBC:
+        Normal: {x: 1, y: 1.873456e-12, z: -0.0000036358838}
+        Distance: -0.26919422
+      PlaneCA:
+        Normal: {x: -1.7400841e-12, y: -1, z: -0.00000047683716}
+        Distance: 2.001135
+    - A: {x: 0.26919365, y: 2.001135, z: -0.15868399}
+      B: {x: 0.22835991, y: 2.001135, z: 0.12535684}
+      C: {x: 0.22835983, y: 2.001135, z: -0.15868384}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.001135
+      PlaneAB:
+        Normal: {x: 0.989824, y: 0, z: 0.14229722}
+        Distance: -0.24387404
+      PlaneBC:
+        Normal: {x: -1, y: 0, z: 0.0000002623068}
+        Distance: 0.22835988
+      PlaneCA:
+        Normal: {x: -0.0000036492208, y: -0, z: -1}
+        Distance: -0.158683
+    - A: {x: 0.07089153, y: 2.139994, z: 0.18219805}
+      B: {x: 0.13913238, y: 2.0717533, z: 0.11062646}
+      C: {x: 0.13913238, y: 2.0717533, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: -0.70710576, y: -0.7071079, z: 0}
+        Distance: 1.5633345
+      PlaneAB:
+        Normal: {x: -0.42121273, y: 0.42121148, z: -0.80321896}
+        Distance: -0.7251847
+      PlaneBC:
+        Normal: {x: 0.70710784, y: -0.7071057, z: 0}
+        Distance: 1.3665669
+      PlaneCA:
+        Normal: {x: -0.0000005459049, y: 0.0000005459032, z: 1}
+        Distance: -0.18219918
+    - A: {x: 0.15809837, y: 2.001135, z: 0.12535684}
+      B: {x: 0.13913238, y: 2.0717533, z: 0.18219812}
+      C: {x: 0.13913238, y: 2.0717533, z: 0.11062646}
+      PlaneABC:
+        Normal: {x: -0.96577555, y: -0.25937933, z: 0}
+        Distance: 0.6717406
+      PlaneAB:
+        Normal: {x: 0.15919058, y: -0.5927316, z: 0.789511}
+        Distance: 1.0619977
+      PlaneBC:
+        Normal: {x: -0.25937936, y: 0.9657755, z: 0}
+        Distance: -1.9647604
+      PlaneCA:
+        Normal: {x: 0.05122368, y: -0.19072671, z: -0.9803058}
+        Distance: 0.49645957
+    - A: {x: 0.26919365, y: 2.290327, z: 0.18219812}
+      B: {x: 0.000000076293944, y: 2.1589599, z: 0.18219812}
+      C: {x: 0.07089153, y: 2.139994, z: 0.18219805}
+      PlaneABC:
+        Normal: {x: 0.00000067883195, y: -0.0000013910411, z: 1}
+        Distance: -0.18219511
+      PlaneAB:
+        Normal: {x: -0.4385673, y: 0.8986984, z: 0.0000015862158}
+        Distance: -1.940254
+      PlaneBC:
+        Normal: {x: -0.2584459, y: -0.96602577, z: -0.0000012064696}
+        Distance: 2.085611
+      PlaneCA:
+        Normal: {x: 0.60412395, y: -0.79689044, z: -0.0000015495586}
+        Distance: 1.6625137
+    - A: {x: 0.13913238, y: 2.0717533, z: 0.11062646}
+      B: {x: 0.07089153, y: 2.139994, z: 0.18219805}
+      C: {x: 0.07089153, y: 2.139994, z: 0.11062647}
+      PlaneABC:
+        Normal: {x: -0.70710576, y: -0.7071079, z: 0}
+        Distance: 1.5633345
+      PlaneAB:
+        Normal: {x: 0.42121273, y: -0.42121148, z: 0.80321896}
+        Distance: 0.7251847
+      PlaneBC:
+        Normal: {x: -0.7071079, y: 0.70710576, z: 0}
+        Distance: -1.4630741
+      PlaneCA:
+        Normal: {x: -0.00000005459049, y: 0.000000054590327, z: -1}
+        Distance: 0.110626355
+    - A: {x: -0.22835967, y: 2.001135, z: -0.15868399}
+      B: {x: 0.26919365, y: 2.2903273, z: -0.15868384}
+      C: {x: 0.22835983, y: 2.001135, z: -0.15868384}
+      PlaneABC:
+        Normal: {x: 0.00000032626505, y: -0.000000046068468, z: -1}
+        Distance: -0.15868382
+      PlaneAB:
+        Normal: {x: -0.5025127, y: 0.86456984, z: -0.0000001647365}
+        Distance: -1.8448747
+      PlaneBC:
+        Normal: {x: 0.990178, y: -0.13981271, z: 0.00000032460568}
+        Distance: 0.05366729
+      PlaneCA:
+        Normal: {x: 0, y: -1, z: -0}
+        Distance: 2.001135
+    - A: {x: 0.26919365, y: 2.2903273, z: -0.15868384}
+      B: {x: -0.26919356, y: 2.290327, z: 0.18219797}
+      C: {x: 0.26919365, y: 2.290327, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: -1.5486436e-13, y: 1, z: 0.00000069941683}
+        Distance: -2.2903273
+      PlaneAB:
+        Normal: {x: -0.53494376, y: 0.000000591721, z: -0.84488773}
+        Distance: 0.00993208
+      PlaneBC:
+        Normal: {x: -0.00000027677407, y: -0.0000007003546, z: 1}
+        Distance: -0.18219644
+      PlaneCA:
+        Normal: {x: 1, y: -0, z: 0}
+        Distance: -0.26919365
+    - A: {x: 0.000000076293944, y: 2.1589599, z: 0.18219812}
+      B: {x: 0.07089153, y: 2.139994, z: 0.11062647}
+      C: {x: 0.07089153, y: 2.139994, z: 0.18219805}
+      PlaneABC:
+        Normal: {x: -0.2584459, y: -0.96602577, z: 0}
+        Distance: 2.0856109
+      PlaneAB:
+        Normal: {x: -0.67448723, y: 0.18044905, z: -0.7158947}
+        Distance: -0.25914755
+      PlaneBC:
+        Normal: {x: 0.9660257, y: -0.25844586, z: 0}
+        Distance: 0.48458952
+      PlaneCA:
+        Normal: {x: 0.0000009807845, y: -0.00000026239437, z: 1}
+        Distance: -0.18219756
+    - A: {x: 0.07089153, y: 2.139994, z: 0.11062647}
+      B: {x: 0.000000076293944, y: 2.1589599, z: 0.18219812}
+      C: {x: 0.000000076293944, y: 2.1589599, z: 0.11062647}
+      PlaneABC:
+        Normal: {x: -0.2584459, y: -0.9660257, z: 0}
+        Distance: 2.0856109
+      PlaneAB:
+        Normal: {x: 0.6744872, y: -0.18044907, z: 0.71589464}
+        Distance: 0.25914758
+      PlaneBC:
+        Normal: {x: -0.96602577, y: 0.2584459, z: 0}
+        Distance: -0.5579742
+      PlaneCA:
+        Normal: {x: 0, y: -0, z: -1}
+        Distance: 0.11062647
+    - A: {x: 0.000000076293944, y: 2.1589599, z: 0.18219812}
+      B: {x: 0.26919365, y: 2.290327, z: 0.18219812}
+      C: {x: -0.26919356, y: 2.290327, z: 0.18219797}
+      PlaneABC:
+        Normal: {x: -0.00000027677405, y: 0.0000005671567, z: 1}
+        Distance: -0.18219934
+      PlaneAB:
+        Normal: {x: 0.4385673, y: -0.8986984, z: 0.0000005499169}
+        Distance: 1.9402536
+      PlaneBC:
+        Normal: {x: 1.3197616e-13, y: 1, z: -0.00000047683716}
+        Distance: -2.290327
+      PlaneCA:
+        Normal: {x: -0.4385672, y: -0.89869845, z: 0.00000031089996}
+        Distance: 1.9402539
+    - A: {x: 0.07089153, y: 2.139994, z: 0.11062647}
+      B: {x: 0.000000076293944, y: 2.1589599, z: 0.11062647}
+      C: {x: -0.070891455, y: 2.139994, z: 0.11062647}
+      PlaneABC:
+        Normal: {x: 0, y: 0, z: 1}
+        Distance: -0.11062647
+      PlaneAB:
+        Normal: {x: 0.2584459, y: 0.96602577, z: -0}
+        Distance: -2.0856109
+      PlaneBC:
+        Normal: {x: -0.25844562, y: 0.96602577, z: 0}
+        Distance: -2.0856109
+      PlaneCA:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.139994
+    - A: {x: 0.000000076293944, y: 2.1589599, z: 0.18219812}
+      B: {x: -0.070891455, y: 2.139994, z: 0.11062647}
+      C: {x: 0.000000076293944, y: 2.1589599, z: 0.11062647}
+      PlaneABC:
+        Normal: {x: 0.25844565, y: -0.9660258, z: 0}
+        Distance: 2.0856109
+      PlaneAB:
+        Normal: {x: -0.67448694, y: -0.1804488, z: 0.715895}
+        Distance: 0.25914705
+      PlaneBC:
+        Normal: {x: 0, y: 0, z: -1}
+        Distance: 0.11062647
+      PlaneCA:
+        Normal: {x: 0.9660258, y: 0.25844565, z: -0}
+        Distance: -0.55797386
+    - A: {x: -0.070891455, y: 2.139994, z: 0.11062647}
+      B: {x: 0.000000076293944, y: 2.1589599, z: 0.18219812}
+      C: {x: -0.07089142, y: 2.139994, z: 0.18219805}
+      PlaneABC:
+        Normal: {x: 0.25844577, y: -0.96602577, z: -0.00000013452065}
+        Distance: 2.0856109
+      PlaneAB:
+        Normal: {x: 0.6744868, y: 0.180449, z: -0.715895}
+        Distance: -0.25914747
+      PlaneBC:
+        Normal: {x: -0.00000094612375, y: -0.00000039194828, z: 1}
+        Distance: -0.18219727
+      PlaneCA:
+        Normal: {x: -0.9660258, y: -0.25844577, z: 0.00000050281506}
+        Distance: 0.48458934
+    - A: {x: 0.07089153, y: 2.139994, z: 0.11062647}
+      B: {x: -0.070891455, y: 2.139994, z: 0.11062647}
+      C: {x: -0.1391323, y: 2.0717533, z: 0.11062646}
+      PlaneABC:
+        Normal: {x: 0, y: -0.00000010918098, z: 1}
+        Distance: -0.110626236
+      PlaneAB:
+        Normal: {x: 0, y: 1, z: -0}
+        Distance: -2.139994
+      PlaneBC:
+        Normal: {x: -0.7071057, y: 0.70710784, z: 0}
+        Distance: -1.5633342
+      PlaneCA:
+        Normal: {x: 0.30901602, y: -0.95105684, z: 0}
+        Distance: 2.0133493
+    - A: {x: 0.26919365, y: 2.2903273, z: -0.15868384}
+      B: {x: -0.22835967, y: 2.001135, z: -0.15868399}
+      C: {x: -0.2691935, y: 2.2903273, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: 0.00000027677407, y: 0.000000039080422, z: -1}
+        Distance: -0.158684
+      PlaneAB:
+        Normal: {x: 0.50251263, y: -0.8645698, z: 0.00000013478441}
+        Distance: 1.8448746
+      PlaneBC:
+        Normal: {x: -0.990178, y: -0.13981277, z: -0.00000028034123}
+        Distance: 0.053667475
+      PlaneCA:
+        Normal: {x: -0, y: 1, z: 0}
+        Distance: -2.2903273
+    - A: {x: -0.26919356, y: 2.290327, z: 0.18219797}
+      B: {x: 0.26919365, y: 2.2903273, z: -0.15868384}
+      C: {x: -0.2691935, y: 2.2903273, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: -1.5486439e-13, y: 1, z: 0.0000006994169}
+        Distance: -2.2903273
+      PlaneAB:
+        Normal: {x: 0.53494376, y: -0.000000591721, z: 0.84488773}
+        Distance: -0.009932063
+      PlaneBC:
+        Normal: {x: 0.00000027677407, y: 0.0000007003546, z: -1}
+        Distance: -0.15868552
+      PlaneCA:
+        Normal: {x: -1, y: 1.2245994e-13, z: -0.00000017485422}
+        Distance: -0.26919353
+    - A: {x: -0.07089142, y: 2.139994, z: 0.18219805}
+      B: {x: -0.1391323, y: 2.0717533, z: 0.11062646}
+      C: {x: -0.070891455, y: 2.139994, z: 0.11062647}
+      PlaneABC:
+        Normal: {x: 0.70710576, y: -0.7071079, z: -0.0000003680475}
+        Distance: 1.5633343
+      PlaneAB:
+        Normal: {x: -0.42121246, y: -0.42121163, z: 0.8032191}
+        Distance: 0.72518504
+      PlaneBC:
+        Normal: {x: -0.00000020355853, y: 0.00000031274016, z: -1}
+        Distance: 0.11062578
+      PlaneCA:
+        Normal: {x: 0.7071079, y: 0.70710576, z: -0.00000036804863}
+        Distance: -1.4630741
+    - A: {x: 0.000000076293944, y: 2.1589599, z: 0.18219812}
+      B: {x: -0.26919356, y: 2.290327, z: 0.18219797}
+      C: {x: -0.07089142, y: 2.139994, z: 0.18219805}
+      PlaneABC:
+        Normal: {x: -0.0000008748423, y: -0.0000006583864, z: 1}
+        Distance: -0.1821967
+      PlaneAB:
+        Normal: {x: 0.4385672, y: 0.89869845, z: 0.0000010264764}
+        Distance: -1.9402541
+      PlaneBC:
+        Normal: {x: -0.60412383, y: -0.79689044, z: -0.0000010921051}
+        Distance: 1.6625137
+      PlaneCA:
+        Normal: {x: 0.25844577, y: -0.96602577, z: -0.00000046566367}
+        Distance: 2.0856109
+    - A: {x: -0.1391323, y: 2.0717533, z: 0.11062646}
+      B: {x: -0.07089142, y: 2.139994, z: 0.18219805}
+      C: {x: -0.1391323, y: 2.0717533, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: 0.7071055, y: -0.7071081, z: 0}
+        Distance: 1.5633347
+      PlaneAB:
+        Normal: {x: 0.42121276, y: 0.42121127, z: -0.803219}
+        Distance: -0.72518426
+      PlaneBC:
+        Normal: {x: 0.0000005459049, y: 0.000000545903, z: 1}
+        Distance: -0.18219918
+      PlaneCA:
+        Normal: {x: -0.7071081, y: -0.7071056, z: -0}
+        Distance: 1.3665667
+    - A: {x: -0.1391323, y: 2.0717533, z: 0.18219812}
+      B: {x: -0.15809822, y: 2.001135, z: 0.12535684}
+      C: {x: -0.1391323, y: 2.0717533, z: 0.11062646}
+      PlaneABC:
+        Normal: {x: 0.9657758, y: -0.25937837, z: 0}
+        Distance: 0.6717386
+      PlaneAB:
+        Normal: {x: -0.15919001, y: -0.5927319, z: 0.7895109}
+        Distance: 1.0619984
+      PlaneBC:
+        Normal: {x: -0.051223505, y: -0.1907268, z: -0.98030573}
+        Distance: 0.49645978
+      PlaneCA:
+        Normal: {x: 0.25937843, y: 0.9657758, z: -0}
+        Distance: -1.9647613
+    - A: {x: -0.15809822, y: 2.001135, z: 0.12535684}
+      B: {x: -0.1391323, y: 2.0717533, z: 0.18219812}
+      C: {x: -0.1580983, y: 2.001135, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: 0.9657755, y: -0.2593793, z: 0.0000012659088}
+        Distance: 0.67174023
+      PlaneAB:
+        Normal: {x: 0.1591915, y: 0.5927315, z: -0.7895109}
+        Distance: -1.0619973
+      PlaneBC:
+        Normal: {x: -0.00000122325, y: 0.0000003285295, z: 1}
+        Distance: -0.18219897
+      PlaneCA:
+        Normal: {x: -0.2593793, y: -0.96577555, z: -0.00000033998637}
+        Distance: 1.89164
+    - A: {x: -0.07089142, y: 2.139994, z: 0.18219805}
+      B: {x: -0.26919356, y: 2.290327, z: 0.18219797}
+      C: {x: -0.1391323, y: 2.0717533, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: 0.0000002570861, y: 0.00000083472287, z: 1}
+        Distance: -0.18219982
+      PlaneAB:
+        Normal: {x: 0.6041239, y: 0.79689044, z: -0.00000091751156}
+        Distance: -1.6625133
+      PlaneBC:
+        Normal: {x: -0.8593659, y: -0.51136136, z: 0.00000071817215}
+        Distance: 0.9398489
+      PlaneCA:
+        Normal: {x: 0.7071055, y: -0.7071081, z: 0.000000495227}
+        Distance: 1.5633346
+    - A: {x: -0.26919356, y: 2.001135, z: 0.18219797}
+      B: {x: -0.1391323, y: 2.0717533, z: 0.18219812}
+      C: {x: -0.26919356, y: 2.290327, z: 0.18219797}
+      PlaneABC:
+        Normal: {x: -0.0000011457033, y: 0, z: 1}
+        Distance: -0.18219829
+      PlaneAB:
+        Normal: {x: 0.47716215, y: -0.87881523, z: 0.0000005403806}
+        Distance: 1.8870769
+      PlaneBC:
+        Normal: {x: 0.8593658, y: 0.51136136, z: 0.0000009860272}
+        Distance: -0.9398492
+      PlaneCA:
+        Normal: {x: -1, y: -0, z: -0.0000011324884}
+        Distance: -0.26919335
+    - A: {x: -0.22835974, y: 2.001135, z: 0.12535684}
+      B: {x: -0.1580983, y: 2.001135, z: 0.18219812}
+      C: {x: -0.26919356, y: 2.001135, z: 0.18219797}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.001135
+      PlaneAB:
+        Normal: {x: 0.62895066, y: 0, z: -0.7774452}
+        Distance: 0.24108508
+      PlaneBC:
+        Normal: {x: -0.0000013412958, y: 0, z: 1}
+        Distance: -0.18219833
+      PlaneCA:
+        Normal: {x: -0.81215584, y: -0, z: -0.58344054}
+        Distance: -0.11232544
+    - A: {x: -0.1580983, y: 2.001135, z: 0.18219812}
+      B: {x: -0.22835974, y: 2.001135, z: 0.12535684}
+      C: {x: -0.15809822, y: 2.001135, z: 0.12535684}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: -0}
+        Distance: 2.001135
+      PlaneAB:
+        Normal: {x: -0.62895066, y: 0, z: 0.7774452}
+        Distance: -0.24108508
+      PlaneBC:
+        Normal: {x: 0, y: 0, z: -1}
+        Distance: 0.12535684
+      PlaneCA:
+        Normal: {x: 1, y: 0, z: 0.0000013107692}
+        Distance: 0.15809806
+    - A: {x: -0.1391323, y: 2.0717533, z: 0.18219812}
+      B: {x: -0.26919356, y: 2.001135, z: 0.18219797}
+      C: {x: -0.1580983, y: 2.001135, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: -0.0000013412958, y: 0.0000003602332, z: 1}
+        Distance: -0.18219906
+      PlaneAB:
+        Normal: {x: -0.47716215, y: 0.87881523, z: -0.0000010589761}
+        Distance: -1.8870769
+      PlaneBC:
+        Normal: {x: -6.395797e-13, y: -1, z: 0.0000004768372}
+        Distance: 2.001135
+      PlaneCA:
+        Normal: {x: 0.96577555, y: -0.25937933, z: 0.0000014188876}
+        Distance: 0.6717403
+    - A: {x: -0.2691935, y: 2.2903273, z: -0.15868399}
+      B: {x: -0.26919356, y: 2.001135, z: 0.18219797}
+      C: {x: -0.26919356, y: 2.290327, z: 0.18219797}
+      PlaneABC:
+        Normal: {x: -1, y: 0, z: -0.00000017485422}
+        Distance: -0.26919353
+      PlaneAB:
+        Normal: {x: 0.00000011567906, y: -0.76255435, z: -0.64692414}
+        Distance: 1.6438426
+      PlaneBC:
+        Normal: {x: -0.00000017881393, y: 0, z: 1}
+        Distance: -0.18219802
+      PlaneCA:
+        Normal: {x: -1.2506549e-13, y: 1, z: 0.0000006994169}
+        Distance: -2.2903273
+    - A: {x: -0.2691935, y: 2.001135, z: -0.15868399}
+      B: {x: -0.22835974, y: 2.001135, z: 0.12535684}
+      C: {x: -0.26919356, y: 2.001135, z: 0.18219797}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.001135
+      PlaneAB:
+        Normal: {x: 0.989824, y: 0, z: -0.14229727}
+        Distance: 0.2438739
+      PlaneBC:
+        Normal: {x: 0.81215584, y: 0, z: 0.58344054}
+        Distance: 0.11232544
+      PlaneCA:
+        Normal: {x: -1, y: -0, z: -0.00000017485422}
+        Distance: -0.26919353
+    - A: {x: -0.26919356, y: 2.001135, z: 0.18219797}
+      B: {x: -0.2691935, y: 2.2903273, z: -0.15868399}
+      C: {x: -0.2691935, y: 2.001135, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: -1, y: 0, z: -0.00000017485422}
+        Distance: -0.26919353
+      PlaneAB:
+        Normal: {x: -0.00000011567906, y: 0.76255435, z: 0.64692414}
+        Distance: -1.6438426
+      PlaneBC:
+        Normal: {x: 0.00000017881393, y: 0, z: -1}
+        Distance: -0.15868394
+      PlaneCA:
+        Normal: {x: -0, y: -1, z: 0}
+        Distance: 2.001135
+    - A: {x: -0.22835974, y: 2.001135, z: 0.12535684}
+      B: {x: -0.2691935, y: 2.001135, z: -0.15868399}
+      C: {x: -0.22835967, y: 2.001135, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: -0}
+        Distance: 2.001135
+      PlaneAB:
+        Normal: {x: -0.989824, y: 0, z: 0.14229727}
+        Distance: -0.2438739
+      PlaneBC:
+        Normal: {x: 0, y: 0, z: -1}
+        Distance: -0.15868399
+      PlaneCA:
+        Normal: {x: 1, y: 0, z: 0.00000026230668}
+        Distance: 0.22835971
+    - A: {x: -0.2691935, y: 2.2903273, z: -0.15868399}
+      B: {x: -0.22835967, y: 2.001135, z: -0.15868399}
+      C: {x: -0.2691935, y: 2.001135, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: 0, y: 0, z: -1}
+        Distance: -0.15868399
+      PlaneAB:
+        Normal: {x: 0.990178, y: 0.13981277, z: 0}
+        Distance: -0.05366752
+      PlaneBC:
+        Normal: {x: -0, y: -1, z: -0}
+        Distance: 2.001135
+      PlaneCA:
+        Normal: {x: -1, y: 0, z: 0}
+        Distance: -0.2691935
+    - A: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      B: {x: -0.1391323, y: 2.0717533, z: 0.11062646}
+      C: {x: -0.15809822, y: 2.001135, z: 0.12535684}
+      PlaneABC:
+        Normal: {x: 0.14080502, y: 0.16578193, z: 0.97605854}
+        Distance: -0.43184665
+      PlaneAB:
+        Normal: {x: 0.72205544, y: 0.65731525, z: -0.21580681}
+        Distance: -1.2374599
+      PlaneBC:
+        Normal: {x: -0.9568285, y: 0.2759895, z: 0.09115455}
+        Distance: -0.714992
+      PlaneCA:
+        Normal: {x: -0.63185596, y: -0.743941, z: 0.21750794}
+        Distance: 1.3615651
+    - A: {x: 0.07089153, y: 2.139994, z: 0.11062647}
+      B: {x: -0.1391323, y: 2.0717533, z: 0.11062646}
+      C: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      PlaneABC:
+        Normal: {x: -0.0092309555, y: 0.02840995, z: 0.99955374}
+        Distance: -0.17071982
+      PlaneAB:
+        Normal: {x: -0.30887812, y: 0.95063245, z: -0.029871996}
+        Distance: -2.0091462
+      PlaneBC:
+        Normal: {x: -0.7355984, y: -0.6773034, z: 0.012457444}
+        Distance: 1.2994819
+      PlaneCA:
+        Normal: {x: 0.9476029, y: 0.31945047, z: -0.00032843975}
+        Distance: -0.75076276
+    - A: {x: 0.07089153, y: 2.139994, z: 0.11062647}
+      B: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      C: {x: 0.13913238, y: 2.0717533, z: 0.11062646}
+      PlaneABC:
+        Normal: {x: 0.047467243, y: 0.047467284, z: 0.9977443}
+        Distance: -0.21532166
+      PlaneAB:
+        Normal: {x: -0.94645834, y: -0.3171791, z: 0.06011699}
+        Distance: 0.73920673
+      PlaneBC:
+        Normal: {x: 0.9747549, y: 0.2159717, z: -0.05664828}
+        Distance: -0.57679325
+      PlaneCA:
+        Normal: {x: 0.7055107, y: 0.7055129, z: -0.06712881}
+        Distance: -1.5523818
+    - A: {x: 0.13913238, y: 2.0717533, z: 0.11062646}
+      B: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      C: {x: 0.15809837, y: 2.001135, z: 0.12535684}
+      PlaneABC:
+        Normal: {x: -0.947404, y: -0.20280144, z: 0.24758297}
+        Distance: 0.5245799
+      PlaneAB:
+        Normal: {x: -0.23414971, y: -0.08813904, z: -0.96819705}
+        Distance: 0.32228836
+      PlaneBC:
+        Normal: {x: 0.2420985, y: 0.051823124, z: 0.9688667}
+        Distance: -0.26343453
+      PlaneCA:
+        Normal: {x: 0.19435014, y: 0.25005177, z: 0.94852626}
+        Distance: -0.65001804
+    - A: {x: 0.22835991, y: 2.001135, z: 0.12535684}
+      B: {x: 0.22835991, y: 1.672902, z: -0.158684}
+      C: {x: 0.22835983, y: 2.001135, z: -0.15868384}
+      PlaneABC:
+        Normal: {x: 1, y: 0.00000022699064, z: -0.00000026230683}
+        Distance: -0.22836033
+      PlaneAB:
+        Normal: {x: 0.00000035883573, y: -0.65436745, z: 0.7561767}
+        Distance: 1.2146857
+      PlaneBC:
+        Normal: {x: -0.00000026822102, y: 0.0000004993791, z: -1}
+        Distance: -0.15868478
+      PlaneCA:
+        Normal: {x: -0.00000023841858, y: 1, z: 6.2538814e-14}
+        Distance: -2.001135
+    - A: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      B: {x: 0.22835991, y: 2.001135, z: 0.12535684}
+      C: {x: 0.15809837, y: 2.001135, z: 0.12535684}
+      PlaneABC:
+        Normal: {x: 0, y: -0.0000004993795, z: 1}
+        Distance: -0.12535584
+      PlaneAB:
+        Normal: {x: 1, y: 0, z: -0}
+        Distance: -0.22835991
+      PlaneBC:
+        Normal: {x: 0, y: 1, z: 0.0000004768372}
+        Distance: -2.001135
+      PlaneCA:
+        Normal: {x: -0.97784764, y: -0.20931809, z: -0.00000009981065}
+        Distance: 0.5734699
+    - A: {x: 0.22835983, y: 2.001135, z: -0.15868384}
+      B: {x: -0.22835967, y: 1.672902, z: -0.15868415}
+      C: {x: -0.22835967, y: 2.001135, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: 0.00000032626502, y: 0.00000049937915, z: -1}
+        Distance: -0.15868491
+      PlaneAB:
+        Normal: {x: 0.5835961, y: -0.812044, z: -0.00000019589505}
+        Distance: 1.4917399
+      PlaneBC:
+        Normal: {x: -1, y: 1.6370924e-13, z: -0.00000032782555}
+        Distance: -0.22835971
+      PlaneCA:
+        Normal: {x: -1.555753e-13, y: 1, z: 0.00000047683716}
+        Distance: -2.001135
+    - A: {x: -0.22835974, y: 1.6729022, z: 0.12535682}
+      B: {x: -0.15809822, y: 2.001135, z: 0.12535684}
+      C: {x: -0.22835974, y: 2.001135, z: 0.12535684}
+      PlaneABC:
+        Normal: {x: 0, y: -0.00000004539814, z: 1}
+        Distance: -0.12535675
+      PlaneAB:
+        Normal: {x: 0.97784764, y: -0.20931804, z: 0}
+        Distance: 0.57346964
+      PlaneBC:
+        Normal: {x: 0, y: 1, z: -0}
+        Distance: -2.001135
+      PlaneCA:
+        Normal: {x: -1, y: -0, z: 0}
+        Distance: -0.22835974
+    - A: {x: -0.22835967, y: 1.672902, z: -0.15868415}
+      B: {x: -0.22835974, y: 2.001135, z: 0.12535684}
+      C: {x: -0.22835967, y: 2.001135, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: -1, y: 1.3099049e-13, z: -0.00000026230668}
+        Distance: -0.22835971
+      PlaneAB:
+        Normal: {x: -0.00000020282236, y: -0.6543676, z: 0.75617653}
+        Distance: 1.214686
+      PlaneBC:
+        Normal: {x: 0, y: 1, z: 0}
+        Distance: -2.001135
+      PlaneCA:
+        Normal: {x: 0.0000002682209, y: 0.00000049937915, z: -1}
+        Distance: -0.15868492
+    - A: {x: -0.22835967, y: 1.672902, z: -0.15868415}
+      B: {x: 0.22835983, y: 2.001135, z: -0.15868384}
+      C: {x: 0.22835991, y: 1.672902, z: -0.158684}
+      PlaneABC:
+        Normal: {x: 0.000000326265, y: 0.00000049937915, z: -1}
+        Distance: -0.15868491
+      PlaneAB:
+        Normal: {x: -0.58359617, y: 0.8120441, z: 0.00000019589505}
+        Distance: -1.49174
+      PlaneBC:
+        Normal: {x: 1, y: 0.00000022699037, z: 0.0000003278257}
+        Distance: -0.22836024
+      PlaneCA:
+        Normal: {x: 1.5557527e-13, y: -1, z: -0.00000047683716}
+        Distance: 1.6729019
+    - A: {x: 0.22835991, y: 1.672902, z: -0.158684}
+      B: {x: 0.22835991, y: 2.001135, z: 0.12535684}
+      C: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      PlaneABC:
+        Normal: {x: 1, y: 0, z: 0}
+        Distance: -0.22835991
+      PlaneAB:
+        Normal: {x: 0, y: 0.65436745, z: -0.7561767}
+        Distance: -1.2146858
+      PlaneBC:
+        Normal: {x: 0, y: -0.0000004993795, z: 1}
+        Distance: -0.12535584
+      PlaneCA:
+        Normal: {x: 0, y: -1, z: 0.00000083938176}
+        Distance: 1.6729021
+    - A: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      B: {x: -0.15809822, y: 2.001135, z: 0.12535684}
+      C: {x: -0.22835974, y: 1.6729022, z: 0.12535682}
+      PlaneABC:
+        Normal: {x: 0.00000032626494, y: -0.000000115238386, z: 1}
+        Distance: -0.12535655
+      PlaneAB:
+        Normal: {x: 0.6473546, y: 0.76218885, z: -0.00000012135939}
+        Distance: -1.4228972
+      PlaneBC:
+        Normal: {x: -0.97784764, y: 0.20931804, z: 0.00000032056346}
+        Distance: -0.5734697
+      PlaneCA:
+        Normal: {x: -3.8893815e-14, y: -1, z: -0.00000011920929}
+        Distance: 1.6729022
+    - A: {x: -0.22835974, y: 2.001135, z: 0.12535684}
+      B: {x: -0.22835967, y: 1.672902, z: -0.15868415}
+      C: {x: -0.22835974, y: 1.6729022, z: 0.12535682}
+      PlaneABC:
+        Normal: {x: -1, y: 1.1908228e-14, z: -0.00000026230654}
+        Distance: -0.22835971
+      PlaneAB:
+        Normal: {x: 0.00000020282238, y: 0.6543676, z: -0.75617653}
+        Distance: -1.214686
+      PlaneBC:
+        Normal: {x: -2.251395e-13, y: -1, z: 0.0000008393809}
+        Distance: 1.6729021
+      PlaneCA:
+        Normal: {x: -0.0000002682209, y: -0.00000004539814, z: 1}
+        Distance: -0.12535681
+    - A: {x: 0.2612496, y: 1.6734066, z: 0.17651542}
+      B: {x: 0.19143254, y: 1.5254667, z: -0.106696405}
+      C: {x: 0.2612496, y: 1.6734066, z: -0.17651512}
+      PlaneABC:
+        Normal: {x: 0.9043511, y: -0.4267891, z: 0}
+        Distance: 0.47793034
+      PlaneAB:
+        Normal: {x: -0.36956814, y: -0.78310204, z: 0.5001705}
+        Distance: 1.3187099
+      PlaneBC:
+        Normal: {x: -0.16753255, y: -0.35499567, z: -0.9197342}
+        Distance: 0.47547293
+      PlaneCA:
+        Normal: {x: 0.42678905, y: 0.9043512, z: -0}
+        Distance: -1.6248457
+    - A: {x: 0.19143254, y: 1.5254667, z: -0.106696405}
+      B: {x: 0.2612496, y: 1.6734066, z: 0.17651542}
+      C: {x: 0.19143254, y: 1.5254667, z: 0.1066973}
+      PlaneABC:
+        Normal: {x: 0.9043512, y: -0.4267891, z: 0}
+        Distance: 0.4779303
+      PlaneAB:
+        Normal: {x: 0.36956814, y: 0.78310204, z: -0.5001705}
+        Distance: -1.3187099
+      PlaneBC:
+        Normal: {x: -0.16753133, y: -0.35499305, z: 0.9197354}
+        Distance: 0.4754677
+      PlaneCA:
+        Normal: {x: -0.42678905, y: -0.9043512, z: -0}
+        Distance: 1.4612589
+    - A: {x: 0.2612496, y: 1.6734066, z: -0.17651512}
+      B: {x: -0.26124945, y: 1.6734066, z: 0.17651542}
+      C: {x: 0.2612496, y: 1.6734066, z: 0.17651542}
+      PlaneABC:
+        Normal: {x: 0, y: 1, z: -0}
+        Distance: -1.6734066
+      PlaneAB:
+        Normal: {x: -0.5598472, y: 0, z: -0.8285958}
+        Distance: 0.00000016400386
+      PlaneBC:
+        Normal: {x: 0, y: 0, z: 1}
+        Distance: -0.17651542
+      PlaneCA:
+        Normal: {x: 1, y: -0, z: 0}
+        Distance: -0.2612496
+    - A: {x: -0.26124945, y: 1.6734066, z: 0.17651542}
+      B: {x: 0.19143254, y: 1.5254667, z: 0.1066973}
+      C: {x: 0.2612496, y: 1.6734066, z: 0.17651542}
+      PlaneABC:
+        Normal: {x: 0, y: -0.42679438, z: 0.90434873}
+        Distance: 0.55456907
+      PlaneAB:
+        Normal: {x: -0.33986273, y: -0.8505174, z: -0.40138945}
+        Distance: 1.4053239
+      PlaneBC:
+        Normal: {x: 0.9197379, y: -0.35498676, z: -0.1675309}
+        Distance: 0.3833278
+      PlaneCA:
+        Normal: {x: 0, y: 0.90434873, z: 0.42679438}
+        Distance: -1.588679
+    - A: {x: -0.19142276, y: 1.5254667, z: -0.106696405}
+      B: {x: 0.2612496, y: 1.6734066, z: -0.17651512}
+      C: {x: 0.19143254, y: 1.5254667, z: -0.106696405}
+      PlaneABC:
+        Normal: {x: 0, y: -0.42679736, z: -0.90434736}
+        Distance: 0.55457455
+      PlaneAB:
+        Normal: {x: -0.33986962, y: 0.8505139, z: -0.40139124}
+        Distance: -1.4053164
+      PlaneBC:
+        Normal: {x: 0.9197382, y: -0.35498577, z: 0.16753185}
+        Distance: 0.3833262
+      PlaneCA:
+        Normal: {x: 0, y: -0.9043473, z: 0.4267974}
+        Distance: 1.4250895
+    - A: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      B: {x: -0.22835967, y: 1.672902, z: -0.15868415}
+      C: {x: 0.22835991, y: 1.672902, z: -0.158684}
+      PlaneABC:
+        Normal: {x: -2.1908872e-13, y: -1, z: 0.00000083938176}
+        Distance: 1.6729021
+      PlaneAB:
+        Normal: {x: -0.5281139, y: 0.0000007086056, z: 0.8491736}
+        Distance: 0.0141492775
+      PlaneBC:
+        Normal: {x: 0.000000326265, y: -0.000000834465, z: -1}
+        Distance: -0.15868267
+      PlaneCA:
+        Normal: {x: 1, y: 0, z: -0}
+        Distance: -0.22835991
+    - A: {x: -0.26124945, y: 1.6734066, z: 0.17651542}
+      B: {x: 0.2612496, y: 1.6734066, z: -0.17651512}
+      C: {x: -0.26124945, y: 1.6734066, z: -0.17651512}
+      PlaneABC:
+        Normal: {x: 0, y: 1, z: 0}
+        Distance: -1.6734066
+      PlaneAB:
+        Normal: {x: 0.5598472, y: -0, z: 0.8285958}
+        Distance: -0.00000016636066
+      PlaneBC:
+        Normal: {x: 0, y: 0, z: -1}
+        Distance: -0.17651512
+      PlaneCA:
+        Normal: {x: -1, y: 0, z: 0}
+        Distance: -0.26124945
+    - A: {x: 0.19143254, y: 1.5254667, z: 0.1066973}
+      B: {x: -0.26124945, y: 1.6734066, z: 0.17651542}
+      C: {x: -0.19142276, y: 1.5254667, z: 0.1066973}
+      PlaneABC:
+        Normal: {x: 0, y: -0.42679438, z: 0.90434873}
+        Distance: 0.55456907
+      PlaneAB:
+        Normal: {x: 0.3398627, y: 0.8505174, z: 0.40138948}
+        Distance: -1.4053239
+      PlaneBC:
+        Normal: {x: -0.9197184, y: -0.35502815, z: -0.16755043}
+        Distance: 0.38340577
+      PlaneCA:
+        Normal: {x: 0, y: -0.9043487, z: -0.42679438}
+        Distance: 1.4250916
+    - A: {x: 0.2612496, y: 1.6734066, z: -0.17651512}
+      B: {x: -0.19142276, y: 1.5254667, z: -0.106696405}
+      C: {x: -0.26124945, y: 1.6734066, z: -0.17651512}
+      PlaneABC:
+        Normal: {x: -0, y: -0.42679736, z: -0.9043473}
+        Distance: 0.55457455
+      PlaneAB:
+        Normal: {x: 0.3398696, y: -0.8505138, z: 0.40139124}
+        Distance: 1.4053162
+      PlaneBC:
+        Normal: {x: -0.91971856, y: -0.35502708, z: 0.16755138}
+        Distance: 0.38340405
+      PlaneCA:
+        Normal: {x: 0, y: 0.9043473, z: -0.4267974}
+        Distance: -1.5886769
+    - A: {x: -0.22835967, y: 1.672902, z: -0.15868415}
+      B: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      C: {x: -0.22835974, y: 1.6729022, z: 0.12535682}
+      PlaneABC:
+        Normal: {x: 3.2863268e-13, y: -1, z: 0.0000008393809}
+        Distance: 1.6729021
+      PlaneAB:
+        Normal: {x: 0.5281139, y: -0.0000007086056, z: -0.8491736}
+        Distance: -0.01414929
+      PlaneBC:
+        Normal: {x: 0.00000032626497, y: 0.000000834465, z: 1}
+        Distance: -0.12535815
+      PlaneCA:
+        Normal: {x: -1, y: -2.1888563e-13, z: -0.00000026230654}
+        Distance: -0.22835971
+    - A: {x: -0.19142276, y: 1.5254667, z: 0.1066973}
+      B: {x: -0.26124945, y: 1.6734066, z: -0.17651512}
+      C: {x: -0.19142276, y: 1.5254667, z: -0.106696405}
+      PlaneABC:
+        Normal: {x: -0.90432847, y: -0.42683724, z: -0}
+        Distance: 0.47801694
+      PlaneAB:
+        Normal: {x: -0.3696077, y: 0.7830779, z: 0.5001792}
+        Distance: -1.3186784
+      PlaneBC:
+        Normal: {x: 0.16754788, y: -0.3549792, z: -0.91973776}
+        Distance: 0.4754487
+      PlaneCA:
+        Normal: {x: 0.42683715, y: -0.90432847, z: 0}
+        Distance: 1.4612293
+    - A: {x: -0.26124945, y: 1.6734066, z: -0.17651512}
+      B: {x: -0.19142276, y: 1.5254667, z: 0.1066973}
+      C: {x: -0.26124945, y: 1.6734066, z: 0.17651542}
+      PlaneABC:
+        Normal: {x: -0.90432847, y: -0.42683724, z: 0}
+        Distance: 0.47801694
+      PlaneAB:
+        Normal: {x: 0.36960772, y: -0.78307784, z: -0.5001792}
+        Distance: 1.3186783
+      PlaneBC:
+        Normal: {x: 0.16754667, y: -0.35497662, z: 0.919739}
+        Distance: 0.4754436
+      PlaneCA:
+        Normal: {x: -0.4268372, y: 0.90432847, z: 0}
+        Distance: -1.6248202
+    - A: {x: -0.19142276, y: 1.5254667, z: 0.1066973}
+      B: {x: 0.18674538, y: 0.2972404, z: 0.10921334}
+      C: {x: 0.19143254, y: 1.5254667, z: 0.1066973}
+      PlaneABC:
+        Normal: {x: -0, y: 0.0020485097, z: 0.9999979}
+        Distance: -0.10982201
+      PlaneAB:
+        Normal: {x: -0.955724, y: -0.29426405, z: 0.000602799}
+        Distance: 0.26587835
+      PlaneBC:
+        Normal: {x: 0.9999927, y: -0.0038161585, z: 0.000007817503}
+        Distance: -0.18561055
+      PlaneCA:
+        Normal: {x: 0, y: 0.9999979, z: -0.0020484927}
+        Distance: -1.525245
+    - A: {x: -0.19142276, y: 1.5254667, z: -0.106696405}
+      B: {x: -0.1867356, y: 0.2972404, z: 0.10921334}
+      C: {x: -0.19142276, y: 1.5254667, z: 0.1066973}
+      PlaneABC:
+        Normal: {x: -0.9999927, y: -0.003816175, z: 0}
+        Distance: -0.18559992
+      PlaneAB:
+        Normal: {x: 0.000660701, y: -0.17313263, z: -0.9848983}
+        Distance: 0.15914942
+      PlaneBC:
+        Normal: {x: -0.00000781744, y: 0.0020484796, z: 0.99999785}
+        Distance: -0.10982345
+      PlaneCA:
+        Normal: {x: -0.0038161275, y: 0.9999927, z: 0}
+        Distance: -1.5261861
+    - A: {x: 0.19143254, y: 1.5254667, z: -0.106696405}
+      B: {x: -0.1867356, y: 0.2972404, z: -0.109212786}
+      C: {x: -0.19142276, y: 1.5254667, z: -0.106696405}
+      PlaneABC:
+        Normal: {x: 0, y: 0.0020487888, z: -0.9999979}
+        Distance: -0.10982154
+      PlaneAB:
+        Normal: {x: 0.955724, y: -0.29426405, z: -0.0006028691}
+        Distance: 0.26586902
+      PlaneBC:
+        Normal: {x: -0.9999927, y: -0.003816159, z: -0.000007818526}
+        Distance: -0.18560077
+      PlaneCA:
+        Normal: {x: -0, y: 0.9999979, z: 0.0020487309}
+        Distance: -1.525245
+    - A: {x: 0.19143254, y: 1.5254667, z: 0.1066973}
+      B: {x: 0.18674538, y: 0.2972404, z: -0.109212786}
+      C: {x: 0.19143254, y: 1.5254667, z: -0.106696405}
+      PlaneABC:
+        Normal: {x: 0.9999927, y: -0.003816175, z: 0}
+        Distance: -0.1856097
+      PlaneAB:
+        Normal: {x: -0.00066070195, y: -0.17313287, z: 0.98489827}
+        Distance: 0.15914892
+      PlaneBC:
+        Normal: {x: 0.000007818505, y: 0.0020487588, z: -0.99999785}
+        Distance: -0.10982299
+      PlaneCA:
+        Normal: {x: 0.0038161275, y: 0.9999927, z: -0}
+        Distance: -1.5261861
+    - A: {x: 0.18674538, y: 0.2972404, z: 0.10921334}
+      B: {x: -0.19142276, y: 1.5254667, z: 0.1066973}
+      C: {x: -0.1867356, y: 0.2972404, z: 0.10921334}
+      PlaneABC:
+        Normal: {x: 0, y: 0.0020485097, z: 0.9999979}
+        Distance: -0.10982201
+      PlaneAB:
+        Normal: {x: 0.955724, y: 0.29426405, z: -0.00060280773}
+        Distance: -0.26587838
+      PlaneBC:
+        Normal: {x: -0.9999927, y: -0.0038161585, z: 0.000007817389}
+        Distance: -0.18560077
+      PlaneCA:
+        Normal: {x: 0, y: -0.9999979, z: 0.0020485222}
+        Distance: 0.29701605
+    - A: {x: -0.1867356, y: 0.2972404, z: 0.10921334}
+      B: {x: -0.19142276, y: 1.5254667, z: -0.106696405}
+      C: {x: -0.1867356, y: 0.2972404, z: -0.109212786}
+      PlaneABC:
+        Normal: {x: -0.99999267, y: -0.0038161743, z: -0}
+        Distance: -0.18559991
+      PlaneAB:
+        Normal: {x: -0.0006607115, y: 0.17313263, z: 0.9848983}
+        Distance: -0.15914942
+      PlaneBC:
+        Normal: {x: -0.000007818382, y: 0.0020487588, z: -0.99999785}
+        Distance: -0.10982299
+      PlaneCA:
+        Normal: {x: 0.0038161876, y: -0.9999927, z: 0}
+        Distance: 0.29795086
+    - A: {x: -0.1867356, y: 0.2972404, z: -0.109212786}
+      B: {x: 0.19143254, y: 1.5254667, z: -0.106696405}
+      C: {x: 0.18674538, y: 0.2972404, z: -0.109212786}
+      PlaneABC:
+        Normal: {x: 0, y: 0.0020487888, z: -0.9999979}
+        Distance: -0.10982154
+      PlaneAB:
+        Normal: {x: -0.955724, y: 0.29426405, z: 0.0006028866}
+        Distance: -0.26586902
+      PlaneBC:
+        Normal: {x: 0.9999927, y: -0.0038161585, z: -0.000007818298}
+        Distance: -0.18561056
+      PlaneCA:
+        Normal: {x: -0, y: -0.9999979, z: -0.0020487902}
+        Distance: 0.29701602
+    - A: {x: 0.18674538, y: 0.2972404, z: -0.109212786}
+      B: {x: 0.19143254, y: 1.5254667, z: 0.1066973}
+      C: {x: 0.18674538, y: 0.2972404, z: 0.10921334}
+      PlaneABC:
+        Normal: {x: 0.99999267, y: -0.0038161743, z: 0}
+        Distance: -0.18560968
+      PlaneAB:
+        Normal: {x: 0.00066071237, y: 0.17313288, z: -0.98489827}
+        Distance: -0.15914896
+      PlaneBC:
+        Normal: {x: 0.000007817318, y: 0.0020484796, z: 0.99999785}
+        Distance: -0.10982345
+      PlaneCA:
+        Normal: {x: -0.0038161876, y: -0.9999927, z: -0}
+        Distance: 0.2979509
+    - A: {x: 0.23696738, y: 0.19377549, z: -0.16282989}
+      B: {x: 0.18674538, y: 0.2972404, z: 0.10921334}
+      C: {x: 0.23696738, y: 0.19377549, z: 0.16282989}
+      PlaneABC:
+        Normal: {x: 0.8996188, y: 0.4366762, z: -0}
+        Distance: -0.29779747
+      PlaneAB:
+        Normal: {x: -0.40220982, y: 0.8286128, z: -0.38939452}
+        Distance: -0.12865931
+      PlaneBC:
+        Normal: {x: -0.18450958, y: 0.38011748, z: 0.9063481}
+        Distance: -0.17751527
+      PlaneCA:
+        Normal: {x: 0.43667617, y: -0.89961874, z: 0}
+        Distance: 0.07084605
+    - A: {x: 0.18674538, y: 0.2972404, z: 0.10921334}
+      B: {x: 0.23696738, y: 0.19377549, z: -0.16282989}
+      C: {x: 0.18674538, y: 0.2972404, z: -0.109212786}
+      PlaneABC:
+        Normal: {x: 0.89961874, y: 0.43667617, z: 0}
+        Distance: -0.29779744
+      PlaneAB:
+        Normal: {x: 0.40220982, y: -0.8286128, z: 0.38939452}
+        Distance: 0.12865931
+      PlaneBC:
+        Normal: {x: -0.18451111, y: 0.3801207, z: -0.9063465}
+        Distance: -0.17751525
+      PlaneCA:
+        Normal: {x: -0.43667617, y: 0.8996188, z: 0}
+        Distance: -0.1858558
+    - A: {x: 0.2695867, y: 0.000000035965016, z: -0.19321655}
+      B: {x: 0.23696738, y: 0.19377549, z: 0.16282989}
+      C: {x: 0.2695867, y: 0.00000002125545, z: 0.19321655}
+      PlaneABC:
+        Normal: {x: 0.9861257, y: 0.16600014, z: 0.0000000063187913}
+        Distance: -0.2658464
+      PlaneAB:
+        Normal: {x: -0.14533526, y: 0.8633657, z: -0.4831949}
+        Distance: -0.054180823
+      PlaneBC:
+        Normal: {x: -0.025368417, y: 0.15070136, z: 0.9882538}
+        Distance: -0.18410799
+      PlaneCA:
+        Normal: {x: 0.16600014, y: -0.98612565, z: -0.000000037536847}
+        Distance: -0.044751406
+    - A: {x: 0.23696738, y: 0.19377549, z: 0.16282989}
+      B: {x: 0.2695867, y: 0.000000035965016, z: -0.19321655}
+      C: {x: 0.23696738, y: 0.19377549, z: -0.16282989}
+      PlaneABC:
+        Normal: {x: 0.98612577, y: 0.16600017, z: 0}
+        Distance: -0.2658464
+      PlaneAB:
+        Normal: {x: 0.14533527, y: -0.8633657, z: 0.48319492}
+        Distance: 0.05418082
+      PlaneBC:
+        Normal: {x: -0.025368419, y: 0.15070136, z: -0.9882538}
+        Distance: -0.184108
+      PlaneCA:
+        Normal: {x: -0.16600016, y: 0.9861257, z: 0}
+        Distance: -0.15175037
+    - A: {x: -0.26958656, y: 0.00000002125545, z: 0.19321655}
+      B: {x: 0.2695867, y: 0.000000035965016, z: -0.19321655}
+      C: {x: 0.2695867, y: 0.00000002125545, z: 0.19321655}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: -0.000000038064975}
+        Distance: 0.000000028610234
+      PlaneAB:
+        Normal: {x: -0.58254445, y: 0.00000003633494, z: -0.81279886}
+        Distance: 0.000000033935017
+      PlaneBC:
+        Normal: {x: 1, y: 0, z: 0}
+        Distance: -0.2695867
+      PlaneCA:
+        Normal: {x: 0, y: -0.000000044703484, z: 1}
+        Distance: -0.19321655
+    - A: {x: 0.2695867, y: 0.000000035965016, z: -0.19321655}
+      B: {x: -0.23696725, y: 0.19377549, z: -0.16282989}
+      C: {x: 0.23696738, y: 0.19377549, z: -0.16282989}
+      PlaneABC:
+        Normal: {x: 0, y: 0.15492053, z: -0.9879269}
+        Distance: -0.19088383
+      PlaneAB:
+        Normal: {x: -0.36108714, y: -0.9212735, z: -0.14446838}
+        Distance: 0.06943065
+      PlaneBC:
+        Normal: {x: -0, y: 0.98792696, z: 0.15492053}
+        Distance: -0.16621034
+      PlaneCA:
+        Normal: {x: 0.986452, y: 0.1620697, z: 0.02541476}
+        Distance: -0.2610238
+    - A: {x: -0.1867356, y: 0.2972404, z: 0.10921334}
+      B: {x: 0.23696738, y: 0.19377549, z: 0.16282989}
+      C: {x: 0.18674538, y: 0.2972404, z: 0.10921334}
+      PlaneABC:
+        Normal: {x: -0, y: 0.46010125, z: 0.88786644}
+        Distance: -0.23372754
+      PlaneAB:
+        Normal: {x: -0.26518556, y: -0.8560785, z: 0.4436284}
+        Distance: 0.1564914
+      PlaneBC:
+        Normal: {x: 0.91834503, y: 0.35140032, z: -0.18209913}
+        Distance: -0.2560594
+      PlaneCA:
+        Normal: {x: 0, y: 0.88786644, z: -0.46010125}
+        Distance: -0.21366058
+    - A: {x: 0.23696738, y: 0.19377549, z: 0.16282989}
+      B: {x: -0.26958656, y: 0.00000002125545, z: 0.19321655}
+      C: {x: 0.2695867, y: 0.00000002125545, z: 0.19321655}
+      PlaneABC:
+        Normal: {x: 0, y: 0.15492052, z: 0.98792696}
+        Distance: -0.19088385
+      PlaneAB:
+        Normal: {x: -0.3610872, y: 0.9212735, z: -0.14446834}
+        Distance: -0.069430575
+      PlaneBC:
+        Normal: {x: 0, y: -0.9879269, z: 0.15492052}
+        Distance: -0.029933186
+      PlaneCA:
+        Normal: {x: 0.9864519, y: 0.16206968, z: -0.025414752}
+        Distance: -0.2610238
+    - A: {x: 0.23696738, y: 0.19377549, z: -0.16282989}
+      B: {x: -0.1867356, y: 0.2972404, z: -0.109212786}
+      C: {x: 0.18674538, y: 0.2972404, z: -0.109212786}
+      PlaneABC:
+        Normal: {x: 0, y: 0.46010497, z: -0.88786453}
+        Distance: -0.23372795
+      PlaneAB:
+        Normal: {x: -0.2651861, y: -0.8560765, z: -0.44363195}
+        Distance: 0.15649055
+      PlaneBC:
+        Normal: {x: -0, y: 0.88786453, z: 0.46010494}
+        Distance: -0.21365987
+      PlaneCA:
+        Normal: {x: 0.91834545, y: 0.35139894, z: 0.1821003}
+        Distance: -0.25605905
+    - A: {x: 0.23696738, y: 0.19377549, z: 0.16282989}
+      B: {x: -0.1867356, y: 0.2972404, z: 0.10921334}
+      C: {x: -0.23696725, y: 0.19377549, z: 0.16282989}
+      PlaneABC:
+        Normal: {x: 0, y: 0.46010128, z: 0.88786644}
+        Distance: -0.23372754
+      PlaneAB:
+        Normal: {x: 0.2651856, y: 0.8560785, z: -0.44362846}
+        Distance: -0.1564914
+      PlaneBC:
+        Normal: {x: -0.9183175, y: 0.35145724, z: -0.18212865}
+        Distance: -0.256059
+      PlaneCA:
+        Normal: {x: 0, y: -0.88786644, z: 0.46010128}
+        Distance: 0.09712851
+    - A: {x: -0.1867356, y: 0.2972404, z: -0.109212786}
+      B: {x: 0.23696738, y: 0.19377549, z: -0.16282989}
+      C: {x: -0.23696725, y: 0.19377549, z: -0.16282989}
+      PlaneABC:
+        Normal: {x: 0, y: 0.46010497, z: -0.88786453}
+        Distance: -0.23372795
+      PlaneAB:
+        Normal: {x: 0.2651861, y: 0.8560765, z: 0.44363192}
+        Distance: -0.15649056
+      PlaneBC:
+        Normal: {x: -0, y: -0.88786453, z: -0.46010494}
+        Distance: 0.09712755
+      PlaneCA:
+        Normal: {x: -0.91831785, y: 0.35145584, z: 0.18212979}
+        Distance: -0.2560586
+    - A: {x: -0.26958656, y: 0.00000002125545, z: 0.19321655}
+      B: {x: 0.23696738, y: 0.19377549, z: 0.16282989}
+      C: {x: -0.23696725, y: 0.19377549, z: 0.16282989}
+      PlaneABC:
+        Normal: {x: 0, y: 0.15492052, z: 0.9879269}
+        Distance: -0.19088383
+      PlaneAB:
+        Normal: {x: 0.36108717, y: -0.9212735, z: 0.14446837}
+        Distance: 0.06943059
+      PlaneBC:
+        Normal: {x: 0, y: 0.98792696, z: -0.1549205}
+        Distance: -0.16621034
+      PlaneCA:
+        Normal: {x: -0.9864519, y: 0.16206959, z: -0.025414739}
+        Distance: -0.26102364
+    - A: {x: 0.2695867, y: 0.000000035965016, z: -0.19321655}
+      B: {x: -0.26958656, y: 0.00000002125545, z: 0.19321655}
+      C: {x: -0.26958656, y: 0.000000035965016, z: -0.19321655}
+      PlaneABC:
+        Normal: {x: -0, y: -1, z: -0.000000038064975}
+        Distance: 0.000000028610232
+      PlaneAB:
+        Normal: {x: 0.58254445, y: -0.00000003633494, z: 0.81279886}
+        Distance: -0.000000052870867
+      PlaneBC:
+        Normal: {x: -1, y: 0, z: -0}
+        Distance: -0.26958656
+      PlaneCA:
+        Normal: {x: 0, y: 0.000000044703484, z: -1}
+        Distance: -0.19321655
+    - A: {x: -0.23696725, y: 0.19377549, z: -0.16282989}
+      B: {x: 0.2695867, y: 0.000000035965016, z: -0.19321655}
+      C: {x: -0.26958656, y: 0.000000035965016, z: -0.19321655}
+      PlaneABC:
+        Normal: {x: 0, y: 0.15492052, z: -0.98792696}
+        Distance: -0.19088385
+      PlaneAB:
+        Normal: {x: 0.36108717, y: 0.9212735, z: 0.14446834}
+        Distance: -0.069430634
+      PlaneBC:
+        Normal: {x: -0, y: -0.9879269, z: -0.15492052}
+        Distance: -0.029933171
+      PlaneCA:
+        Normal: {x: -0.986452, y: 0.16206962, z: 0.025414744}
+        Distance: -0.26102367
+    - A: {x: -0.1867356, y: 0.2972404, z: 0.10921334}
+      B: {x: -0.23696725, y: 0.19377549, z: -0.16282989}
+      C: {x: -0.23696725, y: 0.19377549, z: 0.16282989}
+      PlaneABC:
+        Normal: {x: -0.89958584, y: 0.436744, z: 0}
+        Distance: -0.29780266
+      PlaneAB:
+        Normal: {x: 0.40227002, y: 0.8285779, z: -0.3894066}
+        Distance: -0.1286403
+      PlaneBC:
+        Normal: {x: -0.43674406, y: -0.8995858, z: 0}
+        Distance: 0.07082363
+      PlaneCA:
+        Normal: {x: 0.18453267, y: 0.3800921, z: 0.90635407}
+        Distance: -0.17750587
+    - A: {x: -0.23696725, y: 0.19377549, z: -0.16282989}
+      B: {x: -0.1867356, y: 0.2972404, z: 0.10921334}
+      C: {x: -0.1867356, y: 0.2972404, z: -0.109212786}
+      PlaneABC:
+        Normal: {x: -0.89958584, y: 0.436744, z: 0}
+        Distance: -0.29780266
+      PlaneAB:
+        Normal: {x: -0.40227008, y: -0.8285779, z: 0.38940662}
+        Distance: 0.1286403
+      PlaneBC:
+        Normal: {x: 0.436744, y: 0.89958584, z: 0}
+        Distance: -0.18583761
+      PlaneCA:
+        Normal: {x: 0.1845342, y: 0.38009536, z: -0.9063524}
+        Distance: -0.17750587
+    - A: {x: -0.26958656, y: 0.000000035965016, z: -0.19321655}
+      B: {x: -0.23696725, y: 0.19377549, z: 0.16282989}
+      C: {x: -0.23696725, y: 0.19377549, z: -0.16282989}
+      PlaneABC:
+        Normal: {x: -0.98612577, y: 0.1660001, z: 0}
+        Distance: -0.26584625
+      PlaneAB:
+        Normal: {x: -0.14533521, y: -0.8633657, z: 0.4831949}
+        Distance: 0.054180857
+      PlaneBC:
+        Normal: {x: 0.1660001, y: 0.9861257, z: 0}
+        Distance: -0.1517504
+      PlaneCA:
+        Normal: {x: 0.025368413, y: 0.15070137, z: -0.9882538}
+        Distance: -0.184108
+    - A: {x: -0.23696725, y: 0.19377549, z: 0.16282989}
+      B: {x: -0.26958656, y: 0.000000035965016, z: -0.19321655}
+      C: {x: -0.26958656, y: 0.00000002125545, z: 0.19321655}
+      PlaneABC:
+        Normal: {x: -0.9861257, y: 0.16600007, z: 0.000000006401092}
+        Distance: -0.26584625
+      PlaneAB:
+        Normal: {x: 0.1453352, y: 0.86336577, z: -0.48319492}
+        Distance: -0.054180868
+      PlaneBC:
+        Normal: {x: -0.16600008, y: -0.98612577, z: -0.00000003753685}
+        Distance: -0.044751365
+      PlaneCA:
+        Normal: {x: 0.025368404, y: 0.15070136, z: 0.9882538}
+        Distance: -0.184108
+--- !u!114 &114178432681193150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1991341868549412}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2895d347b4dd14e9a742044907083e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OuterPointSet: 1
+  OuterPoint: {x: 4.8067484, y: 0.0000000128096875, z: 2.932002}
+  OuterPointDistance: 5.990675
+  IsHollow: 1
+  InnerPointSet: 0
+  InnerPoint: {x: 0, y: 0, z: 0}
+  InnerPointDistance: 0
+  InnerPointInside: 0
+  MeshCollider: {fileID: 64414392730468194}
+  MeshFilter: {fileID: 33040475505129830}
+  Mesh: {fileID: 4300000, guid: 2882f3816ad865a46b3d618724469236, type: 3}
+  MeshUpdateInterval: -1
+  RaySeparation: 0.1
+  tree:
+    Nodes:
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 1.1451637, z: 0}
+        m_Extent: {x: 0.26958662, y: 1.1451637, z: 0.19321655}
+      PositiveIndex: 1
+      NegativeIndex: 46
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 1.907897, z: 0.0028415024}
+        m_Extent: {x: 0.2691936, y: 0.38243032, z: 0.17935662}
+      PositiveIndex: 2
+      NegativeIndex: 31
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 3
+      NegativeIndex: 16
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 4
+      NegativeIndex: 11
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.17004259, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.09915106, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 5
+      NegativeIndex: 8
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.17004259, y: 2.145731, z: 0.15377748}
+        m_Extent: {x: 0.09915106, y: 0.14459598, z: 0.028420642}
+      PositiveIndex: 6
+      NegativeIndex: 7
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.17004259, y: 2.145731, z: 0.18219808}
+        m_Extent: {x: 0.09915106, y: 0.14459598, z: 0.000000037252903}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 0
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.20416301, y: 2.0364442, z: 0.15377748}
+        m_Extent: {x: 0.065030634, y: 0.035309076, z: 0.028420642}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 3
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.24877673, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.020416908, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 9
+      NegativeIndex: 10
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.24877678, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.02041687, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 6
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: 0.24877673, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.020416908, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 8
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 12
+      NegativeIndex: 15
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 13
+      NegativeIndex: 14
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.13459685, y: 2.145731, z: 0.14641228}
+        m_Extent: {x: 0.13459678, y: 0.14459598, z: 0.03578583}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 11
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 14
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.2151604, z: 0.1464123}
+        m_Extent: {x: 0.2691936, y: 0.07516658, z: 0.035785828}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 17
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 17
+      NegativeIndex: 24
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 18
+      NegativeIndex: 21
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 19
+      NegativeIndex: 20
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: -0.03412039, y: 2.1153564, z: 0.14641228}
+        m_Extent: {x: 0.10501192, y: 0.0436033, z: 0.03578583}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 21
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.000000029802322, y: 2.1457312, z: 0.011756986}
+        m_Extent: {x: 0.2691936, y: 0.1445961, z: 0.17044097}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 24
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: -0.13459674, y: 2.145731, z: 0.14641228}
+        m_Extent: {x: 0.13459682, y: 0.14459598, z: 0.03578583}
+      PositiveIndex: 22
+      NegativeIndex: 23
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: -0.13459674, y: 2.1810403, z: 0.14641228}
+        m_Extent: {x: 0.13459682, y: 0.109286904, z: 0.03578583}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 26
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: -0.11449486, y: 2.0705645, z: 0.14641228}
+        m_Extent: {x: 0.04360344, y: 0.0694294, z: 0.03578583}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 28
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: -0.17004248, y: 2.1457312, z: 0.011757076}
+        m_Extent: {x: 0.099151075, y: 0.1445961, z: 0.17044106}
+      PositiveIndex: 25
+      NegativeIndex: 28
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: -0.17004248, y: 2.145731, z: 0.15377748}
+        m_Extent: {x: 0.099151075, y: 0.14459598, z: 0.028420642}
+      PositiveIndex: 26
+      NegativeIndex: 27
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: -0.17004248, y: 2.145731, z: 0.18219805}
+        m_Extent: {x: 0.099151075, y: 0.14459598, z: 0.000000074505806}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 31
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: -0.20416293, y: 2.0364442, z: 0.15377748}
+        m_Extent: {x: 0.06503063, y: 0.035309076, z: 0.028420642}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 33
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: -0.24877661, y: 2.1457312, z: 0.011756986}
+        m_Extent: {x: 0.020416945, y: 0.1445961, z: 0.17044097}
+      PositiveIndex: 29
+      NegativeIndex: 30
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: -0.24877664, y: 2.1457312, z: 0.011756986}
+        m_Extent: {x: 0.020416908, y: 0.1445961, z: 0.17044097}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 36
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: -0.24877661, y: 2.1457312, z: 0.011756986}
+        m_Extent: {x: 0.020416945, y: 0.1445961, z: 0.17044097}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 38
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.00000008940697, y: 1.8327303, z: 0.00000014901161}
+        m_Extent: {x: 0.26124954, y: 0.3072636, z: 0.17651527}
+      PositiveIndex: 32
+      NegativeIndex: 39
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000074505806, y: 1.9064479, z: -0.016663656}
+        m_Extent: {x: 0.22835982, y: 0.23354596, z: 0.1420205}
+      PositiveIndex: 33
+      NegativeIndex: 38
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000074505806, y: 1.9064479, z: -0.016663656}
+        m_Extent: {x: 0.22835982, y: 0.23354596, z: 0.1420205}
+      PositiveIndex: 34
+      NegativeIndex: 35
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.035130844, y: 1.9064481, z: 0.11799165}
+        m_Extent: {x: 0.19322906, y: 0.23354584, z: 0.0073651895}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 41
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0.000000074505806, y: 1.8370185, z: -0.016663656}
+        m_Extent: {x: 0.22835982, y: 0.16411656, z: 0.1420205}
+      PositiveIndex: 36
+      NegativeIndex: 37
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.19322914, y: 1.8370185, z: -0.016663581}
+        m_Extent: {x: 0.03513077, y: 0.16411656, z: 0.14202042}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 45
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: 0.000000044703484, y: 1.8370185, z: -0.016663656}
+        m_Extent: {x: 0.22835979, y: 0.16411656, z: 0.1420205}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 47
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.000000074505806, y: 1.8370185, z: -0.016663656}
+        m_Extent: {x: 0.22835982, y: 0.16411656, z: 0.1420205}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 50
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0.00000008940697, y: 1.5994366, z: 0.00000014901161}
+        m_Extent: {x: 0.26124954, y: 0.07396996, z: 0.17651527}
+      PositiveIndex: 40
+      NegativeIndex: 43
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.00000008940697, y: 1.5994366, z: 0.00000014901161}
+        m_Extent: {x: 0.26124954, y: 0.07396996, z: 0.17651527}
+      PositiveIndex: 41
+      NegativeIndex: 42
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.22634107, y: 1.5994366, z: 0.00000014901161}
+        m_Extent: {x: 0.034908533, y: 0.07396996, z: 0.17651527}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 54
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: 0.00000008940697, y: 1.5994366, z: 0.00000014901161}
+        m_Extent: {x: 0.26124954, y: 0.07396996, z: 0.17651527}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 56
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0.00000008940697, y: 1.5994366, z: 0.00000014901161}
+        m_Extent: {x: 0.26124954, y: 0.07396996, z: 0.17651527}
+      PositiveIndex: 44
+      NegativeIndex: 45
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.00000008940697, y: 1.5994366, z: 0.00000014901161}
+        m_Extent: {x: 0.26124954, y: 0.07396996, z: 0.17651527}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 60
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: -0.2263361, y: 1.5994366, z: 0.00000014901161}
+        m_Extent: {x: 0.034913346, y: 0.07396996, z: 0.17651527}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 64
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.76273334, z: 0}
+        m_Extent: {x: 0.26958662, y: 0.76273334, z: 0.19321655}
+      PositiveIndex: 47
+      NegativeIndex: 50
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000004887581, y: 0.9113536, z: 0.00000027567148}
+        m_Extent: {x: 0.19142765, y: 0.61411315, z: 0.10921306}
+      PositiveIndex: 48
+      NegativeIndex: 49
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000004887581, y: 0.9113536, z: 0.00000027567148}
+        m_Extent: {x: 0.19142765, y: 0.61411315, z: 0.10921306}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 66
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0.000004887581, y: 0.9113536, z: 0.00000027567148}
+        m_Extent: {x: 0.19142765, y: 0.61411315, z: 0.10921306}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 70
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.1486202, z: 0}
+        m_Extent: {x: 0.26958662, y: 0.14862019, z: 0.19321655}
+      PositiveIndex: 51
+      NegativeIndex: 56
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.1486202, z: 0}
+        m_Extent: {x: 0.26958662, y: 0.14862019, z: 0.19321655}
+      PositiveIndex: 52
+      NegativeIndex: 53
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.22816604, y: 0.1486202, z: 0}
+        m_Extent: {x: 0.04142067, y: 0.14862019, z: 0.19321655}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 74
+      TriangleCount: 4
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.1486202, z: 0}
+        m_Extent: {x: 0.26958662, y: 0.14862019, z: 0.19321655}
+      PositiveIndex: 54
+      NegativeIndex: 55
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.09688776, z: 0}
+        m_Extent: {x: 0.26958662, y: 0.09688774, z: 0.19321655}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 78
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.1486202, z: 0.015193328}
+        m_Extent: {x: 0.26958662, y: 0.14862019, z: 0.17802322}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 80
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.1486202, z: 0}
+        m_Extent: {x: 0.26958662, y: 0.14862019, z: 0.19321655}
+      PositiveIndex: 57
+      NegativeIndex: 60
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.1486202, z: 0}
+        m_Extent: {x: 0.26958662, y: 0.14862019, z: 0.19321655}
+      PositiveIndex: 58
+      NegativeIndex: 59
+      TriangleIndex: 0
+      TriangleCount: 0
+    - Bound:
+        m_Center: {x: 0.000000074505806, y: 0.24550796, z: 0}
+        m_Extent: {x: 0.23696733, y: 0.05173246, z: 0.16282989}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 83
+      TriangleCount: 2
+    - Bound:
+        m_Center: {x: 0.000000059604645, y: 0.09688776, z: 0}
+        m_Extent: {x: 0.26958662, y: 0.09688774, z: 0.19321655}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 85
+      TriangleCount: 3
+    - Bound:
+        m_Center: {x: -0.22816108, y: 0.1486202, z: 0}
+        m_Extent: {x: 0.04142548, y: 0.14862019, z: 0.19321655}
+      PositiveIndex: 0
+      NegativeIndex: 0
+      TriangleIndex: 88
+      TriangleCount: 4
+    Triangles:
+    - A: {x: 0.26919365, y: 2.290327, z: 0.18219812}
+      B: {x: 0.07089153, y: 2.139994, z: 0.18219805}
+      C: {x: 0.13913238, y: 2.0717533, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: -0.00000068449964, y: 0.00000040730814, z: 1}
+        Distance: -0.18219887
+      PlaneAB:
+        Normal: {x: -0.60412395, y: 0.79689044, z: -0.0000007940858}
+        Distance: -1.6625133
+      PlaneBC:
+        Normal: {x: -0.7071057, y: -0.70710784, z: -0.00000014751271}
+        Distance: 1.5633343
+      PlaneCA:
+        Normal: {x: 0.8593658, y: -0.5113614, z: 0.0000008328914}
+        Distance: 0.9398489
+    - A: {x: 0.15809837, y: 2.001135, z: 0.18219812}
+      B: {x: 0.26919365, y: 2.290327, z: 0.18219812}
+      C: {x: 0.13913238, y: 2.0717533, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: 0, y: -0, z: 1}
+        Distance: -0.18219812
+      PlaneAB:
+        Normal: {x: 0.9334887, y: -0.35860676, z: 0}
+        Distance: 0.57003754
+      PlaneBC:
+        Normal: {x: -0.8593658, y: 0.5113614, z: 0}
+        Distance: -0.9398491
+      PlaneCA:
+        Normal: {x: -0.96577555, y: -0.25937933, z: 0}
+        Distance: 0.6717406
+    - A: {x: 0.26919365, y: 2.290327, z: 0.18219812}
+      B: {x: 0.15809837, y: 2.001135, z: 0.18219812}
+      C: {x: 0.26919365, y: 2.001135, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: 0, y: 0, z: 1}
+        Distance: -0.18219812
+      PlaneAB:
+        Normal: {x: -0.9334887, y: 0.35860676, z: 0}
+        Distance: -0.57003754
+      PlaneBC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.001135
+      PlaneCA:
+        Normal: {x: 1, y: 0, z: 0}
+        Distance: -0.26919365
+    - A: {x: 0.13913238, y: 2.0717533, z: 0.18219812}
+      B: {x: 0.15809837, y: 2.001135, z: 0.12535684}
+      C: {x: 0.15809837, y: 2.001135, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: -0.9657755, y: -0.2593793, z: 0}
+        Distance: 0.67174053
+      PlaneAB:
+        Normal: {x: -0.15919052, y: 0.5927316, z: -0.789511}
+        Distance: -1.0619977
+      PlaneBC:
+        Normal: {x: 0.2593793, y: -0.96577555, z: 0}
+        Distance: 1.89164
+      PlaneCA:
+        Normal: {x: 0, y: 0, z: 1}
+        Distance: -0.18219812
+    - A: {x: 0.22835991, y: 2.001135, z: 0.12535684}
+      B: {x: 0.15809837, y: 2.001135, z: 0.18219812}
+      C: {x: 0.15809837, y: 2.001135, z: 0.12535684}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.001135
+      PlaneAB:
+        Normal: {x: 0.6289502, y: 0, z: 0.7774456}
+        Distance: -0.24108513
+      PlaneBC:
+        Normal: {x: -1, y: -0, z: -0}
+        Distance: 0.15809837
+      PlaneCA:
+        Normal: {x: 0, y: 0, z: -1}
+        Distance: 0.12535684
+    - A: {x: 0.15809837, y: 2.001135, z: 0.18219812}
+      B: {x: 0.22835991, y: 2.001135, z: 0.12535684}
+      C: {x: 0.26919365, y: 2.001135, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.001135
+      PlaneAB:
+        Normal: {x: -0.6289502, y: -0, z: -0.7774456}
+        Distance: 0.24108513
+      PlaneBC:
+        Normal: {x: 0.8121571, y: 0, z: -0.5834388}
+        Distance: -0.11232607
+      PlaneCA:
+        Normal: {x: 0, y: 0, z: 1}
+        Distance: -0.18219812
+    - A: {x: 0.26919365, y: 2.001135, z: 0.18219812}
+      B: {x: 0.26919365, y: 2.2903273, z: -0.15868384}
+      C: {x: 0.26919365, y: 2.290327, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: 1, y: -0, z: 0}
+        Distance: -0.26919365
+      PlaneAB:
+        Normal: {x: 0, y: -0.76255435, z: -0.64692414}
+        Distance: 1.6438427
+      PlaneBC:
+        Normal: {x: -0, y: 1, z: 0.0000006994169}
+        Distance: -2.2903273
+      PlaneCA:
+        Normal: {x: -0, y: 0, z: 1}
+        Distance: -0.18219812
+    - A: {x: 0.22835991, y: 2.001135, z: 0.12535684}
+      B: {x: 0.26919365, y: 2.001135, z: -0.15868399}
+      C: {x: 0.26919365, y: 2.001135, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.001135
+      PlaneAB:
+        Normal: {x: -0.989824, y: -0, z: -0.14229722}
+        Distance: 0.24387404
+      PlaneBC:
+        Normal: {x: 1, y: 0, z: -0}
+        Distance: -0.26919365
+      PlaneCA:
+        Normal: {x: -0.8121571, y: 0, z: 0.5834388}
+        Distance: 0.11232608
+    - A: {x: 0.26919365, y: 2.2903273, z: -0.15868384}
+      B: {x: 0.26919365, y: 2.001135, z: 0.18219812}
+      C: {x: 0.26919365, y: 2.001135, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: 1, y: 0, z: 0}
+        Distance: -0.26919365
+      PlaneAB:
+        Normal: {x: -0, y: 0.76255435, z: 0.64692414}
+        Distance: -1.6438427
+      PlaneBC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.001135
+      PlaneCA:
+        Normal: {x: 0, y: 0.0000005152684, z: -1}
+        Distance: -0.15868501
+    - A: {x: 0.22835983, y: 2.001135, z: -0.15868384}
+      B: {x: 0.26919365, y: 2.2903273, z: -0.15868384}
+      C: {x: 0.26919365, y: 2.001135, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: -0.0000036492208, y: 0.0000005152684, z: -1}
+        Distance: -0.15868403
+      PlaneAB:
+        Normal: {x: -0.990178, y: 0.13981271, z: 0.0000036815945}
+        Distance: -0.053666655
+      PlaneBC:
+        Normal: {x: 1, y: 1.873456e-12, z: -0.0000036358838}
+        Distance: -0.26919422
+      PlaneCA:
+        Normal: {x: -1.7400841e-12, y: -1, z: -0.00000047683716}
+        Distance: 2.001135
+    - A: {x: 0.26919365, y: 2.001135, z: -0.15868399}
+      B: {x: 0.22835991, y: 2.001135, z: 0.12535684}
+      C: {x: 0.22835983, y: 2.001135, z: -0.15868384}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.001135
+      PlaneAB:
+        Normal: {x: 0.989824, y: 0, z: 0.14229722}
+        Distance: -0.24387404
+      PlaneBC:
+        Normal: {x: -1, y: 0, z: 0.0000002623068}
+        Distance: 0.22835988
+      PlaneCA:
+        Normal: {x: -0.0000036492208, y: -0, z: -1}
+        Distance: -0.158683
+    - A: {x: 0.07089153, y: 2.139994, z: 0.18219805}
+      B: {x: 0.13913238, y: 2.0717533, z: 0.11062646}
+      C: {x: 0.13913238, y: 2.0717533, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: -0.70710576, y: -0.7071079, z: 0}
+        Distance: 1.5633345
+      PlaneAB:
+        Normal: {x: -0.42121273, y: 0.42121148, z: -0.80321896}
+        Distance: -0.7251847
+      PlaneBC:
+        Normal: {x: 0.70710784, y: -0.7071057, z: 0}
+        Distance: 1.3665669
+      PlaneCA:
+        Normal: {x: -0.0000005459049, y: 0.0000005459032, z: 1}
+        Distance: -0.18219918
+    - A: {x: 0.15809837, y: 2.001135, z: 0.12535684}
+      B: {x: 0.13913238, y: 2.0717533, z: 0.18219812}
+      C: {x: 0.13913238, y: 2.0717533, z: 0.11062646}
+      PlaneABC:
+        Normal: {x: -0.96577555, y: -0.25937933, z: 0}
+        Distance: 0.6717406
+      PlaneAB:
+        Normal: {x: 0.15919058, y: -0.5927316, z: 0.789511}
+        Distance: 1.0619977
+      PlaneBC:
+        Normal: {x: -0.25937936, y: 0.9657755, z: 0}
+        Distance: -1.9647604
+      PlaneCA:
+        Normal: {x: 0.05122368, y: -0.19072671, z: -0.9803058}
+        Distance: 0.49645957
+    - A: {x: 0.26919365, y: 2.290327, z: 0.18219812}
+      B: {x: 0.000000076293944, y: 2.1589599, z: 0.18219812}
+      C: {x: 0.07089153, y: 2.139994, z: 0.18219805}
+      PlaneABC:
+        Normal: {x: 0.00000067883195, y: -0.0000013910411, z: 1}
+        Distance: -0.18219511
+      PlaneAB:
+        Normal: {x: -0.4385673, y: 0.8986984, z: 0.0000015862158}
+        Distance: -1.940254
+      PlaneBC:
+        Normal: {x: -0.2584459, y: -0.96602577, z: -0.0000012064696}
+        Distance: 2.085611
+      PlaneCA:
+        Normal: {x: 0.60412395, y: -0.79689044, z: -0.0000015495586}
+        Distance: 1.6625137
+    - A: {x: 0.13913238, y: 2.0717533, z: 0.11062646}
+      B: {x: 0.07089153, y: 2.139994, z: 0.18219805}
+      C: {x: 0.07089153, y: 2.139994, z: 0.11062647}
+      PlaneABC:
+        Normal: {x: -0.70710576, y: -0.7071079, z: 0}
+        Distance: 1.5633345
+      PlaneAB:
+        Normal: {x: 0.42121273, y: -0.42121148, z: 0.80321896}
+        Distance: 0.7251847
+      PlaneBC:
+        Normal: {x: -0.7071079, y: 0.70710576, z: 0}
+        Distance: -1.4630741
+      PlaneCA:
+        Normal: {x: -0.00000005459049, y: 0.000000054590327, z: -1}
+        Distance: 0.110626355
+    - A: {x: -0.22835967, y: 2.001135, z: -0.15868399}
+      B: {x: 0.26919365, y: 2.2903273, z: -0.15868384}
+      C: {x: 0.22835983, y: 2.001135, z: -0.15868384}
+      PlaneABC:
+        Normal: {x: 0.00000032626505, y: -0.000000046068468, z: -1}
+        Distance: -0.15868382
+      PlaneAB:
+        Normal: {x: -0.5025127, y: 0.86456984, z: -0.0000001647365}
+        Distance: -1.8448747
+      PlaneBC:
+        Normal: {x: 0.990178, y: -0.13981271, z: 0.00000032460568}
+        Distance: 0.05366729
+      PlaneCA:
+        Normal: {x: 0, y: -1, z: -0}
+        Distance: 2.001135
+    - A: {x: 0.26919365, y: 2.2903273, z: -0.15868384}
+      B: {x: -0.26919356, y: 2.290327, z: 0.18219797}
+      C: {x: 0.26919365, y: 2.290327, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: -1.5486436e-13, y: 1, z: 0.00000069941683}
+        Distance: -2.2903273
+      PlaneAB:
+        Normal: {x: -0.53494376, y: 0.000000591721, z: -0.84488773}
+        Distance: 0.00993208
+      PlaneBC:
+        Normal: {x: -0.00000027677407, y: -0.0000007003546, z: 1}
+        Distance: -0.18219644
+      PlaneCA:
+        Normal: {x: 1, y: -0, z: 0}
+        Distance: -0.26919365
+    - A: {x: 0.000000076293944, y: 2.1589599, z: 0.18219812}
+      B: {x: 0.07089153, y: 2.139994, z: 0.11062647}
+      C: {x: 0.07089153, y: 2.139994, z: 0.18219805}
+      PlaneABC:
+        Normal: {x: -0.2584459, y: -0.96602577, z: 0}
+        Distance: 2.0856109
+      PlaneAB:
+        Normal: {x: -0.67448723, y: 0.18044905, z: -0.7158947}
+        Distance: -0.25914755
+      PlaneBC:
+        Normal: {x: 0.9660257, y: -0.25844586, z: 0}
+        Distance: 0.48458952
+      PlaneCA:
+        Normal: {x: 0.0000009807845, y: -0.00000026239437, z: 1}
+        Distance: -0.18219756
+    - A: {x: 0.07089153, y: 2.139994, z: 0.11062647}
+      B: {x: 0.000000076293944, y: 2.1589599, z: 0.18219812}
+      C: {x: 0.000000076293944, y: 2.1589599, z: 0.11062647}
+      PlaneABC:
+        Normal: {x: -0.2584459, y: -0.9660257, z: 0}
+        Distance: 2.0856109
+      PlaneAB:
+        Normal: {x: 0.6744872, y: -0.18044907, z: 0.71589464}
+        Distance: 0.25914758
+      PlaneBC:
+        Normal: {x: -0.96602577, y: 0.2584459, z: 0}
+        Distance: -0.5579742
+      PlaneCA:
+        Normal: {x: 0, y: -0, z: -1}
+        Distance: 0.11062647
+    - A: {x: 0.000000076293944, y: 2.1589599, z: 0.18219812}
+      B: {x: 0.26919365, y: 2.290327, z: 0.18219812}
+      C: {x: -0.26919356, y: 2.290327, z: 0.18219797}
+      PlaneABC:
+        Normal: {x: -0.00000027677405, y: 0.0000005671567, z: 1}
+        Distance: -0.18219934
+      PlaneAB:
+        Normal: {x: 0.4385673, y: -0.8986984, z: 0.0000005499169}
+        Distance: 1.9402536
+      PlaneBC:
+        Normal: {x: 1.3197616e-13, y: 1, z: -0.00000047683716}
+        Distance: -2.290327
+      PlaneCA:
+        Normal: {x: -0.4385672, y: -0.89869845, z: 0.00000031089996}
+        Distance: 1.9402539
+    - A: {x: 0.07089153, y: 2.139994, z: 0.11062647}
+      B: {x: 0.000000076293944, y: 2.1589599, z: 0.11062647}
+      C: {x: -0.070891455, y: 2.139994, z: 0.11062647}
+      PlaneABC:
+        Normal: {x: 0, y: 0, z: 1}
+        Distance: -0.11062647
+      PlaneAB:
+        Normal: {x: 0.2584459, y: 0.96602577, z: -0}
+        Distance: -2.0856109
+      PlaneBC:
+        Normal: {x: -0.25844562, y: 0.96602577, z: 0}
+        Distance: -2.0856109
+      PlaneCA:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.139994
+    - A: {x: 0.000000076293944, y: 2.1589599, z: 0.18219812}
+      B: {x: -0.070891455, y: 2.139994, z: 0.11062647}
+      C: {x: 0.000000076293944, y: 2.1589599, z: 0.11062647}
+      PlaneABC:
+        Normal: {x: 0.25844565, y: -0.9660258, z: 0}
+        Distance: 2.0856109
+      PlaneAB:
+        Normal: {x: -0.67448694, y: -0.1804488, z: 0.715895}
+        Distance: 0.25914705
+      PlaneBC:
+        Normal: {x: 0, y: 0, z: -1}
+        Distance: 0.11062647
+      PlaneCA:
+        Normal: {x: 0.9660258, y: 0.25844565, z: -0}
+        Distance: -0.55797386
+    - A: {x: -0.070891455, y: 2.139994, z: 0.11062647}
+      B: {x: 0.000000076293944, y: 2.1589599, z: 0.18219812}
+      C: {x: -0.07089142, y: 2.139994, z: 0.18219805}
+      PlaneABC:
+        Normal: {x: 0.25844577, y: -0.96602577, z: -0.00000013452065}
+        Distance: 2.0856109
+      PlaneAB:
+        Normal: {x: 0.6744868, y: 0.180449, z: -0.715895}
+        Distance: -0.25914747
+      PlaneBC:
+        Normal: {x: -0.00000094612375, y: -0.00000039194828, z: 1}
+        Distance: -0.18219727
+      PlaneCA:
+        Normal: {x: -0.9660258, y: -0.25844577, z: 0.00000050281506}
+        Distance: 0.48458934
+    - A: {x: 0.07089153, y: 2.139994, z: 0.11062647}
+      B: {x: -0.070891455, y: 2.139994, z: 0.11062647}
+      C: {x: -0.1391323, y: 2.0717533, z: 0.11062646}
+      PlaneABC:
+        Normal: {x: 0, y: -0.00000010918098, z: 1}
+        Distance: -0.110626236
+      PlaneAB:
+        Normal: {x: 0, y: 1, z: -0}
+        Distance: -2.139994
+      PlaneBC:
+        Normal: {x: -0.7071057, y: 0.70710784, z: 0}
+        Distance: -1.5633342
+      PlaneCA:
+        Normal: {x: 0.30901602, y: -0.95105684, z: 0}
+        Distance: 2.0133493
+    - A: {x: 0.26919365, y: 2.2903273, z: -0.15868384}
+      B: {x: -0.22835967, y: 2.001135, z: -0.15868399}
+      C: {x: -0.2691935, y: 2.2903273, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: 0.00000027677407, y: 0.000000039080422, z: -1}
+        Distance: -0.158684
+      PlaneAB:
+        Normal: {x: 0.50251263, y: -0.8645698, z: 0.00000013478441}
+        Distance: 1.8448746
+      PlaneBC:
+        Normal: {x: -0.990178, y: -0.13981277, z: -0.00000028034123}
+        Distance: 0.053667475
+      PlaneCA:
+        Normal: {x: -0, y: 1, z: 0}
+        Distance: -2.2903273
+    - A: {x: -0.26919356, y: 2.290327, z: 0.18219797}
+      B: {x: 0.26919365, y: 2.2903273, z: -0.15868384}
+      C: {x: -0.2691935, y: 2.2903273, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: -1.5486439e-13, y: 1, z: 0.0000006994169}
+        Distance: -2.2903273
+      PlaneAB:
+        Normal: {x: 0.53494376, y: -0.000000591721, z: 0.84488773}
+        Distance: -0.009932063
+      PlaneBC:
+        Normal: {x: 0.00000027677407, y: 0.0000007003546, z: -1}
+        Distance: -0.15868552
+      PlaneCA:
+        Normal: {x: -1, y: 1.2245994e-13, z: -0.00000017485422}
+        Distance: -0.26919353
+    - A: {x: -0.07089142, y: 2.139994, z: 0.18219805}
+      B: {x: -0.1391323, y: 2.0717533, z: 0.11062646}
+      C: {x: -0.070891455, y: 2.139994, z: 0.11062647}
+      PlaneABC:
+        Normal: {x: 0.70710576, y: -0.7071079, z: -0.0000003680475}
+        Distance: 1.5633343
+      PlaneAB:
+        Normal: {x: -0.42121246, y: -0.42121163, z: 0.8032191}
+        Distance: 0.72518504
+      PlaneBC:
+        Normal: {x: -0.00000020355853, y: 0.00000031274016, z: -1}
+        Distance: 0.11062578
+      PlaneCA:
+        Normal: {x: 0.7071079, y: 0.70710576, z: -0.00000036804863}
+        Distance: -1.4630741
+    - A: {x: 0.000000076293944, y: 2.1589599, z: 0.18219812}
+      B: {x: -0.26919356, y: 2.290327, z: 0.18219797}
+      C: {x: -0.07089142, y: 2.139994, z: 0.18219805}
+      PlaneABC:
+        Normal: {x: -0.0000008748423, y: -0.0000006583864, z: 1}
+        Distance: -0.1821967
+      PlaneAB:
+        Normal: {x: 0.4385672, y: 0.89869845, z: 0.0000010264764}
+        Distance: -1.9402541
+      PlaneBC:
+        Normal: {x: -0.60412383, y: -0.79689044, z: -0.0000010921051}
+        Distance: 1.6625137
+      PlaneCA:
+        Normal: {x: 0.25844577, y: -0.96602577, z: -0.00000046566367}
+        Distance: 2.0856109
+    - A: {x: -0.1391323, y: 2.0717533, z: 0.11062646}
+      B: {x: -0.07089142, y: 2.139994, z: 0.18219805}
+      C: {x: -0.1391323, y: 2.0717533, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: 0.7071055, y: -0.7071081, z: 0}
+        Distance: 1.5633347
+      PlaneAB:
+        Normal: {x: 0.42121276, y: 0.42121127, z: -0.803219}
+        Distance: -0.72518426
+      PlaneBC:
+        Normal: {x: 0.0000005459049, y: 0.000000545903, z: 1}
+        Distance: -0.18219918
+      PlaneCA:
+        Normal: {x: -0.7071081, y: -0.7071056, z: -0}
+        Distance: 1.3665667
+    - A: {x: -0.1391323, y: 2.0717533, z: 0.18219812}
+      B: {x: -0.15809822, y: 2.001135, z: 0.12535684}
+      C: {x: -0.1391323, y: 2.0717533, z: 0.11062646}
+      PlaneABC:
+        Normal: {x: 0.9657758, y: -0.25937837, z: 0}
+        Distance: 0.6717386
+      PlaneAB:
+        Normal: {x: -0.15919001, y: -0.5927319, z: 0.7895109}
+        Distance: 1.0619984
+      PlaneBC:
+        Normal: {x: -0.051223505, y: -0.1907268, z: -0.98030573}
+        Distance: 0.49645978
+      PlaneCA:
+        Normal: {x: 0.25937843, y: 0.9657758, z: -0}
+        Distance: -1.9647613
+    - A: {x: -0.15809822, y: 2.001135, z: 0.12535684}
+      B: {x: -0.1391323, y: 2.0717533, z: 0.18219812}
+      C: {x: -0.1580983, y: 2.001135, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: 0.9657755, y: -0.2593793, z: 0.0000012659088}
+        Distance: 0.67174023
+      PlaneAB:
+        Normal: {x: 0.1591915, y: 0.5927315, z: -0.7895109}
+        Distance: -1.0619973
+      PlaneBC:
+        Normal: {x: -0.00000122325, y: 0.0000003285295, z: 1}
+        Distance: -0.18219897
+      PlaneCA:
+        Normal: {x: -0.2593793, y: -0.96577555, z: -0.00000033998637}
+        Distance: 1.89164
+    - A: {x: -0.07089142, y: 2.139994, z: 0.18219805}
+      B: {x: -0.26919356, y: 2.290327, z: 0.18219797}
+      C: {x: -0.1391323, y: 2.0717533, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: 0.0000002570861, y: 0.00000083472287, z: 1}
+        Distance: -0.18219982
+      PlaneAB:
+        Normal: {x: 0.6041239, y: 0.79689044, z: -0.00000091751156}
+        Distance: -1.6625133
+      PlaneBC:
+        Normal: {x: -0.8593659, y: -0.51136136, z: 0.00000071817215}
+        Distance: 0.9398489
+      PlaneCA:
+        Normal: {x: 0.7071055, y: -0.7071081, z: 0.000000495227}
+        Distance: 1.5633346
+    - A: {x: -0.26919356, y: 2.001135, z: 0.18219797}
+      B: {x: -0.1391323, y: 2.0717533, z: 0.18219812}
+      C: {x: -0.26919356, y: 2.290327, z: 0.18219797}
+      PlaneABC:
+        Normal: {x: -0.0000011457033, y: 0, z: 1}
+        Distance: -0.18219829
+      PlaneAB:
+        Normal: {x: 0.47716215, y: -0.87881523, z: 0.0000005403806}
+        Distance: 1.8870769
+      PlaneBC:
+        Normal: {x: 0.8593658, y: 0.51136136, z: 0.0000009860272}
+        Distance: -0.9398492
+      PlaneCA:
+        Normal: {x: -1, y: -0, z: -0.0000011324884}
+        Distance: -0.26919335
+    - A: {x: -0.22835974, y: 2.001135, z: 0.12535684}
+      B: {x: -0.1580983, y: 2.001135, z: 0.18219812}
+      C: {x: -0.26919356, y: 2.001135, z: 0.18219797}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.001135
+      PlaneAB:
+        Normal: {x: 0.62895066, y: 0, z: -0.7774452}
+        Distance: 0.24108508
+      PlaneBC:
+        Normal: {x: -0.0000013412958, y: 0, z: 1}
+        Distance: -0.18219833
+      PlaneCA:
+        Normal: {x: -0.81215584, y: -0, z: -0.58344054}
+        Distance: -0.11232544
+    - A: {x: -0.1580983, y: 2.001135, z: 0.18219812}
+      B: {x: -0.22835974, y: 2.001135, z: 0.12535684}
+      C: {x: -0.15809822, y: 2.001135, z: 0.12535684}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: -0}
+        Distance: 2.001135
+      PlaneAB:
+        Normal: {x: -0.62895066, y: 0, z: 0.7774452}
+        Distance: -0.24108508
+      PlaneBC:
+        Normal: {x: 0, y: 0, z: -1}
+        Distance: 0.12535684
+      PlaneCA:
+        Normal: {x: 1, y: 0, z: 0.0000013107692}
+        Distance: 0.15809806
+    - A: {x: -0.1391323, y: 2.0717533, z: 0.18219812}
+      B: {x: -0.26919356, y: 2.001135, z: 0.18219797}
+      C: {x: -0.1580983, y: 2.001135, z: 0.18219812}
+      PlaneABC:
+        Normal: {x: -0.0000013412958, y: 0.0000003602332, z: 1}
+        Distance: -0.18219906
+      PlaneAB:
+        Normal: {x: -0.47716215, y: 0.87881523, z: -0.0000010589761}
+        Distance: -1.8870769
+      PlaneBC:
+        Normal: {x: -6.395797e-13, y: -1, z: 0.0000004768372}
+        Distance: 2.001135
+      PlaneCA:
+        Normal: {x: 0.96577555, y: -0.25937933, z: 0.0000014188876}
+        Distance: 0.6717403
+    - A: {x: -0.2691935, y: 2.2903273, z: -0.15868399}
+      B: {x: -0.26919356, y: 2.001135, z: 0.18219797}
+      C: {x: -0.26919356, y: 2.290327, z: 0.18219797}
+      PlaneABC:
+        Normal: {x: -1, y: 0, z: -0.00000017485422}
+        Distance: -0.26919353
+      PlaneAB:
+        Normal: {x: 0.00000011567906, y: -0.76255435, z: -0.64692414}
+        Distance: 1.6438426
+      PlaneBC:
+        Normal: {x: -0.00000017881393, y: 0, z: 1}
+        Distance: -0.18219802
+      PlaneCA:
+        Normal: {x: -1.2506549e-13, y: 1, z: 0.0000006994169}
+        Distance: -2.2903273
+    - A: {x: -0.2691935, y: 2.001135, z: -0.15868399}
+      B: {x: -0.22835974, y: 2.001135, z: 0.12535684}
+      C: {x: -0.26919356, y: 2.001135, z: 0.18219797}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: 0}
+        Distance: 2.001135
+      PlaneAB:
+        Normal: {x: 0.989824, y: 0, z: -0.14229727}
+        Distance: 0.2438739
+      PlaneBC:
+        Normal: {x: 0.81215584, y: 0, z: 0.58344054}
+        Distance: 0.11232544
+      PlaneCA:
+        Normal: {x: -1, y: -0, z: -0.00000017485422}
+        Distance: -0.26919353
+    - A: {x: -0.26919356, y: 2.001135, z: 0.18219797}
+      B: {x: -0.2691935, y: 2.2903273, z: -0.15868399}
+      C: {x: -0.2691935, y: 2.001135, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: -1, y: 0, z: -0.00000017485422}
+        Distance: -0.26919353
+      PlaneAB:
+        Normal: {x: -0.00000011567906, y: 0.76255435, z: 0.64692414}
+        Distance: -1.6438426
+      PlaneBC:
+        Normal: {x: 0.00000017881393, y: 0, z: -1}
+        Distance: -0.15868394
+      PlaneCA:
+        Normal: {x: -0, y: -1, z: 0}
+        Distance: 2.001135
+    - A: {x: -0.22835974, y: 2.001135, z: 0.12535684}
+      B: {x: -0.2691935, y: 2.001135, z: -0.15868399}
+      C: {x: -0.22835967, y: 2.001135, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: -0}
+        Distance: 2.001135
+      PlaneAB:
+        Normal: {x: -0.989824, y: 0, z: 0.14229727}
+        Distance: -0.2438739
+      PlaneBC:
+        Normal: {x: 0, y: 0, z: -1}
+        Distance: -0.15868399
+      PlaneCA:
+        Normal: {x: 1, y: 0, z: 0.00000026230668}
+        Distance: 0.22835971
+    - A: {x: -0.2691935, y: 2.2903273, z: -0.15868399}
+      B: {x: -0.22835967, y: 2.001135, z: -0.15868399}
+      C: {x: -0.2691935, y: 2.001135, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: 0, y: 0, z: -1}
+        Distance: -0.15868399
+      PlaneAB:
+        Normal: {x: 0.990178, y: 0.13981277, z: 0}
+        Distance: -0.05366752
+      PlaneBC:
+        Normal: {x: -0, y: -1, z: -0}
+        Distance: 2.001135
+      PlaneCA:
+        Normal: {x: -1, y: 0, z: 0}
+        Distance: -0.2691935
+    - A: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      B: {x: -0.1391323, y: 2.0717533, z: 0.11062646}
+      C: {x: -0.15809822, y: 2.001135, z: 0.12535684}
+      PlaneABC:
+        Normal: {x: 0.14080502, y: 0.16578193, z: 0.97605854}
+        Distance: -0.43184665
+      PlaneAB:
+        Normal: {x: 0.72205544, y: 0.65731525, z: -0.21580681}
+        Distance: -1.2374599
+      PlaneBC:
+        Normal: {x: -0.9568285, y: 0.2759895, z: 0.09115455}
+        Distance: -0.714992
+      PlaneCA:
+        Normal: {x: -0.63185596, y: -0.743941, z: 0.21750794}
+        Distance: 1.3615651
+    - A: {x: 0.07089153, y: 2.139994, z: 0.11062647}
+      B: {x: -0.1391323, y: 2.0717533, z: 0.11062646}
+      C: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      PlaneABC:
+        Normal: {x: -0.0092309555, y: 0.02840995, z: 0.99955374}
+        Distance: -0.17071982
+      PlaneAB:
+        Normal: {x: -0.30887812, y: 0.95063245, z: -0.029871996}
+        Distance: -2.0091462
+      PlaneBC:
+        Normal: {x: -0.7355984, y: -0.6773034, z: 0.012457444}
+        Distance: 1.2994819
+      PlaneCA:
+        Normal: {x: 0.9476029, y: 0.31945047, z: -0.00032843975}
+        Distance: -0.75076276
+    - A: {x: 0.07089153, y: 2.139994, z: 0.11062647}
+      B: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      C: {x: 0.13913238, y: 2.0717533, z: 0.11062646}
+      PlaneABC:
+        Normal: {x: 0.047467243, y: 0.047467284, z: 0.9977443}
+        Distance: -0.21532166
+      PlaneAB:
+        Normal: {x: -0.94645834, y: -0.3171791, z: 0.06011699}
+        Distance: 0.73920673
+      PlaneBC:
+        Normal: {x: 0.9747549, y: 0.2159717, z: -0.05664828}
+        Distance: -0.57679325
+      PlaneCA:
+        Normal: {x: 0.7055107, y: 0.7055129, z: -0.06712881}
+        Distance: -1.5523818
+    - A: {x: 0.13913238, y: 2.0717533, z: 0.11062646}
+      B: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      C: {x: 0.15809837, y: 2.001135, z: 0.12535684}
+      PlaneABC:
+        Normal: {x: -0.947404, y: -0.20280144, z: 0.24758297}
+        Distance: 0.5245799
+      PlaneAB:
+        Normal: {x: -0.23414971, y: -0.08813904, z: -0.96819705}
+        Distance: 0.32228836
+      PlaneBC:
+        Normal: {x: 0.2420985, y: 0.051823124, z: 0.9688667}
+        Distance: -0.26343453
+      PlaneCA:
+        Normal: {x: 0.19435014, y: 0.25005177, z: 0.94852626}
+        Distance: -0.65001804
+    - A: {x: 0.22835991, y: 2.001135, z: 0.12535684}
+      B: {x: 0.22835991, y: 1.672902, z: -0.158684}
+      C: {x: 0.22835983, y: 2.001135, z: -0.15868384}
+      PlaneABC:
+        Normal: {x: 1, y: 0.00000022699064, z: -0.00000026230683}
+        Distance: -0.22836033
+      PlaneAB:
+        Normal: {x: 0.00000035883573, y: -0.65436745, z: 0.7561767}
+        Distance: 1.2146857
+      PlaneBC:
+        Normal: {x: -0.00000026822102, y: 0.0000004993791, z: -1}
+        Distance: -0.15868478
+      PlaneCA:
+        Normal: {x: -0.00000023841858, y: 1, z: 6.2538814e-14}
+        Distance: -2.001135
+    - A: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      B: {x: 0.22835991, y: 2.001135, z: 0.12535684}
+      C: {x: 0.15809837, y: 2.001135, z: 0.12535684}
+      PlaneABC:
+        Normal: {x: 0, y: -0.0000004993795, z: 1}
+        Distance: -0.12535584
+      PlaneAB:
+        Normal: {x: 1, y: 0, z: -0}
+        Distance: -0.22835991
+      PlaneBC:
+        Normal: {x: 0, y: 1, z: 0.0000004768372}
+        Distance: -2.001135
+      PlaneCA:
+        Normal: {x: -0.97784764, y: -0.20931809, z: -0.00000009981065}
+        Distance: 0.5734699
+    - A: {x: 0.22835983, y: 2.001135, z: -0.15868384}
+      B: {x: -0.22835967, y: 1.672902, z: -0.15868415}
+      C: {x: -0.22835967, y: 2.001135, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: 0.00000032626502, y: 0.00000049937915, z: -1}
+        Distance: -0.15868491
+      PlaneAB:
+        Normal: {x: 0.5835961, y: -0.812044, z: -0.00000019589505}
+        Distance: 1.4917399
+      PlaneBC:
+        Normal: {x: -1, y: 1.6370924e-13, z: -0.00000032782555}
+        Distance: -0.22835971
+      PlaneCA:
+        Normal: {x: -1.555753e-13, y: 1, z: 0.00000047683716}
+        Distance: -2.001135
+    - A: {x: -0.22835974, y: 1.6729022, z: 0.12535682}
+      B: {x: -0.15809822, y: 2.001135, z: 0.12535684}
+      C: {x: -0.22835974, y: 2.001135, z: 0.12535684}
+      PlaneABC:
+        Normal: {x: 0, y: -0.00000004539814, z: 1}
+        Distance: -0.12535675
+      PlaneAB:
+        Normal: {x: 0.97784764, y: -0.20931804, z: 0}
+        Distance: 0.57346964
+      PlaneBC:
+        Normal: {x: 0, y: 1, z: -0}
+        Distance: -2.001135
+      PlaneCA:
+        Normal: {x: -1, y: -0, z: 0}
+        Distance: -0.22835974
+    - A: {x: -0.22835967, y: 1.672902, z: -0.15868415}
+      B: {x: -0.22835974, y: 2.001135, z: 0.12535684}
+      C: {x: -0.22835967, y: 2.001135, z: -0.15868399}
+      PlaneABC:
+        Normal: {x: -1, y: 1.3099049e-13, z: -0.00000026230668}
+        Distance: -0.22835971
+      PlaneAB:
+        Normal: {x: -0.00000020282236, y: -0.6543676, z: 0.75617653}
+        Distance: 1.214686
+      PlaneBC:
+        Normal: {x: 0, y: 1, z: 0}
+        Distance: -2.001135
+      PlaneCA:
+        Normal: {x: 0.0000002682209, y: 0.00000049937915, z: -1}
+        Distance: -0.15868492
+    - A: {x: -0.22835967, y: 1.672902, z: -0.15868415}
+      B: {x: 0.22835983, y: 2.001135, z: -0.15868384}
+      C: {x: 0.22835991, y: 1.672902, z: -0.158684}
+      PlaneABC:
+        Normal: {x: 0.000000326265, y: 0.00000049937915, z: -1}
+        Distance: -0.15868491
+      PlaneAB:
+        Normal: {x: -0.58359617, y: 0.8120441, z: 0.00000019589505}
+        Distance: -1.49174
+      PlaneBC:
+        Normal: {x: 1, y: 0.00000022699037, z: 0.0000003278257}
+        Distance: -0.22836024
+      PlaneCA:
+        Normal: {x: 1.5557527e-13, y: -1, z: -0.00000047683716}
+        Distance: 1.6729019
+    - A: {x: 0.22835991, y: 1.672902, z: -0.158684}
+      B: {x: 0.22835991, y: 2.001135, z: 0.12535684}
+      C: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      PlaneABC:
+        Normal: {x: 1, y: 0, z: 0}
+        Distance: -0.22835991
+      PlaneAB:
+        Normal: {x: 0, y: 0.65436745, z: -0.7561767}
+        Distance: -1.2146858
+      PlaneBC:
+        Normal: {x: 0, y: -0.0000004993795, z: 1}
+        Distance: -0.12535584
+      PlaneCA:
+        Normal: {x: 0, y: -1, z: 0.00000083938176}
+        Distance: 1.6729021
+    - A: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      B: {x: -0.15809822, y: 2.001135, z: 0.12535684}
+      C: {x: -0.22835974, y: 1.6729022, z: 0.12535682}
+      PlaneABC:
+        Normal: {x: 0.00000032626494, y: -0.000000115238386, z: 1}
+        Distance: -0.12535655
+      PlaneAB:
+        Normal: {x: 0.6473546, y: 0.76218885, z: -0.00000012135939}
+        Distance: -1.4228972
+      PlaneBC:
+        Normal: {x: -0.97784764, y: 0.20931804, z: 0.00000032056346}
+        Distance: -0.5734697
+      PlaneCA:
+        Normal: {x: -3.8893815e-14, y: -1, z: -0.00000011920929}
+        Distance: 1.6729022
+    - A: {x: -0.22835974, y: 2.001135, z: 0.12535684}
+      B: {x: -0.22835967, y: 1.672902, z: -0.15868415}
+      C: {x: -0.22835974, y: 1.6729022, z: 0.12535682}
+      PlaneABC:
+        Normal: {x: -1, y: 1.1908228e-14, z: -0.00000026230654}
+        Distance: -0.22835971
+      PlaneAB:
+        Normal: {x: 0.00000020282238, y: 0.6543676, z: -0.75617653}
+        Distance: -1.214686
+      PlaneBC:
+        Normal: {x: -2.251395e-13, y: -1, z: 0.0000008393809}
+        Distance: 1.6729021
+      PlaneCA:
+        Normal: {x: -0.0000002682209, y: -0.00000004539814, z: 1}
+        Distance: -0.12535681
+    - A: {x: 0.2612496, y: 1.6734066, z: 0.17651542}
+      B: {x: 0.19143254, y: 1.5254667, z: -0.106696405}
+      C: {x: 0.2612496, y: 1.6734066, z: -0.17651512}
+      PlaneABC:
+        Normal: {x: 0.9043511, y: -0.4267891, z: 0}
+        Distance: 0.47793034
+      PlaneAB:
+        Normal: {x: -0.36956814, y: -0.78310204, z: 0.5001705}
+        Distance: 1.3187099
+      PlaneBC:
+        Normal: {x: -0.16753255, y: -0.35499567, z: -0.9197342}
+        Distance: 0.47547293
+      PlaneCA:
+        Normal: {x: 0.42678905, y: 0.9043512, z: -0}
+        Distance: -1.6248457
+    - A: {x: 0.19143254, y: 1.5254667, z: -0.106696405}
+      B: {x: 0.2612496, y: 1.6734066, z: 0.17651542}
+      C: {x: 0.19143254, y: 1.5254667, z: 0.1066973}
+      PlaneABC:
+        Normal: {x: 0.9043512, y: -0.4267891, z: 0}
+        Distance: 0.4779303
+      PlaneAB:
+        Normal: {x: 0.36956814, y: 0.78310204, z: -0.5001705}
+        Distance: -1.3187099
+      PlaneBC:
+        Normal: {x: -0.16753133, y: -0.35499305, z: 0.9197354}
+        Distance: 0.4754677
+      PlaneCA:
+        Normal: {x: -0.42678905, y: -0.9043512, z: -0}
+        Distance: 1.4612589
+    - A: {x: 0.2612496, y: 1.6734066, z: -0.17651512}
+      B: {x: -0.26124945, y: 1.6734066, z: 0.17651542}
+      C: {x: 0.2612496, y: 1.6734066, z: 0.17651542}
+      PlaneABC:
+        Normal: {x: 0, y: 1, z: -0}
+        Distance: -1.6734066
+      PlaneAB:
+        Normal: {x: -0.5598472, y: 0, z: -0.8285958}
+        Distance: 0.00000016400386
+      PlaneBC:
+        Normal: {x: 0, y: 0, z: 1}
+        Distance: -0.17651542
+      PlaneCA:
+        Normal: {x: 1, y: -0, z: 0}
+        Distance: -0.2612496
+    - A: {x: -0.26124945, y: 1.6734066, z: 0.17651542}
+      B: {x: 0.19143254, y: 1.5254667, z: 0.1066973}
+      C: {x: 0.2612496, y: 1.6734066, z: 0.17651542}
+      PlaneABC:
+        Normal: {x: 0, y: -0.42679438, z: 0.90434873}
+        Distance: 0.55456907
+      PlaneAB:
+        Normal: {x: -0.33986273, y: -0.8505174, z: -0.40138945}
+        Distance: 1.4053239
+      PlaneBC:
+        Normal: {x: 0.9197379, y: -0.35498676, z: -0.1675309}
+        Distance: 0.3833278
+      PlaneCA:
+        Normal: {x: 0, y: 0.90434873, z: 0.42679438}
+        Distance: -1.588679
+    - A: {x: -0.19142276, y: 1.5254667, z: -0.106696405}
+      B: {x: 0.2612496, y: 1.6734066, z: -0.17651512}
+      C: {x: 0.19143254, y: 1.5254667, z: -0.106696405}
+      PlaneABC:
+        Normal: {x: 0, y: -0.42679736, z: -0.90434736}
+        Distance: 0.55457455
+      PlaneAB:
+        Normal: {x: -0.33986962, y: 0.8505139, z: -0.40139124}
+        Distance: -1.4053164
+      PlaneBC:
+        Normal: {x: 0.9197382, y: -0.35498577, z: 0.16753185}
+        Distance: 0.3833262
+      PlaneCA:
+        Normal: {x: 0, y: -0.9043473, z: 0.4267974}
+        Distance: 1.4250895
+    - A: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      B: {x: -0.22835967, y: 1.672902, z: -0.15868415}
+      C: {x: 0.22835991, y: 1.672902, z: -0.158684}
+      PlaneABC:
+        Normal: {x: -2.1908872e-13, y: -1, z: 0.00000083938176}
+        Distance: 1.6729021
+      PlaneAB:
+        Normal: {x: -0.5281139, y: 0.0000007086056, z: 0.8491736}
+        Distance: 0.0141492775
+      PlaneBC:
+        Normal: {x: 0.000000326265, y: -0.000000834465, z: -1}
+        Distance: -0.15868267
+      PlaneCA:
+        Normal: {x: 1, y: 0, z: -0}
+        Distance: -0.22835991
+    - A: {x: -0.26124945, y: 1.6734066, z: 0.17651542}
+      B: {x: 0.2612496, y: 1.6734066, z: -0.17651512}
+      C: {x: -0.26124945, y: 1.6734066, z: -0.17651512}
+      PlaneABC:
+        Normal: {x: 0, y: 1, z: 0}
+        Distance: -1.6734066
+      PlaneAB:
+        Normal: {x: 0.5598472, y: -0, z: 0.8285958}
+        Distance: -0.00000016636066
+      PlaneBC:
+        Normal: {x: 0, y: 0, z: -1}
+        Distance: -0.17651512
+      PlaneCA:
+        Normal: {x: -1, y: 0, z: 0}
+        Distance: -0.26124945
+    - A: {x: 0.19143254, y: 1.5254667, z: 0.1066973}
+      B: {x: -0.26124945, y: 1.6734066, z: 0.17651542}
+      C: {x: -0.19142276, y: 1.5254667, z: 0.1066973}
+      PlaneABC:
+        Normal: {x: 0, y: -0.42679438, z: 0.90434873}
+        Distance: 0.55456907
+      PlaneAB:
+        Normal: {x: 0.3398627, y: 0.8505174, z: 0.40138948}
+        Distance: -1.4053239
+      PlaneBC:
+        Normal: {x: -0.9197184, y: -0.35502815, z: -0.16755043}
+        Distance: 0.38340577
+      PlaneCA:
+        Normal: {x: 0, y: -0.9043487, z: -0.42679438}
+        Distance: 1.4250916
+    - A: {x: 0.2612496, y: 1.6734066, z: -0.17651512}
+      B: {x: -0.19142276, y: 1.5254667, z: -0.106696405}
+      C: {x: -0.26124945, y: 1.6734066, z: -0.17651512}
+      PlaneABC:
+        Normal: {x: -0, y: -0.42679736, z: -0.9043473}
+        Distance: 0.55457455
+      PlaneAB:
+        Normal: {x: 0.3398696, y: -0.8505138, z: 0.40139124}
+        Distance: 1.4053162
+      PlaneBC:
+        Normal: {x: -0.91971856, y: -0.35502708, z: 0.16755138}
+        Distance: 0.38340405
+      PlaneCA:
+        Normal: {x: 0, y: 0.9043473, z: -0.4267974}
+        Distance: -1.5886769
+    - A: {x: -0.22835967, y: 1.672902, z: -0.15868415}
+      B: {x: 0.22835991, y: 1.6729022, z: 0.12535667}
+      C: {x: -0.22835974, y: 1.6729022, z: 0.12535682}
+      PlaneABC:
+        Normal: {x: 3.2863268e-13, y: -1, z: 0.0000008393809}
+        Distance: 1.6729021
+      PlaneAB:
+        Normal: {x: 0.5281139, y: -0.0000007086056, z: -0.8491736}
+        Distance: -0.01414929
+      PlaneBC:
+        Normal: {x: 0.00000032626497, y: 0.000000834465, z: 1}
+        Distance: -0.12535815
+      PlaneCA:
+        Normal: {x: -1, y: -2.1888563e-13, z: -0.00000026230654}
+        Distance: -0.22835971
+    - A: {x: -0.19142276, y: 1.5254667, z: 0.1066973}
+      B: {x: -0.26124945, y: 1.6734066, z: -0.17651512}
+      C: {x: -0.19142276, y: 1.5254667, z: -0.106696405}
+      PlaneABC:
+        Normal: {x: -0.90432847, y: -0.42683724, z: -0}
+        Distance: 0.47801694
+      PlaneAB:
+        Normal: {x: -0.3696077, y: 0.7830779, z: 0.5001792}
+        Distance: -1.3186784
+      PlaneBC:
+        Normal: {x: 0.16754788, y: -0.3549792, z: -0.91973776}
+        Distance: 0.4754487
+      PlaneCA:
+        Normal: {x: 0.42683715, y: -0.90432847, z: 0}
+        Distance: 1.4612293
+    - A: {x: -0.26124945, y: 1.6734066, z: -0.17651512}
+      B: {x: -0.19142276, y: 1.5254667, z: 0.1066973}
+      C: {x: -0.26124945, y: 1.6734066, z: 0.17651542}
+      PlaneABC:
+        Normal: {x: -0.90432847, y: -0.42683724, z: 0}
+        Distance: 0.47801694
+      PlaneAB:
+        Normal: {x: 0.36960772, y: -0.78307784, z: -0.5001792}
+        Distance: 1.3186783
+      PlaneBC:
+        Normal: {x: 0.16754667, y: -0.35497662, z: 0.919739}
+        Distance: 0.4754436
+      PlaneCA:
+        Normal: {x: -0.4268372, y: 0.90432847, z: 0}
+        Distance: -1.6248202
+    - A: {x: -0.19142276, y: 1.5254667, z: 0.1066973}
+      B: {x: 0.18674538, y: 0.2972404, z: 0.10921334}
+      C: {x: 0.19143254, y: 1.5254667, z: 0.1066973}
+      PlaneABC:
+        Normal: {x: -0, y: 0.0020485097, z: 0.9999979}
+        Distance: -0.10982201
+      PlaneAB:
+        Normal: {x: -0.955724, y: -0.29426405, z: 0.000602799}
+        Distance: 0.26587835
+      PlaneBC:
+        Normal: {x: 0.9999927, y: -0.0038161585, z: 0.000007817503}
+        Distance: -0.18561055
+      PlaneCA:
+        Normal: {x: 0, y: 0.9999979, z: -0.0020484927}
+        Distance: -1.525245
+    - A: {x: -0.19142276, y: 1.5254667, z: -0.106696405}
+      B: {x: -0.1867356, y: 0.2972404, z: 0.10921334}
+      C: {x: -0.19142276, y: 1.5254667, z: 0.1066973}
+      PlaneABC:
+        Normal: {x: -0.9999927, y: -0.003816175, z: 0}
+        Distance: -0.18559992
+      PlaneAB:
+        Normal: {x: 0.000660701, y: -0.17313263, z: -0.9848983}
+        Distance: 0.15914942
+      PlaneBC:
+        Normal: {x: -0.00000781744, y: 0.0020484796, z: 0.99999785}
+        Distance: -0.10982345
+      PlaneCA:
+        Normal: {x: -0.0038161275, y: 0.9999927, z: 0}
+        Distance: -1.5261861
+    - A: {x: 0.19143254, y: 1.5254667, z: -0.106696405}
+      B: {x: -0.1867356, y: 0.2972404, z: -0.109212786}
+      C: {x: -0.19142276, y: 1.5254667, z: -0.106696405}
+      PlaneABC:
+        Normal: {x: 0, y: 0.0020487888, z: -0.9999979}
+        Distance: -0.10982154
+      PlaneAB:
+        Normal: {x: 0.955724, y: -0.29426405, z: -0.0006028691}
+        Distance: 0.26586902
+      PlaneBC:
+        Normal: {x: -0.9999927, y: -0.003816159, z: -0.000007818526}
+        Distance: -0.18560077
+      PlaneCA:
+        Normal: {x: -0, y: 0.9999979, z: 0.0020487309}
+        Distance: -1.525245
+    - A: {x: 0.19143254, y: 1.5254667, z: 0.1066973}
+      B: {x: 0.18674538, y: 0.2972404, z: -0.109212786}
+      C: {x: 0.19143254, y: 1.5254667, z: -0.106696405}
+      PlaneABC:
+        Normal: {x: 0.9999927, y: -0.003816175, z: 0}
+        Distance: -0.1856097
+      PlaneAB:
+        Normal: {x: -0.00066070195, y: -0.17313287, z: 0.98489827}
+        Distance: 0.15914892
+      PlaneBC:
+        Normal: {x: 0.000007818505, y: 0.0020487588, z: -0.99999785}
+        Distance: -0.10982299
+      PlaneCA:
+        Normal: {x: 0.0038161275, y: 0.9999927, z: -0}
+        Distance: -1.5261861
+    - A: {x: 0.18674538, y: 0.2972404, z: 0.10921334}
+      B: {x: -0.19142276, y: 1.5254667, z: 0.1066973}
+      C: {x: -0.1867356, y: 0.2972404, z: 0.10921334}
+      PlaneABC:
+        Normal: {x: 0, y: 0.0020485097, z: 0.9999979}
+        Distance: -0.10982201
+      PlaneAB:
+        Normal: {x: 0.955724, y: 0.29426405, z: -0.00060280773}
+        Distance: -0.26587838
+      PlaneBC:
+        Normal: {x: -0.9999927, y: -0.0038161585, z: 0.000007817389}
+        Distance: -0.18560077
+      PlaneCA:
+        Normal: {x: 0, y: -0.9999979, z: 0.0020485222}
+        Distance: 0.29701605
+    - A: {x: -0.1867356, y: 0.2972404, z: 0.10921334}
+      B: {x: -0.19142276, y: 1.5254667, z: -0.106696405}
+      C: {x: -0.1867356, y: 0.2972404, z: -0.109212786}
+      PlaneABC:
+        Normal: {x: -0.99999267, y: -0.0038161743, z: -0}
+        Distance: -0.18559991
+      PlaneAB:
+        Normal: {x: -0.0006607115, y: 0.17313263, z: 0.9848983}
+        Distance: -0.15914942
+      PlaneBC:
+        Normal: {x: -0.000007818382, y: 0.0020487588, z: -0.99999785}
+        Distance: -0.10982299
+      PlaneCA:
+        Normal: {x: 0.0038161876, y: -0.9999927, z: 0}
+        Distance: 0.29795086
+    - A: {x: -0.1867356, y: 0.2972404, z: -0.109212786}
+      B: {x: 0.19143254, y: 1.5254667, z: -0.106696405}
+      C: {x: 0.18674538, y: 0.2972404, z: -0.109212786}
+      PlaneABC:
+        Normal: {x: 0, y: 0.0020487888, z: -0.9999979}
+        Distance: -0.10982154
+      PlaneAB:
+        Normal: {x: -0.955724, y: 0.29426405, z: 0.0006028866}
+        Distance: -0.26586902
+      PlaneBC:
+        Normal: {x: 0.9999927, y: -0.0038161585, z: -0.000007818298}
+        Distance: -0.18561056
+      PlaneCA:
+        Normal: {x: -0, y: -0.9999979, z: -0.0020487902}
+        Distance: 0.29701602
+    - A: {x: 0.18674538, y: 0.2972404, z: -0.109212786}
+      B: {x: 0.19143254, y: 1.5254667, z: 0.1066973}
+      C: {x: 0.18674538, y: 0.2972404, z: 0.10921334}
+      PlaneABC:
+        Normal: {x: 0.99999267, y: -0.0038161743, z: 0}
+        Distance: -0.18560968
+      PlaneAB:
+        Normal: {x: 0.00066071237, y: 0.17313288, z: -0.98489827}
+        Distance: -0.15914896
+      PlaneBC:
+        Normal: {x: 0.000007817318, y: 0.0020484796, z: 0.99999785}
+        Distance: -0.10982345
+      PlaneCA:
+        Normal: {x: -0.0038161876, y: -0.9999927, z: -0}
+        Distance: 0.2979509
+    - A: {x: 0.23696738, y: 0.19377549, z: -0.16282989}
+      B: {x: 0.18674538, y: 0.2972404, z: 0.10921334}
+      C: {x: 0.23696738, y: 0.19377549, z: 0.16282989}
+      PlaneABC:
+        Normal: {x: 0.8996188, y: 0.4366762, z: -0}
+        Distance: -0.29779747
+      PlaneAB:
+        Normal: {x: -0.40220982, y: 0.8286128, z: -0.38939452}
+        Distance: -0.12865931
+      PlaneBC:
+        Normal: {x: -0.18450958, y: 0.38011748, z: 0.9063481}
+        Distance: -0.17751527
+      PlaneCA:
+        Normal: {x: 0.43667617, y: -0.89961874, z: 0}
+        Distance: 0.07084605
+    - A: {x: 0.18674538, y: 0.2972404, z: 0.10921334}
+      B: {x: 0.23696738, y: 0.19377549, z: -0.16282989}
+      C: {x: 0.18674538, y: 0.2972404, z: -0.109212786}
+      PlaneABC:
+        Normal: {x: 0.89961874, y: 0.43667617, z: 0}
+        Distance: -0.29779744
+      PlaneAB:
+        Normal: {x: 0.40220982, y: -0.8286128, z: 0.38939452}
+        Distance: 0.12865931
+      PlaneBC:
+        Normal: {x: -0.18451111, y: 0.3801207, z: -0.9063465}
+        Distance: -0.17751525
+      PlaneCA:
+        Normal: {x: -0.43667617, y: 0.8996188, z: 0}
+        Distance: -0.1858558
+    - A: {x: 0.2695867, y: 0.000000035965016, z: -0.19321655}
+      B: {x: 0.23696738, y: 0.19377549, z: 0.16282989}
+      C: {x: 0.2695867, y: 0.00000002125545, z: 0.19321655}
+      PlaneABC:
+        Normal: {x: 0.9861257, y: 0.16600014, z: 0.0000000063187913}
+        Distance: -0.2658464
+      PlaneAB:
+        Normal: {x: -0.14533526, y: 0.8633657, z: -0.4831949}
+        Distance: -0.054180823
+      PlaneBC:
+        Normal: {x: -0.025368417, y: 0.15070136, z: 0.9882538}
+        Distance: -0.18410799
+      PlaneCA:
+        Normal: {x: 0.16600014, y: -0.98612565, z: -0.000000037536847}
+        Distance: -0.044751406
+    - A: {x: 0.23696738, y: 0.19377549, z: 0.16282989}
+      B: {x: 0.2695867, y: 0.000000035965016, z: -0.19321655}
+      C: {x: 0.23696738, y: 0.19377549, z: -0.16282989}
+      PlaneABC:
+        Normal: {x: 0.98612577, y: 0.16600017, z: 0}
+        Distance: -0.2658464
+      PlaneAB:
+        Normal: {x: 0.14533527, y: -0.8633657, z: 0.48319492}
+        Distance: 0.05418082
+      PlaneBC:
+        Normal: {x: -0.025368419, y: 0.15070136, z: -0.9882538}
+        Distance: -0.184108
+      PlaneCA:
+        Normal: {x: -0.16600016, y: 0.9861257, z: 0}
+        Distance: -0.15175037
+    - A: {x: -0.26958656, y: 0.00000002125545, z: 0.19321655}
+      B: {x: 0.2695867, y: 0.000000035965016, z: -0.19321655}
+      C: {x: 0.2695867, y: 0.00000002125545, z: 0.19321655}
+      PlaneABC:
+        Normal: {x: 0, y: -1, z: -0.000000038064975}
+        Distance: 0.000000028610234
+      PlaneAB:
+        Normal: {x: -0.58254445, y: 0.00000003633494, z: -0.81279886}
+        Distance: 0.000000033935017
+      PlaneBC:
+        Normal: {x: 1, y: 0, z: 0}
+        Distance: -0.2695867
+      PlaneCA:
+        Normal: {x: 0, y: -0.000000044703484, z: 1}
+        Distance: -0.19321655
+    - A: {x: 0.2695867, y: 0.000000035965016, z: -0.19321655}
+      B: {x: -0.23696725, y: 0.19377549, z: -0.16282989}
+      C: {x: 0.23696738, y: 0.19377549, z: -0.16282989}
+      PlaneABC:
+        Normal: {x: 0, y: 0.15492053, z: -0.9879269}
+        Distance: -0.19088383
+      PlaneAB:
+        Normal: {x: -0.36108714, y: -0.9212735, z: -0.14446838}
+        Distance: 0.06943065
+      PlaneBC:
+        Normal: {x: -0, y: 0.98792696, z: 0.15492053}
+        Distance: -0.16621034
+      PlaneCA:
+        Normal: {x: 0.986452, y: 0.1620697, z: 0.02541476}
+        Distance: -0.2610238
+    - A: {x: -0.1867356, y: 0.2972404, z: 0.10921334}
+      B: {x: 0.23696738, y: 0.19377549, z: 0.16282989}
+      C: {x: 0.18674538, y: 0.2972404, z: 0.10921334}
+      PlaneABC:
+        Normal: {x: -0, y: 0.46010125, z: 0.88786644}
+        Distance: -0.23372754
+      PlaneAB:
+        Normal: {x: -0.26518556, y: -0.8560785, z: 0.4436284}
+        Distance: 0.1564914
+      PlaneBC:
+        Normal: {x: 0.91834503, y: 0.35140032, z: -0.18209913}
+        Distance: -0.2560594
+      PlaneCA:
+        Normal: {x: 0, y: 0.88786644, z: -0.46010125}
+        Distance: -0.21366058
+    - A: {x: 0.23696738, y: 0.19377549, z: 0.16282989}
+      B: {x: -0.26958656, y: 0.00000002125545, z: 0.19321655}
+      C: {x: 0.2695867, y: 0.00000002125545, z: 0.19321655}
+      PlaneABC:
+        Normal: {x: 0, y: 0.15492052, z: 0.98792696}
+        Distance: -0.19088385
+      PlaneAB:
+        Normal: {x: -0.3610872, y: 0.9212735, z: -0.14446834}
+        Distance: -0.069430575
+      PlaneBC:
+        Normal: {x: 0, y: -0.9879269, z: 0.15492052}
+        Distance: -0.029933186
+      PlaneCA:
+        Normal: {x: 0.9864519, y: 0.16206968, z: -0.025414752}
+        Distance: -0.2610238
+    - A: {x: 0.23696738, y: 0.19377549, z: -0.16282989}
+      B: {x: -0.1867356, y: 0.2972404, z: -0.109212786}
+      C: {x: 0.18674538, y: 0.2972404, z: -0.109212786}
+      PlaneABC:
+        Normal: {x: 0, y: 0.46010497, z: -0.88786453}
+        Distance: -0.23372795
+      PlaneAB:
+        Normal: {x: -0.2651861, y: -0.8560765, z: -0.44363195}
+        Distance: 0.15649055
+      PlaneBC:
+        Normal: {x: -0, y: 0.88786453, z: 0.46010494}
+        Distance: -0.21365987
+      PlaneCA:
+        Normal: {x: 0.91834545, y: 0.35139894, z: 0.1821003}
+        Distance: -0.25605905
+    - A: {x: 0.23696738, y: 0.19377549, z: 0.16282989}
+      B: {x: -0.1867356, y: 0.2972404, z: 0.10921334}
+      C: {x: -0.23696725, y: 0.19377549, z: 0.16282989}
+      PlaneABC:
+        Normal: {x: 0, y: 0.46010128, z: 0.88786644}
+        Distance: -0.23372754
+      PlaneAB:
+        Normal: {x: 0.2651856, y: 0.8560785, z: -0.44362846}
+        Distance: -0.1564914
+      PlaneBC:
+        Normal: {x: -0.9183175, y: 0.35145724, z: -0.18212865}
+        Distance: -0.256059
+      PlaneCA:
+        Normal: {x: 0, y: -0.88786644, z: 0.46010128}
+        Distance: 0.09712851
+    - A: {x: -0.1867356, y: 0.2972404, z: -0.109212786}
+      B: {x: 0.23696738, y: 0.19377549, z: -0.16282989}
+      C: {x: -0.23696725, y: 0.19377549, z: -0.16282989}
+      PlaneABC:
+        Normal: {x: 0, y: 0.46010497, z: -0.88786453}
+        Distance: -0.23372795
+      PlaneAB:
+        Normal: {x: 0.2651861, y: 0.8560765, z: 0.44363192}
+        Distance: -0.15649056
+      PlaneBC:
+        Normal: {x: -0, y: -0.88786453, z: -0.46010494}
+        Distance: 0.09712755
+      PlaneCA:
+        Normal: {x: -0.91831785, y: 0.35145584, z: 0.18212979}
+        Distance: -0.2560586
+    - A: {x: -0.26958656, y: 0.00000002125545, z: 0.19321655}
+      B: {x: 0.23696738, y: 0.19377549, z: 0.16282989}
+      C: {x: -0.23696725, y: 0.19377549, z: 0.16282989}
+      PlaneABC:
+        Normal: {x: 0, y: 0.15492052, z: 0.9879269}
+        Distance: -0.19088383
+      PlaneAB:
+        Normal: {x: 0.36108717, y: -0.9212735, z: 0.14446837}
+        Distance: 0.06943059
+      PlaneBC:
+        Normal: {x: 0, y: 0.98792696, z: -0.1549205}
+        Distance: -0.16621034
+      PlaneCA:
+        Normal: {x: -0.9864519, y: 0.16206959, z: -0.025414739}
+        Distance: -0.26102364
+    - A: {x: 0.2695867, y: 0.000000035965016, z: -0.19321655}
+      B: {x: -0.26958656, y: 0.00000002125545, z: 0.19321655}
+      C: {x: -0.26958656, y: 0.000000035965016, z: -0.19321655}
+      PlaneABC:
+        Normal: {x: -0, y: -1, z: -0.000000038064975}
+        Distance: 0.000000028610232
+      PlaneAB:
+        Normal: {x: 0.58254445, y: -0.00000003633494, z: 0.81279886}
+        Distance: -0.000000052870867
+      PlaneBC:
+        Normal: {x: -1, y: 0, z: -0}
+        Distance: -0.26958656
+      PlaneCA:
+        Normal: {x: 0, y: 0.000000044703484, z: -1}
+        Distance: -0.19321655
+    - A: {x: -0.23696725, y: 0.19377549, z: -0.16282989}
+      B: {x: 0.2695867, y: 0.000000035965016, z: -0.19321655}
+      C: {x: -0.26958656, y: 0.000000035965016, z: -0.19321655}
+      PlaneABC:
+        Normal: {x: 0, y: 0.15492052, z: -0.98792696}
+        Distance: -0.19088385
+      PlaneAB:
+        Normal: {x: 0.36108717, y: 0.9212735, z: 0.14446834}
+        Distance: -0.069430634
+      PlaneBC:
+        Normal: {x: -0, y: -0.9879269, z: -0.15492052}
+        Distance: -0.029933171
+      PlaneCA:
+        Normal: {x: -0.986452, y: 0.16206962, z: 0.025414744}
+        Distance: -0.26102367
+    - A: {x: -0.1867356, y: 0.2972404, z: 0.10921334}
+      B: {x: -0.23696725, y: 0.19377549, z: -0.16282989}
+      C: {x: -0.23696725, y: 0.19377549, z: 0.16282989}
+      PlaneABC:
+        Normal: {x: -0.89958584, y: 0.436744, z: 0}
+        Distance: -0.29780266
+      PlaneAB:
+        Normal: {x: 0.40227002, y: 0.8285779, z: -0.3894066}
+        Distance: -0.1286403
+      PlaneBC:
+        Normal: {x: -0.43674406, y: -0.8995858, z: 0}
+        Distance: 0.07082363
+      PlaneCA:
+        Normal: {x: 0.18453267, y: 0.3800921, z: 0.90635407}
+        Distance: -0.17750587
+    - A: {x: -0.23696725, y: 0.19377549, z: -0.16282989}
+      B: {x: -0.1867356, y: 0.2972404, z: 0.10921334}
+      C: {x: -0.1867356, y: 0.2972404, z: -0.109212786}
+      PlaneABC:
+        Normal: {x: -0.89958584, y: 0.436744, z: 0}
+        Distance: -0.29780266
+      PlaneAB:
+        Normal: {x: -0.40227008, y: -0.8285779, z: 0.38940662}
+        Distance: 0.1286403
+      PlaneBC:
+        Normal: {x: 0.436744, y: 0.89958584, z: 0}
+        Distance: -0.18583761
+      PlaneCA:
+        Normal: {x: 0.1845342, y: 0.38009536, z: -0.9063524}
+        Distance: -0.17750587
+    - A: {x: -0.26958656, y: 0.000000035965016, z: -0.19321655}
+      B: {x: -0.23696725, y: 0.19377549, z: 0.16282989}
+      C: {x: -0.23696725, y: 0.19377549, z: -0.16282989}
+      PlaneABC:
+        Normal: {x: -0.98612577, y: 0.1660001, z: 0}
+        Distance: -0.26584625
+      PlaneAB:
+        Normal: {x: -0.14533521, y: -0.8633657, z: 0.4831949}
+        Distance: 0.054180857
+      PlaneBC:
+        Normal: {x: 0.1660001, y: 0.9861257, z: 0}
+        Distance: -0.1517504
+      PlaneCA:
+        Normal: {x: 0.025368413, y: 0.15070137, z: -0.9882538}
+        Distance: -0.184108
+    - A: {x: -0.23696725, y: 0.19377549, z: 0.16282989}
+      B: {x: -0.26958656, y: 0.000000035965016, z: -0.19321655}
+      C: {x: -0.26958656, y: 0.00000002125545, z: 0.19321655}
+      PlaneABC:
+        Normal: {x: -0.9861257, y: 0.16600007, z: 0.000000006401092}
+        Distance: -0.26584625
+      PlaneAB:
+        Normal: {x: 0.1453352, y: 0.86336577, z: -0.48319492}
+        Distance: -0.054180868
+      PlaneBC:
+        Normal: {x: -0.16600008, y: -0.98612577, z: -0.00000003753685}
+        Distance: -0.044751365
+      PlaneCA:
+        Normal: {x: 0.025368404, y: 0.15070136, z: 0.9882538}
+        Distance: -0.184108
 --- !u!205 &205913505464918172
 LODGroup:
   m_ObjectHideFlags: 1
@@ -230,7 +3926,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 23221782482586204}
-  - screenRelativeHeight: 0.01
+  - screenRelativeHeight: 0.037328776
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 23669130916966470}

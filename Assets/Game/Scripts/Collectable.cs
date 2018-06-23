@@ -23,6 +23,8 @@ public class Collectable : MonoBehaviour {
 
     public Transform attachPoint;
 
+    private bool _firstPickUp;
+
     void Start () {
         //_light = GetComponent<Light>();
         matNormal = new Material[rend.Length];
@@ -39,20 +41,17 @@ public class Collectable : MonoBehaviour {
 	
 	void Update () {
 
-        if (isCollected)
+        if (isCollected && !_firstPickUp)
         {
-            if (!boxCollider.isTrigger)
-            {
-                boxCollider.isTrigger = true;
-
                 for (int i = 0; i < rend.Length; i++)
                 {
                     rend[i].material = matNormal[i];
                 }
 
+            _firstPickUp = true;
                 //if (itemName != "Pistol")
                 //    _light.enabled = true;
-            }
+            
         }
 
         if (gameObject.CompareTag("Collected"))
@@ -66,26 +65,53 @@ public class Collectable : MonoBehaviour {
             }
         }
     }
-    private void OnCollisionStay(Collision collision)
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    print(collision.gameObject.tag);
+
+    //    if (collision.gameObject.CompareTag("Controller") && !isCollected)
+    //    {
+    //        for(int i = 0; i < rend.Length; i++)
+    //        {
+    //            rend[i].material = onHoverMat;
+    //        }
+
+    //    }
+    //}
+
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.CompareTag("Controller") && !isCollected)
+        //print(other.gameObject.tag);
+
+        if (other.gameObject.CompareTag("Controller") && !isCollected)
         {
-            for(int i = 0; i < rend.Length; i++)
+            for (int i = 0; i < rend.Length; i++)
             {
                 rend[i].material = onHoverMat;
             }
-            
+
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Controller") && !isCollected)
+    //    {
+    //        for (int i = 0; i < rend.Length; i++)
+    //        {
+    //            rend[i].material = matNormal[i];
+    //        }
+    //    }      
+    //}
+
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.CompareTag("Controller") && !isCollected)
+        if (other.gameObject.CompareTag("Controller") && !isCollected)
         {
             for (int i = 0; i < rend.Length; i++)
             {
                 rend[i].material = matNormal[i];
             }
-        }      
+        }
     }
 }

@@ -82,7 +82,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1426344863043318
 GameObject:
@@ -101,7 +101,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1605017219441392
 GameObject:
@@ -143,6 +143,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1646609334579350
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4045801778344076}
+  - component: {fileID: 33539339371173772}
+  - component: {fileID: 65767412235872228}
+  - component: {fileID: 23846288618712376}
+  m_Layer: 19
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1720954036740144
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +178,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4044475379014478
 Transform:
@@ -178,6 +196,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
+--- !u!4 &4045801778344076
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1646609334579350}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.54399997, y: 1.256, z: -0.025120541}
+  m_LocalScale: {x: 1.7678088, y: 2.5159845, z: 0.18776552}
+  m_Children: []
+  m_Father: {fileID: 4957866422751226}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4060960698963518
 Transform:
   m_ObjectHideFlags: 1
@@ -271,6 +302,7 @@ Transform:
   - {fileID: 4120423840338790}
   - {fileID: 4060960698963518}
   - {fileID: 4915360500419574}
+  - {fileID: 4045801778344076}
   m_Father: {fileID: 4044475379014478}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -410,6 +442,40 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!23 &23846288618712376
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1646609334579350}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!23 &23852229696161698
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -492,6 +558,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1605017219441392}
   m_Mesh: {fileID: 4300002, guid: 9261764dd3afc7b4ebaca8f58351534e, type: 3}
+--- !u!33 &33539339371173772
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1646609334579350}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &33666549472862398
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -617,8 +690,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.06, y: 2.11, z: 0.123356625}
-  m_Center: {x: -0.55, y: 1.18, z: -0.05085098}
+  m_Size: {x: 1.18, y: 2.11, z: 0.123356625}
+  m_Center: {x: -0.57, y: 1.18, z: -0.05085098}
+--- !u!65 &65767412235872228
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1646609334579350}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &82478987924147112
 AudioSource:
   m_ObjectHideFlags: 1
@@ -825,16 +910,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OuterPointSet: 1
-  OuterPoint: {x: 5.5372066, y: 1.1717308, z: 1.2567638}
-  OuterPointDistance: 9.123413
+  OuterPoint: {x: 5.4095297, y: 1.1681713, z: 1.2716016}
+  OuterPointDistance: 6.4143014
   IsHollow: 1
   InnerPointSet: 0
   InnerPoint: {x: 5.4095297, y: 0.125, z: 1.160007}
   InnerPointDistance: 6.570719
   InnerPointInside: 0
   BoxCollider: {fileID: 65647348228008998}
-  Center: {x: -0.55, y: 1.18, z: -0.05085098}
-  Size: {x: 1.06, y: 2.11, z: 0.123356625}
+  Center: {x: -0.57, y: 1.18, z: -0.05085098}
+  Size: {x: 1.18, y: 2.11, z: 0.123356625}
 --- !u!114 &114090008799136914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -887,16 +972,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OuterPointSet: 1
-  OuterPoint: {x: 5.5372066, y: 1.1717308, z: 1.2567638}
-  OuterPointDistance: 9.123413
+  OuterPoint: {x: 5.4095297, y: 1.1681713, z: 1.2716016}
+  OuterPointDistance: 6.4143014
   IsHollow: 1
   InnerPointSet: 0
   InnerPoint: {x: 5.4095297, y: 0.125, z: 1.160007}
   InnerPointDistance: 6.570719
   InnerPointInside: 0
   BoxCollider: {fileID: 65647348228008998}
-  Center: {x: -0.55, y: 1.18, z: -0.05085098}
-  Size: {x: 1.06, y: 2.11, z: 0.123356625}
+  Center: {x: -0.57, y: 1.18, z: -0.05085098}
+  Size: {x: 1.18, y: 2.11, z: 0.123356625}
 --- !u!114 &114551221599081444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -976,8 +1061,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OuterPointSet: 1
-  OuterPoint: {x: 5.600001, y: -0.00000012397757, z: 1.879241}
-  OuterPointDistance: 8.993249
+  OuterPoint: {x: 5.400002, y: -0.00000012397759, z: 0.6207596}
+  OuterPointDistance: 6.312765
   IsHollow: 1
   InnerPointSet: 0
   InnerPoint: {x: 0, y: 0, z: 0}

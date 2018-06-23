@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 33329114486531478}
   - component: {fileID: 23223048332903054}
   - component: {fileID: 64225023384122288}
+  - component: {fileID: 65256293066610462}
   m_Layer: 0
   m_Name: Goddes_Buste_A_LP_LOD0
   m_TagString: Untagged
@@ -56,6 +57,7 @@ GameObject:
   - component: {fileID: 33753958740638342}
   - component: {fileID: 23911932032185756}
   - component: {fileID: 64595228709139042}
+  - component: {fileID: 65656911805111714}
   m_Layer: 0
   m_Name: Goddes_Buste_A_LP_LOD1
   m_TagString: Untagged
@@ -194,7 +196,7 @@ MeshCollider:
   m_GameObject: {fileID: 1274549777693894}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
@@ -208,12 +210,36 @@ MeshCollider:
   m_GameObject: {fileID: 1362578440560800}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 925787b4c5e52f34490ea96e2490b3bd, type: 3}
+--- !u!65 &65256293066610462
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1274549777693894}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.59045005, y: 0.99347883, z: 0.6558016}
+  m_Center: {x: -0.0028692037, y: 0.49667946, z: -0.051612675}
+--- !u!65 &65656911805111714
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362578440560800}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5840756, y: 0.99283797, z: 0.65048397}
+  m_Center: {x: -0.0042551756, y: 0.49635902, z: -0.048953846}
 --- !u!205 &205436867542888556
 LODGroup:
   m_ObjectHideFlags: 1

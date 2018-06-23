@@ -113,13 +113,14 @@ public class GunScript : MonoBehaviour {
         //Debug.DrawRay(shootPoint.transform.position, shootPoint.transform.forward, Color.green, .1f);
         //Debug.DrawRay(shootPoint.transform.position, shootPoint.transform.forward, Color.green);
 
-        gunBody.transform.localRotation = Quaternion.Lerp(gunBody.transform.localRotation, gunBodyBaseRotation, Time.deltaTime * gunRecoilAngleSpeed);
+        if (_collectable.isCollected)
+            gunBody.transform.localRotation = Quaternion.Lerp(gunBody.transform.localRotation, gunBodyBaseRotation, Time.deltaTime * gunRecoilAngleSpeed);
 
-        if (_previousTag != this.gameObject.tag)
-        {
-            CheckLights();
-            _previousTag = this.gameObject.tag;
-        }
+        //if (_previousTag != this.gameObject.tag)
+        //{
+        //    CheckLights();
+        //    _previousTag = this.gameObject.tag;
+        //}
 
 
     }

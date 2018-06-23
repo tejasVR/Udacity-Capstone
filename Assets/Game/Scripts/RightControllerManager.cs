@@ -117,18 +117,35 @@ public class RightControllerManager : MonoBehaviour {
         //}
     }
 
-    private void OnCollisionStay(Collision collision)
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    if(collision.gameObject.CompareTag("Collectable"))
+    //    {
+    //        if (PlayerScript._deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
+    //        {
+    //            if (CheckInventoryItemExists(collision.gameObject.GetComponent<Collectable>().itemName))
+    //            {
+    //                //print("The object we are trying to pick up does not yet exists in our inventory");
+    //                PlaceItemsInInventory(false, true);
+    //                //print("going to add an inventory item");
+    //                AddInventoryItem(collision.gameObject);
+    //            }
+    //        }
+    //    }
+    //}
+
+    private void OnTriggerStay(Collider other)
     {
-        if(collision.gameObject.CompareTag("Collectable"))
+        if (other.gameObject.CompareTag("Collectable"))
         {
             if (PlayerScript._deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
             {
-                if (CheckInventoryItemExists(collision.gameObject.GetComponent<Collectable>().itemName))
+                if (CheckInventoryItemExists(other.gameObject.GetComponent<Collectable>().itemName))
                 {
                     //print("The object we are trying to pick up does not yet exists in our inventory");
                     PlaceItemsInInventory(false, true);
                     //print("going to add an inventory item");
-                    AddInventoryItem(collision.gameObject);
+                    AddInventoryItem(other.gameObject);
                 }
             }
         }
