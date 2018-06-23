@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +21,7 @@ public class DoorUnlock : MonoBehaviour {
     public AudioClip[] _unlockSounds;
 
     public Image _lockImage;
+    public TextMeshPro _doorText;
     //public GameObject _player;
     public float _distanceToShowLockImage;
 
@@ -41,6 +43,8 @@ public class DoorUnlock : MonoBehaviour {
         {
             //print("calling update");
             ObjectFade.ImageFadeWithDistance(_lockImage, _distanceToShowLockImage, false);
+            ObjectFade.TextFadeWithDistance(_doorText, _distanceToShowLockImage, false);
+
         }
     }
 

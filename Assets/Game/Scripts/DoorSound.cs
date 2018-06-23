@@ -65,14 +65,14 @@ public class DoorSound : MonoBehaviour {
 	void Update () {
         //print(rb.angularVelocity.magnitude);
 
-        if (rb.angularVelocity.magnitude > .15)
+        if (rb.angularVelocity.magnitude > .05)
         {
             pitchMaster = pitchOriginal + pitchModulationAmount / 3;
             volumeMaster = volumeOriginal;
         }
-        else if (rb.angularVelocity.magnitude > .25)
+        else if (rb.angularVelocity.magnitude > .15)
             pitchMaster = pitchOriginal + pitchModulationAmount / 2;
-        else if (rb.angularVelocity.magnitude > .5)
+        else if (rb.angularVelocity.magnitude > .35)
             pitchMaster = pitchOriginal + pitchModulationAmount;
         else
         {

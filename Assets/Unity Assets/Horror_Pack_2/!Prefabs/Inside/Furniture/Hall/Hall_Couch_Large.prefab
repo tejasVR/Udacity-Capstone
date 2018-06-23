@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33478807510723744}
   - component: {fileID: 23109321448172704}
   - component: {fileID: 64957841868322698}
+  - component: {fileID: 65068126900096318}
   m_Layer: 0
   m_Name: Hall_Couch_Large_LOD1
   m_TagString: Untagged
@@ -40,6 +41,7 @@ GameObject:
   - component: {fileID: 33106072106704300}
   - component: {fileID: 23860171760685718}
   - component: {fileID: 64630853236150092}
+  - component: {fileID: 65168951001765666}
   m_Layer: 0
   m_Name: Hall_Couch_Large_LOD0
   m_TagString: Untagged
@@ -196,7 +198,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 637f0b02f461fad40987e893bb0af631, type: 3}
@@ -214,6 +216,30 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 637f0b02f461fad40987e893bb0af631, type: 3}
+--- !u!65 &65068126900096318
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1166803485132944}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 2.3751986, y: 1.1716056, z: 0.6636033}
+  m_Center: {x: 0, y: 0.5858028, z: -0.12398051}
+--- !u!65 &65168951001765666
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1582781574876032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 2.3955932, y: 1.1716056, z: 0.6668561}
+  m_Center: {x: -0.0018878579, y: 0.5858028, z: -0.1223541}
 --- !u!205 &205231763589714692
 LODGroup:
   m_ObjectHideFlags: 1

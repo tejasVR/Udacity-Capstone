@@ -8,8 +8,13 @@ public class DisableObjCounter : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(DisableObjCount());
+        //StartCoroutine(DisableObjCount());
 	}
+
+    private void OnEnable()
+    {
+        StartCoroutine(DisableObjCount());
+    }
 
 
     IEnumerator DisableObjCount()

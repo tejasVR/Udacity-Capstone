@@ -1434,8 +1434,8 @@ GameObject:
   - component: {fileID: 114477991308577962}
   - component: {fileID: 54977757757646452}
   - component: {fileID: 114407683704158642}
-  - component: {fileID: 114636047734760718}
   - component: {fileID: 114477452343616230}
+  - component: {fileID: 114159360678988254}
   m_Layer: 16
   m_Name: 'Zombie #7 - Storage Shadow'
   m_TagString: Enemy
@@ -2126,8 +2126,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1936092147972518}
-  m_LocalRotation: {x: -0, y: -0.99669105, z: -0, w: 0.081283584}
-  m_LocalPosition: {x: 8.976, y: 0.728, z: 7.815}
+  m_LocalRotation: {x: -0, y: -0.9990153, z: -0, w: 0.044367615}
+  m_LocalPosition: {x: 8.658, y: 0.832, z: 7.935}
   m_LocalScale: {x: 1.115, y: 1.115, z: 1.115}
   m_Children:
   - {fileID: 4349851521038578}
@@ -2135,7 +2135,7 @@ Transform:
   - {fileID: 4175280906537470}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -530.675, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -534.914, z: 0}
 --- !u!4 &4427551939579686
 Transform:
   m_ObjectHideFlags: 1
@@ -3393,6 +3393,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114159360678988254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1936092147972518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e139d75a598cddc4bb051c3d70be3a66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counterToDisableObj: 3
 --- !u!114 &114407683704158642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3479,18 +3491,6 @@ MonoBehaviour:
   SquashAndStretch: 0
   sideStretch: 0.15
   frontStretch: 0.2
---- !u!114 &114636047734760718
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1936092147972518}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e139d75a598cddc4bb051c3d70be3a66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  counterToDisableObj: 4
 --- !u!135 &135350907649051330
 SphereCollider:
   m_ObjectHideFlags: 1
