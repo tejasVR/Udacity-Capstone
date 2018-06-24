@@ -42,13 +42,13 @@ MonoBehaviour:
     value: 0
   color:
     overrideState: 1
-    value: {r: 1, g: 0, b: 0, a: 1}
+    value: {r: 0, g: 0, b: 0, a: 1}
   center:
     overrideState: 0
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0
+    value: 0.5
   smoothness:
     overrideState: 0
     value: 1
@@ -105,22 +105,22 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 2.5
+    value: 1.75
   threshold:
     overrideState: 1
-    value: 1
+    value: 0.5
   softKnee:
     overrideState: 1
-    value: 0.5
+    value: 0.596
   diffusion:
     overrideState: 1
-    value: 7
+    value: 3.5
   anamorphicRatio:
     overrideState: 1
     value: -1
   color:
     overrideState: 1
-    value: {r: 1, g: 1, b: 1, a: 1}
+    value: {r: 0.94979715, g: 1, b: 0.9338235, a: 1}
   fastMode:
     overrideState: 1
     value: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1cb7e9e120078f43bce4f0b1be547a7, type: 3}
   m_Name: AmbientOcclusion
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f6f3f7c722b4544b97e3c75840aa33, type: 3}
   m_Name: AutoExposure
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
@@ -273,13 +273,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a34fa72bd4185749832024e9c8010bf, type: 3}
   m_Name: ScreenSpaceReflections
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
   preset:
     overrideState: 1
-    value: 2
+    value: 1
   maximumIterationCount:
     overrideState: 0
     value: 16
@@ -291,7 +291,7 @@ MonoBehaviour:
     value: 8
   maximumMarchDistance:
     overrideState: 1
-    value: 100
+    value: 10
   distanceFade:
     overrideState: 1
     value: 0.5
