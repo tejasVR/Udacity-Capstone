@@ -116,11 +116,11 @@ public class GunScript : MonoBehaviour {
         if (_collectable.isCollected)
             gunBody.transform.localRotation = Quaternion.Lerp(gunBody.transform.localRotation, gunBodyBaseRotation, Time.deltaTime * gunRecoilAngleSpeed);
 
-        //if (_previousTag != this.gameObject.tag)
-        //{
-        //    CheckLights();
-        //    _previousTag = this.gameObject.tag;
-        //}
+        if (_previousTag != this.gameObject.tag)
+        {
+            CheckLights();
+            _previousTag = this.gameObject.tag;
+        }
 
 
     }
