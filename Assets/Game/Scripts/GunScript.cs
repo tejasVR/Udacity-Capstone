@@ -76,13 +76,13 @@ public class GunScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (PlayerScript._trackedRight.gameObject.activeInHierarchy)
+        if (PlayerScript._dominantHand.gameObject.activeInHierarchy)
         {
             //_device = SteamVR_Controller.Input((int)_trackedObj.index);
 
-            deviceAngularVelocity = PlayerScript._deviceRight.angularVelocity.magnitude;
+            deviceAngularVelocity = PlayerScript._deviceDominant.angularVelocity.magnitude;
 
-            if (PlayerScript._deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) && firstPickedUp && fireRateTimer == fireRate && this.gameObject.CompareTag("Collected"))
+            if (PlayerScript._deviceDominant.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) && firstPickedUp && fireRateTimer == fireRate && this.gameObject.CompareTag("Collected"))
             {
                 //Instantiate(_gunShotTrailPrefab, shootPoint.transform);
 

@@ -94,7 +94,7 @@ public class TriggerLocomotion : MonoBehaviour {
         if (enableSprint)
         {
             // Enable sprinting when the touchpad is pressed and stamina != 0
-            if (PlayerScript._deviceRight.GetPress(SteamVR_Controller.ButtonMask.Touchpad) && staminaAmnt >= 0f)
+            if (PlayerScript._deviceDominant.GetPress(SteamVR_Controller.ButtonMask.Touchpad) && staminaAmnt >= 0f)
             {
                 staminaAmnt -= staminaDrain * Time.deltaTime;
                 sprintInertia = Mathf.Lerp(sprintInertia, 1, Time.deltaTime * sprintInertiaSpeed);
@@ -131,7 +131,7 @@ public class TriggerLocomotion : MonoBehaviour {
         //bodyCollider.transform.position = new Vector3(4, 5, 1);
         
 
-        if (PlayerScript._trackedLeft.gameObject.activeInHierarchy)
+        if (PlayerScript._nonDominnatHand.gameObject.activeInHierarchy)
         {
             Vector3 playerPos = new Vector3(PlayerScript._playerEye.transform.position.x, 0, PlayerScript._playerEye.transform.position.z);
             if (Vector3.Distance(playerPos, new Vector3(PlayerScript._bodyCollider.transform.position.x, 0, PlayerScript._bodyCollider.transform.position.z)) > PlayerScript._bodyCollider.transform.localScale.x / 2)
@@ -142,13 +142,13 @@ public class TriggerLocomotion : MonoBehaviour {
                     new Vector3(PlayerScript._playerEye.transform.position.x, PlayerScript._bodyCollider.transform.position.y, PlayerScript._playerEye.transform.position.z), 2f * Time.deltaTime);
             }
 
-            if (PlayerScript._triggerAxisLeft > .05f) //If the trigger is pressed passed a certain threshold
+            if (PlayerScript._triggerAxisNonDominant > .05f) //If the trigger is pressed passed a certain threshold
             {
                 PlayerScript._cameraRigRb.drag = 1;
                 //cameraRig.transform.position = new Vector3(cameraRig.transform.position.x, bodyCollider.transform.position.y - bodyCollider.transform.localScale.y, cameraRig.transform.position.z);
                 //Assemble beginning variables
-                controllerForward = PlayerScript._trackedLeft.transform.forward;
-                moveSpeed = Mathf.Lerp(moveSpeed, (PlayerScript._triggerAxisLeft * walkSpeed)  + sprintSpeed, Time.deltaTime * 5f);
+                controllerForward = PlayerScript._nonDominnatHand.transform.forward;
+                moveSpeed = Mathf.Lerp(moveSpeed, (PlayerScript._triggerAxisNonDominant * walkSpeed)  + sprintSpeed, Time.deltaTime * 5f);
                 Vector3 direction = new Vector3(controllerForward.x, 0, controllerForward.z);
 
 
@@ -181,7 +181,7 @@ public class TriggerLocomotion : MonoBehaviour {
 
     private void FillTriangle()
     {
-        _triangleFillObj.fillAmount = Mathf.Lerp(_triangleFillObj.fillAmount, PlayerScript._triggerAxisLeft, Time.deltaTime * .75f);
+        _triangleFillObj.fillAmount = Mathf.Lerp(_triangleFillObj.fillAmount, PlayerScript._triggerAxisNonDominant, Time.deltaTime * .75f);
         ObjectFade.ImageFadeWithDistance(_triangleFillObj, .75f, false);
         ObjectFade.ImageFadeWithDistance(_triangleOutlineObj, .75f, false);
     }

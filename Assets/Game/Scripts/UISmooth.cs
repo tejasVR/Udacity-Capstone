@@ -10,7 +10,7 @@ public class UISmooth : MonoBehaviour {
 
     private void Start()
     {
-        startPos = transform.localPosition;
+        //startPos = transform.localPosition;
     }
 
     private void OnEnable()

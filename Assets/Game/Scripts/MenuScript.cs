@@ -30,14 +30,14 @@ public class MenuScript : MonoBehaviour {
 
     private void ProgressBar()
     {
-        if (PlayerScript._trackedRight.gameObject.activeInHierarchy && PlayerScript._trackedLeft.gameObject.activeInHierarchy)
+        if (PlayerScript._dominantHand.gameObject.activeInHierarchy && PlayerScript._nonDominnatHand.gameObject.activeInHierarchy)
         {
             if (_progressBarObj.fillAmount < 1)
             {
-                if (PlayerScript._deviceRight.GetPress(SteamVR_Controller.ButtonMask.Trigger) || PlayerScript._deviceRight.GetPress(SteamVR_Controller.ButtonMask.Grip) ||
-                PlayerScript._deviceRight.GetPress(SteamVR_Controller.ButtonMask.Touchpad) || PlayerScript._deviceRight.GetPress(SteamVR_Controller.ButtonMask.ApplicationMenu) ||
-                PlayerScript._deviceLeft.GetPress(SteamVR_Controller.ButtonMask.Trigger) || PlayerScript._deviceLeft.GetPress(SteamVR_Controller.ButtonMask.Grip) ||
-                PlayerScript._deviceLeft.GetPress(SteamVR_Controller.ButtonMask.Touchpad) || PlayerScript._deviceLeft.GetPress(SteamVR_Controller.ButtonMask.ApplicationMenu))
+                if (PlayerScript._deviceDominant.GetPress(SteamVR_Controller.ButtonMask.Trigger) || PlayerScript._deviceDominant.GetPress(SteamVR_Controller.ButtonMask.Grip) ||
+                PlayerScript._deviceDominant.GetPress(SteamVR_Controller.ButtonMask.Touchpad) || PlayerScript._deviceDominant.GetPress(SteamVR_Controller.ButtonMask.ApplicationMenu) ||
+                PlayerScript._deviceNonDominant.GetPress(SteamVR_Controller.ButtonMask.Trigger) || PlayerScript._deviceNonDominant.GetPress(SteamVR_Controller.ButtonMask.Grip) ||
+                PlayerScript._deviceNonDominant.GetPress(SteamVR_Controller.ButtonMask.Touchpad) || PlayerScript._deviceNonDominant.GetPress(SteamVR_Controller.ButtonMask.ApplicationMenu))
                 {
                     _progressBarObj.fillAmount += Time.deltaTime * .5f;
 

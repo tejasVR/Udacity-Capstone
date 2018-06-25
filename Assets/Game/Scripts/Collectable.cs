@@ -48,6 +48,8 @@ public class Collectable : MonoBehaviour {
                     rend[i].material = matNormal[i];
                 }
 
+            this.gameObject.layer = 13;
+
             _firstPickUp = true;
                 //if (itemName != "Pistol")
                 //    _light.enabled = true;

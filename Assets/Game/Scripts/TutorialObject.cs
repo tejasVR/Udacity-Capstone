@@ -68,7 +68,7 @@ public class TutorialObject : MonoBehaviour {
         {
             if (_tutorialText == TutorialTextObj.PressTriggerToMove)
             {
-                if (PlayerScript._triggerAxisLeft > .5)
+                if (PlayerScript._triggerAxisNonDominant > .5)
                 {
                     _endTutorialObject = true;
                 }
@@ -77,9 +77,9 @@ public class TutorialObject : MonoBehaviour {
             {
                 ObjectFade.TextFadeWithDistance(_textObj, 1.4f, false);
 
-                if (PlayerScript._trackedRight.gameObject.activeInHierarchy)
+                if (PlayerScript._dominantHand.gameObject.activeInHierarchy)
                 {
-                    if (PlayerScript._deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
+                    if (PlayerScript._deviceDominant.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
                     {
                         foreach (var item in _rightControllerManager._inventorySlots)
                         {
@@ -93,9 +93,9 @@ public class TutorialObject : MonoBehaviour {
             }
             else if (_tutorialText == TutorialTextObj.PressTouchPadToBringUpInventory)
             {
-                if (PlayerScript._trackedRight.gameObject.activeInHierarchy)
+                if (PlayerScript._dominantHand.gameObject.activeInHierarchy)
                 {
-                    if (PlayerScript._deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
+                    if (PlayerScript._deviceDominant.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
                     {
                         _endTutorialObject = true;
                     }
@@ -105,9 +105,9 @@ public class TutorialObject : MonoBehaviour {
             {
                 ObjectFade.TextFadeWithDistance(_textObj, 1.3f, false);
 
-                if (PlayerScript._trackedRight.gameObject.activeInHierarchy)
+                if (PlayerScript._dominantHand.gameObject.activeInHierarchy)
                 {
-                    if (PlayerScript._deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
+                    if (PlayerScript._deviceDominant.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
                     {
                         foreach (var item in _rightControllerManager._inventorySlots)
                         {
