@@ -107,7 +107,6 @@ public class GameManager : MonoBehaviour {
 
         //if (_thisIsTheMainScene || _thisIsTheEndScene)
             StartCoroutine(GameFadeIn());
-
        
         
     }
@@ -178,6 +177,8 @@ public class GameManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(_logoSceneTimer);
         PostProcessControl.OpeningFadeEffect(0, -10f, .025f);
+        GlobalAudio.GlobalAudioFadeOut();
+        yield return new WaitForSeconds(2f);
         _sceneToLoad.SetActive(true);
     }
 
@@ -187,6 +188,7 @@ public class GameManager : MonoBehaviour {
         _introEnvironment.SetActive(true);
         yield return new WaitForSeconds(_introSceneTimer);
         PostProcessControl.OpeningFadeEffect(0, -10, .025f);
+        GlobalAudio.GlobalAudioFadeOut();
         yield return new WaitForSeconds(3f);
         _sceneToLoad.SetActive(true);
         //DeacivateIntro();
@@ -195,6 +197,8 @@ public class GameManager : MonoBehaviour {
     public static IEnumerator MoveToEndScene()
     {
         yield return new WaitForSeconds(.05f);
+        GlobalAudio.GlobalAudioFadeOut();
+
         //DeacivateIntro();
         //PostProcessControl.PostExposureFade(-10, 0, .025f);
         //_escapeHouseText.SetActive(true);
@@ -204,6 +208,8 @@ public class GameManager : MonoBehaviour {
     public static IEnumerator MoveToIntroScene()
     {
         yield return new WaitForSeconds(.05f);
+        GlobalAudio.GlobalAudioFadeOut();
+
         //DeacivateIntro();
         //PostProcessControl.PostExposureFade(-10, 0, .025f);
         //_escapeHouseText.SetActive(true);
@@ -212,9 +218,12 @@ public class GameManager : MonoBehaviour {
 
     public static IEnumerator GameFadeIn()
     {
+        GlobalAudio.GlobalAudioFadeIn();
+
         yield return new WaitForSeconds(.05f);
         //DeacivateIntro();
         PostProcessControl.OpeningFadeEffect(-10, 0, .02f);
+
     }
 
 

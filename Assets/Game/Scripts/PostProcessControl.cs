@@ -11,7 +11,8 @@ public class PostProcessControl : MonoBehaviour {
 
     public PostProcessEffectSettings[] _postSettings;
 
-    public float _vignetteStartValue;
+    //public float _vignetteStartValue;
+    public float _vignetteOpactityStartValue;
     public float _contrastStartValue;
     public float _exposureStartValue;
     public float _focalLengthStartValue;
@@ -45,7 +46,8 @@ public class PostProcessControl : MonoBehaviour {
 
         _postVignette = ScriptableObject.CreateInstance<Vignette>();
         _postVignette.enabled.Override(true);
-        _postVignette.intensity.Override(_vignetteStartValue);
+        //_postVignette.intensity.Override(_vignetteStartValue);
+        _postVignette.opacity.Override(_vignetteOpactityStartValue);
 
         //_postSettings
 
@@ -66,8 +68,11 @@ public class PostProcessControl : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        if (_postVignette.intensity.value > _vignetteStartValue)
-            _postVignette.intensity.value -= Time.deltaTime * _vignetteFadeSpeed;
+        //if (_postVignette.intensity.value > _vignetteStartValue)
+        //    _postVignette.intensity.value -= Time.deltaTime * _vignetteFadeSpeed;
+
+        if (_postVignette.opacity.value > _vignetteOpactityStartValue)
+            _postVignette.opacity.value -= Time.deltaTime * _vignetteFadeSpeed;
 
         //if (_postColorGrading.contrast.value > _contrastStartValue)
         //    _postColorGrading.contrast.value -= Time.deltaTime * _constrastFadeSpeed;
@@ -119,8 +124,9 @@ public class PostProcessControl : MonoBehaviour {
 
     public static void PlayerDamagePostEffect(float vignetteAmnt, float contrastAmnt)
     {
-        _postVignette.intensity.value = vignetteAmnt;
-        _postColorGrading.contrast.value = contrastAmnt;
+        //_postVignette.intensity.value = vignetteAmnt;
+        _postVignette.opacity.value = vignetteAmnt;
+        //_postColorGrading.contrast.value = contrastAmnt;
 
         //print("damage effect enabled");
     }

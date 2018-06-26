@@ -37,7 +37,7 @@ public class GunScript : MonoBehaviour {
 
     public float gunRecoilAngleSpeed;
 
-    public GlobalLowPassFilter globalLowPass;
+    //public GlobalAudio globalLowPass;
     public AudioSource[] _audioSource;
     //public AudioClip[] clips;
 

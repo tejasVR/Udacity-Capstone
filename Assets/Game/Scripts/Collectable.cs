@@ -36,7 +36,6 @@ public class Collectable : MonoBehaviour {
         //rend = GetComponentInChildren<Renderer>();
         boxCollider = GetComponent<BoxCollider>();
         //normalMat = rend.material;
-
 	}
 	
 	void Update () {

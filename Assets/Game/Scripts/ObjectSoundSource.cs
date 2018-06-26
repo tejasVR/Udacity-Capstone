@@ -24,6 +24,7 @@ public class ObjectSoundSource : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
+        //print(_audioSource.gameObject.name);
         switch (_objectType)
         {
             case ObjectType.cup:
