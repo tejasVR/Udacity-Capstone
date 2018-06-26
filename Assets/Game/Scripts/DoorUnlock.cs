@@ -69,6 +69,7 @@ public class DoorUnlock : MonoBehaviour {
         _doorRb.isKinematic = false;
         _doorRb.angularVelocity = Vector3.zero;
         _lockImage.gameObject.SetActive(false);
+        _doorText.gameObject.SetActive(false);
     }
 
     //public void AttachToDoor(GameObject key, string keyName)

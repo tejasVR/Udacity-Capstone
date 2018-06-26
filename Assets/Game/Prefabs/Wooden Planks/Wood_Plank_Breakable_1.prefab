@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198082611113284730}
   - component: {fileID: 199381430993182354}
   m_Layer: 11
-  m_Name: DustParticles
+  m_Name: WoodDustParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,6 @@ GameObject:
   - component: {fileID: 114757486852077900}
   - component: {fileID: 65103467346592818}
   - component: {fileID: 82428637907102660}
-  - component: {fileID: 169617230336115664}
   m_Layer: 0
   m_Name: Wood_Plank_Breakable_1
   m_TagString: Destructible
@@ -354,8 +353,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1149087761188358}
-  m_LocalRotation: {x: -0.5349859, y: -0.4623749, z: -0.4623746, w: -0.5349853}
-  m_LocalPosition: {x: 30.84, y: -2.192, z: -20.471}
+  m_LocalRotation: {x: 0.7066003, y: 0.70473576, z: 0.04977864, w: -0.039820336}
+  m_LocalPosition: {x: 7.152, y: 1.795, z: 12.709}
   m_LocalScale: {x: 1.5000014, y: 1.5000017, z: 1.5000004}
   m_Children:
   - {fileID: 4761552167856130}
@@ -479,7 +478,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 261fc6ba388fdea42b200193b2187175, type: 2}
+  - {fileID: 2100000, guid: 85a6719830b13ad48aa6037064cb377e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -513,7 +512,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 261fc6ba388fdea42b200193b2187175, type: 2}
+  - {fileID: 2100000, guid: 85a6719830b13ad48aa6037064cb377e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -547,7 +546,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 261fc6ba388fdea42b200193b2187175, type: 2}
+  - {fileID: 2100000, guid: 85a6719830b13ad48aa6037064cb377e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -581,7 +580,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 261fc6ba388fdea42b200193b2187175, type: 2}
+  - {fileID: 2100000, guid: 85a6719830b13ad48aa6037064cb377e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -615,7 +614,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 261fc6ba388fdea42b200193b2187175, type: 2}
+  - {fileID: 2100000, guid: 85a6719830b13ad48aa6037064cb377e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -649,7 +648,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 261fc6ba388fdea42b200193b2187175, type: 2}
+  - {fileID: 2100000, guid: 85a6719830b13ad48aa6037064cb377e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -683,7 +682,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 261fc6ba388fdea42b200193b2187175, type: 2}
+  - {fileID: 2100000, guid: 85a6719830b13ad48aa6037064cb377e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -717,7 +716,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 261fc6ba388fdea42b200193b2187175, type: 2}
+  - {fileID: 2100000, guid: 85a6719830b13ad48aa6037064cb377e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -751,7 +750,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 261fc6ba388fdea42b200193b2187175, type: 2}
+  - {fileID: 2100000, guid: 85a6719830b13ad48aa6037064cb377e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -785,7 +784,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 261fc6ba388fdea42b200193b2187175, type: 2}
+  - {fileID: 2100000, guid: 85a6719830b13ad48aa6037064cb377e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -819,7 +818,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 261fc6ba388fdea42b200193b2187175, type: 2}
+  - {fileID: 2100000, guid: 85a6719830b13ad48aa6037064cb377e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1336,27 +1335,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c4dff53579a0f7247bc83b8e1f7ec0a9, type: 3}
   - {fileID: 8300000, guid: c275a13fa46f20b41b3f1899a0695958, type: 3}
   health: 1
---- !u!169 &169617230336115664
-AudioLowPassFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1149087761188358}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_LowpassResonanceQ: 1
-  lowpassLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0.22727273
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!198 &198082611113284730
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1417,7 +1395,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1220765446
+  randomSeed: -1025141051
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -1507,7 +1485,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.21323532, g: 0.1821385, b: 0.15992649, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -2364,8 +2342,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 0}
+        key0: {r: 0.21176472, g: 0.18039216, b: 0.16078432, a: 1}
+        key1: {r: 0.21176472, g: 0.18039216, b: 0.16078432, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -2382,7 +2360,7 @@ ParticleSystem:
         ctime7: 0
         atime0: 0
         atime1: 65535
-        atime2: 0
+        atime2: 65535
         atime3: 0
         atime4: 0
         atime5: 0
@@ -4778,7 +4756,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3eddbbf1bcea1ce42a481f1c69cb2932, type: 2}
+  - {fileID: 2100000, guid: 42d105f0604b414449b333d7450d5c99, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

@@ -515,10 +515,12 @@ public class RightControllerManager : MonoBehaviour {
         {
             if (slot.name == keyToUnlock)
             {
+                print("beginning to attack key to door");
                 var key = slot.inventoryObj;
                 GiveAwayItem(slot);
                 key.transform.position = attachPoint.position;
                 key.transform.parent = attachPoint.transform;
+                print("Parenting key to door");
                 //return true;
             } else
             {
