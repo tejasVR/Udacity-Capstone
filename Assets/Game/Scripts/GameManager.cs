@@ -7,14 +7,24 @@ using UnityEngine.XR;
 
 public class GameManager : MonoBehaviour {
 
-    public enum SceneToLoad
+    //public enum SceneToLoad
+    //{
+    //    introScene,
+    //    mainScene,
+    //    endScene
+    //}
+
+    public enum CurrentScene
     {
+        logoScene,
         introScene,
         mainScene,
         endScene
     }
 
-    public SceneToLoad _sceneToLoad;
+    public static CurrentScene _currentSceneStatic;
+    public CurrentScene _currentScene;
+    //public SceneToLoad _sceneToLoad;
 
     //public bool dominantLeft;
     //public bool dominantRight;
@@ -28,25 +38,31 @@ public class GameManager : MonoBehaviour {
     public float _introSceneTimerCounter;
     public static float _introSceneTimer;
 
+    public float _logoSceneTimerCounter;
+    public static float _logoSceneTimer;
+    //public static
 
-    public bool _thisIsIntro;
-    public bool _thisIsMain;
-    public bool _thisIsEnd;
+    public GameObject _sceneToLoadObj;
+    public static GameObject _sceneToLoad;
+    
+    //public bool _thisIsIntro;
+    //public bool _thisIsMain;
+    //public bool _thisIsEnd;
 
-    public static bool _thisIsTheIntroScene;
-    public static bool _thisIsTheMainScene;
-    public static bool _thisIsTheEndScene;
+    //public static bool _thisIsTheIntroScene;
+    //public static bool _thisIsTheMainScene;
+    //public static bool _thisIsTheEndScene;
 
 
     //public GameObject _playerIntro;
     //public GameObject _playerMain;
-    public GameObject _introSceneLoadObj;
-    public GameObject _mainSceneLoadObj;
-    public GameObject _endSceneLoadObj;
+    //public GameObject _introSceneLoadObj;
+    //public GameObject _mainSceneLoadObj;
+    //public GameObject _endSceneLoadObj;
 
-    public static GameObject _introSceneLoad;
-    public static GameObject _mainSceneLoad;
-    public static GameObject _endSceneLoad;
+    //public static GameObject _introSceneLoad;
+    //public static GameObject _mainSceneLoad;
+    //public static GameObject _endSceneLoad;
 
     //public GameObject _menuObj;
 
@@ -58,16 +74,25 @@ public class GameManager : MonoBehaviour {
         _introEnvironment = _introEnvironmentObj;
         _introSceneTimer = _introSceneTimerCounter;
 
-        _introSceneLoad = _introSceneLoadObj;
-        _mainSceneLoad = _mainSceneLoadObj;
-        _endSceneLoad = _endSceneLoadObj;
+        _logoSceneTimer = _logoSceneTimerCounter;
 
-        _thisIsTheIntroScene = _thisIsIntro;
-        _thisIsTheMainScene = _thisIsMain;
-        _thisIsTheEndScene = _thisIsEnd;
+        _sceneToLoad = _sceneToLoadObj;
+
+        _currentSceneStatic = _currentScene;
+
+        //_introSceneLoad = _introSceneLoadObj;
+        //_mainSceneLoad = _mainSceneLoadObj;
+        //_endSceneLoad = _endSceneLoadObj;
+
+        //_thisIsTheIntroScene = _thisIsIntro;
+        //_thisIsTheMainScene = _thisIsMain;
+        //_thisIsTheEndScene = _thisIsEnd;
         //XRSettings.eyeTextureResolutionScale = 1.8f;
 
-        if (_thisIsTheIntroScene)
+        if (_currentSceneStatic == CurrentScene.logoScene)
+            StartCoroutine(StartLogo());
+
+        if (_currentSceneStatic == CurrentScene.introScene)
             _introEnvironment.SetActive(false);
 
         instance = this;
@@ -81,7 +106,9 @@ public class GameManager : MonoBehaviour {
         //    introEnvironment.SetActive(false);
 
         //if (_thisIsTheMainScene || _thisIsTheEndScene)
-            StartCoroutine(GameFade());
+            StartCoroutine(GameFadeIn());
+
+       
         
     }
 
@@ -115,16 +142,17 @@ public class GameManager : MonoBehaviour {
     //       }
     //   }
 
-    public static void DeacivateIntro()
-    {
-        //_playerMain.SetActive(true);
-        //SteamVR_LoadLevel.Begin("Main Scene v.13", false, 2f, 0, 0, 0, 0);
-        //SteamVR_LoadLevel.
-        //SceneManager.LoadScene(1, LoadSceneMode.Additive);
+    //public static void DeacivateIntro()
+    //{
+    //    //_playerMain.SetActive(true);
+    //    //SteamVR_LoadLevel.Begin("Main Scene v.13", false, 2f, 0, 0, 0, 0);
+    //    //SteamVR_LoadLevel.
+    //    //SceneManager.LoadScene(1, LoadSceneMode.Additive);
+    //    PostProcessControl.OpeningFadeEffect(0, -10f, .025f);
+    //    yield return new WaitForSeconds(5f);
+    //    _sceneToLoad.SetActive(true);
 
-        _mainSceneLoad.SetActive(true);
-
-    }
+    //}
 
     private void SetupIntro()
     {
@@ -136,14 +164,21 @@ public class GameManager : MonoBehaviour {
     {
         //print("calling start next scene method");
 
-        if(_thisIsTheIntroScene)
+        if(_currentSceneStatic == CurrentScene.introScene)
             instance.StartCoroutine(StartIntro());
 
-        if (_thisIsTheMainScene)
+        if (_currentSceneStatic == CurrentScene.mainScene)
             instance.StartCoroutine(MoveToEndScene());
 
-        if (_thisIsTheEndScene)
+        if (_currentSceneStatic == CurrentScene.endScene)
             instance.StartCoroutine(MoveToIntroScene());
+    }
+
+    public static IEnumerator StartLogo()
+    {
+        yield return new WaitForSeconds(_logoSceneTimer);
+        PostProcessControl.OpeningFadeEffect(0, -10f, .025f);
+        _sceneToLoad.SetActive(true);
     }
 
     public static IEnumerator StartIntro()
@@ -151,8 +186,9 @@ public class GameManager : MonoBehaviour {
         //print("calling start intro co routine");
         _introEnvironment.SetActive(true);
         yield return new WaitForSeconds(_introSceneTimer);
-        _mainSceneLoad.SetActive(true);
-        PostProcessControl.OpeningFadeEffect(-10, 0, .025f);
+        PostProcessControl.OpeningFadeEffect(0, -10, .025f);
+        yield return new WaitForSeconds(3f);
+        _sceneToLoad.SetActive(true);
         //DeacivateIntro();
     }
 
@@ -162,7 +198,7 @@ public class GameManager : MonoBehaviour {
         //DeacivateIntro();
         //PostProcessControl.PostExposureFade(-10, 0, .025f);
         //_escapeHouseText.SetActive(true);
-        _endSceneLoad.SetActive(true);
+        _sceneToLoad.SetActive(true);
     }
 
     public static IEnumerator MoveToIntroScene()
@@ -171,10 +207,10 @@ public class GameManager : MonoBehaviour {
         //DeacivateIntro();
         //PostProcessControl.PostExposureFade(-10, 0, .025f);
         //_escapeHouseText.SetActive(true);
-        _introSceneLoad.SetActive(true);
+        _sceneToLoad.SetActive(true);
     }
 
-    public static IEnumerator GameFade()
+    public static IEnumerator GameFadeIn()
     {
         yield return new WaitForSeconds(.05f);
         //DeacivateIntro();
