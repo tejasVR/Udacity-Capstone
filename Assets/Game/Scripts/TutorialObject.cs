@@ -103,7 +103,7 @@ public class TutorialObject : MonoBehaviour {
 
             } else if (_tutorialText == TutorialTextObj.UseGunToAccessBlockedAreas)
             {
-                ObjectFade.TextFadeWithDistance(_textObj, 1.3f, false);
+                ObjectFade.TextFadeWithDistance(_textObj, 1.5f, false);
 
                 if (PlayerScript._dominantHand.gameObject.activeInHierarchy)
                 {

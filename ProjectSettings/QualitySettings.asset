@@ -4,7 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 8
+  m_CurrentQuality: 6
   m_QualitySettings:
   - serializedVersion: 2
     name: Fastest
@@ -193,7 +193,7 @@ QualitySettings:
     shadowResolution: 0
     shadowProjection: 1
     shadowCascades: 2
-    shadowDistance: 7
+    shadowDistance: 5
     shadowNearPlaneOffset: 3
     shadowCascade2Split: 0.33333334
     shadowCascade4Split: {x: 0.06666667, y: 0.19999999, z: 0.46666664}
@@ -216,7 +216,7 @@ QualitySettings:
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: VR Medium
-    pixelLightCount: 5
+    pixelLightCount: 6
     shadows: 1
     shadowResolution: 1
     shadowProjection: 1
@@ -244,7 +244,7 @@ QualitySettings:
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: VR High
-    pixelLightCount: 5
+    pixelLightCount: 7
     shadows: 1
     shadowResolution: 2
     shadowProjection: 1
@@ -257,7 +257,7 @@ QualitySettings:
     blendWeights: 4
     textureQuality: 0
     anisotropicTextures: 2
-    antiAliasing: 4
+    antiAliasing: 8
     softParticles: 1
     softVegetation: 1
     realtimeReflectionProbes: 0

@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class RagdollController : MonoBehaviour {
 
     public Component[] boneRig;
+    public GameObject[] _wrists;
     public float hitForce = 5f;
 
     private Rigidbody rb;
@@ -29,10 +30,21 @@ public class RagdollController : MonoBehaviour {
         foreach (Rigidbody ragdoll in boneRig)
         {
             //ragdoll.isKinematic = false;
+            //if (ragdoll.GetComponent<Rigidbody>() != null)
             ragdoll.velocity = hitDirection * hitForce;// Vector3.zero;
             ragdoll.gameObject.layer = 15;
             //ragdoll.isKinematic = true;
         }
+
+        foreach (GameObject obj in _wrists)
+        {
+            obj.gameObject.layer = 15;
+        }
+
+        //foreach (Component obj in boneRig)
+        //{
+        //    obj.gameObject.layer = 15;
+        //}
 
         //hitBodyPart.GetComponent<Rigidbody>().velocity = hitDirection * hitForce;
 

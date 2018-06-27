@@ -14,8 +14,9 @@ public class GunScript : MonoBehaviour {
     public ParticleSystem muzzleFlash;
     //public ParticleSystem shotTrail;
 
-    public float explosionForce;
-    public float explosionRadius;
+    public float _explosionForce;
+    public float _explosionForceUp;
+    public float _explosionRadius;
 
     public float _damage = 1f;
     public float _range = 100f;
@@ -153,7 +154,7 @@ public class GunScript : MonoBehaviour {
         // Cast a ray that ignores triggers so we don't hit player trigger objects
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask, QueryTriggerInteraction.Ignore))
         {
-            AddExplosionForce(hit.point, explosionRadius, explosionForce);
+            AddExplosionForce(hit.point, _explosionRadius, _explosionForce, _explosionForceUp);
 
 
             //if (!hit.collider.CompareTag("Enemy"))
@@ -196,6 +197,7 @@ public class GunScript : MonoBehaviour {
 
                 Enemy enemy = parentObj.GetComponent<Enemy>();
                 enemy.EnemyTakeHit(_damage, hitDir, hit.collider.gameObject);
+                //print("Enemy hit part: " + hit.collider.gameObject.name);
 
                 //AddExplosionForce(hit.point, explosionRadius, explosionForce);
 
@@ -237,7 +239,7 @@ public class GunScript : MonoBehaviour {
         }
     }
 
-    private void AddExplosionForce(Vector3 point, float explosionRadius, float explosionForce)
+    private void AddExplosionForce(Vector3 point, float explosionRadius, float explosionForce, float explosionForceUp)
     {
         Collider[] colliders = Physics.OverlapSphere(point, explosionRadius);
         foreach (var col in colliders)
@@ -246,7 +248,7 @@ public class GunScript : MonoBehaviour {
 
             if (rb != null)
             {
-                rb.AddExplosionForce(explosionForce, point, explosionRadius);
+                rb.AddExplosionForce(explosionForce, point, explosionRadius, explosionForceUp);
             }
         }
     }
