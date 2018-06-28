@@ -212,9 +212,9 @@ public class RightControllerManager : MonoBehaviour {
 
                 //_inventorySlots[_currentItem].hasItemInHand = true;
                 //_handModelObj.SetActive(false);
-                CloseInventory();
             }
 
+            CloseInventory();
 
 
             //if (_inventorySlots[_currentItem].itemInHandObj != null)
@@ -505,7 +505,7 @@ public class RightControllerManager : MonoBehaviour {
         inventorySlot.slotTaken = false;
         inventorySlot.inventoryObj = null;
         inventorySlot.name = "";
-        inventorySlot.textTag.text = "";
+        inventorySlot.textTag.text = "SLOT EMPTY";
         inventorySlot.hasItemInHand = false;
     }
 

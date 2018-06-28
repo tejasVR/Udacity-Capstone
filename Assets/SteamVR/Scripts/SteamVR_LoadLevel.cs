@@ -363,13 +363,20 @@ public class SteamVR_LoadLevel : MonoBehaviour
 				Application.backgroundLoadingPriority = ThreadPriority.Low;
 				async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(levelName, mode);
 
-				// Performing this in a while loop instead seems to help smooth things out.
-				//yield return async;
-				while (!async.isDone)
-				{
-					yield return null;
-				}
-			}
+                // Performing this in a while loop instead seems to help smooth things out.
+                //yield return async;
+
+                // TEJAS COMMENT
+                //while (!async.isDone)
+                //{
+                //	yield return null;
+                //}				
+
+                while (!async.isDone)
+                {
+                    yield return new WaitUntil(() => async.isDone);
+                }
+            }
 			else
 			{
 				UnityEngine.SceneManagement.SceneManager.LoadScene(levelName, mode);
@@ -378,15 +385,17 @@ public class SteamVR_LoadLevel : MonoBehaviour
 
 		yield return null;
 
-		System.GC.Collect();
+        // TEJAS COMMENT
+		//System.GC.Collect();
 
 		yield return null;
 
-		Shader.WarmupAllShaders();
+        // TEJAS COMMENT
+        //Shader.WarmupAllShaders();
 
-		// Optionally wait a short period of time after loading everything back in, but before we start rendering again
-		// in order to give everything a change to settle down to avoid any hitching at the start of the new level.
-		yield return new WaitForSeconds(postLoadSettleTime);
+        // Optionally wait a short period of time after loading everything back in, but before we start rendering again
+        // in order to give everything a change to settle down to avoid any hitching at the start of the new level.
+        yield return new WaitForSeconds(postLoadSettleTime);
 
 		SteamVR_Render.pauseRendering = false;
 

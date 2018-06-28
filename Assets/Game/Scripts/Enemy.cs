@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour {
     LayerMask layerMask = ~0;
 
     public Transform startCast;
-    public AudioSource audio;
+    public AudioSource[] _audioSources;
 
     private bool isDead;
 
@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour {
         //agent.updatePosition = false;
 
         //AudioSource.PlayClipAtPoint(audio.clip, )
-        audio.time = Random.Range(0f, 15f);
+        _audioSources[0].time = Random.Range(0f, 15f);
 
 	}
 
@@ -163,7 +163,12 @@ public class Enemy : MonoBehaviour {
     {
         isDead = true;
         rdController.KillRagdoll(hitDirection, hitBodyPart);
-        audio.Stop();
+
+        foreach (var audio in _audioSources)
+        {
+            audio.Stop();
+        }
+
         //this.gameObject.layer = 11; <<-- moved to ragdoll die method
         this.enabled = false;
 

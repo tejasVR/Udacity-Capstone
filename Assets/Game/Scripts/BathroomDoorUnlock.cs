@@ -9,7 +9,7 @@ public class BathroomDoorUnlock : MonoBehaviour {
     private Rigidbody _doorRb;
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
         _doorRb = _door.GetComponent<Rigidbody>();
         _hinge = _door.GetComponent<HingeJoint>();
         _hinge.useLimits = true;

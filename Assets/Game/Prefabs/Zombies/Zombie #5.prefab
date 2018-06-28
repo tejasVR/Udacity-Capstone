@@ -3036,7 +3036,9 @@ MonoBehaviour:
   agent: {fileID: 195978412966412354}
   firstSeePlayer: 0
   startCast: {fileID: 4658884648853900}
-  audio: {fileID: 82312037220999408}
+  _audioSources:
+  - {fileID: 82743779069192906}
+  - {fileID: 82312037220999408}
 --- !u!135 &135025286550578468
 SphereCollider:
   m_ObjectHideFlags: 1

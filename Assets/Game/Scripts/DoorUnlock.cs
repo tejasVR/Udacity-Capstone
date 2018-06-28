@@ -54,6 +54,7 @@ public class DoorUnlock : MonoBehaviour {
         if (other.CompareTag("Collected") && _keyToUnlock == other.GetComponent<Collectable>().itemName && !_isUnlocked)
         {
             Unlock();
+            //other.Collec
             //other.GetComponent<Light>().enabled = false;
             _rightControllerManager.AttachToDoor(_keyToUnlock, _keyAttach);
             //AttachToDoor(other.gameObject, other.GetComponent<Collectable>().itemName);
