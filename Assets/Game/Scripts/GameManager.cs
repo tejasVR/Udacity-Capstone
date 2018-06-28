@@ -187,7 +187,7 @@ public class GameManager : MonoBehaviour {
         //print("calling start intro co routine");
         _introEnvironment.SetActive(true);
         yield return new WaitForSeconds(_introSceneTimer);
-        PostProcessControl.OpeningFadeEffect(0, -10, .025f);
+        PostProcessControl.OpeningFadeEffect(0, -10, .01f);
         GlobalAudio.GlobalAudioFadeOut();
         yield return new WaitForSeconds(3f);
         _sceneToLoad.SetActive(true);

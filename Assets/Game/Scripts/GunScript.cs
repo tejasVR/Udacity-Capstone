@@ -154,7 +154,6 @@ public class GunScript : MonoBehaviour {
         // Cast a ray that ignores triggers so we don't hit player trigger objects
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask, QueryTriggerInteraction.Ignore))
         {
-            AddExplosionForce(hit.point, _explosionRadius, _explosionForce, _explosionForceUp);
 
 
             //if (!hit.collider.CompareTag("Enemy"))
@@ -171,13 +170,7 @@ public class GunScript : MonoBehaviour {
                 }
 
                 //AddExplosionForce(hit.point, explosionRadius, explosionForce);
-            }
-
-            //print("Object Hit:" + hit.collider.gameObject.name);
-            //print("Object Hit:" + hit.collider.gameObject.tag);
-
-
-            if (hit.collider.CompareTag("Enemy"))
+            } else if (hit.collider.CompareTag("Enemy"))
             {
                 //print("Enemy Hit: " + hit.collider.gameObject.name);
 
@@ -219,7 +212,15 @@ public class GunScript : MonoBehaviour {
                 //Enemy enemy = hit.transform.root.GetComponent<Enemy>();
                 //enemy.EnemyTakeHit(_damage);
 
+            } else
+            {
+                AddExplosionForce(hit.point, _explosionRadius, _explosionForce, _explosionForceUp);
             }
+
+
+
+
+
 
             //_audioSource[0].PlayOneShot(clips[0]);
             //_audioSource[1].PlayOneShot(clips[1]);

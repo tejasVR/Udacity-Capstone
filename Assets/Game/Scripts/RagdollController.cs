@@ -39,6 +39,8 @@ public class RagdollController : MonoBehaviour {
         foreach (GameObject obj in _wrists)
         {
             obj.gameObject.layer = 15;
+            obj.GetComponent<Rigidbody>().isKinematic = true;
+            obj.GetComponent<Rigidbody>().useGravity = false;
         }
 
         //foreach (Component obj in boneRig)
