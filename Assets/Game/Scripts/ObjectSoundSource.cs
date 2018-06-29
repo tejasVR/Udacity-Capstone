@@ -6,6 +6,8 @@ public class ObjectSoundSource : MonoBehaviour {
 
     private AudioSource _audioSource;
 
+    private bool _soundAgain;
+
     public enum ObjectType
     {
         cup,
@@ -24,29 +26,42 @@ public class ObjectSoundSource : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        //print(_audioSource.gameObject.name);
-        switch (_objectType)
+        if (_soundAgain)
         {
-            case ObjectType.cup:
-                PlaySound.PlayAudioFromSelection(_audioSource, ObjectSounds._instance._cupSounds, true, -.05f, .05f);
-                //print(_audioSource.gameObject.name);
-                break;
+            //print(_audioSource.gameObject.name);
+            switch (_objectType)
+            {
+                case ObjectType.cup:
+                    PlaySound.PlayAudioFromSelection(_audioSource, ObjectSounds._instance._cupSounds, true, -.05f, .05f);
+                    //print(_audioSource.gameObject.name);
+                    break;
 
-            case ObjectType.glass:
-                PlaySound.PlayAudioFromSelection(_audioSource, ObjectSounds._instance._glassSounds, true, -.05f, .05f);
-                break;
+                case ObjectType.glass:
+                    PlaySound.PlayAudioFromSelection(_audioSource, ObjectSounds._instance._glassSounds, true, -.05f, .05f);
+                    break;
 
-            case ObjectType.chair:
-                PlaySound.PlayAudioFromSelection(_audioSource, ObjectSounds._instance._chairSounds, true, -.05f, .05f);
-                break;
+                case ObjectType.chair:
+                    PlaySound.PlayAudioFromSelection(_audioSource, ObjectSounds._instance._chairSounds, true, -.05f, .05f);
+                    break;
 
-            case ObjectType.wood:
-                PlaySound.PlayAudioFromSelection(_audioSource, ObjectSounds._instance._woodSounds, true, -.15f, .15f);
-                break;
+                case ObjectType.wood:
+                    PlaySound.PlayAudioFromSelection(_audioSource, ObjectSounds._instance._woodSounds, true, -.15f, .15f);
+                    break;
 
-            case ObjectType.metal:
-                PlaySound.PlayAudioFromSelection(_audioSource, ObjectSounds._instance._metalSounds, true, -.05f, .05f);
-                break;
+                case ObjectType.metal:
+                    PlaySound.PlayAudioFromSelection(_audioSource, ObjectSounds._instance._metalSounds, true, -.05f, .05f);
+                    break;
+            }
         }
+
+        StartCoroutine(SoundOff());
+        
+    }
+
+    IEnumerator SoundOff()
+    {
+        _soundAgain = false;
+        yield return new WaitForSeconds(.25f);
+        _soundAgain = true;
     }
 }
