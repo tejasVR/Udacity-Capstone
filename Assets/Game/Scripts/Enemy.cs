@@ -170,7 +170,6 @@ public class Enemy : MonoBehaviour {
         }
 
         //this.gameObject.layer = 11; <<-- moved to ragdoll die method
-        this.enabled = false;
 
     }
 

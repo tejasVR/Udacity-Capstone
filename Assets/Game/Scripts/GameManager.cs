@@ -196,8 +196,9 @@ public class GameManager : MonoBehaviour {
 
     public static IEnumerator MoveToEndScene()
     {
-        yield return new WaitForSeconds(.05f);
+        PostProcessControl.PostExposureFade(-10, .025f);
         GlobalAudio.GlobalAudioFadeOut();
+        yield return new WaitForSeconds(1.5f);
 
         //DeacivateIntro();
         //PostProcessControl.PostExposureFade(-10, 0, .025f);
@@ -207,8 +208,9 @@ public class GameManager : MonoBehaviour {
 
     public static IEnumerator MoveToIntroScene()
     {
-        yield return new WaitForSeconds(.05f);
+        PostProcessControl.PostExposureFade(-10, .025f);
         GlobalAudio.GlobalAudioFadeOut();
+        yield return new WaitForSeconds(1.5f);
 
         //DeacivateIntro();
         //PostProcessControl.PostExposureFade(-10, 0, .025f);

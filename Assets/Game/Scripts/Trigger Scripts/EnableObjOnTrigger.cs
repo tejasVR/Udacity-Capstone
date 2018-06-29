@@ -30,12 +30,15 @@ public class EnableObjOnTrigger : MonoBehaviour {
 
     public HasItem hasItem;
 
-    private void Start()
+    private void Awake()
     {
         foreach (var obj in objsToEnable)
         {
             obj.SetActive(false);
+            //print("Disabling:" + obj.gameObject.name);
         }
+
+        
         
         //objToEnableWithBasementKey.SetActive(false);
         //objToEnableWithGun.SetActive(false);

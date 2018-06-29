@@ -157,7 +157,7 @@ public class GunScript : MonoBehaviour {
 
 
             //if (!hit.collider.CompareTag("Enemy"))
-            //    SpawnDecal(hit);
+            
 
             var hitPoint = hit.point;
 
@@ -212,9 +212,14 @@ public class GunScript : MonoBehaviour {
                 //Enemy enemy = hit.transform.root.GetComponent<Enemy>();
                 //enemy.EnemyTakeHit(_damage);
 
-            } else
+            } else if(hit.collider.CompareTag("Rigidbody"))
             {
                 AddExplosionForce(hit.point, _explosionRadius, _explosionForce, _explosionForceUp);
+            }
+            else
+            {
+                AddExplosionForce(hit.point, _explosionRadius, _explosionForce, _explosionForceUp);
+                SpawnDecal(hit);
             }
 
 

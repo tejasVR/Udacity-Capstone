@@ -21,6 +21,7 @@ public class RagdollController : MonoBehaviour {
 
     public void KillRagdoll(Vector3 hitDirection, GameObject hitBodyPart)
     {
+        GetComponent<Enemy>().enabled = false;
         GetComponent<Animator>().enabled = false;
         GetComponent<NavMeshAgent>().enabled = false;
 
@@ -38,9 +39,10 @@ public class RagdollController : MonoBehaviour {
 
         foreach (GameObject obj in _wrists)
         {
+            obj.GetComponent<CapsuleCollider>().enabled = false;
             obj.gameObject.layer = 15;
-            obj.GetComponent<Rigidbody>().isKinematic = true;
-            obj.GetComponent<Rigidbody>().useGravity = false;
+            //obj.GetComponent<Rigidbody>().isKinematic = true;
+            //obj.GetComponent<Rigidbody>().useGravity = false;
         }
 
         //foreach (Component obj in boneRig)

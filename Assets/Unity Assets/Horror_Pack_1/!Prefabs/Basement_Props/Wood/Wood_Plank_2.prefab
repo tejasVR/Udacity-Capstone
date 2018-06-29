@@ -25,10 +25,10 @@ GameObject:
   - component: {fileID: 114767240621959040}
   - component: {fileID: 82289219426295488}
   - component: {fileID: 169085228950818588}
-  - component: {fileID: 54462616149624468}
+  - component: {fileID: 54312679861048124}
   m_Layer: 0
   m_Name: Wood_Plank_2
-  m_TagString: Untagged
+  m_TagString: Rigidbody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 16
@@ -45,7 +45,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -71.413, y: 99.494, z: -0.048}
+  m_LocalEulerAnglesHint: {x: -72.87, y: 99.494, z: -0.048}
 --- !u!23 &23000011173022352
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -87,7 +87,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012192602326}
   m_Mesh: {fileID: 4300000, guid: 155875dc67ea38343aa2d77459ab4559, type: 3}
---- !u!54 &54462616149624468
+--- !u!54 &54312679861048124
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

@@ -165,7 +165,7 @@ public class ObjectFade : MonoBehaviour {
         {
             tempColor.a += Time.deltaTime * fadeSpeed;
             lineRendererObj.material.color = tempColor;
-
+            lineRendererObj.GetComponent<Renderer>().material.SetColor("_Emission", tempColor);
         }
 
     }

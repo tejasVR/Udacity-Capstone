@@ -68,6 +68,11 @@ public class TutorialObject : MonoBehaviour {
         {
             if (_tutorialText == TutorialTextObj.PressTriggerToMove)
             {
+                if (PlayerScript._rightDominant)
+                    _textObj.text = "HOLD THE LEFT TRIGGER TO MOVE";
+                else
+                    _textObj.text = "HOLD THE RIGHT TRIGGER TO MOVE";
+
                 if (PlayerScript._triggerAxisNonDominant > .5)
                 {
                     _endTutorialObject = true;
@@ -76,6 +81,11 @@ public class TutorialObject : MonoBehaviour {
             else if (_tutorialText == TutorialTextObj.PressTriggerToPickUpItem)
             {
                 ObjectFade.TextFadeWithDistance(_textObj, 1.4f, false);
+
+                if (PlayerScript._rightDominant)
+                    _textObj.text = "Press the right trigger over objects to pickup items";
+                else
+                    _textObj.text = "Press the left trigger over objects to pickup items";
 
                 if (PlayerScript._dominantHand.gameObject.activeInHierarchy)
                 {
@@ -93,6 +103,11 @@ public class TutorialObject : MonoBehaviour {
             }
             else if (_tutorialText == TutorialTextObj.PressTouchPadToBringUpInventory)
             {
+                if (PlayerScript._rightDominant)
+                    _textObj.text = "Press the right touchpad to access items";
+                else
+                    _textObj.text = "Press the left touchpad to access items";
+
                 if (PlayerScript._dominantHand.gameObject.activeInHierarchy)
                 {
                     if (PlayerScript._deviceDominant.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))

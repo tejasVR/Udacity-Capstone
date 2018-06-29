@@ -31,7 +31,7 @@ public class PlayerScript : MonoBehaviour {
     public static Vector2 _touchpadDominant;
     public static Vector2 _touchpadNonDominant;
 
-    public static bool rightDominant;
+    public static bool _rightDominant = true;
 
     // Use this for initialization
     private void Awake()
@@ -102,7 +102,7 @@ public class PlayerScript : MonoBehaviour {
             _nonDominantHandObjects.transform.position = _trackedRightObj.transform.position;
             _nonDominantHandObjects.transform.rotation = _trackedRightObj.transform.rotation;
 
-
+            _rightDominant = false;
 
         } else
         {
@@ -117,7 +117,7 @@ public class PlayerScript : MonoBehaviour {
             _nonDominantHandObjects.transform.position = _trackedLeftObj.transform.position;
             _nonDominantHandObjects.transform.rotation = _trackedLeftObj.transform.rotation;
 
-
+            _rightDominant = true;
 
 
         }

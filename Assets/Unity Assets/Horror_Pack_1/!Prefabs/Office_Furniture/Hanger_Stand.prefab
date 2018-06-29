@@ -28,10 +28,10 @@ GameObject:
   - component: {fileID: 169812140494219538}
   m_Layer: 0
   m_Name: Hanger_Stand
-  m_TagString: Untagged
+  m_TagString: Rigidbody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 16
+  m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &4000012801454464
 Transform:
@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014021986488}
   m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.032, y: 4.1914, z: 6.431}
+  m_LocalPosition: {x: 14.42025, y: 4.2, z: 2.5230827}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -113,7 +113,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6be7cb641f4514aa02b5e67bf1b059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectType: 1
+  _objectType: 0
 --- !u!136 &136000010153578574
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -221,7 +221,7 @@ AudioLowPassFilter:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0.0045454544
+      value: 0.18181819
       inSlope: 0
       outSlope: 0
       tangentMode: 0

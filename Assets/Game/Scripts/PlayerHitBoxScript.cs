@@ -50,19 +50,50 @@ public class PlayerHitBoxScript : MonoBehaviour {
                     PostProcessControl.PlayerDamagePostEffect(_playerDamageVignetteAmnt, _playerDamageContrastAmnt);
                     _heartBeatPitch += .1f;
                     HeartBeatControl.HeartBeatPitchAmount(_heartBeatPitch);
-                    HapticFeedback.HapticAmount(1500, true, true);
+                    StartCoroutine(HitHaptics(.25f));
+                    //HapticFeedback.HapticAmount(1500, true, true);
                     health--;
                 }
 
                 if (health <= 1)
                 {
-                    PostProcessControl.PostExposureFade(-10, .2f);
+                    //
                 }
             }
             else
             {
-                GameManager.NextScene();
+                StartCoroutine(Death());
             }
         }
     }
+
+    //private void HitHaptics()
+    //{
+    //    for (int i = 1000; i > 0; i++)
+    //    {
+    //        if(i % 10 == 0)
+    //        {
+    //            HapticFeedback.HapticAmount((int)(1.5f * i), true, true);
+    //        }
+    //    }
+    //}
+
+
+    IEnumerator HitHaptics(float timeBetween)
+    {
+        for (int i = 5; i > 0; i--)
+        {
+            yield return new WaitForSeconds(timeBetween);
+            HapticFeedback.HapticAmount((int)((200 * i) + 1000), true, false);
+        }
+    }
+
+    IEnumerator Death()
+    {
+        PostProcessControl.PostExposureFade(-10, .01f);
+        yield return new WaitForSeconds(2f);
+        GameManager.NextScene();
+
+    }
+
 }
