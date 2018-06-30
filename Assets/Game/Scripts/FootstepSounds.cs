@@ -18,6 +18,7 @@ public class FootstepSounds : MonoBehaviour {
     public AudioClip[] _stepsConcrete;
     public AudioClip[] _stepsStairs;
     public AudioClip[] _stepsLeafs;
+    public AudioClip[] _stepsPebbles;
 
     private float _distanceFromStartPos;
 
@@ -88,6 +89,9 @@ public class FootstepSounds : MonoBehaviour {
                     break;
                 case "Leafs":
                     RandomSound(_stepsLeafs);
+                    break;
+                case "Pebbles":
+                    RandomSound(_stepsPebbles);
                     break;
             }
 
