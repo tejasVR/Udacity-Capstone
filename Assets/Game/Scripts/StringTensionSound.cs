@@ -39,5 +39,9 @@ public class StringTensionSound : MonoBehaviour {
 
         _audioSource.volume = (_distanceTotal - _distanceCurrent) / _distanceTotal;
 		
+        if (_distanceCurrent < .25f)
+        {
+            _audioSource.Stop();
+        }
 	}
 }

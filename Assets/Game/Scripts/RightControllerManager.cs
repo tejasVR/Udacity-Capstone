@@ -35,6 +35,8 @@ public class RightControllerManager : MonoBehaviour {
     public Color _idleUIColor;
     public Color _highlightedUIColor;
 
+    public GameObject _returnToFlashlightText;
+
     [Header("Inventory Post Effect Properties")]
     //public float _exposureAmtBeginInventoryOn;
     //public float _exposureAmtEndInventoryOn;
@@ -191,6 +193,8 @@ public class RightControllerManager : MonoBehaviour {
 
                 HapticFeedback.HapticAmount(500, true, false);
 
+                _returnToFlashlightText.SetActive(false);
+
             } else
             {
                 foreach (var slot in _inventorySlots)
@@ -198,6 +202,8 @@ public class RightControllerManager : MonoBehaviour {
                     slot.inventoryOutline.color = _idleUIColor;
                     slot.textTag.gameObject.SetActive(false);
                 }
+
+                _returnToFlashlightText.SetActive(true);
             }
 
             _oldItem = _currentItem;
@@ -483,7 +489,7 @@ public class RightControllerManager : MonoBehaviour {
         //_touchpad.x = PlayerScript._deviceRight.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
         //_touchpad.y = PlayerScript._deviceRight.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).y;
 
-        _cursorObj.transform.localPosition = Vector3.Lerp(_cursorObj.transform.localPosition, PlayerScript._touchpadDominant * .085f, Time.unscaledDeltaTime * 10f);
+        _cursorObj.transform.localPosition = Vector3.Lerp(_cursorObj.transform.localPosition, PlayerScript._touchpadDominant * .11f, Time.unscaledDeltaTime * 10f);
 
         Vector2 fromVector2 = new Vector2(0, 1);
         Vector2 toVector2 = PlayerScript._touchpadDominant;
