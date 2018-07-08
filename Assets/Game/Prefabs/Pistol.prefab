@@ -859,7 +859,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1723508400804504}
   m_LocalRotation: {x: -0, y: 0.7071064, z: -0.000000010226557, w: 0.7071072}
-  m_LocalPosition: {x: 0.1485, y: 0.0311, z: -0.0146}
+  m_LocalPosition: {x: -0.0241, y: 0.0311, z: -0.0146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4881854524760262}
@@ -1157,7 +1157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1569624611623350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1717}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4840945418728074}
@@ -2568,7 +2568,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.4
+  m_Intensity: 0.75
   m_Range: 5
   m_SpotAngle: 50
   m_CookieSize: 10
@@ -2748,7 +2748,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.75
+  m_Intensity: 1
   m_Range: 5
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -2905,7 +2905,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 0.1
-  Offset: {x: 807.0489, y: 807.0489, z: 0}
+  Offset: {x: 812.85345, y: 812.85345, z: 0}
 --- !u!114 &114101585059064130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2971,7 +2971,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 0.1
-  Offset: {x: 2561.519, y: 2561.519, z: 0}
+  Offset: {x: 2567.3225, y: 2567.3225, z: 0}
 --- !u!114 &114408475975894920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3113,7 +3113,7 @@ MonoBehaviour:
   muzzleFlash: {fileID: 198725407721204480}
   _explosionForce: 300
   _explosionForceUp: 150
-  _explosionRadius: 1
+  _explosionRadius: 0.25
   _damage: 1
   _range: 100
   fireRate: 1.5
