@@ -1537,16 +1537,16 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1351036334249784}
-  m_LocalRotation: {x: -0, y: -0.993723, z: -0, w: -0.11186963}
-  m_LocalPosition: {x: 9.52, y: -0.8, z: 26.04}
-  m_LocalScale: {x: 1.1249998, y: 1.125, z: 1.1249998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.621, y: -0.19, z: 27.971}
+  m_LocalScale: {x: 1.125, y: 1.125, z: 1.125}
   m_Children:
   - {fileID: 4965092318809866}
   - {fileID: 4711195558973854}
   - {fileID: 4164038022847004}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -192.846, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4208049487787400
 Transform:
   m_ObjectHideFlags: 1
@@ -3016,7 +3016,8 @@ MonoBehaviour:
   enemyHealth: 2
   distanceToPlayer: 0
   agent: {fileID: 195891862100706092}
-  firstSeePlayer: 0
+  _rayCastBeforeAttack: 0
+  _firstSeePlayer: 0
   startCast: {fileID: 4164038022847004}
   _audioSources:
   - {fileID: 82690978592642630}

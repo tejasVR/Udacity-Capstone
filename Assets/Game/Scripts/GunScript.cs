@@ -77,7 +77,7 @@ public class GunScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (PlayerScript._dominantHand.gameObject.activeInHierarchy)
+        if (PlayerScript._dominantHand)
         {
             //_device = SteamVR_Controller.Input((int)_trackedObj.index);
 

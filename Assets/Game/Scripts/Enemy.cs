@@ -22,7 +22,8 @@ public class Enemy : MonoBehaviour {
 
     public NavMeshAgent agent;
 
-    public bool firstSeePlayer;
+    public bool _rayCastBeforeAttack;
+    public bool _firstSeePlayer;
 
     LayerMask layerMask = ~0;
 
@@ -93,7 +94,29 @@ public class Enemy : MonoBehaviour {
         {
             if (distanceToPlayer < distanceToMoveToPlayer && distanceToPlayer > distanceToAttackPlayer)
             {
-                AnimateMove();
+                if (_rayCastBeforeAttack && !_firstSeePlayer)
+                {
+                    
+                    if (!Physics.Raycast(ray, out hit, distanceToMoveToPlayer))
+                    {
+                        _firstSeePlayer = true;
+
+                    }
+                    else
+                    {
+                        //print("Enemy raycast hit: " + hit.collider.gameObject.name);
+                    }
+                }
+
+                if (_rayCastBeforeAttack)
+                {
+                    if (_firstSeePlayer)
+                        AnimateMove();
+                }else
+                {
+                    AnimateMove();
+                }
+
                 agent.SetDestination(PlayerScript._playerEye.transform.position);
             }
             else if (distanceToPlayer <= distanceToAttackPlayer)

@@ -56,7 +56,7 @@ public class FlashLightManager : MonoBehaviour {
 
     private void OnEnable()
     {
-        transform.rotation = PlayerScript._dominantHand.transform.rotation; //Quaternion.Slerp(transform.rotation, PlayerScript._trackedRight.transform.rotation * _startRotation, Time.deltaTime * _rotateSpeed);
+        //transform.rotation = PlayerScript._dominantHand.transform.rotation; //Quaternion.Slerp(transform.rotation, PlayerScript._trackedRight.transform.rotation * _startRotation, Time.deltaTime * _rotateSpeed);
     }
 
     // Update is called once per frame

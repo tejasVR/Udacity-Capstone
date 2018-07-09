@@ -59,5 +59,12 @@ public class GlobalAudio : MonoBehaviour {
         _volumeMaster = 1;
     }
 
+    public static void GlobalAudioSilence()
+    {
+        AudioListener.volume = 0;
+        //AudioListener.volume = Mathf.Lerp(AudioListener.volume, 1f, Time.deltaTime * .2f);
+        _volumeMaster = 0;
+    }
+
 
 }
