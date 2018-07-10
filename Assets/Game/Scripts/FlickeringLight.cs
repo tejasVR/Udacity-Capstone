@@ -17,6 +17,10 @@ public class FlickeringLight : MonoBehaviour {
     //public float _stopDuration;
 
     private float _frequencyTimer;
+
+    public Renderer _rend;
+    //private float _emissionCurrent;
+    private Color _emissionStartColor;
     //public float _stopDurationTimer;
 
     //public bool isStopped;
@@ -25,9 +29,11 @@ public class FlickeringLight : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        _rend.material.EnableKeyword("_EMISSION");
 
         light = GetComponent<Light>();
-
+        _emissionStartColor = _rend.material.GetColor("_EmissionColor");
+        //print(_emissionStartColor);
         _frequencyTimer = Random.Range(_changeFrequencyMin,_changeFrequencyMax);
         //_stopDurationTimer = _stopDuration;
 	}
@@ -45,6 +51,10 @@ public class FlickeringLight : MonoBehaviour {
             {
                 var newIntensity = Random.Range(_minIntensity, _maxIntensity);
                 light.intensity = Mathf.Lerp(light.intensity, newIntensity, Time.deltaTime * 5f);
+
+                Color finalColor = _emissionStartColor * newIntensity * (_minIntensity / _maxIntensity);
+                //print(finalColor + " " + gameObject.name);
+                _rend.material.SetColor("_EmissionColor", Color.Lerp(_rend.material.GetColor("_EmissionColor"), finalColor, Time.deltaTime *2f));
             }
             
 

@@ -489,7 +489,7 @@ public class RightControllerManager : MonoBehaviour {
         //_touchpad.x = PlayerScript._deviceRight.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
         //_touchpad.y = PlayerScript._deviceRight.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).y;
 
-        _cursorObj.transform.localPosition = Vector3.Lerp(_cursorObj.transform.localPosition, PlayerScript._touchpadDominant * .11f, Time.unscaledDeltaTime * 10f);
+        _cursorObj.transform.localPosition = Vector3.Lerp(_cursorObj.transform.localPosition, PlayerScript._touchpadDominant * .12f, Time.unscaledDeltaTime * 10f);
 
         Vector2 fromVector2 = new Vector2(0, 1);
         Vector2 toVector2 = PlayerScript._touchpadDominant;
