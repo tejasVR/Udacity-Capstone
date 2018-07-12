@@ -9,7 +9,7 @@ public class MenuScript : MonoBehaviour {
 
     public float _progressBarFillSpeed;
 
-    private bool _isProgressBarFilled;
+    public bool _isProgressBarFilled;
 
     private float _hapticClick = .5f;
     private float _hapticClickTimer;
