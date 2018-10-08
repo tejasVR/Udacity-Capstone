@@ -8,12 +8,16 @@ using UnityEditor;
 public class CinematographyEditor : Editor {
 
     SerializedProperty cameraDolly;
+    SerializedProperty cameraRotate;
     SerializedProperty cameraDollySpeed;
+    SerializedProperty cameraRotateSpeed;
 
     private void OnEnable()
     {
         cameraDolly = serializedObject.FindProperty("_cameraDolly");
+        cameraRotate = serializedObject.FindProperty("_cameraRotate");
         cameraDollySpeed = serializedObject.FindProperty("_cameraDollySpeed");
+        cameraRotateSpeed = serializedObject.FindProperty("_cameraRotateSpeed");
     }
 
     public override void OnInspectorGUI()
@@ -55,11 +59,19 @@ public class CinematographyEditor : Editor {
 
         GUILayout.Space(10);
 
-        cinematography._cameraRotate = EditorGUILayout.Toggle("Camera Rotate", cinematography._cameraRotate);
+        EditorGUILayout.PropertyField(cameraRotate);
         if (cinematography._cameraRotate)
         {
-            cinematography._cameraRotateSpeed = EditorGUILayout.FloatField("Camera Rotate Speed", cinematography._cameraRotateSpeed);
+            //cinematography._cameraDollySpeed = EditorGUILayout.FloatField("Camera Dolly Speed", cinematography._cameraDollySpeed);
+            EditorGUILayout.PropertyField(cameraRotateSpeed);
+
         }
+
+        //cinematography._cameraRotate = EditorGUILayout.Toggle("Camera Rotate", cinematography._cameraRotate);
+        //if (cinematography._cameraRotate)
+        //{
+        //    cinematography._cameraRotateSpeed = EditorGUILayout.FloatField("Camera Rotate Speed", cinematography._cameraRotateSpeed);
+        //}
 
         GUILayout.Space(10);
 

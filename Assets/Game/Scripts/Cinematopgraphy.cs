@@ -50,6 +50,11 @@ public class Cinematopgraphy : MonoBehaviour {
         {
             transform.Translate(Vector3.forward * _cameraDollySpeed * Time.deltaTime);
         }
+
+        if (_cameraRotate)
+        {
+            transform.Rotate(Vector3.forward * _cameraRotateSpeed * Time.deltaTime);
+        }
 		
 	}
 }

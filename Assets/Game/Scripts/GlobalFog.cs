@@ -9,7 +9,7 @@ public class GlobalFog : MonoBehaviour {
 
     private void Start()
     {
-        print(RenderSettings.fogEndDistance);
+        //print(RenderSettings.fogEndDistance);
     }
 
     private void OnTriggerEnter(Collider other)
